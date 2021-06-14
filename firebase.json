@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist\\confundo-episko",
+    "public": "dist/confundo-episko",
     "ignore": [
       "firebase.json",
       "**/.*",
