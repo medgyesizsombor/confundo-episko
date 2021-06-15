@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +10,37 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class LoginPage implements OnInit {
 
-  username: string = ""
-  password: string = ""
+  user = {
+    email: '',
+    password: ''
+  }
 
-  constructor(private afs: AngularFirestore, private afa: AngularFireAuth) { }
+  constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
     
   }
 
-  login(){
-    this.afa.signInWithEmailAndPassword(this.username, this.password).then(res => {
-      console.log(res)
-    })
+  async login(){
+    const user = await this.angularFireAuth.signInWithEmailAndPassword(this.user.email, this.user.password);
+    console.log(user);
+
+    if(user.user.email){
+      this.router.navigate(['/home']);
+    } else {
+      alert('login failed!');
+    }
+  }
+
+  async register(){
+    const user = await this.angularFireAuth.createUserWithEmailAndPassword(this.user.email, this.user.password);
+    console.log(user);
+
+    if(user.user.email){
+      alert('registration successful!');
+    } else {
+      alert('registration failed!'); //no internet connection, email is already used, email is not in good format
+    }
   }
   
 }
