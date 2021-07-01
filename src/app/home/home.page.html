@@ -1,11 +1,17 @@
 <ion-header>
     <ion-img src="assets/img/unnamed.png"></ion-img>
-    <ion-title>Confundo Episko</ion-title>
+    <ion-title class="ion-padding-bottom" class="ion-padding-bottom">Confundo Episko</ion-title>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <ion-item (click)="goToLogin()" lines="none">
+    <ion-item lines="none">
+      <ion-label class="ion-text-wrap" color="secondary">Welcome to the application which has the best cognitive games</ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item (click)="goToGames()" lines="none">
       <ion-label color="secondary">Sign In to play the games!</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
     </ion-item>

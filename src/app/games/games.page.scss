@@ -1,0 +1,17 @@
+ion-header{
+    background-color: #F19066;
+}
+
+ion-content{
+    --ion-background-color: #F3A683;
+}
+
+ion-card{
+    width: 30%!important;
+}
+
+.game-cards{
+    overflow: hidden!important;
+    position: relative!important;
+    overflow-x: auto;
+}

@@ -16,12 +16,8 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  games(){
+  goToGames(){
     this.router.navigate(["/games"]);
-  }
-
-  goToLogin(){
-    this.router.navigate(["/login"]);
   }
 
 }

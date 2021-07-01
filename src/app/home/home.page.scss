@@ -1,5 +1,5 @@
 ion-header{
-    height: 40%;
+    height: auto;
     background-color: #F19066;
 }
 
@@ -16,7 +16,7 @@ ion-title{
     width: auto;
     margin: auto;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 20px;
 }
 
 ion-content{
@@ -29,7 +29,6 @@ ion-card{
 }
 
 ion-item{
-    text-decoration-line: none;
     margin: auto;
 }
 

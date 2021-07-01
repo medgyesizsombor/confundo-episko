@@ -83,6 +83,15 @@
   --ion-color-background-contrast-rgb: 0, 0, 0;
   --ion-color-background-shade: #f1956c;
   --ion-color-background-tint: #ffffff;
+
+  /** texts in the app **/
+  --ion-color-apptext: #ffffff;
+  --ion-color-apptext-rgb: 255, 255, 255;
+  --ion-color-apptext-contrast: #000000;
+  --ion-color-apptext-contrast-rgb: 0, 0, 0;
+  --ion-color-apptext-shade: #d7d8da;
+  --ion-color-apptext-tint: #f5f6f9;
+  --ion-text-color-apptext: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
