@@ -24,13 +24,13 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
   {
-    path: 'results',
-    loadChildren: () => import('./results/results.module').then( m => m.ResultsPageModule)
-  },
-  {
     path: 'games',
     loadChildren: () => import('./games/games.module').then( m => m.GamesPageModule)
+  },  {
+    path: 'statistics',
+    loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule)
   }
+
 ];
 
 @NgModule({
