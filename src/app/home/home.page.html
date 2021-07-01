@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
+    <ion-img src="assets/img/unnamed.png"></ion-img>
+    <ion-title>Confundo Episko</ion-title>
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-item (click)="goToLogin()" lines="none">
+      <ion-label color="secondary">Sign In to play the games!</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
+    </ion-item>
+  </ion-card>
 </ion-content>
+

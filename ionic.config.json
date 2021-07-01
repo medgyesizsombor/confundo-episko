@@ -1,5 +1,7 @@
 {
   "name": "confundo-episko",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

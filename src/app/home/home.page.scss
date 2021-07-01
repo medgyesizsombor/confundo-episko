@@ -1,0 +1,43 @@
+ion-header{
+    height: 40%;
+    background-color: #F19066;
+}
+
+ion-img{
+    height:200px;
+    width: 200px;
+    margin: auto;
+}
+
+ion-title{
+    font-size: 25px;
+    color: white;
+    word-break: break-all;
+    width: auto;
+    margin: auto;
+    text-align: center;
+    padding-top: 80px;
+}
+
+ion-content{
+    --ion-background-color: #F3A683;
+}
+
+ion-card{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+ion-item{
+    text-decoration-line: none;
+    margin: auto;
+}
+
+ion-icon{
+    color: white;
+    text-align: center;
+}
+
+ion-footer{
+    height: 50px;
+}
