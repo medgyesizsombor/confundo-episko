@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   }
 
   goToGames(){
-    this.router.navigate(["/games"]);
+    this.router.navigate(["main-tabs/games"]);
   }
 
 }
