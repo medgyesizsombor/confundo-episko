@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
     console.log(user);
 
     if(user.user.email){
-      this.router.navigate(['/home']);
+      this.router.navigate(['main-tabs/home']);
       loading.dismiss();
     } else {
       alert('login failed!');

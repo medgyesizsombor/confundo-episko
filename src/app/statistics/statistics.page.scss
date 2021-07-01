@@ -1,7 +1,6 @@
 ion-header{
-    background-color: #F19066;
-    min-height: 50px;
     height: auto;
+    background-color: #F19066;
 }
 
 ion-title{
@@ -16,17 +15,7 @@ ion-content{
     --ion-background-color: #F3A683;
 }
 
-ion-icon{
-    color: white;
-    text-align: center;
-}
-
 ion-card{
     border: 2px solid black;
-    border-radius: 25px;
-    min-height: 50px;
-}
-
-ion-label{
-    font-size: 25px;
+    border-radius: 10px;
 }
