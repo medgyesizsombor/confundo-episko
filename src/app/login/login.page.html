@@ -1,15 +1,15 @@
 <ion-header>
-    <ion-title>Login</ion-title>
+    <ion-title text class="ion-text-center">Login</ion-title>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label color="secondary" position="floating">Email</ion-label>
       <ion-input color="secondary" type="text" [(ngModel)]="user.email"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label color="secondary" position="floating">Password</ion-label>
       <ion-input color="secondary" type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>

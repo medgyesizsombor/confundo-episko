@@ -30,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/main-tabs/games',
+        redirectTo: '/main-tabs/home',
         pathMatch: 'full'
       }
     ]
