@@ -4,7 +4,7 @@ ion-header{
 }
 
 ion-title{
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     width: auto;
     margin: auto;
@@ -13,10 +13,6 @@ ion-title{
 
 ion-content{
     --ion-background-color: #F3A683;
-    min-height: 200px;
-    max-height: 300px;
-    height: auto;
-    overflow: hidden;
 }
 
 ion-content-title{
@@ -35,6 +31,8 @@ ion-card {
     overflow-x: auto !important;
 }
 
-.tabs-inner{
-    overflow-y: auto !important;
+.games-category{
+    color: black;
+    padding: 20px 20px 0px 10px;
+    font-size: 20px;
 }
