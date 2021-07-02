@@ -34,7 +34,12 @@ const routes: Routes = [
   {
     path: 'main-tabs',
     loadChildren: () => import('./main-tabs/main-tabs.module').then( m => m.MainTabsPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 ];
 
 @NgModule({
