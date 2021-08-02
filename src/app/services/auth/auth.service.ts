@@ -9,8 +9,19 @@ export class AuthService {
 
   constructor(private angularFireAuth: AngularFireAuth, private angularFireStore: AngularFirestore) { }
 
-  login(email: string, password: string) {
+  user = {
+    email: '',
+    password: ''
+  }
 
+  async login(user: any) {
+    return new Promise((resolve, reject) => {
+      this.angularFireAuth.signInWithEmailAndPassword(user.email, user.password).then(() => {
+        resolve(true);
+      }).catch(err => {
+        reject(err);
+      })
+    })
   }
 
   async register(user: any) {

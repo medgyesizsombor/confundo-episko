@@ -29,26 +29,24 @@ export class LoginPage implements OnInit {
     });
     loading.present();
 
-
-    let user = null;
-    try {
-      user = await this.angularFireAuth.signInWithEmailAndPassword(this.user.email, this.user.password)
-    } catch(err) {
+    this.authService.login(
+      this.user
+      ).then(() => {
+      loading.dismiss();
+      this.router.navigate(['main-tabs/home']);
+    }).catch(async err => {
       let toast = await this.toast.create({
-        message: err.message,
-       // duration: 2000,
-        cssClass: 'toast-login'
+        message: err,
+        duration: 2000,
+        cssClass: 'toast-register'
       });
       toast.present();
       loading.dismiss();
-    }
-    console.log(user);
-
-    if(user.user.email){
-      this.router.navigate(['main-tabs/home']);
-      loading.dismiss();
-    } else {
-      loading.dismiss();
-    }
+    });
   }
+
+  goToRegister(){
+    this.router.navigate(['register']);
+  }
+
 }
