@@ -13,7 +13,7 @@ export class AuthService {
 
   }
 
-  register(user: any) {
+  async register(user: any) {
     return new Promise((resolve, reject) => {
       this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
         this.angularFireStore.collection('Users').add(user).then(() => {
