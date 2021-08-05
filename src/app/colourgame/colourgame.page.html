@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-title text class="ion-text-center">Colour Game</ion-title>
+</ion-header>
+
+<ion-content>
+  
+<p>
+    <button type="submit" (click)="changeLabelName(lblName.id, lblName2.id, asd.id)" #bt id="bt">
+        Click Me
+    </button>
+</p>
+
+<ng-container>
+    
+        <ion-label #lblName id="lblName" class="random">
+
+        </ion-label>
+        <br>
+        <ion-label #lblName2 id="lblName2" class="random">
+            
+        </ion-label>
+
+        <br>
+        <ion-label #asd id="asd">
+
+        </ion-label>
+    
+</ng-container>
+
+<p>
+  <button type="submit" (click)="point(asd.id, lblName.id, lblName2.id, bt.id)">
+    ASDASD
+  </button>
+</p>
+
+
+</ion-content>
