@@ -36,11 +36,11 @@ export class ColourgamePage implements OnInit {
     document.getElementById(lbl2).style.color = colour2;
     document.getElementById(asd).innerHTML = '';
     console.log('ASD');
+    //document.getElementById(bt).style.display = 'none';
 
   }
   
-  point(asd, lbl, lbl2, bt){
-    document.getElementById(bt).style.display = 'none';
+  point(asd, lbl, lbl2){
     if (document.getElementById(lbl).style.color === document.getElementById(lbl2).innerHTML){
       document.getElementById(asd).innerHTML = 'loool';
       console.log('loool');
