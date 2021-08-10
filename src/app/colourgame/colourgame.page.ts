@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-colourgame',
@@ -7,14 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColourgamePage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private router: Router, private route: ActivatedRoute) { 
+    
   }
+
+  ngOnInit(){
+
+    
+  }
+
+  result = 0;
+
 
 
   changeLabelName(lbl, lbl2, asd) {
-    
     let colours = ['red', 'yellow', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
     let text1 = '';
     let text2 = '';
@@ -34,7 +41,7 @@ export class ColourgamePage implements OnInit {
     document.getElementById(lbl).style.color = colour1;
     document.getElementById(lbl2).innerHTML = text2;
     document.getElementById(lbl2).style.color = colour2;
-    document.getElementById(asd).innerHTML = '';
+    document.getElementById(asd).innerHTML = 'asd';
     console.log('ASD');
     //document.getElementById(bt).style.display = 'none';
 
@@ -42,8 +49,10 @@ export class ColourgamePage implements OnInit {
   
   point(asd, lbl, lbl2){
     if (document.getElementById(lbl).style.color === document.getElementById(lbl2).innerHTML){
+      this.result++;
       document.getElementById(asd).innerHTML = 'loool';
       console.log('loool');
+      console.log(this.result);
       this.changeLabelName(lbl, lbl2, asd);
       
     } else {
