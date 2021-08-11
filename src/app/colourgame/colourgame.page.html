@@ -3,35 +3,32 @@
 </ion-header>
 
 <ion-content>
-  
-<p>
-    <ion-button type="submit" (click)="changeLabelName(lblName.id, lblName2.id, asd.id)" #bt id="bt">
-        Click Me
+
+  <p>
+    <ion-button (click)="changeLabelName()">
+      Click Me
     </ion-button>
-</p>
+  </p>
 
-<ng-container>
-    
-        <ion-label #lblName id="lblName" class="random">
+  <div *ngIf="lbl1text && lbl2text">
 
-        </ion-label>
-        <br>
-        <ion-label #lblName2 id="lblName2" class="random">
-            
-        </ion-label>
+    <ion-label class="random" [style.color]="lbl1color">
+      {{lbl1text}}
+    </ion-label>
+    <br>
+    <ion-label class="random" [style.color]="lbl2color">
+      {{lbl2text}}
+    </ion-label>
 
-        <br>
-        <ion-label #asd id="asd">
+    <br>
 
-        </ion-label>
-    
-</ng-container>
+  </div>
 
-<p>
-  <ion-button type="submit" (click)="point(asd.id, lblName.id, lblName2.id)">
-    ASDASD
-  </ion-button>
-</p>
+  <!--<p>
+    <ion-button type="submit" (click)="point(asd.id, lblName.id, lblName2.id)">
+      ASDASD
+    </ion-button>
+  </p> -->
 
 
 </ion-content>

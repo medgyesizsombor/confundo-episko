@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +9,16 @@ import { Router } from '@angular/router';
 })
 export class GamesPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private angularFireAuth: AngularFireAuth) { }
 
   ngOnInit() {
+    
   }
 
-  goToGame(){
-    this.router.navigate(['main-tabs/colourgame']);
+  goToGame(url: string){
+    if(url){
+      this.router.navigate([url]);
+    }
   }
 
 }

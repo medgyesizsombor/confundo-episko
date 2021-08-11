@@ -38,9 +38,11 @@ export class AuthService {
     })
   }
 
-  /*async logout(){
-    await 
-  }*/
+  currentUser(){
+    return this.angularFireAuth.currentUser;
+  }
+
+
 
  
 }
