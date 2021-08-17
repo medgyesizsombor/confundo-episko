@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-colourgame',
@@ -7,51 +8,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColourgamePage implements OnInit {
 
-  constructor() { }
+  lbl1text: string;
+  lbl2text: string;
+  lbl1color: string;
+  lbl2color: string;
 
-  ngOnInit() {
+  constructor(private router: Router, private route: ActivatedRoute) { 
+    
   }
 
 
-  changeLabelName(lbl, lbl2, asd) {
+  ngOnInit(){
     
+    
+  }
+
+  result = 0;
+
+
+
+  changeLabelName() {
     let colours = ['red', 'yellow', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
-    let text1 = '';
-    let text2 = '';
-    let colour1 = '';
-    let colour2 = '';
     let randomNumber1 = Math.floor(Math.random() * (7-0) + 0);
     let randomNumber2 = Math.floor(Math.random() * (7-0) + 0);
     let randomNumber3 = Math.floor(Math.random() * (7-0) + 0);
     let randomNumber4 = Math.floor(Math.random() * (7-0) + 0);
     
-    text1 = colours[randomNumber1];
-    text2 = colours[randomNumber2];
-    colour1 = colours[randomNumber3];
-    colour2 = colours[randomNumber4];
+    this.lbl1text = colours[randomNumber1];
+    this.lbl2text = colours[randomNumber2];
+    this.lbl1color = colours[randomNumber3];
+    this.lbl2color = colours[randomNumber4];
    
-    document.getElementById(lbl).innerHTML = text1;
+    /*document.getElementById(lbl).innerHTML = text1;
     document.getElementById(lbl).style.color = colour1;
     document.getElementById(lbl2).innerHTML = text2;
     document.getElementById(lbl2).style.color = colour2;
-    document.getElementById(asd).innerHTML = '';
-    console.log('ASD');
+    document.getElementById(asd).innerHTML = 'asd';
+    console.log('ASD');*/
     //document.getElementById(bt).style.display = 'none';
 
   }
   
-  point(asd, lbl, lbl2){
-    if (document.getElementById(lbl).style.color === document.getElementById(lbl2).innerHTML){
+  /*point(asd, lbl, lbl2){
+    if (this.lbl2color === document.getElementById(lbl2).innerHTML){
+      this.result++;
       document.getElementById(asd).innerHTML = 'loool';
       console.log('loool');
-      this.changeLabelName(lbl, lbl2, asd);
+      console.log(this.result);
+      this.changeLabelName();
       
     } else {
       document.getElementById(asd).innerHTML = 'noob';
       console.log('nooob');
-      this.changeLabelName(lbl, lbl2, asd);
+      this.changeLabelName();
     }
-  }
+  }*/
 
   
 

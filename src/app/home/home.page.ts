@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { AuthService } from '../services/auth/auth.service';
+
 
 @Component({
   selector: 'app-home',
@@ -11,12 +13,13 @@ import { LoadingController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router, private loadingController: LoadingController) { }
+  constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router, private loadingController: LoadingController, private authService: AuthService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.log(await this.authService.currentUser());
   }
 
-  goToGames(){
+  goToGames() {
     this.router.navigate(["main-tabs/games"]);
   }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,32 +18,39 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'games',
-    loadChildren: () => import('./games/games.module').then( m => m.GamesPageModule)
+    loadChildren: () => import('./games/games.module').then( m => m.GamesPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'statistics',
-    loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule)
+    loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'main-tabs',
-    loadChildren: () => import('./main-tabs/main-tabs.module').then( m => m.MainTabsPageModule)
+    loadChildren: () => import('./main-tabs/main-tabs.module').then( m => m.MainTabsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },  {
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'colourgame',
-    loadChildren: () => import('./colourgame/colourgame.module').then( m => m.ColourgamePageModule)
+    loadChildren: () => import('./colourgame/colourgame.module').then( m => m.ColourgamePageModule),
+    canActivate: [AuthGuard]
   }
-
 
 ];
 

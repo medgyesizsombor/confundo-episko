@@ -33,6 +33,9 @@ export class LoginPage implements OnInit {
       this.user
       ).then(() => {
       loading.dismiss();
+      localStorage.setItem('email', this.authService.user.email);
+      let asd = localStorage.getItem('email');
+      console.log(asd);
       this.router.navigate(['main-tabs/home']);
     }).catch(async err => {
       let toast = await this.toast.create({
