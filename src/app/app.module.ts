@@ -11,7 +11,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
-
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,9 +24,9 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

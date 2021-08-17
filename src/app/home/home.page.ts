@@ -16,13 +16,11 @@ export class HomePage implements OnInit {
   constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router, private loadingController: LoadingController, private authService: AuthService) { }
 
   async ngOnInit() {
-    console.log(await this.authService.currentUser())
-
+    console.log(await this.authService.currentUser());
   }
 
   goToGames() {
     this.router.navigate(["main-tabs/games"]);
   }
-
 
 }

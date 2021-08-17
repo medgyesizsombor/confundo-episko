@@ -6,13 +6,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private angularFireAuth: AngularFireAuth, private angularFireStore: AngularFirestore) { }
-
+ 
   user = {
     email: '',
     password: ''
   }
+
+  constructor(private angularFireAuth: AngularFireAuth, private angularFireStore: AngularFirestore) { }
 
   async login(user: any) {
     return new Promise((resolve, reject) => {
@@ -42,7 +42,16 @@ export class AuthService {
     return this.angularFireAuth.currentUser;
   }
 
+  loggedIn(){
+    if(sessionStorage.getItem("email") === this.user.email){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-
+  logout(){
+    this.angularFireAuth.signOut();
+  }
  
 }
