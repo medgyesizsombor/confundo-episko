@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ColourgamePage } from '../colourgame/colourgame.page';
 import { GamesPage } from '../games/games.page';
 import { HomePage } from '../home/home.page';
 import { SettingsPage } from '../settings/settings.page';
@@ -28,10 +27,6 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsPage
-      },
-      {
-        path: 'colourgame',
-        component: ColourgamePage
       },
       {
         path: '',
