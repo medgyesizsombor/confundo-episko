@@ -2,33 +2,49 @@
   <ion-title text class="ion-text-center">Colour Game</ion-title>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding, ion-text-center">
 
-  <p>
-    <ion-button (click)="changeLabelName()">
-      Click Me
+  <div *ngIf="!lbl1text && !lbl2text && seconds>0">
+    <ion-button (click)="start()">
+      Let's start!
     </ion-button>
-  </p>
+  </div>
 
-  <div *ngIf="lbl1text && lbl2text">
+  <div id="mid" *ngIf="lbl1text && lbl2text">
+    <div>
+      <ion-label>
+        {{timeText}}
+      </ion-label>
+    </div>
 
-    <ion-label class="random" [style.color]="lbl1color">
+    <ion-label class="text" [style.color]="lbl1color">
       {{lbl1text}}
     </ion-label>
     <br>
-    <ion-label class="random" [style.color]="lbl2color">
+    <ion-label class="text" [style.color]="lbl2color">
       {{lbl2text}}
     </ion-label>
 
-    <br>
-
+    <div>
+      <ion-label>
+        {{result}}
+      </ion-label>
+    </div>
   </div>
 
-  <!--<p>
-    <ion-button type="submit" (click)="point(asd.id, lblName.id, lblName2.id)">
-      ASDASD
-    </ion-button>
-  </p> -->
+  <div *ngIf="!lbl1text && !lbl2text && seconds==0">
+    <ion-label>
+      {{finalResult}}
+    </ion-label>
+  </div>
 
+  <div class="ion-padding">
+    <div id="left" class="ion-float-left" *ngIf="lbl1text && lbl2text" (click)="leftButton($event)">
+      <ion-button>false</ion-button>
+    </div>
+    <div id="right" class="ion-float-end" *ngIf="lbl1text && lbl2text" (click)="rightButton($event)">
+      <ion-button>true</ion-button>
+    </div>
+  </div>
 
 </ion-content>
