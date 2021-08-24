@@ -11,9 +11,7 @@ ion-title{
     padding: 20px;
 }
 
-ion-toolbar{
-    color: primary;
-}
+
 ion-card {
     border: 3px solid black;
 }
@@ -36,12 +34,4 @@ ion-footer{
 
 #right, #left{
     display: inline-block;
-}
-
-@media only screen and (min-width: 600px) {
-    #asd {
-        margin: auto;
-        width: 60%;
-        padding: 10px;
-    }
 }

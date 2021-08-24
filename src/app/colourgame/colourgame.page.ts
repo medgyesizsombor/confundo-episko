@@ -56,12 +56,9 @@ export class ColourgamePage implements OnInit {
   }
 
   rightButton($event: PointerEvent) {
-    //console.log($event);
     if (this.lbl1text === this.lbl2color) {
       console.log($event);
       this.result = this.result + 1;
-      //console.log('loool');
-      //console.log(this.result);
       this.giveValueOfLabels();
     } else {
       this.giveValueOfLabels();
@@ -70,10 +67,7 @@ export class ColourgamePage implements OnInit {
 
   leftButton($event: PointerEvent) {
     if (this.lbl1text !== this.lbl2color) {
-      //console.log($event);
       this.result = this.result + 1;
-      //console.log('loool');
-      //console.log(this.result);
       this.giveValueOfLabels();
     } else {
       this.giveValueOfLabels();

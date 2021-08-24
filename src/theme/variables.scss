@@ -9,8 +9,8 @@
   --ion-color-primary-rgb: 231, 127, 103;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #cb705b;
+  --ion-color-primary-tint: #e98c76;
 
   /** secondary **/
   --ion-color-secondary: #ffffff;
@@ -92,6 +92,7 @@
   --ion-color-apptext-shade: #d7d8da;
   --ion-color-apptext-tint: #f5f6f9;
   --ion-text-color-apptext: #ffffff;
+  
 }
 
 @media (prefers-color-scheme: dark) {
