@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-colourgame',
@@ -17,6 +16,9 @@ export class ColourgamePage implements OnInit {
   finalResult: string;
   seconds: number = 5;
   timeText: string;
+
+  playing: boolean = false;
+  ended: boolean = false;
   
   constructor(private router: Router, private route: ActivatedRoute) {
   }
@@ -25,6 +27,7 @@ export class ColourgamePage implements OnInit {
   }
 
   start() {
+    this.playing = true;
     this.timeText = this.seconds + ' sec';
     this.startCountDown();
     this.giveValueOfLabels();
@@ -37,19 +40,28 @@ export class ColourgamePage implements OnInit {
     let randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
     let randomNumber4 = Math.floor(Math.random() * (7 - 0) + 0);
 
-    this.lbl1text = colours[randomNumber1];
-    this.lbl2text = colours[randomNumber2];
-    this.lbl1color = colours[randomNumber3];
-    this.lbl2color = colours[randomNumber4];
+    if (Math.random() <= 0.2) {
+      this.lbl1text = colours[randomNumber1];
+      this.lbl2text = colours[randomNumber3];
+      this.lbl1color = colours[randomNumber2];
+      this.lbl2color = colours[randomNumber1];
+      console.log('Same')
+    } else {
+      this.lbl1text = colours[randomNumber1];
+      this.lbl2text = colours[randomNumber2];
+      this.lbl1color = colours[randomNumber3];
+      this.lbl2color = colours[randomNumber4];
+      console.log('NOOO')
+    }
   }
 
   rightButton($event: PointerEvent) {
-    console.log($event);
+    //console.log($event);
     if (this.lbl1text === this.lbl2color) {
       console.log($event);
       this.result = this.result + 1;
-      console.log('loool');
-      console.log(this.result);
+      //console.log('loool');
+      //console.log(this.result);
       this.giveValueOfLabels();
     } else {
       this.giveValueOfLabels();
@@ -58,10 +70,10 @@ export class ColourgamePage implements OnInit {
 
   leftButton($event: PointerEvent) {
     if (this.lbl1text !== this.lbl2color) {
-      console.log($event);
+      //console.log($event);
       this.result = this.result + 1;
-      console.log('loool');
-      console.log(this.result);
+      //console.log('loool');
+      //console.log(this.result);
       this.giveValueOfLabels();
     } else {
       this.giveValueOfLabels();
@@ -87,6 +99,8 @@ export class ColourgamePage implements OnInit {
     this.lbl1text = null;
     this.lbl2text = null;
     this.finalResult = "You have got " + this.result + " points!"
+    this.playing = false;
+    this.ended = true;
   }
 
 }

@@ -22,6 +22,10 @@ ion-content{
     --ion-background-color: #F3A683;
 }
 
+ion-button{
+    position: relative!important;
+}
+
 ion-footer{
     height: 50px;
 }
@@ -32,4 +36,12 @@ ion-footer{
 
 #right, #left{
     display: inline-block;
+}
+
+@media only screen and (min-width: 600px) {
+    #asd {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
 }
