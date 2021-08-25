@@ -30,3 +30,27 @@ ion-card{
 ion-label{
     font-size: 25px;
 }
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+    #asd {
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1200px) {
+    #asd {
+        margin: auto;
+        width: 70%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    #asd {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
+}

@@ -3,27 +3,29 @@
 </ion-header>
 
 <ion-content>
-<ion-card>
-  <ion-item lines="none">
-    <ion-label color="secondary" position="floating">Email</ion-label>
-    <ion-input color="secondary" type="text" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
+  <div id="asd">
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label color="secondary" position="floating">Email</ion-label>
+        <ion-input color="secondary" type="text" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
 
-  <ion-item lines="none">
-    <ion-label color="secondary" position="floating">Username</ion-label>
-    <ion-input color="secondary" type="text" [(ngModel)]="user.username"></ion-input>
-  </ion-item>
+      <ion-item lines="none">
+        <ion-label color="secondary" position="floating">Username</ion-label>
+        <ion-input color="secondary" type="text" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
 
-  <ion-item lines="none">
-    <ion-label color="secondary" position="floating">Password</ion-label>
-    <ion-input color="secondary" type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
+      <ion-item lines="none">
+        <ion-label color="secondary" position="floating">Password</ion-label>
+        <ion-input color="secondary" type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
 
-  <ion-item lines="none">
-    <ion-label color="secondary" position="stacked">Date of birth</ion-label>
-    <ion-input color="secondary" type="date" [(ngModel)]="user.birthdate"></ion-input>
-  </ion-item>
+      <ion-item lines="none">
+        <ion-label color="secondary" position="stacked">Date of birth</ion-label>
+        <ion-input color="secondary" type="date" [(ngModel)]="user.birthdate"></ion-input>
+      </ion-item>
 
-<ion-button fill="solid" expand="block" color="primary" (click)="register()">Register</ion-button>
-</ion-card>
+      <ion-button fill="solid" expand="block" color="primary" (click)="register()">Register</ion-button>
+    </ion-card>
+  </div>
 </ion-content>

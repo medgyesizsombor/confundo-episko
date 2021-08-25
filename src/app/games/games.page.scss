@@ -13,6 +13,7 @@ ion-title{
 
 ion-content{
     --ion-background-color: #F3A683;
+    
 }
 
 ion-content-title{
@@ -32,7 +33,60 @@ ion-card {
 }
 
 .games-category{
-    color: black;
+    color: white;
     padding: 20px 20px 0px 10px;
     font-size: 20px;
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+    #asd {
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1100px) {
+    #asd {
+        margin: auto;
+        width: 70%;
+        padding: 10px;
+    }
+
+    .games-category{
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1101px) {
+    #asd {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
+
+    .games-category{
+        font-size: 30px;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+  
+    /* Track */
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+   
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #e77f67; 
+        border-radius: 10px;
+    }
+  
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #cb705b;
+    }
 }
