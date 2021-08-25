@@ -10,13 +10,17 @@
     </ion-card>
 
     <div>
+      <ion-button (click)="start()">Start</ion-button>
+    </div>
+
+    <div>
       <ion-label>
         {{text}}
       </ion-label>
     </div>
 
     <div>
-      <ion-button (click)="firstTast($event)">True!</ion-button>
+      <ion-button (click)="pushed($event)">True!</ion-button>
     </div>
 
 

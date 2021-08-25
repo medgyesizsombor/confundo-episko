@@ -11,6 +11,8 @@ export class GoNogogamePage implements OnInit {
 
   text: number;
   counter: number = 0;
+  pushCounter: number = 0;
+  point: number = 0;
 
   playing: boolean = false;
   nextTask: boolean = false;
@@ -18,7 +20,6 @@ export class GoNogogamePage implements OnInit {
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    this.text = Math.floor(Math.random() * 10 - 0) + 0;
   }
 
   start(){
@@ -30,19 +31,30 @@ export class GoNogogamePage implements OnInit {
     this.text = Math.floor(Math.random() * 10 - 0) + 0;
   }
 
+  pushed($event: PointerEvent){
+    this.pushCounter++;
+    if(this.pushCounter < 10){
+      this.firstTask();
+    }
+    console.log(this.pushCounter);
+  }
+
   firstTask(){
     if((this.text / 2) == 0){
-      return true;
+      this.point = this.point + 1;
+      
+      console.log("Yeah");
+      this.fillNumber();
     } else {
-      return false;
+      console.log("upsi");
     }
   }
 
   secondTask(){
     if((this.text % 3) == 0){
-      return true;
+      //return true;
     } else {
-      return false;
+      //return false;
     }
   }
 
