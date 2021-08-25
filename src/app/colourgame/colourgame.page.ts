@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -19,8 +21,12 @@ export class ColourgamePage implements OnInit {
 
   playing: boolean = false;
   ended: boolean = false;
+
+  points = {
+    finalPoint: ''
+  }
   
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
@@ -56,12 +62,9 @@ export class ColourgamePage implements OnInit {
   }
 
   rightButton($event: PointerEvent) {
-    //console.log($event);
     if (this.lbl1text === this.lbl2color) {
       console.log($event);
       this.result = this.result + 1;
-      //console.log('loool');
-      //console.log(this.result);
       this.giveValueOfLabels();
     } else {
       this.giveValueOfLabels();
@@ -70,10 +73,7 @@ export class ColourgamePage implements OnInit {
 
   leftButton($event: PointerEvent) {
     if (this.lbl1text !== this.lbl2color) {
-      //console.log($event);
       this.result = this.result + 1;
-      //console.log('loool');
-      //console.log(this.result);
       this.giveValueOfLabels();
     } else {
       this.giveValueOfLabels();
@@ -101,6 +101,9 @@ export class ColourgamePage implements OnInit {
     this.finalResult = "You have got " + this.result + " points!"
     this.playing = false;
     this.ended = true;
+    /*this.angularFireStore.collection('Users/${user}/points').add('points').then(() => {
+      finalResult: this.finalResult;
+    })*/
   }
 
 }
