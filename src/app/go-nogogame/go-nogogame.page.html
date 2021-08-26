@@ -5,22 +5,35 @@
 <ion-content>
 
   <div id="asd">
+
     <ion-card>
-      <ion-card-content>Your task </ion-card-content>
+      <ion-card-content>{{task}}</ion-card-content>
     </ion-card>
 
-    <div>
+    <div *ngIf="!playing && !ended">
       <ion-button (click)="start()">Start</ion-button>
     </div>
 
-    <div>
-      <ion-label>
-        {{text}}
-      </ion-label>
+    <div *ngIf="playing">
+      <ion-card>
+        <ion-label>
+          {{timeText}}
+        </ion-label>
+      </ion-card>
+
+      <ion-card>
+        <ion-label>
+          {{text}}
+        </ion-label>
+      </ion-card>
+
+      <ion-button (click)="pushed($event)">True!</ion-button>
     </div>
 
-    <div>
-      <ion-button (click)="pushed($event)">True!</ion-button>
+    <div *ngIf="!playing && ended">
+      <ion-label>
+        {{finalResult}}
+      </ion-label>
     </div>
 
 
