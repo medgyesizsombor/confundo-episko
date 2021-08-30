@@ -3,40 +3,41 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RegisterPage implements OnInit {
 
   user = {
     email: '',
-    password: ''
+    password: '',
+    username: '',
+    birthdate: '',
   }
 
   constructor(private toast: ToastController, private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router, private loadingController: LoadingController, private authService: AuthService, private alertController: AlertController) { }
 
   ngOnInit() {
-    
   }
 
-  async login(){
+  async register(){
     let loading = await this.loadingController.create({
       message: 'Loading...'
     });
     loading.present();
 
-    this.authService.login(
-      this.user
-      ).then(() => {
+    this.authService.register({
+      email: this.user.email,
+      username: this.user.username,
+      password: this.user.password,
+      birthdate: this.user.birthdate
+    }).then(() => {
       loading.dismiss();
-      localStorage.setItem('email', this.authService.user.email);
-      let asd = localStorage.getItem('email');
-      console.log(asd);
-      this.router.navigate(['main-tabs/home']);
+      this.successfulAlert();
     }).catch(async err => {
       let toast = await this.toast.create({
         message: err,
@@ -46,10 +47,23 @@ export class LoginPage implements OnInit {
       toast.present();
       loading.dismiss();
     });
+  
   }
 
-  goToRegister(){
-    this.router.navigate(['register']);
+  async successfulAlert(){
+    let alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'Registration is successfull.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    let { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+    this.router.navigate(['login']);
   }
 
 }

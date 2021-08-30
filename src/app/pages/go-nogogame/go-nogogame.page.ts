@@ -56,7 +56,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   firstTask(){
-    if((this.text / 2) == 0){
+    if(this.text % 2 == 0) {
       this.result = this.result + 1;
       
       console.log("Yeah");
@@ -73,7 +73,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   secondTask(){
-    if(this.text >=  10){
+    if(this.text >= 10){
       this.result = this.result + 1;
       
       console.log("Yeah");

@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth/auth.service';
-import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],

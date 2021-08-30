@@ -107,5 +107,3 @@ export class ColourgamePage implements OnInit {
   }
 
 }
-
-
