@@ -16,7 +16,9 @@ export class GoNogogamePage implements OnInit {
   result: number = 0;
   finalResult: string = '';
   timeText: string = '';
-  seconds: number = 5;
+  timeText2: string = '';
+  secondsOnGame: number = 120;
+  secondsOnTurn: number = 4;
 
   playing: boolean = false;
   ended: boolean = false;
@@ -30,9 +32,11 @@ export class GoNogogamePage implements OnInit {
 
   start(){
     this.playing = true;
-    this.timeText = this.seconds + ' sec';
-    this.startCountDown();
+    this.timeText = this.secondsOnGame + ' sec';
+    this.timeText2 = this.secondsOnTurn + ' sec';
+    this.startCountDownGame();
     this.changeNumber();
+    this.startCountDownTurn();
   }
 
   changeNumber(){
@@ -85,19 +89,31 @@ export class GoNogogamePage implements OnInit {
     }
   }
 
-  startCountDown() {
+  startCountDownGame() {
     setInterval(() => {
       this.updateTime();
-      this.timeText = this.seconds + ' sec';
+      this.timeText = this.secondsOnGame + ' sec';
     }, 1000);
   }
 
   updateTime() {
-    if (this.seconds > 0) {
-      this.seconds--;
+    if (this.secondsOnGame > 0) {
+      this.secondsOnGame--;
+      if(this.secondsOnTurn > 0){
+        this.secondsOnTurn--;
+      } else {
+        this.secondsOnTurn = 4;
+        this.changeNumber();
+      }
     } else {
       this.end();
     }
+  }
+
+  startCountDownTurn(){
+    setInterval(() => {
+      this.timeText2 = this.secondsOnTurn + ' sec';
+    }, 1000);
   }
 
   end() {
