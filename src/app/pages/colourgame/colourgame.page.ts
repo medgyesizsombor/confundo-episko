@@ -14,19 +14,20 @@ export class ColourgamePage implements OnInit {
   lbl2text: string;
   lbl1color: string;
   lbl2color: string;
-  result: number = 0;
+  result = 0;
   finalResult: string;
-  seconds: number = 120;
+  seconds = 120;
   timeText: string;
 
-  playing: boolean = false;
-  ended: boolean = false;
+  playing = false;
+  ended = false;
 
   points = {
     finalPoint: ''
-  }
-  
-  constructor(private router: Router, private route: ActivatedRoute, private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+  };
+
+  constructor(private router: Router, private route: ActivatedRoute,
+    private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
@@ -40,24 +41,24 @@ export class ColourgamePage implements OnInit {
   }
 
   giveValueOfLabels() {
-    let colours = ['red', 'yellow', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
-    let randomNumber1 = Math.floor(Math.random() * (7 - 0) + 0);
-    let randomNumber2 = Math.floor(Math.random() * (7 - 0) + 0);
-    let randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
-    let randomNumber4 = Math.floor(Math.random() * (7 - 0) + 0);
+    const colours = ['red', 'yellow', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
+    const randomNumber1 = Math.floor(Math.random() * (7 - 0) + 0);
+    const randomNumber2 = Math.floor(Math.random() * (7 - 0) + 0);
+    const randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
+    const randomNumber4 = Math.floor(Math.random() * (7 - 0) + 0);
 
     if (Math.random() <= 0.2) {
       this.lbl1text = colours[randomNumber1];
       this.lbl2text = colours[randomNumber3];
       this.lbl1color = colours[randomNumber2];
       this.lbl2color = colours[randomNumber1];
-      console.log('Same')
+      console.log('Same');
     } else {
       this.lbl1text = colours[randomNumber1];
       this.lbl2text = colours[randomNumber2];
       this.lbl1color = colours[randomNumber3];
       this.lbl2color = colours[randomNumber4];
-      console.log('NOOO')
+      console.log('NOOO');
     }
   }
 
@@ -98,7 +99,7 @@ export class ColourgamePage implements OnInit {
   end() {
     this.lbl1text = null;
     this.lbl2text = null;
-    this.finalResult = "You have got " + this.result + " points!"
+    this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
     /*this.angularFireStore.collection('Users/${user}/points').add('points').then(() => {

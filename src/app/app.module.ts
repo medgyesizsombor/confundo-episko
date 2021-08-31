@@ -19,8 +19,8 @@ import { AuthGuard } from './guards/auth/auth.guard';
   entryComponents: [],
   imports: [
     CommonModule,
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

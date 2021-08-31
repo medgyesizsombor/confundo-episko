@@ -10,19 +10,19 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class GoNogogamePage implements OnInit {
 
   text: number;
-  task: string = '';
-  counter: number = 0;
-  pushCounter: number = 0;
-  result: number = 0;
-  finalResult: string = '';
-  timeText: string = '';
-  timeText2: string = '';
-  secondsOnGame: number = 120;
-  secondsOnTurn: number = 4;
+  task = '';
+  counter = 0;
+  pushCounter = 0;
+  result = 0;
+  finalResult = '';
+  timeText = '';
+  timeText2 = '';
+  secondsOnGame = 120;
+  secondsOnTurn = 4;
 
-  playing: boolean = false;
-  ended: boolean = false;
-  nextTask: boolean = false;
+  playing = false;
+  ended = false;
+  nextTask = false;
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) { }
 
@@ -47,7 +47,7 @@ export class GoNogogamePage implements OnInit {
     this.pushCounter++;
     if(this.pushCounter < 10){
       this.firstTask();
-    } else if(this.pushCounter == 10) {
+    } else if(this.pushCounter === 10) {
       this.task = 'Push button when it is equal or more than 9';
     } else {
       this.secondTask();
@@ -56,16 +56,16 @@ export class GoNogogamePage implements OnInit {
   }
 
   firstTask(){
-    if(this.text % 2 == 0) {
+    if(this.text % 2 === 0) {
       this.result = this.result + 1;
-      
-      console.log("Yeah");
+
+      console.log('Yeah');
       this.result = this.result + 1;
       console.log(this.result);
       this.changeNumber();
-      
+
     } else {
-      console.log("upsi");
+      console.log('upsi');
       this.result = this.result - 2;
       console.log(this.result);
       this.changeNumber();
@@ -75,14 +75,14 @@ export class GoNogogamePage implements OnInit {
   secondTask(){
     if(this.text >= 10){
       this.result = this.result + 1;
-      
-      console.log("Yeah");
+
+      console.log('Yeah');
       this.result = this.result + 1;
       console.log(this.result);
       this.changeNumber();
-      
+
     } else {
-      console.log("upsi");
+      console.log('upsi');
       this.result = this.result - 2;
       console.log(this.result);
       this.changeNumber();
@@ -117,7 +117,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   end() {
-    this.finalResult = "You have got " + this.result + " points!"
+    this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
   }

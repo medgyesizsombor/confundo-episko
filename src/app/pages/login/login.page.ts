@@ -15,16 +15,19 @@ export class LoginPage implements OnInit {
   user = {
     email: '',
     password: ''
-  }
+  };
 
-  constructor(private toast: ToastController, private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router, private loadingController: LoadingController, private authService: AuthService, private alertController: AlertController) { }
+  constructor(private toast: ToastController, private angularFirestore: AngularFirestore,
+    private angularFireAuth: AngularFireAuth, private router: Router,
+    private loadingController: LoadingController, private authService: AuthService,
+    private alertController: AlertController) { }
 
   ngOnInit() {
-    
+
   }
 
   async login(){
-    let loading = await this.loadingController.create({
+    const loading = await this.loadingController.create({
       message: 'Loading...'
     });
     loading.present();
@@ -33,12 +36,9 @@ export class LoginPage implements OnInit {
       this.user
       ).then(() => {
       loading.dismiss();
-      localStorage.setItem('email', this.authService.user.email);
-      let asd = localStorage.getItem('email');
-      console.log(asd);
       this.router.navigate(['main-tabs/home']);
     }).catch(async err => {
-      let toast = await this.toast.create({
+      const toast = await this.toast.create({
         message: err,
         duration: 2000,
         cssClass: 'toast-register'
