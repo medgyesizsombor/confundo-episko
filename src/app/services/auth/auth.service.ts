@@ -53,5 +53,9 @@ export class AuthService {
   logout(){
     this.angularFireAuth.signOut();
   }
+
+  /*getPlayerGameStats(uid: string, gameType: string) {
+    return this.angularFireStore.collection('Users').doc(uid).collection('points').doc(gameType).get();
+  }*/
  
 }

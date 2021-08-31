@@ -12,7 +12,7 @@ export class GamesPage implements OnInit {
   constructor(private router: Router, private angularFireAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    
+
   }
 
   goToGame(url: string){

@@ -10,17 +10,19 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class GoNogogamePage implements OnInit {
 
   text: number;
-  task: string = '';
-  counter: number = 0;
-  pushCounter: number = 0;
-  result: number = 0;
-  finalResult: string = '';
-  timeText: string = '';
-  seconds: number = 5;
+  task = '';
+  counter = 0;
+  pushCounter = 0;
+  result = 0;
+  finalResult = '';
+  timeText = '';
+  timeText2 = '';
+  secondsOnGame = 120;
+  secondsOnTurn = 4;
 
-  playing: boolean = false;
-  ended: boolean = false;
-  nextTask: boolean = false;
+  playing = false;
+  ended = false;
+  nextTask = false;
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) { }
 
@@ -30,9 +32,11 @@ export class GoNogogamePage implements OnInit {
 
   start(){
     this.playing = true;
-    this.timeText = this.seconds + ' sec';
-    this.startCountDown();
+    this.timeText = this.secondsOnGame + ' sec';
+    this.timeText2 = this.secondsOnTurn + ' sec';
+    this.startCountDownGame();
     this.changeNumber();
+    this.startCountDownTurn();
   }
 
   changeNumber(){
@@ -43,7 +47,7 @@ export class GoNogogamePage implements OnInit {
     this.pushCounter++;
     if(this.pushCounter < 10){
       this.firstTask();
-    } else if(this.pushCounter == 10) {
+    } else if(this.pushCounter === 10) {
       this.task = 'Push button when it is equal or more than 9';
     } else {
       this.secondTask();
@@ -52,16 +56,16 @@ export class GoNogogamePage implements OnInit {
   }
 
   firstTask(){
-    if((this.text / 2) == 0){
+    if(this.text % 2 === 0) {
       this.result = this.result + 1;
-      
-      console.log("Yeah");
+
+      console.log('Yeah');
       this.result = this.result + 1;
       console.log(this.result);
       this.changeNumber();
-      
+
     } else {
-      console.log("upsi");
+      console.log('upsi');
       this.result = this.result - 2;
       console.log(this.result);
       this.changeNumber();
@@ -69,39 +73,51 @@ export class GoNogogamePage implements OnInit {
   }
 
   secondTask(){
-    if(this.text >=  10){
+    if(this.text >= 10){
       this.result = this.result + 1;
-      
-      console.log("Yeah");
+
+      console.log('Yeah');
       this.result = this.result + 1;
       console.log(this.result);
       this.changeNumber();
-      
+
     } else {
-      console.log("upsi");
+      console.log('upsi');
       this.result = this.result - 2;
       console.log(this.result);
       this.changeNumber();
     }
   }
 
-  startCountDown() {
+  startCountDownGame() {
     setInterval(() => {
       this.updateTime();
-      this.timeText = this.seconds + ' sec';
+      this.timeText = this.secondsOnGame + ' sec';
     }, 1000);
   }
 
   updateTime() {
-    if (this.seconds > 0) {
-      this.seconds--;
+    if (this.secondsOnGame > 0) {
+      this.secondsOnGame--;
+      if(this.secondsOnTurn > 0){
+        this.secondsOnTurn--;
+      } else {
+        this.secondsOnTurn = 4;
+        this.changeNumber();
+      }
     } else {
       this.end();
     }
   }
 
+  startCountDownTurn(){
+    setInterval(() => {
+      this.timeText2 = this.secondsOnTurn + ' sec';
+    }, 1000);
+  }
+
   end() {
-    this.finalResult = "You have got " + this.result + " points!"
+    this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
   }
