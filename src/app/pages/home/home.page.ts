@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private router: Router, private loadingController: LoadingController, private authService: AuthService) { }
+  constructor(private router: Router, private loadingController: LoadingController, private authService: AuthService) { }
 
   async ngOnInit() {
     console.log(await this.authService.currentUser());
@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
   }
 
   goToGames() {
-    this.router.navigate(["main-tabs/games"]);
+    this.router.navigate(['main-tabs/games']);
   }
 
 }
