@@ -29,3 +29,37 @@
     --height: 200px !important;
 }
 
+.asd123{
+    margin: auto;
+    width: 30%;
+    font-size: 50px;
+    border-color: #403E39;
+    border-width: thin;
+    border-style: solid;
+    border-radius: 3px;
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+    #asd {
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1200px) {
+    #asd {
+        margin: auto;
+        width: 70%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1201px) {
+    #asd {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
+}
+

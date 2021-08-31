@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-go-nogogame',
@@ -18,16 +20,22 @@ export class GoNogogamePage implements OnInit {
   timeText = '';
   timeText2 = '';
   secondsOnGame = 120;
-  secondsOnTurn = 4;
+  secondsOnTurn = 3;
 
   playing = false;
   ended = false;
   nextTask = false;
 
-  constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) { }
+  constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.task = 'Press button when it is even number';
+    this.authService.getPlayerGameStats(localStorage.getItem('uid'), 'firstgame').subscribe(res => {
+      console.log(res.data());
+    }, err => {
+
+    });
   }
 
   start(){
@@ -44,14 +52,10 @@ export class GoNogogamePage implements OnInit {
   }
 
   pushed($event: PointerEvent){
+    this.secondsOnTurn = 3;
+    this.timeText2 = this.secondsOnTurn + ' sec';
     this.pushCounter++;
-    if(this.pushCounter < 10){
-      this.firstTask();
-    } else if(this.pushCounter === 10) {
-      this.task = 'Push button when it is equal or more than 9';
-    } else {
-      this.secondTask();
-    }
+    this.checkTask();
     console.log(this.pushCounter);
   }
 
@@ -96,13 +100,20 @@ export class GoNogogamePage implements OnInit {
     }, 1000);
   }
 
+  startCountDownTurn(){
+    setInterval(() => {
+      this.timeText2 = this.secondsOnTurn + ' sec';
+    }, 1000);
+  }
+
   updateTime() {
     if (this.secondsOnGame > 0) {
       this.secondsOnGame--;
       if(this.secondsOnTurn > 0){
         this.secondsOnTurn--;
       } else {
-        this.secondsOnTurn = 4;
+        this.notPushed();
+        this.secondsOnTurn = 3;
         this.changeNumber();
       }
     } else {
@@ -110,10 +121,35 @@ export class GoNogogamePage implements OnInit {
     }
   }
 
-  startCountDownTurn(){
-    setInterval(() => {
-      this.timeText2 = this.secondsOnTurn + ' sec';
-    }, 1000);
+  checkTask(){
+    if(this.pushCounter < 10){
+      this.firstTask();
+    } else if(this.pushCounter === 10) {
+      this.task = 'Push button when it is equal or more than 9';
+      this.firstTask();
+    } else {
+      this.secondTask();
+    }
+  }
+
+  notPushed(){
+    if(this.firstTask){
+        if(this.text % 2 === 1){
+          this.result = this.result + 1;
+          console.log(this.result);
+        } else {
+          this.result = this.result - 2;
+          console.log(this.result);
+        }
+    } else {
+      if(this.text < 10){
+        this.result = this.result + 1;
+        console.log(this.result);
+      } else {
+        this.result = this.result - 2;
+        console.log(this.result);
+      }
+    }
   }
 
   end() {
