@@ -52,6 +52,8 @@ export class GoNogogamePage implements OnInit {
   }
 
   pushed($event: PointerEvent){
+    this.secondsOnTurn = 3;
+    this.timeText2 = this.secondsOnTurn + ' sec';
     this.pushCounter++;
     this.checkTask();
     console.log(this.pushCounter);
@@ -110,7 +112,7 @@ export class GoNogogamePage implements OnInit {
       if(this.secondsOnTurn > 0){
         this.secondsOnTurn--;
       } else {
-        this.checkTask();
+        this.notPushed();
         this.secondsOnTurn = 3;
         this.changeNumber();
       }
@@ -127,6 +129,26 @@ export class GoNogogamePage implements OnInit {
       this.firstTask();
     } else {
       this.secondTask();
+    }
+  }
+
+  notPushed(){
+    if(this.firstTask){
+        if(this.text % 2 === 1){
+          this.result = this.result + 1;
+          console.log(this.result);
+        } else {
+          this.result = this.result - 2;
+          console.log(this.result);
+        }
+    } else {
+      if(this.text < 10){
+        this.result = this.result + 1;
+        console.log(this.result);
+      } else {
+        this.result = this.result - 2;
+        console.log(this.result);
+      }
     }
   }
 
