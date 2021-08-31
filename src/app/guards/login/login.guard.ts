@@ -14,17 +14,12 @@ export class LoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return new Promise((resolve, reject) => {
-        firebase.auth().onAuthStateChanged((user: firebase.User) => {
-          if(!user){
-            resolve(true);
-          } else {
-            console.log('User is logged in');
-            this.router.navigate(['main-tabs/home']);
-            resolve(false);
-          }
-        });
-      });
+      if(!localStorage.getItem('uid')){
+        return true;
+      }
+
+      this.router.navigate(['main-tabs/home']);
+      return false;
   }
 
 }
