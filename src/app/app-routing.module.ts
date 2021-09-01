@@ -58,7 +58,13 @@ const routes: Routes = [
     path: 'go-nogogame',
     loadChildren: () => import('./pages/go-nogogame/go-nogogame.module').then( m => m.GoNogogamePageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'game3',
+    loadChildren: () => import('./pages/game3/game3.module').then( m => m.Game3PageModule),
+    canActivate: [AuthGuard]
   }
+
 
 
 ];
