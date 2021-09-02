@@ -17,46 +17,44 @@
           {{timeText}}
         </ion-label>
       </div>-->
-
-          <ion-item lines="none" class="octagonCont">
-            <ion-label>
-              {{lbl3text}}
-            </ion-label>
-          </ion-item>
-
       
-      <ion-item lines="none">
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl1()" *ngIf="!clickedlbl1text && lbl1text">
         <ion-label class="text" [style.color]="lbl1color">
           {{lbl1text}}
         </ion-label>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl2()" *ngIf="lbl2text && !clickedlbl2text">
         <ion-label>
           {{lbl2text}}
         </ion-label>
       </ion-item>
       
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl3()" *ngIf="lbl3text && !clickedlbl3text">
+        <ion-label>
+          {{lbl3text}}
+        </ion-label>
+      </ion-item>
 
-      <ion-item lines="none">
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl4()" *ngIf="lbl4text && !clickedlbl4text">
         <ion-label>
           {{lbl4text}}
         </ion-label>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl5()" *ngIf="lbl5text && !clickedlbl5text">
         <ion-label>
           {{lbl5text}}
         </ion-label>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl6()" *ngIf="lbl6text && !clickedlbl6text">
         <ion-label>
           {{lbl6text}}
         </ion-label>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl7()" *ngIf="lbl7text && !clickedlbl7text">
         <ion-label>
           {{lbl7text}}
         </ion-label>
@@ -82,7 +80,7 @@
       <div id="left" class="ion-float-left" *ngIf="playing" (click)="leftButton($event)">
         <ion-button>false</ion-button>
       </div>-->
-      <div id="right" class="ion-float-end" *ngIf="playing" (click)="rightButton($event)">
+      <div id="right" class="ion-float-end" *ngIf="playing" (click)="clicked($event)">
         <ion-button>true</ion-button>
       </div>
     </div>
