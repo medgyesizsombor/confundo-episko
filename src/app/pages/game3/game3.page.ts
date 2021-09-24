@@ -122,6 +122,7 @@ export class Game3Page implements OnInit {
     for(let i = 0; i < this.numberArray.length; i++){
       if(set.has(this.numberArray[i])){ //ha benne van a halmazban a this.numberArray[i]
         for(let j = Math.floor(Math.random() * (20 - 1) + 1); j < 21; j++){  //random számot generál a j 1 - 20 között
+          console.log(j + 'ASDASDASDASD');
           if(!set.has(j)){  //ha nincs benne a halmazban j
             this.numberArray[i] = j;
             set.add(j);
@@ -147,6 +148,7 @@ export class Game3Page implements OnInit {
       if(currentNumber > element){
         console.log('aJAJAJAJAJA');
         console.log('FUCK -- -20 point');
+        this.endOfTurn();
         break;
       } else {
         console.log('NOIIIICE');

@@ -19,6 +19,7 @@ export class ColourgamePage implements OnInit {
   seconds = 120;
   timeText: string;
 
+
   playing = false;
   ended = false;
 
@@ -26,8 +27,12 @@ export class ColourgamePage implements OnInit {
     finalPoint: ''
   };
 
+  uid = localStorage.getItem('uid');
+  bestScore = Number(localStorage.getItem('bestScore'));
+  interval;
+
   constructor(private router: Router, private route: ActivatedRoute,
-    private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
@@ -82,9 +87,9 @@ export class ColourgamePage implements OnInit {
   }
 
   startCountDown() {
-    setInterval(() => {
-      this.updateTime();
-      this.timeText = this.seconds + ' sec';
+    this.interval = setInterval(() => {
+        this.updateTime();
+        this.timeText = this.seconds + ' sec';
     }, 1000);
   }
 
@@ -102,9 +107,25 @@ export class ColourgamePage implements OnInit {
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
-    /*this.angularFireStore.collection('Users/${user}/points').add('points').then(() => {
-      finalResult: this.finalResult;
-    })*/
+    if(this.bestScore < this.result){
+      this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').update({
+        asd: 5,
+        asdasd: '8',
+        a: this.result
+      });
+      localStorage.setItem('bestScore', String(this.result));
+      console.log(this.bestScore + 'HALIKAAAAAA');
+    }
+    clearInterval(this.interval);
+    console.log(this.bestScore);
+    console.log('ASD');
+    /*this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').valueChanges().subscribe(res =>{
+      res.asd.update({
+        asd: 'ASDASDASD'
+      });
+    }, err => {
+      console.log(err);
+    });*/
   }
 
 }
