@@ -13,16 +13,21 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private router: Router, private loadingController: LoadingController, private authService: AuthService) { }
+  uid = localStorage.getItem('uid');
+
+  constructor(private router: Router, private loadingController: LoadingController,
+    private authService: AuthService, private angularFirestore: AngularFirestore) { }
+
 
   async ngOnInit() {
-    console.log(await this.authService.currentUser());
-    /*this.authService.getPlayerGameStats('4qzQWe7fC6qcD8pDMOXJ', 'memoriajatek').subscribe(res => {
-      console.log(res.data())
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').valueChanges().subscribe(res =>{
+      localStorage.setItem('bestScore', res.a);
     }, err => {
-
-    });*/
+      console.log(err);
+    });
+    console.log(localStorage.getItem('bestScore') + ' asdasdasd 2');
   }
+
 
   goToGames() {
     this.router.navigate(['main-tabs/games']);
