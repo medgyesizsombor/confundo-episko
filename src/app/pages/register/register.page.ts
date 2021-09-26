@@ -17,6 +17,7 @@ export class RegisterPage implements OnInit {
     password: '',
     username: '',
     birthdate: '',
+    name: '',
   };
 
   constructor(private toast: ToastController, private angularFirestore: AngularFirestore,
@@ -37,7 +38,8 @@ export class RegisterPage implements OnInit {
       email: this.user.email,
       username: this.user.username,
       password: this.user.password,
-      birthdate: this.user.birthdate
+      birthdate: this.user.birthdate,
+      name: this.user.name
     }).then(() => {
       loading.dismiss();
       this.successfulAlert();

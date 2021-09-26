@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GamesPage } from '../games/games.page';
 import { HomePage } from '../home/home.page';
+import { ProfilePage } from '../profile/profile.page';
 import { SettingsPage } from '../settings/settings.page';
 import { StatisticsPage } from '../statistics/statistics.page';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsPage
+      },
+      {
+        path: 'profile',
+        component: ProfilePage
       },
       {
         path: '',
