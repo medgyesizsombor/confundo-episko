@@ -20,7 +20,9 @@ export class Game4Page implements OnInit {
 
   randomNumber1: number;
   randomNumber2: number;
-  randomOperatorFromArray: number;
+  randomNumber3: number;
+  randomOperatorFromArray1: number;
+  randomOperatorFromArray2: number;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
@@ -43,63 +45,108 @@ export class Game4Page implements OnInit {
   }
 
   generateFirstEquation(){
-    this.randomNumber1 = Math.floor(Math.random() * (9 - 0) + 0);
-    this.randomNumber2 = Math.floor(Math.random() * (9 - 0) + 0);
-    this.randomOperatorFromArray = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation1 = this.randomNumber1 + this.operators[this.randomOperatorFromArray] + this.randomNumber2;
+    this.randomNumber1 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomNumber2 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
+    this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
+    this.equation1 = '(3-3)/3';
+    //this.equation1 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+    //                        this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
     console.log(this.equation1);
-    this.split1 = this.equation1.split('',3);
+    this.split1 = this.equation1.split('',7);
     console.log(this.split1);
   }
 
   generateSecondEquation(){
-    this.randomNumber1 = Math.floor(Math.random() * (9 - 0) + 0);
-    this.randomNumber2 = Math.floor(Math.random() * (9 - 0) + 0);
-    this.randomOperatorFromArray = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation2 = this.randomNumber1 + this.operators[this.randomOperatorFromArray] + this.randomNumber2;
+    this.randomNumber1 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomNumber2 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
+    this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
+    this.equation2 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
     console.log(this.equation2);
-    this.split2 = this.equation2.split('',3);
+    this.split2 = this.equation2.split('',7);
     console.log(this.split2);
 }
 
   checkValueOfFirstSplit(){
-    switch(this.split1[1]){
+    let equationFirstHalf: number;
+    switch(this.split1[2]){
       case '+':
-        this.number1 = Number(this.split1[0]) + Number(this.split1[2]);
-        console.log(this.number1 + 'EZ A ASZÁM');
+        equationFirstHalf = Number(this.split1[1]) + Number(this.split1[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '-':
-        this.number1 = Number(this.split1[0]) - Number(this.split1[2]);
-        console.log(this.number1 + 'EZ A ASZÁM');
+        equationFirstHalf = Number(this.split1[1]) - Number(this.split1[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '*':
-        this.number1 = Number(this.split1[0]) * Number(this.split1[2]);
-        console.log(this.number1 + 'EZ A ASZÁM');
+        equationFirstHalf = Number(this.split1[1]) * Number(this.split1[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '/':
-        this.number1 = Number(this.split1[0]) / Number(this.split1[2]);
-        console.log(this.number1 + 'EZ A ASZÁM');
+        equationFirstHalf = Number(this.split1[1]) / Number(this.split1[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
+        break;
+    }
+    switch(this.split1[5]){
+      case '+':
+        this.number1 = equationFirstHalf + Number(this.split1[6]);
+        console.log(this.number1 + 'EZ A VÉGE');
+        break;
+      case '-':
+        this.number1 = equationFirstHalf - Number(this.split1[6]);
+        console.log(this.number1 + 'EZ A VÉGE');
+        break;
+      case '*':
+        this.number1 = equationFirstHalf * Number(this.split1[6]);
+        console.log(this.number1 + 'EZ A VÉGE');
+        break;
+      case '/':
+        this.number1 = equationFirstHalf / Number(this.split1[6]);
+        console.log(this.number1 + 'EZ A VÉGE');
         break;
     }
   }
 
   checkValueOfSecondSplit(){
-    switch(this.split2[1]){
+    let equationFirstHalf: number;
+    switch(this.split2[2]){
       case '+':
-        this.number2 = Number(this.split2[0]) + Number(this.split2[2]);
-        console.log(this.number2 + 'EZ A ASZÁM2');
+        equationFirstHalf = Number(this.split2[1]) + Number(this.split2[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '-':
-        this.number2 = Number(this.split2[0]) - Number(this.split2[2]);
-        console.log(this.number2 + 'EZ A ASZÁM2');
+        equationFirstHalf = Number(this.split2[1]) - Number(this.split2[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '*':
-        this.number2 = Number(this.split2[0]) * Number(this.split2[2]);
-        console.log(this.number2 + 'EZ A ASZÁM2');
+        equationFirstHalf = Number(this.split2[1]) * Number(this.split2[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '/':
-        this.number2 = Number(this.split2[0]) / Number(this.split2[2]);
-        console.log(this.number2 + 'EZ A ASZÁM2');
+        equationFirstHalf = Number(this.split2[1]) / Number(this.split2[3]);
+        console.log(equationFirstHalf + 'EZ A ASZÁM');
+        break;
+    }
+    switch(this.split2[5]){
+      case '+':
+        this.number2 = equationFirstHalf + Number(this.split2[6]);
+        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
+        break;
+      case '-':
+        this.number2 = equationFirstHalf - Number(this.split2[6]);
+        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
+        break;
+      case '*':
+        this.number2 = equationFirstHalf * Number(this.split2[6]);
+        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
+        break;
+      case '/':
+        this.number2 = equationFirstHalf / Number(this.split2[6]);
+        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
         break;
     }
   }
