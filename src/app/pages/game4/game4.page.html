@@ -4,23 +4,36 @@
 
 <ion-content class="ion-padding ion-text-center">
   <div id="asd">
-    <div id="mid">
-      
-      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl1()">
+
+    <div *ngIf="!playing && !ended">
+      <ion-button (click)="onStart()">
+        Let's start!
+      </ion-button>
+    </div>
+    <div id="mid" *ngIf="playing">
+      <div>
+        <ion-label>
+          {{timeText}}
+        </ion-label>
+      </div>
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="onClicked('first')">
         <ion-label class="text" [style.color]="lbl1color">
           {{equation1}}
         </ion-label>
       </ion-item>
 
-      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="clicklbl2()" >
+      <ion-item class="itemBox ion-margin ion-text-center" lines="none" (click)="onClicked('second')">
         <ion-label>
           {{equation2}}
         </ion-label>
       </ion-item>
-    
     </div>
 
-
-<ion-content>
+    <div *ngIf="ended">
+      <ion-label>
+        {{finalResult}}
+      </ion-label>
+    </div>
+  </div>
 
 </ion-content>

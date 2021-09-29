@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Game4Page implements OnInit {
 
+  timeText: string;
   equation1 = '';
   equation2 = '';
   operators = ['+', '-', '*', '/'];
@@ -17,6 +18,8 @@ export class Game4Page implements OnInit {
   number2: number;
   split1: any;
   split2: any;
+  points = 0;
+  finalResult = 0;
 
   randomNumber1: number;
   randomNumber2: number;
@@ -24,44 +27,58 @@ export class Game4Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
+  seconds = 5;
+  playing = false;
+  ended = false;
+  interval;
+
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
+  }
+
+  onStart(){
+    this.playing = true;
+    this.timeText = this.seconds + ' sec';
     this.generateFirstEquation();
     this.generateSecondEquation();
-    this.checkValueOfFirstSplit();
-    this.checkValueOfSecondSplit();
-    this.checkResult();
+    this.startCountDown();
   }
 
-  start(){
-
+  startCountDown() {
+    this.interval = setInterval(() => {
+        this.updateTime();
+        this.timeText = this.seconds + ' sec';
+    }, 1000);
   }
 
-  end(){
-
+  updateTime() {
+    if (this.seconds > 0) {
+      this.seconds--;
+    } else {
+      this.end();
+    }
   }
 
   generateFirstEquation(){
-    this.randomNumber1 = Math.floor(Math.random() * (9 - 1) + 1);
-    this.randomNumber2 = Math.floor(Math.random() * (9 - 1) + 1);
-    this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomNumber1 = Math.floor(Math.random() * (9 - 0) + 0);
+    this.randomNumber2 = Math.floor(Math.random() * (9 - 0) + 0);
+    this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1); //nehogy nullával kelljen osztani
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation1 = '(3-3)/3';
-    //this.equation1 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
-    //                        this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
+    this.equation1 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
     console.log(this.equation1);
     this.split1 = this.equation1.split('',7);
     console.log(this.split1);
   }
 
   generateSecondEquation(){
-    this.randomNumber1 = Math.floor(Math.random() * (9 - 1) + 1);
-    this.randomNumber2 = Math.floor(Math.random() * (9 - 1) + 1);
-    this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1);
+    this.randomNumber1 = Math.floor(Math.random() * (9 - 0) + 0);
+    this.randomNumber2 = Math.floor(Math.random() * (9 - 0) + 0);
+    this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1); //nehogy nullával kelljen osztani
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
     this.equation2 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
@@ -151,11 +168,44 @@ export class Game4Page implements OnInit {
     }
   }
 
-  checkResult(){
-    if (this.number2 > this.number1){
-      console.log('JÜÜÜÜÜÜÜÜÜÜÜ');
+  onClicked(str: string){
+    if(str === 'first'){
+      this.checkValueOfFirstSplit();
+      this.checkValueOfSecondSplit();
+      this.checkPoint(this.number1);
     } else {
-      console.log('húhúhúhú');
+      this.checkValueOfFirstSplit();
+      this.checkValueOfSecondSplit();
+      this.checkPoint(this.number2);
     }
+  }
+
+  checkPoint(paramNumber: number){
+    if(paramNumber === this.number1){
+      if (this.number1 > this.number2){
+        console.log('ögyi');
+        this.points += 1;
+      } else {
+        console.log('jó béna');
+        this.points -= 1;
+      }
+    } else {
+      if (this.number1 < this.number2){
+        console.log('ögyi');
+        this.points += 1;
+      } else {
+        console.log('jó béna');
+        this.points -= 1;
+      }
+    }
+    this.generateFirstEquation();
+    this.generateSecondEquation();
+  }
+
+  end(){
+    clearInterval(this.interval);
+    this.playing = false;
+    this.ended = true;
+    this.finalResult = this.points;
   }
 }
