@@ -73,7 +73,13 @@ const routes: Routes = [
     path: 'game5',
     loadChildren: () => import('./pages/game5/game5.module').then( m => m.Game5PageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'game6',
+    loadChildren: () => import('./pages/game6/game6.module').then( m => m.Game6PageModule),
+    canActivate: [AuthGuard]
   }
+
 
 
 
