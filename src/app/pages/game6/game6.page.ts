@@ -62,14 +62,14 @@ export class Game6Page implements OnInit {
   }
 
   generateLabel(){
-    this.randomNumber = Math.floor(Math.random() * (9 - 0) + 0);
+    this.randomNumber = 4;//Math.floor(Math.random() * (9 - 0) + 0);
     const randomLetterNumber = Math.floor(Math.random() * (26 - 1) + 1);
-    this.randomLetter = (randomLetterNumber + 9).toString(36).toUpperCase(); //a 36-os számrendszerben a 10-es a, 11-es b, stb.
+    this.randomLetter ='A';//(randomLetterNumber + 9).toString(36).toUpperCase(); //a 36-os számrendszerben a 10-es a, 11-es b, stb.
     this.letterAndNumberPosition();
   }
 
   letterAndNumberPosition(){
-    this.textLocation = Math.floor(Math.random() * (8 - 0) + 0);
+    this.textLocation =6; //Math.floor(Math.random() * (7 - 0) + 0);
     switch(this.textLocation){
       case 0:   //Ha nullát kap, az első labelben a szám előremegy, mellé a betű
         this.label1 = this.randomNumber.toString() + this.randomLetter;
@@ -106,6 +106,8 @@ export class Game6Page implements OnInit {
     }
     this.label1 = null;
     this.label2 = null;
+    this.label3 = null;
+    this.label4 = null;
     console.log(this.points);
     this.generateLabel();
 
@@ -122,9 +124,24 @@ export class Game6Page implements OnInit {
             console.log('jó vagy');
             this.points++;
           }
-        } else {
+        } else if (this.textLocation === 2 || this.textLocation === 3){
+          if(this.randomNumber % 2 !== 0){
+            console.log('jó vagy');
+            this.points++;
+          } else {
+            console.log('jó béna');
+            this.points--;
+          }
+        } else if (this.textLocation === 4 || this.textLocation === 5){
           this.checkVowel(this.randomLetter);
           if(this.isVowel === true){
+            this.points++;
+          } else {
+            this.points--;
+          }
+        } else {
+          this.checkVowel(this.randomLetter);
+          if(this.isVowel !== true){
             this.points++;
           } else {
             this.points--;
@@ -140,19 +157,31 @@ export class Game6Page implements OnInit {
             console.log('jó béna');
             this.points--;
           }
-        } else {
+        } else if (this.textLocation === 2 || this.textLocation === 3){
           this.checkVowel(this.randomLetter);
-          if(this.isVowel !== true){
-            this.points++;
+          if(this.randomNumber % 2 === 0){
             console.log('jó vagy');
+            this.points++;
+          } else {
+            console.log('jó béna');
+            this.points--;
+          }
+        } else if (this.textLocation === 4 || this.textLocation === 5){
+          if(this.isVowel === false){
+            this.points++;
           } else {
             this.points--;
-            console.log('jó béna');
+          }
+        } else {
+          this.checkVowel(this.randomLetter);
+          if(this.isVowel !== false){
+            this.points++;
+          } else {
+            this.points--;
           }
         }
         break;
     }
-
   }
 
   checkVowel(str: string){
