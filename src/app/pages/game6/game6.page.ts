@@ -12,7 +12,9 @@ export class Game6Page implements OnInit {
 
   timeText: string;
   title1= 'Is the number even?';
-  title2= 'Is the letter vowel?';
+  title2= 'Is the number odds?';
+  title3= 'Is the letter vowel?';
+  title4= 'Is the letter consonant?';
   label1: string;
   label2: string;
   label3: string;
@@ -62,14 +64,14 @@ export class Game6Page implements OnInit {
   }
 
   generateLabel(){
-    this.randomNumber = 4;//Math.floor(Math.random() * (9 - 0) + 0);
+    this.randomNumber = Math.floor(Math.random() * (9 - 0) + 0);
     const randomLetterNumber = Math.floor(Math.random() * (26 - 1) + 1);
-    this.randomLetter ='A';//(randomLetterNumber + 9).toString(36).toUpperCase(); //a 36-os számrendszerben a 10-es a, 11-es b, stb.
+    this.randomLetter = (randomLetterNumber + 9).toString(36).toUpperCase(); //a 36-os számrendszerben a 10-es a, 11-es b, stb.
     this.letterAndNumberPosition();
   }
 
   letterAndNumberPosition(){
-    this.textLocation =6; //Math.floor(Math.random() * (7 - 0) + 0);
+    this.textLocation = Math.floor(Math.random() * (7 - 0) + 0);
     switch(this.textLocation){
       case 0:   //Ha nullát kap, az első labelben a szám előremegy, mellé a betű
         this.label1 = this.randomNumber.toString() + this.randomLetter;
