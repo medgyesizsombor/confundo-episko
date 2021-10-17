@@ -19,4 +19,10 @@ export class SettingsPage implements OnInit {
     this.router.navigate(['login']);
   }
 
+  goToSettings(url: string){
+    if(url){
+      this.router.navigate([url]);
+    }
+  }
+
 }
