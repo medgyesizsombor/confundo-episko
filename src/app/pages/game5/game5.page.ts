@@ -35,7 +35,6 @@ export class Game5Page implements OnInit {
 
   ngOnInit() {
     this.generateLabel();
-    //this.checkPoint('false');
   }
 
   onStart(){
@@ -156,6 +155,7 @@ export class Game5Page implements OnInit {
 
   end(){
     this.ended = true;
+    clearInterval(this.interval);
   }
 
 }
