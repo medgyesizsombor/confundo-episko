@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class AuthService {
     email: '',
     password: ''
   };
+
+  dataToEncrypt = this.angularFireAuth.user;
+  encryptedData='';
+  secretKey='yoursecretkey';
 
   constructor(private angularFireAuth: AngularFireAuth, private angularFireStore: AngularFirestore) { }
 
@@ -27,8 +32,11 @@ export class AuthService {
 
   async register(user: any) {
     return new Promise((resolve, reject) => {
+      const encryptedPassword = this.encrypt(user.password);
+      const tmp = Object.assign({}, user);
+      tmp.password = encryptedPassword;
       this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password).then(res => {
-        this.angularFireStore.collection('Users').doc(res.user.uid).set(user).then(() => {
+        this.angularFireStore.collection('Users').doc(res.user.uid).set(tmp).then(() => {
           resolve(true);
         }).catch(err => {
           reject(err);
@@ -50,6 +58,18 @@ export class AuthService {
 
   getPlayerGameStats(uid: string, gameType: string) {
     return this.angularFireStore.collection('Users').doc(uid).collection('games').doc(gameType).get();
+  }
+
+  encrypt(password: string){
+    return CryptoJS.AES.encrypt(JSON.stringify(password), this.secretKey).toString();
+  }
+
+  decrypt(){
+    const bytes = CryptoJS.AES.decrypt(this.encryptedData, this.secretKey);
+
+    const obj = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    alert('id = ' + obj.id);
+    alert('uname = ' + obj.uname);
   }
 
 }
