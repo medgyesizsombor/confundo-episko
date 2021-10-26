@@ -16,7 +16,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 120;
+  seconds = 5;
   timeText: string;
 
 
@@ -107,13 +107,13 @@ export class ColourgamePage implements OnInit {
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
-    if(this.bestScore < this.result){
+    if(this.bestScore < this.result || !this.bestScore){
+      localStorage.setItem('bestScore', String(this.result));
       this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').update({
         asd: 5,
         asdasd: '8',
         a: this.result
       });
-      localStorage.setItem('bestScore', String(this.result));
       console.log(this.bestScore + 'HALIKAAAAAA');
     }
     clearInterval(this.interval);

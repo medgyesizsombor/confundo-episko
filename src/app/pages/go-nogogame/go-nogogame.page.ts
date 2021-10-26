@@ -20,7 +20,9 @@ export class GoNogogamePage implements OnInit {
   timeText = '';
   timeText2 = '';
   secondsOnGame = 120;
-  secondsOnTurn = 3;
+  secondsOnTurn = 2;
+  intervalGame;
+  intervalTurn;
 
   playing = false;
   ended = false;
@@ -52,7 +54,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   pushed($event: PointerEvent){
-    this.secondsOnTurn = 3;
+    this.secondsOnTurn = 2;
     this.timeText2 = this.secondsOnTurn + ' sec';
     this.pushCounter++;
     this.checkTask();
@@ -94,14 +96,14 @@ export class GoNogogamePage implements OnInit {
   }
 
   startCountDownGame() {
-    setInterval(() => {
+    this.intervalGame = setInterval(() => {
       this.updateTime();
       this.timeText = this.secondsOnGame + ' sec';
     }, 1000);
   }
 
   startCountDownTurn(){
-    setInterval(() => {
+    this.intervalTurn = setInterval(() => {
       this.timeText2 = this.secondsOnTurn + ' sec';
     }, 1000);
   }
@@ -153,6 +155,8 @@ export class GoNogogamePage implements OnInit {
   }
 
   end() {
+    clearInterval(this.intervalTurn);
+    clearInterval(this.intervalGame);
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;

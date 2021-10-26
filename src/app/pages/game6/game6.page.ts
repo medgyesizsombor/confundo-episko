@@ -201,6 +201,7 @@ export class Game6Page implements OnInit {
 
   end(){
     this.ended = true;
+    clearInterval(this.interval);
   }
 
 }

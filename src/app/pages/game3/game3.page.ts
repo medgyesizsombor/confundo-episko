@@ -26,8 +26,11 @@ export class Game3Page implements OnInit {
   turn = 0;
   numberArray = [0, 0, 0];
   timetext = 120;
+  interval;
 
   playing = false;
+  ended = false;
+
 
   constructor(){ }
 
@@ -181,6 +184,11 @@ export class Game3Page implements OnInit {
     this.turn++;
     console.log('turn: ' + this.turn);
 
+  }
+
+  end(){
+    clearInterval(this.interval);
+    this.ended = true;
   }
 
 
