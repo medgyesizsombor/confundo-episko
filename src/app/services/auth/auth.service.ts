@@ -8,6 +8,14 @@ import * as CryptoJS from 'crypto-js';
 })
 export class AuthService {
 
+  uid = localStorage.getItem('uid');
+
+  dataOfGame = {
+    bestScore:0,
+    played: 0,
+    averagePoint: 0
+  };
+
   user = {
     email: '',
     password: ''
@@ -41,10 +49,21 @@ export class AuthService {
         }).catch(err => {
           reject(err);
         });
+        this.createDocuments(res.user.uid);
       }).catch(err => {
         reject(err);
       });
     });
+  }
+
+  createDocuments(uid: any){
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Users').doc(uid).collection('game').doc('seventhgame').set(this.dataOfGame);
   }
 
   currentUser(){
