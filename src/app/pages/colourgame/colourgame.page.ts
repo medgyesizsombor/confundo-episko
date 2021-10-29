@@ -18,7 +18,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 120;
+  seconds = 2;
   timeText: string;
   playedGames = 0;
   averageScore = 0;

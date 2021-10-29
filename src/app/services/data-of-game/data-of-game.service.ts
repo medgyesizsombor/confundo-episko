@@ -17,7 +17,6 @@ export class DataOfGameService {
           localStorage.setItem('playedGames', res.playedGames);
           localStorage.setItem('bestScore', res.bestScore);
           localStorage.setItem('sumScore', res.sumScore);
-          localStorage.setItem('bestScore', res.bestScore);
           resolve(true);
         }, err => {
           reject(err);

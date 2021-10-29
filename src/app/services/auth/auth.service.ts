@@ -11,9 +11,9 @@ export class AuthService {
   uid = localStorage.getItem('uid');
 
   dataOfGame = {
-    bestScore:0,
+    bestScore: 0,
     playedGames: 0,
-    averagePoint: 0,
+    averageScore: 0,
     sumScore: 0,
   };
 

@@ -20,7 +20,7 @@ export class GoNogogamePage implements OnInit {
   finalResult = '';
   timeText = '';
   timeText2 = '';
-  secondsOnGame = 120;
+  secondsOnGame = 5;
   secondsOnTurn = 2;
   intervalGame;
   intervalTurn;
@@ -157,7 +157,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   async getDataOfGames(){
-    await this.dataOfGame.getDataOfGames('colourgame').then(() => {
+    await this.dataOfGame.getDataOfGames('go-nogogame').then(() => {
       this.playedGames = Number(localStorage.getItem('playedGames'))+1;
       this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
       this.averageScore = this.sumScore / this.playedGames;
@@ -165,6 +165,10 @@ export class GoNogogamePage implements OnInit {
       if(this.bestScore < this.result || this.bestScore === 0){
         this.bestScore = this.result;
       }
+      console.log(this.playedGames + 'playedGames');
+      console.log(this.sumScore + 'sumScore');
+      console.log(this.averageScore + 'average');
+      console.log(this.bestScore);
     });
   }
 
@@ -179,6 +183,7 @@ export class GoNogogamePage implements OnInit {
       bestScore: this.bestScore,
       averageScore: this.averageScore
     });
+
     clearInterval(this.intervalTurn);
     clearInterval(this.intervalGame);
     localStorage.removeItem('playedGames');
