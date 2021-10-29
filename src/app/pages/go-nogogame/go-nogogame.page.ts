@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import 'firebase/auth';
+import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 
 @Component({
   selector: 'app-go-nogogame',
@@ -23,21 +24,22 @@ export class GoNogogamePage implements OnInit {
   secondsOnTurn = 2;
   intervalGame;
   intervalTurn;
+  playedGames = 0;
+  averageScore = 0;
+  sumScore = 0;
+  bestScore = 0;
 
   playing = false;
   ended = false;
   nextTask = false;
 
+  uid = localStorage.getItem('uid');
+
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
-    private authService: AuthService) { }
+    private authService: AuthService, private dataOfGame: DataOfGameService) { }
 
   ngOnInit() {
     this.task = 'Press button when it is even number';
-    this.authService.getPlayerGameStats(localStorage.getItem('uid'), 'firstgame').subscribe(res => {
-      console.log(res.data());
-    }, err => {
-
-    });
   }
 
   start(){
@@ -115,7 +117,7 @@ export class GoNogogamePage implements OnInit {
         this.secondsOnTurn--;
       } else {
         this.notPushed();
-        this.secondsOnTurn = 3;
+        this.secondsOnTurn = 2;
         this.changeNumber();
       }
     } else {
@@ -154,12 +156,35 @@ export class GoNogogamePage implements OnInit {
     }
   }
 
-  end() {
-    clearInterval(this.intervalTurn);
-    clearInterval(this.intervalGame);
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('colourgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+    });
+  }
+
+  async end() {
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
+    await this.getDataOfGames();
+    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('go-nogogame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
+    clearInterval(this.intervalTurn);
+    clearInterval(this.intervalGame);
+    localStorage.removeItem('playedGames');
+    localStorage.removeItem('sumScore');
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('averageScore');
   }
 
 }

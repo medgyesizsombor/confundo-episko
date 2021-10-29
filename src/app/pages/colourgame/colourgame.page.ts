@@ -28,10 +28,6 @@ export class ColourgamePage implements OnInit {
   playing = false;
   ended = false;
 
-  points = {
-    finalPoint: ''
-  };
-
   uid = localStorage.getItem('uid');
   interval: any;
 
@@ -57,24 +53,21 @@ export class ColourgamePage implements OnInit {
     const randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
     const randomNumber4 = Math.floor(Math.random() * (7 - 0) + 0);
 
-    if (Math.random() <= 0.2) {
+    if (Math.random() <= 0.5) {
       this.lbl1text = colours[randomNumber1];
       this.lbl2text = colours[randomNumber3];
       this.lbl1color = colours[randomNumber2];
       this.lbl2color = colours[randomNumber1];
-      console.log('Same');
     } else {
       this.lbl1text = colours[randomNumber1];
       this.lbl2text = colours[randomNumber2];
       this.lbl1color = colours[randomNumber3];
       this.lbl2color = colours[randomNumber4];
-      console.log('NOOO');
     }
   }
 
   rightButton($event: PointerEvent) {
     if (this.lbl1text === this.lbl2color) {
-      console.log($event);
       this.result = this.result + 1;
       this.giveValueOfLabels();
     } else {
@@ -119,6 +112,17 @@ export class ColourgamePage implements OnInit {
   }
 
   async end() {
+    /*valami.then(res => {
+
+    }).catch(err => {
+
+    })
+
+    try {
+      let res = await valami();
+    } catch (err) {
+
+    }*/
     this.lbl1text = null;
     this.lbl2text = null;
     this.finalResult = 'You have got ' + this.result + ' points!';
@@ -132,6 +136,9 @@ export class ColourgamePage implements OnInit {
       averageScore: this.averageScore
     });
     clearInterval(this.interval);
+    localStorage.removeItem('playedGames');
+    localStorage.removeItem('sumScore');
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('averageScore');
   }
-
 }
