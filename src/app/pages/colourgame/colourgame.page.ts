@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 
 @Component({
   selector: 'app-colourgame',
@@ -16,9 +18,12 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 5;
+  seconds = 120;
   timeText: string;
-
+  playedGames = 0;
+  averageScore = 0;
+  sumScore = 0;
+  bestScore = 0;
 
   playing = false;
   ended = false;
@@ -28,11 +33,11 @@ export class ColourgamePage implements OnInit {
   };
 
   uid = localStorage.getItem('uid');
-  bestScore = Number(localStorage.getItem('bestScore'));
-  interval;
+  interval: any;
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
+    private authService: AuthService, private dataOfGame: DataOfGameService) {
   }
 
   ngOnInit() {
@@ -101,31 +106,32 @@ export class ColourgamePage implements OnInit {
     }
   }
 
-  end() {
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('colourgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+    });
+  }
+
+  async end() {
     this.lbl1text = null;
     this.lbl2text = null;
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
-    if(this.bestScore < this.result || !this.bestScore){
-      localStorage.setItem('bestScore', String(this.result));
-      this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').update({
-        asd: 5,
-        asdasd: '8',
-        a: this.result
-      });
-      console.log(this.bestScore + 'HALIKAAAAAA');
-    }
+    await this.getDataOfGames();
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('colourgame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
     clearInterval(this.interval);
-    console.log(this.bestScore);
-    console.log('ASD');
-    /*this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').valueChanges().subscribe(res =>{
-      res.asd.update({
-        asd: 'ASDASDASD'
-      });
-    }, err => {
-      console.log(err);
-    });*/
   }
 
 }

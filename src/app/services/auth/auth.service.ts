@@ -12,8 +12,9 @@ export class AuthService {
 
   dataOfGame = {
     bestScore:0,
-    played: 0,
-    averagePoint: 0
+    playedGames: 0,
+    averagePoint: 0,
+    sumScore: 0,
   };
 
   user = {
