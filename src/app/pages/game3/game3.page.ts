@@ -185,11 +185,6 @@ export class Game3Page implements OnInit {
     console.log(this.numberArray + 'mostani');
 
     this.hasEnded();
-
-    // eslint-disable-next-line @typescript-eslint/prefer-for-of
-    /*for(let i = 0; i < this.numberArray.length; i++){
-      const isBelowThreshold = (currentNumber) => currentNumber < this.numberArray[i];
-    }*/
   }
 
   hasEnded(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 
 @Component({
   selector: 'app-game4',
@@ -18,8 +19,12 @@ export class Game4Page implements OnInit {
   number2: number;
   split1: any;
   split2: any;
-  points = 0;
+  result = 0;
   finalResult = 0;
+  playedGames = 0;
+  averageScore = 0;
+  sumScore = 0;
+  bestScore = 0;
 
   randomNumber1: number;
   randomNumber2: number;
@@ -27,13 +32,16 @@ export class Game4Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
-  seconds = 120;
+  seconds = 10;
   playing = false;
   ended = false;
-  interval;
+  interval: any;
+
+  uid = localStorage.getItem('uid');
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
+    private dataOfGame: DataOfGameService) {
   }
 
   ngOnInit() {
@@ -184,28 +192,59 @@ export class Game4Page implements OnInit {
     if(paramNumber === this.number1){
       if (this.number1 > this.number2){
         console.log('ögyi');
-        this.points += 1;
+        this.result += 1;
+        console.log(this.result);
       } else {
         console.log('jó béna');
-        this.points -= 1;
+        this.result -= 1;
+        console.log(this.result);
       }
     } else {
       if (this.number1 < this.number2){
         console.log('ögyi');
-        this.points += 1;
+        this.result += 1;
+        console.log(this.result);
       } else {
         console.log('jó béna');
-        this.points -= 1;
+        this.result -= 1;
+        console.log(this.result);
       }
     }
     this.generateFirstEquation();
     this.generateSecondEquation();
   }
 
-  end(){
-    clearInterval(this.interval);
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('fourthgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+    });
+  }
+
+  async end(){
     this.playing = false;
     this.ended = true;
-    this.finalResult = this.points;
+    this.finalResult = this.result;
+    await this.getDataOfGames();
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('fourthgame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
+    console.log(this.bestScore);
+    console.log(this.playedGames);
+    console.log(this.sumScore);
+    console.log(this.averageScore);
+    clearInterval(this.interval);
+    localStorage.removeItem('playedGames');
+    localStorage.removeItem('sumScore');
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('averageScore');
   }
 }

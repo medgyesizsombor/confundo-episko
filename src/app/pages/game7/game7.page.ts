@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 
 @Component({
   selector: 'app-game7',
@@ -19,8 +20,12 @@ export class Game7Page implements OnInit {
   number3: number;
   currentNumber: string = null;
   split1: any;
-  points = 0;
+  result = 0;
   finalResult = 0;
+  playedGames = 0;
+  averageScore = 0;
+  sumScore = 0;
+  bestScore = 0;
 
   randomNumber1: number;
   randomNumber2: number;
@@ -31,10 +36,12 @@ export class Game7Page implements OnInit {
   seconds = 5;
   playing = false;
   ended = false;
-  interval;
+  interval: any;
+  uid = localStorage.getItem('uid');
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
+    private dataOfGame: DataOfGameService) {
   }
 
   ngOnInit() {
@@ -96,9 +103,9 @@ export class Game7Page implements OnInit {
 
   clickedOk(num: number){
     if(Number(num) === this.number3){
-      this.points++;
+      this.result++;
     } else {
-      this.points--;
+      this.result--;
     }
     this.currentNumber = null;
     this.generateFirstEquation();
@@ -113,10 +120,37 @@ export class Game7Page implements OnInit {
     console.log(this.currentNumber);
   }
 
-  end(){
-    clearInterval(this.interval);
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('seventhgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+    });
+  }
+
+  async end(){
     this.playing = false;
     this.ended = true;
-    this.finalResult = this.points;
+    this.finalResult = this.result;
+    await this.getDataOfGames();
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('seventhgame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
+    console.log(this.bestScore);
+    console.log(this.playedGames);
+    console.log(this.sumScore);
+    console.log(this.averageScore);
+    clearInterval(this.interval);
+    localStorage.removeItem('playedGames');
+    localStorage.removeItem('sumScore');
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('averageScore');
   }
 }

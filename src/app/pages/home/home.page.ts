@@ -20,12 +20,6 @@ export class HomePage implements OnInit {
 
 
   async ngOnInit() {
-    /*this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').valueChanges().subscribe(res =>{
-      localStorage.setItem('bestScore', res.a);
-    }, err => {
-      console.log(err);
-    });
-    console.log(localStorage.getItem('bestScore') + ' asdasdasd 2');*/
   }
 
 
