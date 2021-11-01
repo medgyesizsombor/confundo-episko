@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 
 @Component({
   selector: 'app-game5',
@@ -15,22 +16,29 @@ export class Game5Page implements OnInit {
   title2= 'Is the letter vowel?';
   label1: string;
   label2: string;
-  points = 0;
+  result = 0;
   finalResult = 0;
   textLocation: number;
   isVowel: boolean;
+  playedGames = 0;
+  averageScore = 0;
+  sumScore = 0;
+  bestScore = 0;
 
   randomNumber: number;
   randomLetter: string;
   vowel= ['A', 'E', 'I', 'O', 'U'];
 
-  seconds = 120;
+  seconds = 5;
   playing = false;
   ended = false;
-  interval;
+  interval: any;
+
+  uid = localStorage.getItem('uid');
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
+    private dataOfGame: DataOfGameService) {
   }
 
   ngOnInit() {
@@ -91,7 +99,7 @@ export class Game5Page implements OnInit {
     }
     this.label1 = null;
     this.label2 = null;
-    console.log(this.points);
+    console.log(this.result);
     this.generateLabel();
 
   }
@@ -102,17 +110,17 @@ export class Game5Page implements OnInit {
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
             console.log('jó béna');
-            this.points--;
+            this.result--;
           } else {
             console.log('jó vagy');
-            this.points++;
+            this.result++;
           }
         } else {
           this.checkVowel(this.randomLetter);
           if(this.isVowel === true){
-            this.points++;
+            this.result++;
           } else {
-            this.points--;
+            this.result--;
           }
         }
         break;
@@ -120,18 +128,18 @@ export class Game5Page implements OnInit {
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
             console.log('jó vagy');
-            this.points++;
+            this.result++;
           } else {
             console.log('jó béna');
-            this.points--;
+            this.result--;
           }
         } else {
           this.checkVowel(this.randomLetter);
           if(this.isVowel !== true){
-            this.points++;
+            this.result++;
             console.log('jó vagy');
           } else {
-            this.points--;
+            this.result--;
             console.log('jó béna');
           }
         }
@@ -153,9 +161,38 @@ export class Game5Page implements OnInit {
     }
   }
 
-  end(){
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('fifthgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+    });
+  }
+
+  async end(){
+    this.playing = false;
     this.ended = true;
+    this.finalResult = this.result;
+    await this.getDataOfGames();
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('fifthgame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
+    console.log(this.bestScore);
+    console.log(this.playedGames);
+    console.log(this.sumScore);
+    console.log(this.averageScore);
     clearInterval(this.interval);
+    localStorage.removeItem('playedGames');
+    localStorage.removeItem('sumScore');
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('averageScore');
   }
 
 }

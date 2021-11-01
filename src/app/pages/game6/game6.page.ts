@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 
 @Component({
   selector: 'app-game6',
@@ -19,27 +20,33 @@ export class Game6Page implements OnInit {
   label2: string;
   label3: string;
   label4: string;
-  points = 0;
+  result = 0;
   finalResult = 0;
   textLocation: number;
   isVowel: boolean;
+  playedGames = 0;
+  averageScore = 0;
+  sumScore = 0;
+  bestScore = 0;
 
   randomNumber: number;
   randomLetter: string;
   vowel= ['A', 'E', 'I', 'O', 'U'];
 
-  seconds = 120;
+  seconds = 20;
   playing = false;
   ended = false;
-  interval;
+  interval: any;
+
+  uid = localStorage.getItem('uid');
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth) {
+    private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
+    private dataOfGame: DataOfGameService) {
   }
 
   ngOnInit() {
     this.generateLabel();
-    //this.checkPoint('false');
   }
 
   onStart(){
@@ -71,7 +78,7 @@ export class Game6Page implements OnInit {
   }
 
   letterAndNumberPosition(){
-    this.textLocation = Math.floor(Math.random() * (7 - 0) + 0);
+    this.textLocation = 4;//Math.floor(Math.random() * (7 - 0) + 0);
     switch(this.textLocation){
       case 0:   //Ha nullát kap, az első labelben a szám előremegy, mellé a betű
         this.label1 = this.randomNumber.toString() + this.randomLetter;
@@ -110,7 +117,7 @@ export class Game6Page implements OnInit {
     this.label2 = null;
     this.label3 = null;
     this.label4 = null;
-    console.log(this.points);
+    console.log(this.result);
     this.generateLabel();
 
   }
@@ -121,32 +128,32 @@ export class Game6Page implements OnInit {
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
             console.log('jó béna');
-            this.points--;
+            this.result--;
           } else {
             console.log('jó vagy');
-            this.points++;
+            this.result++;
           }
         } else if (this.textLocation === 2 || this.textLocation === 3){
           if(this.randomNumber % 2 !== 0){
             console.log('jó vagy');
-            this.points++;
+            this.result++;
           } else {
             console.log('jó béna');
-            this.points--;
+            this.result--;
           }
         } else if (this.textLocation === 4 || this.textLocation === 5){
           this.checkVowel(this.randomLetter);
           if(this.isVowel === true){
-            this.points++;
+            this.result++;
           } else {
-            this.points--;
+            this.result--;
           }
         } else {
           this.checkVowel(this.randomLetter);
           if(this.isVowel !== true){
-            this.points++;
+            this.result++;
           } else {
-            this.points--;
+            this.result--;
           }
         }
         break;
@@ -154,32 +161,32 @@ export class Game6Page implements OnInit {
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
             console.log('jó vagy');
-            this.points++;
+            this.result++;
           } else {
             console.log('jó béna');
-            this.points--;
+            this.result--;
           }
         } else if (this.textLocation === 2 || this.textLocation === 3){
-          this.checkVowel(this.randomLetter);
           if(this.randomNumber % 2 === 0){
             console.log('jó vagy');
-            this.points++;
+            this.result++;
           } else {
             console.log('jó béna');
-            this.points--;
+            this.result--;
           }
         } else if (this.textLocation === 4 || this.textLocation === 5){
+          this.checkVowel(this.randomLetter);
           if(this.isVowel === false){
-            this.points++;
+            this.result++;
           } else {
-            this.points--;
+            this.result--;
           }
         } else {
           this.checkVowel(this.randomLetter);
           if(this.isVowel !== false){
-            this.points++;
+            this.result++;
           } else {
-            this.points--;
+            this.result--;
           }
         }
         break;
@@ -199,9 +206,38 @@ export class Game6Page implements OnInit {
     }
   }
 
-  end(){
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('sixthgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+    });
+  }
+
+  async end(){
+    this.playing = false;
     this.ended = true;
+    this.finalResult = this.result;
+    await this.getDataOfGames();
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('sixthgame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
+    console.log(this.bestScore);
+    console.log(this.playedGames);
+    console.log(this.sumScore);
+    console.log(this.averageScore);
     clearInterval(this.interval);
+    localStorage.removeItem('playedGames');
+    localStorage.removeItem('sumScore');
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('averageScore');
   }
 
 }

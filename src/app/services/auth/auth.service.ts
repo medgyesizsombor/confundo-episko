@@ -51,6 +51,7 @@ export class AuthService {
           reject(err);
         });
         this.createDocuments(res.user.uid);
+        this.createAverageDocuments();
       }).catch(err => {
         reject(err);
       });
@@ -65,6 +66,176 @@ export class AuthService {
     this.angularFireStore.collection('Users').doc(uid).collection('game').doc('fifthgame').set(this.dataOfGame);
     this.angularFireStore.collection('Users').doc(uid).collection('game').doc('sixthgame').set(this.dataOfGame);
     this.angularFireStore.collection('Users').doc(uid).collection('game').doc('seventhgame').set(this.dataOfGame);
+  }
+
+  createAverageDocuments(){ //it is just for creating the average players
+    /*this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('0-4').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('5-9').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('10-14').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('15-19').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('20-24').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('25-29').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('30-34').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('35-39').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('40-44').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('45-49').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('50-54').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('55-59').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('60-64').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('65-69').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('70-74').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('75-79').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('80-84').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('85-89').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('90-94').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('95-99').collection('game').doc('seventhgame').set(this.dataOfGame);
+
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('colourgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('go-nogogame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('thirdgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('fourthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('fifthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('sixthgame').set(this.dataOfGame);
+    this.angularFireStore.collection('Statistics').doc('100+').collection('game').doc('seventhgame').set(this.dataOfGame);*/
   }
 
   currentUser(){
