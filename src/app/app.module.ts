@@ -13,9 +13,10 @@ import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { MyChartComponent } from './components/my-chart/my-chart.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MyChartComponent],
   entryComponents: [],
   imports: [
     CommonModule,

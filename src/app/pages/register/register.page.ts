@@ -19,6 +19,13 @@ export class RegisterPage implements OnInit {
     birthdate: '',
     name: '',
   };
+  game = {
+    asd: 0,
+    asd2: 0
+  };
+
+
+  uid = localStorage.getItem('uid');
 
   constructor(private toast: ToastController, private angularFirestore: AngularFirestore,
     private angularFireAuth: AngularFireAuth, private router: Router,

@@ -8,6 +8,8 @@ import { StatisticsPageRoutingModule } from './statistics-routing.module';
 
 import { StatisticsPage } from './statistics.page';
 
+import { MyChartComponent } from 'src/app/components/my-chart/my-chart.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { StatisticsPage } from './statistics.page';
     IonicModule,
     StatisticsPageRoutingModule
   ],
-  declarations: [StatisticsPage]
+  declarations: [StatisticsPage, MyChartComponent]
 })
 export class StatisticsPageModule {}
