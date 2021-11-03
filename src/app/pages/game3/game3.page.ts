@@ -34,9 +34,10 @@ export class Game3Page implements OnInit {
 
   turn = 0;
   numberArray = [0, 0, 0];
+  splicedArray = [this.numberArray];
   timeText = '';
   seconds = 5;
-  interval;
+  interval: any;
   smallest: boolean;
   playing = false;
   ended = false;
@@ -92,45 +93,45 @@ export class Game3Page implements OnInit {
 
   clicklbl1() {
     this.clickCounter = this.clickCounter + 1;
-    this.checkSmallest(this.lbl1text);
     this.clickedlbl1text = true;
+    this.checkSmallest(this.lbl1text);
 
   }
 
   clicklbl2() {
-    this.checkSmallest(this.lbl2text);
-    this.clickedlbl2text = true;
     this.clickCounter = this.clickCounter + 1;
+    this.clickedlbl2text = true;
+    this.checkSmallest(this.lbl2text);
   }
 
   clicklbl3() {
-    this.checkSmallest(this.lbl3text);
-    this.clickedlbl3text = true;
     this.clickCounter = this.clickCounter + 1;
+    this.clickedlbl3text = true;
+    this.checkSmallest(this.lbl3text);
   }
 
   clicklbl4() {
     this.clickCounter = this.clickCounter + 1;
-    this.checkSmallest(this.lbl4text);
     this.clickedlbl4text = true;
+    this.checkSmallest(this.lbl4text);
   }
 
   clicklbl5() {
     this.clickCounter = this.clickCounter + 1;
-    this.checkSmallest(this.lbl5text);
     this.clickedlbl5text = true;
+    this.checkSmallest(this.lbl5text);
   }
 
   clicklbl6() {
     this.clickCounter = this.clickCounter + 1;
-    this.checkSmallest(this.lbl6text);
     this.clickedlbl6text = true;
+    this.checkSmallest(this.lbl6text);
   }
 
   clicklbl7() {
     this.clickCounter = this.clickCounter + 1;
-    this.checkSmallest(this.lbl7text);
     this.clickedlbl7text = true;
+    this.checkSmallest(this.lbl7text);
   }
 
   changeNumber(){
@@ -154,11 +155,12 @@ export class Game3Page implements OnInit {
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for(let i = 0; i < this.numberArray.length; i++){
       if(set.has(this.numberArray[i])){ //ha benne van a halmazban a this.numberArray[i]
-        for(let j = Math.floor(Math.random() * (20 - 1) + 1); j < 21; j++){  //random számot generál a j 1 - 20 között
+        for(let j = 0; j < Number.MAX_VALUE; j++){  //random számot generál a j 1 - 20 között
           console.log(j + 'ASDASDASDASD');
-          if(!set.has(j)){  //ha nincs benne a halmazban j
-            this.numberArray[i] = j;
-            set.add(j);
+          const randomN = Math.floor(Math.random() * (20 - 1) + 1);
+          if(!set.has(randomN)){  //ha nincs benne a randomN
+            this.numberArray[i] = randomN;
+            set.add(randomN);
             break;
           }
         }
@@ -181,6 +183,7 @@ export class Game3Page implements OnInit {
       if(currentNumber <= this.numberArray[i]){
         console.log('upsi');
         this.smallest = true;
+        this.numberArray[i] = Number.MAX_VALUE;
       } else {
         console.log('mégse');
         this.smallest = false;
@@ -188,15 +191,7 @@ export class Game3Page implements OnInit {
         break;
       }
     }
-
-    for (let i = 0; i < this.numberArray.length; i++){
-      if(currentNumber === this.numberArray[i]){
-        this.numberArray.splice(i, 1);
-      }
-    }
-
     console.log(this.numberArray + 'mostani');
-
     this.hasEnded();
   }
 
@@ -359,8 +354,4 @@ export class Game3Page implements OnInit {
     localStorage.removeItem('bestScore');
     localStorage.removeItem('averageScore');
   }
-
-
-
-
 }

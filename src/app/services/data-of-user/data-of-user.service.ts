@@ -21,4 +21,81 @@ export class DataOfUserService {
         });
     });
   }
+
+  async getPlayedGameColour(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesColour', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getPlayedGameGoNogo(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGoNogo', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getPlayedGameGame3(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGame3', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getPlayedGameGame4(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGame4', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getPlayedGameGame5(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGame5', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getPlayedGameGame6(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGame6', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getPlayedGameGame7(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGame7', res.playedGames);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
 }

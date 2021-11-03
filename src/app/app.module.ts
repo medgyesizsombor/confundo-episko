@@ -14,9 +14,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MyChartComponent } from './components/my-chart/my-chart.component';
+import { PlayedGamesChartComponent } from './components/played-games-chart/played-games-chart.component';
 
 @NgModule({
-  declarations: [AppComponent, MyChartComponent],
+  declarations: [AppComponent, MyChartComponent, PlayedGamesChartComponent],
   entryComponents: [],
   imports: [
     CommonModule,
