@@ -57,6 +57,7 @@ export class Game3Page implements OnInit {
   playedGamesAverage = 0;
   sumScoreAverage = 0;
   averageScoreAverage = 0;
+  drawChart = false;
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
@@ -349,9 +350,8 @@ export class Game3Page implements OnInit {
     });
 
     clearInterval(this.interval);
-    localStorage.removeItem('playedGames');
-    localStorage.removeItem('sumScore');
-    localStorage.removeItem('bestScore');
-    localStorage.removeItem('averageScore');
+    localStorage.setItem('result', String(this.result));
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    this.drawChart = true;
   }
 }

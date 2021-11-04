@@ -16,36 +16,26 @@
           {{timeText}}
         </ion-label>
       </div>
-      {{title1}}
-
-      {{title3}}
-      <ion-item class="itemBox ion-margin ion-text-center" lines="none">
-        <ion-label class="text" [style.color]="lbl1color">
-          {{label1}}
-        </ion-label>
-        <ion-label class="text" [style.color]="lbl1color">
-          {{label3}}
-        </ion-label>
-      </ion-item>
-
-      <ion-item class="itemBox ion-margin ion-text-center" lines="none">
-        <ion-label>
-          {{label2}}
-        </ion-label>
-        <ion-label>
-          {{label4}}
-        </ion-label>
-      </ion-item>
-      {{title2}}
-
-      {{title4}}
-
-      <div id="falseButton" class="ion-float-end" *ngIf="playing" (click)="clicked('false')">
-        <ion-button>False</ion-button>
+      {{title}}
+      <div id="upButton" *ngIf="playing" (click)="clicked('Up')">
+        <ion-button>
+          <ion-icon name="arrow-up-circle-sharp"></ion-icon>
+        </ion-button>
       </div>
-
-      <div id="trueButton" class="ion-float-end" *ngIf="playing" (click)="clicked('true')">
-        <ion-button>True</ion-button>
+      <div id="upButton" *ngIf="playing" (click)="clicked('Down')">
+        <ion-button>
+          <ion-icon name="arrow-down-circle-sharp"></ion-icon>
+        </ion-button>
+      </div>
+      <div id="upButton" *ngIf="playing" (click)="clicked('Left')">
+        <ion-button>
+          <ion-icon name="arrow-back-circle-sharp"></ion-icon>
+        </ion-button>
+      </div>
+      <div id="upButton" *ngIf="playing" (click)="clicked('Up')">
+        <ion-button>
+          <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+        </ion-button>
       </div>
     </div>
 
