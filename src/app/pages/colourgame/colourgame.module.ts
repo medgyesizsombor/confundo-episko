@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ColourgamePageRoutingModule } from './colourgame-routing.module';
 
 import { ColourgamePage } from './colourgame.page';
+import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ColourgamePage } from './colourgame.page';
     IonicModule,
     ColourgamePageRoutingModule
   ],
-  declarations: [ColourgamePage]
+  declarations: [ColourgamePage, UserVsAverageChartComponent]
 })
 export class ColourgamePageModule {}

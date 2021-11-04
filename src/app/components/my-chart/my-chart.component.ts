@@ -11,6 +11,10 @@ export class MyChartComponent implements OnInit {
 
   myChart: Chart;
 
+  asd1 = 25;
+  asd2 = 29;
+  asd3 = 20;
+
   constructor() { }
 
   ngOnInit() {
@@ -24,7 +28,7 @@ export class MyChartComponent implements OnInit {
           ],
           datasets: [{
             label: 'My First Dataset',
-            data: [65, 59, 90],
+            data: [this.asd1, this.asd2, this.asd3],
             fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgb(255, 99, 132)',

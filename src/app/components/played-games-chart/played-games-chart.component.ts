@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { Chart, registerables } from 'chart.js';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
-import { AuthService } from '../../services/auth/auth.service';
-
+Chart.register(...registerables);
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-played-games-chart',
+  templateUrl: './played-games-chart.component.html',
+  styleUrls: ['./played-games-chart.component.scss'],
 })
-export class HomePage implements OnInit {
+export class PlayedGamesChartComponent implements OnInit {
 
-  uid = localStorage.getItem('uid');
+  myChart: Chart;
 
   playedMath = 0;
   playedMath2 = 0;
@@ -36,7 +32,7 @@ export class HomePage implements OnInit {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [this.playedMathFinal, 300, 300],
+      data: [0, 300, 300],
       backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -46,16 +42,25 @@ export class HomePage implements OnInit {
     }]
   };
 
-  constructor(private router: Router, private loadingController: LoadingController,
-    private authService: AuthService, private angularFirestore: AngularFirestore,
-    private dataOfUser: DataOfUserService) { }
-
+  constructor(private dataOfUser: DataOfUserService) { }
 
   async ngOnInit() {
     await this.getPlayedGameCategory();
-    console.log(this.data.datasets[0].data[0]);
+    await this.drawChart();
     this.data.datasets[0].data[0] = this.playedMathFinal;
-    console.log(this.data.datasets[0].data[0]);
+    this.data.datasets[0].data[1] = this.playedFocusFinal;
+    this.data.datasets[0].data[2] = this.playedAttentionFinal;
+    this.myChart.update();
+  }
+
+  async drawChart(){
+    console.log('asd');
+    setTimeout(() => {
+      this.myChart = new Chart('playedGameChart', {
+        type: 'doughnut',
+        data: this.data,
+      });
+    }, 250);
   }
 
   async getPlayedGameCategory(){
@@ -122,10 +127,4 @@ export class HomePage implements OnInit {
       console.log(this.playedAttention2 + 'HAHAHAHAHAHA SIKER?');
     });
   }
-
-
-  goToGames() {
-    this.router.navigate(['main-tabs/games']);
-  }
-
 }

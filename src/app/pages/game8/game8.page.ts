@@ -2,35 +2,40 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import * as moment from 'moment';
+import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
-import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
-import * as moment from 'moment';
-
 
 @Component({
-  selector: 'app-colourgame',
-  templateUrl: './colourgame.page.html',
-  styleUrls: ['./colourgame.page.scss'],
+  selector: 'app-game8',
+  templateUrl: './game8.page.html',
+  styleUrls: ['./game8.page.scss'],
 })
-export class ColourgamePage implements OnInit {
+export class Game8Page implements OnInit {
 
-  lbl1text: string;
-  lbl2text: string;
-  lbl1color: string;
-  lbl2color: string;
-  result = 0;
-  finalResult: string;
-  seconds = 2;
   timeText: string;
+  title= '';
+  label1: 'Up';
+  label2: 'Down';
+  label3: 'Right';
+  label4: 'Left';
+  result = 0;
+  finalResult = 0;
+
   playedGames = 0;
   averageScore = 0;
   sumScore = 0;
   bestScore = 0;
-  interval: any;
+
+  randomNumber: number;
+  randomLetter: string;
+  directions= ['Up', 'Down', 'Right', 'Left'];
+
+  seconds = 5;
   playing = false;
   ended = false;
+  interval: any;
 
   uid = localStorage.getItem('uid');
   average = '';
@@ -42,61 +47,23 @@ export class ColourgamePage implements OnInit {
   playedGamesAverage = 0;
   sumScoreAverage = 0;
   averageScoreAverage = 0;
-
   drawChart = false;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
-    private authService: AuthService, private dataOfGame: DataOfGameService,
-    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService) {
+    private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
+    private dataAverageUser: DataAverageUserService) {
   }
 
   ngOnInit() {
+    console.log(this.uid);
   }
 
-  start() {
+  onStart(){
     this.playing = true;
     this.timeText = this.seconds + ' sec';
+    this.generateDirection();
     this.startCountDown();
-    this.giveValueOfLabels();
-  }
-
-  giveValueOfLabels() {
-    const colours = ['red', 'yellow', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
-    const randomNumber1 = Math.floor(Math.random() * (7 - 0) + 0);
-    const randomNumber2 = Math.floor(Math.random() * (7 - 0) + 0);
-    const randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
-    const randomNumber4 = Math.floor(Math.random() * (7 - 0) + 0);
-
-    if (Math.random() <= 0.5) {
-      this.lbl1text = colours[randomNumber1];
-      this.lbl2text = colours[randomNumber3];
-      this.lbl1color = colours[randomNumber2];
-      this.lbl2color = colours[randomNumber1];
-    } else {
-      this.lbl1text = colours[randomNumber1];
-      this.lbl2text = colours[randomNumber2];
-      this.lbl1color = colours[randomNumber3];
-      this.lbl2color = colours[randomNumber4];
-    }
-  }
-
-  rightButton($event: PointerEvent) {
-    if (this.lbl1text === this.lbl2color) {
-      this.result = this.result + 1;
-      this.giveValueOfLabels();
-    } else {
-      this.giveValueOfLabels();
-    }
-  }
-
-  leftButton($event: PointerEvent) {
-    if (this.lbl1text !== this.lbl2color) {
-      this.result = this.result + 1;
-      this.giveValueOfLabels();
-    } else {
-      this.giveValueOfLabels();
-    }
   }
 
   startCountDown() {
@@ -114,8 +81,73 @@ export class ColourgamePage implements OnInit {
     }
   }
 
+  generateDirection(){
+    this.randomNumber = Math.floor(Math.random() * (3 - 0) + 0);
+    switch (this.randomNumber) {
+      case 0:
+        this.title = this.directions[0];
+        break;
+      case 1:
+        this.title = this.directions[1];
+        break;
+      case 2:
+        this.title = this.directions[2];
+        break;
+      case 3:
+        this.title = this.directions[3];
+        break;
+    }
+  }
+
+  clicked(str: string){
+    if(str === 'Up'){
+      this.checkPoint('Up');
+    } else if (str === 'Down') {
+      this.checkPoint('Down');
+    } else if (str === 'Left'){
+      this.checkPoint('Left');
+    } else {
+      this.checkPoint('Right');
+    }
+    console.log(this.result);
+    this.generateDirection();
+  }
+
+  checkPoint(str: string){
+    switch(str){
+      case 'Up':
+        if(this.title === 'Down'){
+          this.result++;
+        } else {
+          this.result--;
+        }
+        break;
+      case 'Down':
+        if (this.title === 'Up'){
+          this.result++;
+        } else {
+          this.result--;
+        }
+        break;
+      case 'Left':
+        if(this.title === 'Right'){
+          this.result++;
+        } else {
+          this.result--;
+        }
+        break;
+      case 'Right':
+        if(this.title === 'Left'){
+          this.result++;
+        } else {
+          this.result--;
+        }
+        break;
+    }
+  }
+
   async getDataOfGames(){
-    await this.dataOfGame.getDataOfGames('colourgame').then(() => {
+    await this.dataOfGame.getDataOfGames('eightgame').then(() => {
       this.playedGames = Number(localStorage.getItem('playedGames'))+1;
       this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
       this.averageScore = this.sumScore / this.playedGames;
@@ -127,7 +159,7 @@ export class ColourgamePage implements OnInit {
   }
 
   async getDataOfAverageUser(){
-    await this.dataAverageUser.getDataOfAverageUser('colourgame').then(() => {
+    await this.dataAverageUser.getDataOfAverageUser('eightgame').then(() => {
       this.playedGamesAverage = Number(localStorage.getItem('playedGamesAverage'))+1;
       this.sumScoreAverage = Number(localStorage.getItem('sumScoreAverage'))+this.result;
       this.averageScoreAverage = this.sumScoreAverage / this.playedGamesAverage;
@@ -207,40 +239,33 @@ export class ColourgamePage implements OnInit {
     }
   }
 
-  async end() {
-    /*valami.then(res => {
-
-    }).catch(err => {
-
-    })
-
-    try {
-      let res = await valami();
-    } catch (err) {
-
-    }*/
-    this.lbl1text = null;
-    this.lbl2text = null;
-    this.finalResult = 'You have got ' + this.result + ' points!';
+  async end(){
     this.playing = false;
     this.ended = true;
+    this.finalResult = this.result;
     await this.getDataOfGames();
-    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('colourgame').update({
+    this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('eightgame').update({
       playedGames: this.playedGames,
       sumScore: this.sumScore,
       bestScore: this.bestScore,
       averageScore: this.averageScore
     });
+
     await this.getDataOfUser();
     await this.getDataOfAverageUser();
-    this.angularFirestore.collection('Statistics').doc(this.average).collection('game').doc('colourgame').update({
+    this.angularFirestore.collection('Statistics').doc(this.average).collection('game').doc('eightgame').update({
       playedGames: this.playedGamesAverage,
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
+    console.log(this.bestScore);
+    console.log(this.playedGames);
+    console.log(this.sumScore);
+    console.log(this.averageScore);
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
   }
+
 }
