@@ -32,7 +32,7 @@ export class PlayedGamesChartComponent implements OnInit {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [this.playedMathFinal, 300, 300],
+      data: [0, 300, 300],
       backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',

@@ -43,6 +43,8 @@ export class ColourgamePage implements OnInit {
   sumScoreAverage = 0;
   averageScoreAverage = 0;
 
+  drawChart = false;
+
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
@@ -236,11 +238,9 @@ export class ColourgamePage implements OnInit {
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
-
-    localStorage.removeItem('playedGames');
-    localStorage.removeItem('sumScore');
-    localStorage.removeItem('bestScore');
-    localStorage.removeItem('averageScore');
     clearInterval(this.interval);
+    localStorage.setItem('result', String(this.result));
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    this.drawChart = true;
   }
 }
