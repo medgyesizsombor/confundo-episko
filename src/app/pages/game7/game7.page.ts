@@ -24,7 +24,7 @@ export class Game7Page implements OnInit {
   currentNumber: string = null;
   split1: any;
   result = 0;
-  finalResult = 0;
+  finalResult = '';
   playedGames = 0;
   averageScore = 0;
   sumScore = 0;
@@ -50,6 +50,8 @@ export class Game7Page implements OnInit {
   playedGamesAverage = 0;
   sumScoreAverage = 0;
   averageScoreAverage = 0;
+
+  drawChart = false;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
@@ -229,7 +231,7 @@ export class Game7Page implements OnInit {
   async end(){
     this.playing = false;
     this.ended = true;
-    this.finalResult = this.result;
+    this.finalResult = 'You have got ' + this.result + ' points!';
     await this.getDataOfGames();
     this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('seventhgame').update({
       playedGames: this.playedGames,
@@ -250,9 +252,8 @@ export class Game7Page implements OnInit {
     console.log(this.sumScore);
     console.log(this.averageScore);
     clearInterval(this.interval);
-    localStorage.removeItem('playedGames');
-    localStorage.removeItem('sumScore');
-    localStorage.removeItem('bestScore');
-    localStorage.removeItem('averageScore');
+    localStorage.setItem('result', String(this.result));
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    this.drawChart = true;
   }
 }

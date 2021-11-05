@@ -10,7 +10,7 @@ Chart.register(...registerables);
 })
 export class PlayedGamesChartComponent implements OnInit {
 
-  myChart: Chart;
+  playedGameChart: Chart;
 
   playedMath = 0;
   playedMath2 = 0;
@@ -32,7 +32,7 @@ export class PlayedGamesChartComponent implements OnInit {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [0, 300, 300],
+      data: [0, 0, 0],
       backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -47,30 +47,34 @@ export class PlayedGamesChartComponent implements OnInit {
   async ngOnInit() {
     await this.getPlayedGameCategory();
     await this.drawChart();
-    this.data.datasets[0].data[0] = this.playedMathFinal;
-    this.data.datasets[0].data[1] = this.playedFocusFinal;
-    this.data.datasets[0].data[2] = this.playedAttentionFinal;
-    this.myChart.update();
+    this.updateChart();
   }
 
   async drawChart(){
     console.log('asd');
     setTimeout(() => {
-      this.myChart = new Chart('playedGameChart', {
+      this.playedGameChart = new Chart('playedGameChart', {
         type: 'doughnut',
         data: this.data,
       });
     }, 250);
   }
 
+  updateChart(){
+    this.data.datasets[0].data[0] = this.playedMathFinal;
+    this.data.datasets[0].data[1] = this.playedFocusFinal;
+    this.data.datasets[0].data[2] = this.playedAttentionFinal;
+  }
+
   async getPlayedGameCategory(){
-    await this.getPlayedGameColour();
-    await this.getPlayedGameGoNogo();
-    await this.getPlayedGameGame3();
-    await this.getPlayedGameGame4();
-    await this.getPlayedGameGame5();
-    await this.getPlayedGameGame6();
-    await this.getPlayedGameGame7();
+    await this.getDataOfGameColour();
+    await this.getDataOfGameGoNogo();
+    await this.getDataOfGameGame3();
+    await this.getDataOfGameGame4();
+    await this.getDataOfGameGame5();
+    await this.getDataOfGameGame6();
+    await this.getDataOfGameGame7();
+    await this.getDataOfGameGame8();
     this.playedMathFinal = this.playedMath + this.playedMath2 + this.playedMath3;
     this.playedFocusFinal = this.playedFocus1 + this.playedFocus2 + this.playedFocus3;
     this.playedAttentionFinal = this.playedAttention1 + this.playedAttention2;
@@ -79,51 +83,58 @@ export class PlayedGamesChartComponent implements OnInit {
     console.log(this.playedAttentionFinal);
   }
 
-  async getPlayedGameColour(){
-    await this.dataOfUser.getPlayedGameColour('colourgame').then(() => {
-      this.playedMath = Number(localStorage.getItem('playedGamesColour'));
+  async getDataOfGameColour(){
+    await this.dataOfUser.getDataOfGameColour('colourgame').then(() => {
+      this.playedMath = Number(localStorage.getItem('playedGamesColourgame'));
       console.log(this.playedMath + 'HAHAHAHAHAHA SIKER?');
     });
   }
 
-  async getPlayedGameGoNogo(){
-    await this.dataOfUser.getPlayedGameGoNogo('go-nogogame').then(() => {
+  async getDataOfGameGoNogo(){
+    await this.dataOfUser.getDataOfGameGoNogo('go-nogogame').then(() => {
       this.playedMath2 = Number(localStorage.getItem('playedGamesGoNogo'));
       console.log(this.playedMath2 + 'HAHAHAHAHAHA SIKER?');
     });
   }
 
-  async getPlayedGameGame3(){
-    await this.dataOfUser.getPlayedGameGame3('thirdgame').then(() => {
+  async getDataOfGameGame3(){
+    await this.dataOfUser.getDataOfGameGame3('thirdgame').then(() => {
       this.playedMath3 = Number(localStorage.getItem('playedGamesGame3'));
       console.log(this.playedMath3 + 'HAHAHAHAHAHA SIKER?');
     });
   }
 
-  async getPlayedGameGame4(){
-    await this.dataOfUser.getPlayedGameGame4('fourthgame').then(() => {
+  async getDataOfGameGame4(){
+    await this.dataOfUser.getDataOfGameGame4('fourthgame').then(() => {
       this.playedFocus1 = Number(localStorage.getItem('playedGamesGame4'));
       console.log(this.playedFocus1 + 'HAHAHAHAHAHA SIKER?');
     });
   }
 
-  async getPlayedGameGame5(){
-    await this.dataOfUser.getPlayedGameGame5('fifthgame').then(() => {
+  async getDataOfGameGame5(){
+    await this.dataOfUser.getDataOfGameGame5('fifthgame').then(() => {
       this.playedFocus2 = Number(localStorage.getItem('playedGamesGame5'));
       console.log(this.playedFocus2 + 'HAHAHAHAHAHA SIKER?');
     });
   }
 
-  async getPlayedGameGame6(){
-    await this.dataOfUser.getPlayedGameGame6('sixthgame').then(() => {
+  async getDataOfGameGame6(){
+    await this.dataOfUser.getDataOfGameGame6('sixthgame').then(() => {
       this.playedAttention1 = Number(localStorage.getItem('playedGamesGame6'));
       console.log(this.playedAttention1 + 'HAHAHAHAHAHA SIKER?');
     });
   }
 
-  async getPlayedGameGame7(){
-    await this.dataOfUser.getPlayedGameGame7('seventhgame').then(() => {
+  async getDataOfGameGame7(){
+    await this.dataOfUser.getDataOfGameGame7('seventhgame').then(() => {
       this.playedAttention2 = Number(localStorage.getItem('playedGamesGame7'));
+      console.log(this.playedAttention2 + 'HAHAHAHAHAHA SIKER?');
+    });
+  }
+
+  async getDataOfGameGame8(){
+    await this.dataOfUser.getDataOfGameGame8('eightgame').then(() => {
+      this.playedFocus3 = Number(localStorage.getItem('playedGamesGame8'));
       console.log(this.playedAttention2 + 'HAHAHAHAHAHA SIKER?');
     });
   }

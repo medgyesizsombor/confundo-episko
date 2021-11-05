@@ -10,7 +10,7 @@ import { StatisticsPage } from './statistics.page';
 
 import { MyChartComponent } from 'src/app/components/my-chart/my-chart.component';
 import { PlayedGamesChartComponent } from 'src/app/components/played-games-chart/played-games-chart.component';
-import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
+import { TotalScoreChartComponent } from 'src/app/components/total-score-chart/total-score-chart/total-score-chart.component';
 
 @NgModule({
   imports: [
@@ -19,6 +19,6 @@ import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-
     IonicModule,
     StatisticsPageRoutingModule
   ],
-  declarations: [StatisticsPage, MyChartComponent, PlayedGamesChartComponent, UserVsAverageChartComponent]
+  declarations: [StatisticsPage, MyChartComponent, PlayedGamesChartComponent, TotalScoreChartComponent]
 })
 export class StatisticsPageModule {}
