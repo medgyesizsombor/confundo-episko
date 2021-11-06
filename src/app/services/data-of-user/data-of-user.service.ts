@@ -22,10 +22,12 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameColour(str: string){
+
+  async getDataOfGameColour(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
-          localStorage.setItem('playedGamesColour', res.playedGames);
+          localStorage.setItem('playedGamesColourgame', res.playedGames);
+          localStorage.setItem('totalScoreColourgame', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);
@@ -33,10 +35,11 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameGoNogo(str: string){
+  async getDataOfGameGoNogo(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGoNogo', res.playedGames);
+          localStorage.setItem('totalScoreGoNogo', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);
@@ -44,10 +47,11 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameGame3(str: string){
+  async getDataOfGameGame3(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGame3', res.playedGames);
+          localStorage.setItem('totalScoreGame3', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);
@@ -55,10 +59,11 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameGame4(str: string){
+  async getDataOfGameGame4(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGame4', res.playedGames);
+          localStorage.setItem('totalScoreGame4', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);
@@ -66,10 +71,11 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameGame5(str: string){
+  async getDataOfGameGame5(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGame5', res.playedGames);
+          localStorage.setItem('totalScoreGame5', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);
@@ -77,10 +83,11 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameGame6(str: string){
+  async getDataOfGameGame6(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGame6', res.playedGames);
+          localStorage.setItem('totalScoreGame6', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);
@@ -88,10 +95,23 @@ export class DataOfUserService {
     });
   }
 
-  async getPlayedGameGame7(str: string){
+  async getDataOfGameGame7(str: string){
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGame7', res.playedGames);
+          localStorage.setItem('totalScoreGame7', res.sumScore);
+          resolve(true);
+        }, err => {
+          reject(err);
+        });
+    });
+  }
+
+  async getDataOfGameGame8(str: string){
+    return new Promise((resolve, reject) => {
+      this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
+          localStorage.setItem('playedGamesGame8', res.playedGames);
+          localStorage.setItem('totalScoreGame8', res.sumScore);
           resolve(true);
         }, err => {
           reject(err);

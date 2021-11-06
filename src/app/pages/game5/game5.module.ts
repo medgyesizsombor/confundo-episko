@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { Game5PageRoutingModule } from './game5-routing.module';
 
 import { Game5Page } from './game5.page';
+import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { Game5Page } from './game5.page';
     IonicModule,
     Game5PageRoutingModule
   ],
-  declarations: [Game5Page]
+  declarations: [Game5Page, UserVsAverageChartComponent]
 })
 export class Game5PageModule {}

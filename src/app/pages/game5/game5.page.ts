@@ -20,7 +20,7 @@ export class Game5Page implements OnInit {
   label1: string;
   label2: string;
   result = 0;
-  finalResult = 0;
+  finalResult = '';
   textLocation: number;
   isVowel: boolean;
   playedGames = 0;
@@ -47,6 +47,8 @@ export class Game5Page implements OnInit {
   playedGamesAverage = 0;
   sumScoreAverage = 0;
   averageScoreAverage = 0;
+
+  drawChart = false;
 
 
   constructor(private router: Router, private route: ActivatedRoute,
@@ -271,7 +273,7 @@ export class Game5Page implements OnInit {
   async end(){
     this.playing = false;
     this.ended = true;
-    this.finalResult = this.result;
+    this.finalResult = 'You have got ' + this.result + ' points!';
     await this.getDataOfGames();
     this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('fifthgame').update({
       playedGames: this.playedGames,
@@ -287,15 +289,11 @@ export class Game5Page implements OnInit {
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
-    console.log(this.bestScore);
-    console.log(this.playedGames);
-    console.log(this.sumScore);
-    console.log(this.averageScore);
+
     clearInterval(this.interval);
-    localStorage.removeItem('playedGames');
-    localStorage.removeItem('sumScore');
-    localStorage.removeItem('bestScore');
-    localStorage.removeItem('averageScore');
+    localStorage.setItem('result', String(this.result));
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    this.drawChart = true;
   }
 
 }
