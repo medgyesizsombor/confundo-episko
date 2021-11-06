@@ -166,6 +166,28 @@ export class Game8Page implements OnInit {
     });
   }
 
+  createIntervalText(interval: number[]) {
+    return interval[0] + '-' + interval[1];
+  }
+
+  getAverageInterval(age: number) {
+    const intervals = [
+      [0, 4],
+      [5, 9],
+      [10, 14]
+    ];
+
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < intervals.length; i++) {
+      if (age >= intervals[i][0] && age <= intervals[i][1]) {
+        const intervalText = this.createIntervalText(intervals[i]);
+        localStorage.setItem('averageId', intervalText);
+      }
+    }
+
+    localStorage.setItem('averageId', '100+');
+  }
+
   async getDataOfUser(){
     await this.dataOfUser.getDataOfUser().then(() => {
       this.userBirthdate = localStorage.getItem('birthdate');

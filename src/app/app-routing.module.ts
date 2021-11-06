@@ -88,7 +88,8 @@ const routes: Routes = [
     path: 'game8',
     loadChildren: () => import('./pages/game8/game8.module').then( m => m.Game8PageModule),
     canActivate: [AuthGuard]
-  }
+  },
+
 
 
 

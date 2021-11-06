@@ -19,6 +19,6 @@ import { TotalScoreChartComponent } from 'src/app/components/total-score-chart/t
     IonicModule,
     StatisticsPageRoutingModule
   ],
-  declarations: [StatisticsPage, MyChartComponent, PlayedGamesChartComponent, TotalScoreChartComponent]
+  declarations: [StatisticsPage, MyChartComponent, PlayedGamesChartComponent, TotalScoreChartComponent],
 })
 export class StatisticsPageModule {}

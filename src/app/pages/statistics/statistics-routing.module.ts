@@ -13,5 +13,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  declarations: [],
+  providers: []
 })
 export class StatisticsPageRoutingModule {}

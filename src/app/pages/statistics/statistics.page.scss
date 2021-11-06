@@ -1,23 +1,6 @@
-ion-header{
-    height: auto;
-    background-color: #F19066;
-}
-
-ion-title{
-    font-size: 30px;
-    color: white;
-    width: auto;
-    margin: auto;
-    padding: 20px;
-}
-
-ion-content{
-    --ion-background-color: #F3A683;
-}
-
-ion-card{
-    border: 2px solid black;
-    border-radius: 10px;
+ion-header::after {
+    background-image: none;
+    box-shadow: var(--my-shadow);
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {
