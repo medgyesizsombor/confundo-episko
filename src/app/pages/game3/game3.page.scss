@@ -1,4 +1,4 @@
-.itemBox{
+/*.itemBox{
     border: black solid;
     border-width: 1px;
     border-radius: 25px;
@@ -7,4 +7,37 @@
     padding: 10px;
     font-size: 20px;
     font-weight: bold;
+}*/
+
+.hidden {
+  visibility: hidden;
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+ion-toolbar {
+    --ion-background-color: #F19066 !important;
+}
+
+ion-card {
+    background-color: #F19066;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
+    position: relative;
+    height: 75px;
+
+    .container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #FFFFFF;
+    }
 }

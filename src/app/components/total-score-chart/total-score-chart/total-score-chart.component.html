@@ -1,4 +1,6 @@
-<p>This is my chart!</p>
-<div id="divChart">
-  <canvas id="totalScoreChart"></canvas>
+<div class="container" style="display: flex; justify-content: center; align-items: center;">
+  <div id="divChart" [style.visibility]="loading ? 'hidden' : 'visible'">
+    <canvas id="totalScoreChart"></canvas>
+  </div>
+  <ion-spinner *ngIf="loading" style="z-index: 100; position: absolute;"></ion-spinner>
 </div>

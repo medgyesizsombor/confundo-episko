@@ -2,7 +2,7 @@
   <ion-title text class="ion-text-center">Go/No-go game</ion-title>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   <div id="asd">
 
@@ -11,7 +11,7 @@
     </ion-card>
 
     <div *ngIf="!playing && !ended">
-      <ion-button (click)="start()">Start</ion-button>
+      <ion-button (click)="start()" expand="block">Start</ion-button>
     </div>
 
     <div *ngIf="playing">

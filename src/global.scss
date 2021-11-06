@@ -29,6 +29,10 @@
     --height: 200px !important;
 }
 
+ion-button {
+    --box-shadow: none !important;
+}
+
 .asd123{
     margin: auto;
     width: 30%;
@@ -46,7 +50,6 @@ ion-header{
 }
 
 ion-title{
-    font-size: 30px;
     color: white;
     width: auto;
     margin: auto;

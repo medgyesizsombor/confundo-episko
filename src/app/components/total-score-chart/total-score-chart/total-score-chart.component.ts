@@ -1,3 +1,4 @@
+import { toTypeScript } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
@@ -9,7 +10,7 @@ Chart.register(...registerables);
   styleUrls: ['./total-score-chart.component.scss'],
 })
 export class TotalScoreChartComponent implements OnInit {
-
+  loading = false;
   totalScoreChart: Chart;
 
   scoreColourgame = 0;
@@ -50,9 +51,18 @@ export class TotalScoreChartComponent implements OnInit {
   constructor(private dataOfUser: DataOfUserService) { }
 
   async ngOnInit() {
+    this.loading = true;
+    console.log('adsdsda');
     await this.getTotalScorePerGame();
     await this.drawChart();
-    this.updateChart();
+    console.log('asdasd');
+  }
+
+  async asdasd(){
+    console.log('adsdsda');
+    await this.getTotalScorePerGame();
+    await this.drawChart();
+    console.log('asdasd');
   }
 
   async drawChart(){
@@ -69,6 +79,8 @@ export class TotalScoreChartComponent implements OnInit {
           }
         }
       });
+      this.updateChart();
+      this.loading = false;
     }, 250);
   }
 
@@ -81,6 +93,8 @@ export class TotalScoreChartComponent implements OnInit {
     this.data.datasets[0].data[5] = this.scoreGame6;
     this.data.datasets[0].data[6] = this.scoreGame7;
     this.data.datasets[0].data[7] = this.scoreGame8;
+    this.totalScoreChart.data = this.data;
+    this.totalScoreChart.update();
   }
 
   async getTotalScorePerGame(){
