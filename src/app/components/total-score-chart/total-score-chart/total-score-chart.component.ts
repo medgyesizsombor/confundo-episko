@@ -1,5 +1,6 @@
 import { toTypeScript } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { Chart, registerables } from 'chart.js';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 Chart.register(...registerables);
@@ -48,7 +49,7 @@ export class TotalScoreChartComponent implements OnInit {
 
 
 
-  constructor(private dataOfUser: DataOfUserService) { }
+  constructor(private dataOfUser: DataOfUserService, private platform: Platform) { }
 
   async ngOnInit() {
     this.loading = true;
@@ -75,6 +76,15 @@ export class TotalScoreChartComponent implements OnInit {
           elements: {
             line: {
               borderWidth: 3
+            }
+          },
+          scales: {
+            r: {
+              pointLabels: {
+                font: {
+                  size: this.platform.is('mobile') ? 10 : 20
+                }
+              }
             }
           }
         }

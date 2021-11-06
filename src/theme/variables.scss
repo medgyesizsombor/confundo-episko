@@ -5,8 +5,8 @@
 :root {
 
   /** primary **/
-  --ion-color-primary: #e77f67;
-  --ion-color-primary-rgb: 231, 127, 103;
+  --ion-color-primary: #f59c28;
+  --ion-color-primary-rgb: 245, 156, 40;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #cb705b;
@@ -92,6 +92,8 @@
   --ion-color-apptext-shade: #d7d8da;
   --ion-color-apptext-tint: #f5f6f9;
   --ion-text-color-apptext: #ffffff;
+
+  --my-shadow: 0px 5px 10px 0px #00000022;
   
 }
 

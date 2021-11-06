@@ -25,50 +25,22 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.toast-login {
-    --height: 200px !important;
-}
-
 ion-button {
     --box-shadow: none !important;
 }
 
-.asd123{
-    margin: auto;
-    width: 30%;
-    font-size: 50px;
-    border-color: #403E39;
-    border-width: thin;
-    border-style: solid;
-    border-radius: 3px;
+ion-card {
+    box-shadow: var(--my-shadow);
+    border-radius: 10px;
+    border: 5px solid #EEEEEE;
 }
 
-ion-header{
-    background-color: #F19066;
-    min-height: 50px;
-    height: auto;
+.toast-login {
+    --height: 200px !important;
 }
 
-ion-title{
-    color: white;
-    width: auto;
-    margin: auto;
-    padding: 20px;
-}
-
-ion-content{
-    --ion-background-color: #F3A683;
-}
-
-ion-icon{
-    color: white;
-    text-align: center;
-}
-
-ion-card{
-    border: 2px solid black;
-    border-radius: 25px;
-    min-height: 50px;
+ion-content {
+    --ion-background-color: #EEEEEE;
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {
