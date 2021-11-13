@@ -18,14 +18,58 @@ export class Game3Page implements OnInit {
   selectedNumbers = [];
   selectedSorted = [];
   clickedItems = [];
+  result = 0;
+  timeText = '';
+  seconds = 5;
+  interval: any;
+  playing = false;
+  ended = false;
+  finalResult= '';
+  playedGames: number;
+  sumScore: number;
+  averageScore: number;
+  bestScore: number;
+
+  uid = localStorage.getItem('uid');
+  average = '';
+
+  userBirthdate: any;
+  userAge: number;
+  today = moment(Date.now());
+
+  playedGamesAverage = 0;
+  sumScoreAverage = 0;
+  averageScoreAverage = 0;
+  drawChart = false;
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService){ }
 
   ngOnInit(){
+  }
+
+  start(){
+    this.playing = true;
+    this.timeText = this.seconds + ' sec';
     this.selectedNumbers = this.generateNumbers(this.numOfGenNumbers);
     this.selectedSorted = this.sort(this.copy(this.selectedNumbers));
+    this.startCountDownGame();
+  }
+
+  startCountDownGame() {
+    this.interval = setInterval(() => {
+      this.updateTime();
+      this.timeText = this.seconds + ' sec';
+    }, 1000);
+  }
+
+  updateTime() {
+    if (this.seconds > 0) {
+      this.seconds--;
+    } else {
+      this.end();
+    }
   }
 
   sort(numbers: number[]) {
@@ -60,12 +104,15 @@ export class Game3Page implements OnInit {
       this.clickedItems.push(num);
       const idx = this.clickedItems.length - 1;
       if (this.clickedItems[idx] === this.selectedSorted[idx]) {
-        console.log('GOOD');
+        this.result++;
+        console.log(this.result);
         if (this.clickedItems.length === this.selectedNumbers.length) {
           console.log('ALL GOOD');
           this.nextRound();
         }
       } else {
+        this.result = this.result - this.selectedNumbers.length;
+        console.log(this.result);
         console.log('NO GOOD');
         this.nextRound();
       }
@@ -83,5 +130,107 @@ export class Game3Page implements OnInit {
     this.selectedNumbers = this.generateNumbers(this.numOfGenNumbers);
     this.selectedSorted = this.sort(this.copy(this.selectedNumbers));
     this.clickedItems = [];
+  }
+
+  async getDataOfGames(){
+    await this.dataOfGame.getDataOfGames('thirdgame').then(() => {
+      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
+      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.averageScore = this.sumScore / this.playedGames;
+      this.bestScore = Number(localStorage.getItem('bestScore'));
+      if(this.bestScore < this.result || this.bestScore === 0){
+        this.bestScore = this.result;
+      }
+      console.log(this.playedGames + 'playedGames');
+      console.log(this.sumScore + 'sumScore');
+      console.log(this.averageScore + 'average');
+      console.log(this.bestScore);
+    });
+  }
+
+  async getDataOfAverageUser(){
+    await this.dataAverageUser.getDataOfAverageUser('thirdgame').then(() => {
+      this.playedGamesAverage = Number(localStorage.getItem('playedGamesAverage'))+1;
+      this.sumScoreAverage = Number(localStorage.getItem('sumScoreAverage'))+this.result;
+      this.averageScoreAverage = this.sumScoreAverage / this.playedGamesAverage;
+    });
+  }
+
+  createIntervalText(interval: number[]) {
+    return interval[0] + '-' + interval[1];
+  }
+
+  getAverageInterval(age: number) {
+    const intervals = [
+      [0, 4],
+      [5, 9],
+      [10, 14],
+      [15, 19],
+      [20, 24],
+      [25, 29],
+      [30, 34],
+      [35, 39],
+      [40, 44],
+      [45, 49],
+      [50, 54],
+      [55, 59],
+      [60, 64],
+      [65, 69],
+      [70, 74],
+      [75, 79],
+      [80, 84],
+      [85, 89],
+      [90, 94],
+      [95, 99]
+    ];
+
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < intervals.length; i++) {
+      if (age >= intervals[i][0] && age <= intervals[i][1]) {
+        const intervalText = this.createIntervalText(intervals[i]);
+        this.average = intervalText;
+        localStorage.setItem('averageId', this.average);
+        break;
+      } else {
+        this.average = '100+';
+        localStorage.setItem('averageId', this.average);
+      }
+    }
+  }
+
+  async getDataOfUser(){
+    await this.dataOfUser.getDataOfUser().then(() => {
+      this.userBirthdate = localStorage.getItem('birthdate');
+    });
+
+    const diff = moment.duration(this.today.diff(this.userBirthdate));
+    this.userAge = Number(diff.years());
+    this.getAverageInterval(this.userAge);
+  }
+
+  async end(){
+    this.ended = true;
+    this.finalResult = 'You have got ' + this.result + ' points!';
+    this.playing = false;
+    await this.getDataOfGames();
+    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('thirdgame').update({
+      playedGames: this.playedGames,
+      sumScore: this.sumScore,
+      bestScore: this.bestScore,
+      averageScore: this.averageScore
+    });
+
+    await this.getDataOfUser();
+    await this.getDataOfAverageUser();
+    this.angularFireStore.collection('Statistics').doc(this.average).collection('game').doc('thirdgame').update({
+      playedGames: this.playedGamesAverage,
+      sumScore: this.sumScoreAverage,
+      averageScore: this.averageScoreAverage,
+    });
+
+    clearInterval(this.interval);
+    localStorage.setItem('result', String(this.result));
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    this.drawChart = true;
   }
 }

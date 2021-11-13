@@ -10,10 +10,29 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card *ngFor="let num of selectedNumbers; let i = index" (click)="clickOnItem(num, i)" class="ion-activatable ripple-parent" [class.hidden]="clickedItems.includes(num)">
-    <div class="container">
-      <h3>{{ num }}</h3>
+
+  <div *ngIf="!playing && !ended">
+    <ion-button (click)="start()">
+      Let's start!
+    </ion-button>
+  </div>
+
+  <div *ngIf="playing" class="ion-padding">
+    <div>
+      <ion-label>
+        {{timeText}}
+      </ion-label>
     </div>
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-card>
+
+    <ion-card *ngFor="let num of selectedNumbers; let i = index" (click)="clickOnItem(num, i)" class="ion-activatable ripple-parent" [class.hidden]="clickedItems.includes(num)">
+      <div class="container">
+        <h3>{{ num }}</h3>
+      </div>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-card>
+  </div>
+
+  <div *ngIf="drawChart" class="ion-padding">
+    <app-user-vs-average-chart></app-user-vs-average-chart>
+  </div>
 </ion-content>
