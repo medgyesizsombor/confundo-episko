@@ -174,18 +174,38 @@ export class Game8Page implements OnInit {
     const intervals = [
       [0, 4],
       [5, 9],
-      [10, 14]
+      [10, 14],
+      [15, 19],
+      [20, 24],
+      [25, 29],
+      [30, 34],
+      [35, 39],
+      [40, 44],
+      [45, 49],
+      [50, 54],
+      [55, 59],
+      [60, 64],
+      [65, 69],
+      [70, 74],
+      [75, 79],
+      [80, 84],
+      [85, 89],
+      [90, 94],
+      [95, 99]
     ];
 
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < intervals.length; i++) {
       if (age >= intervals[i][0] && age <= intervals[i][1]) {
         const intervalText = this.createIntervalText(intervals[i]);
-        localStorage.setItem('averageId', intervalText);
+        this.average = intervalText;
+        localStorage.setItem('averageId', this.average);
+        break;
+      } else {
+        this.average = '100+';
+        localStorage.setItem('averageId', this.average);
       }
     }
-
-    localStorage.setItem('averageId', '100+');
   }
 
   async getDataOfUser(){
@@ -194,71 +214,8 @@ export class Game8Page implements OnInit {
     });
 
     const diff = moment.duration(this.today.diff(this.userBirthdate));
-    const age = Number(diff.years());
-    if(age >= 0 && age <= 4){
-      this.average = '0-4';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 5 && age <= 9){
-      this.average = '5-9';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 10 && age <= 14){
-      this.average = '10-14';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 15 && age <= 19){
-      this.average = '15-19';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 20 && age <= 24){
-      this.average = '20-24';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 25 && age <= 29){
-      this.average = '25-29';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 30 && age <= 34){
-      this.average = '30-34';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 35 && age <= 39){
-      this.average = '35-39';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 40 && age <= 44){
-      this.average = '40-44';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 45 && age <= 49){
-      this.average = '45-49';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 50 && age <= 54){
-      this.average = '50-54';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 55 && age <= 59){
-      this.average = '55-54';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 60 && age <= 64){
-      this.average = '60-64';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 65 && age <= 69){
-      this.average = '65-69';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 70 && age <= 74){
-      this.average = '70-74';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 75 && age <= 79){
-      this.average = '75-79';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 80 && age <= 84){
-      this.average = '80-84';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 85 && age <= 89){
-      this.average = '85-89';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 90 && age <= 94){
-      this.average = '90-94';
-      localStorage.setItem('averageId', this.average);
-    } else if (age >= 95 && age <= 99){
-      this.average = '95-99';
-      localStorage.setItem('averageId', this.average);
-    } else {
-      this.average = '100+';
-      localStorage.setItem('averageId', this.average);
-    }
+    this.userAge = Number(diff.years());
+    this.getAverageInterval(this.userAge);
   }
 
   async end(){
