@@ -32,7 +32,7 @@ export class PlayedGamesChartComponent implements OnInit {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [0, 0, 0],
+      data: [1, 1, 1],
       backgroundColor: [
         'rgb(255, 99, 132)',
         'rgb(54, 162, 235)',
@@ -51,7 +51,6 @@ export class PlayedGamesChartComponent implements OnInit {
   }
 
   async drawChart(){
-    console.log('asd');
     setTimeout(() => {
       this.playedGameChart = new Chart('playedGameChart', {
         type: 'doughnut',
@@ -91,7 +90,7 @@ export class PlayedGamesChartComponent implements OnInit {
   }
 
   async getDataOfGameGoNogo(){
-    await this.dataOfUser.getDataOfGameGoNogo('go-nogogame').then(() => {
+    await this.dataOfUser.getDataOfGameGoNogo('goNogoGame').then(() => {
       this.playedMath2 = Number(localStorage.getItem('playedGamesGoNogo'));
       console.log(this.playedMath2 + 'HAHAHAHAHAHA SIKER?');
     });

@@ -1,0 +1,18 @@
+.rotate-anim {
+    animation: rotate 500ms;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(180deg);
+    }
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+.ripple-parent {
+    position: relative;
+    overflow: hidden;
+}

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class DataOfUserService {
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesGoNogo', res.playedGames);
-          localStorage.setItem('totalScoreGoNogo', res.sumScore);
+          localStorage.setItem('totalScoreGoNogo', res.sumScore + 1);
           resolve(true);
         }, err => {
           reject(err);
@@ -57,6 +58,29 @@ export class DataOfUserService {
           reject(err);
         });
     });
+  }
+
+  getAllSumStats() {
+    return new Promise(async (resolve, reject) => {
+      const documents = ['colourgame', 'goNogoGame', 'thirdgame', 'fourthgame', 'fifthgame', 'sixthgame', 'seventhgame', 'eightgame'];
+      const datas = {};
+
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
+      for (let i = 0; i < documents.length; i++) {
+        try {
+          const res = await this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(documents[i]).get().toPromise();
+          datas[documents[i]] = res.data();
+        } catch (err) {
+          reject(err);
+        }
+      }
+
+      resolve(datas);
+    });
+  }
+
+  test1(str: string) {
+    return this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges();
   }
 
   async getDataOfGameGame4(str: string){

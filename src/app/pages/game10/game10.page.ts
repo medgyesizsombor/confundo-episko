@@ -8,22 +8,26 @@ import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.se
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 
 @Component({
-  selector: 'app-game3',
-  templateUrl: './game3.page.html',
-  styleUrls: ['./game3.page.scss'],
+  selector: 'app-game10',
+  templateUrl: './game10.page.html',
+  styleUrls: ['./game10.page.scss'],
 })
-export class Game3Page implements OnInit {
-  round = 1;
-  numOfGenNumbers = 3;
-  selectedNumbers = [];
-  selectedSorted = [];
-  clickedItems = [];
-  result = 0;
+export class Game10Page implements OnInit {
+
+  generatedGrid = [];
   timeText = '';
-  seconds = 5;
-  interval: any;
+  timeText2 = '';
+  secondsOnGame = 5;
   playing = false;
+  generatedIndexes = [];
+  generatedSortedIndexes = [];
+  clickedItems = [];
   ended = false;
+  interval: any;
+  intervalTurn: any;
+  result = 0;
+  isInTheArray: boolean;
+
   finalResult= '';
   playedGames: number;
   sumScore: number;
@@ -44,39 +48,51 @@ export class Game3Page implements OnInit {
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
-    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService){ }
+    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService) { }
 
-  ngOnInit(){
+  ngOnInit() {
   }
 
   start(){
-    this.playing = true;
-    this.timeText = this.seconds + ' sec';
-    this.selectedNumbers = this.generateNumbers(this.numOfGenNumbers);
-    this.selectedSorted = this.sort(this.copy(this.selectedNumbers));
+    this.generatedIndexes = this.generateGrid();
+    this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
+    this.generatedGrid = this.generateGrid2(this.generatedSortedIndexes);
+    console.log(this.generatedGrid);
     this.startCountDownGame();
+    this.playing = true;
+    this.timeText = this.secondsOnGame + ' sec';
   }
 
   startCountDownGame() {
     this.interval = setInterval(() => {
       this.updateTime();
-      this.timeText = this.seconds + ' sec';
+      this.timeText = this.secondsOnGame + ' sec';
     }, 1000);
   }
 
   updateTime() {
-    if (this.seconds > 0) {
-      this.seconds--;
+    if (this.secondsOnGame > 0) {
+      this.secondsOnGame--;
     } else {
       this.end();
     }
   }
 
-  sort(numbers: number[]) {
-    // eslint-disable-next-line arrow-body-style
-    return numbers.sort((a, b) => {
-      return a - b;
-    });
+  startCountDownTurn(){
+    this.intervalTurn = setInterval(() => {
+      this.timeText2 = this.secondsOnGame + ' sec';
+    }, 1000);
+  }
+
+  generateGrid(){
+    const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    const selectedIndexes = [];
+    for (let i = 0; i < 5; i++) {
+      const index = Math.floor(Math.random() * nums.length);
+      selectedIndexes.push(nums[index]);
+      nums.splice(index, 1);
+    }
+    return selectedIndexes;
   }
 
   copy(arr: any[]) {
@@ -86,6 +102,13 @@ export class Game3Page implements OnInit {
       c.push(arr[i]);
     }
     return c;
+  }
+
+  sort(numbers: number[]) {
+    // eslint-disable-next-line arrow-body-style
+    return numbers.sort((a, b) => {
+      return a - b;
+    });
   }
 
   generateNumbers(num: number) {
@@ -99,40 +122,75 @@ export class Game3Page implements OnInit {
     return selectedNumbers;
   }
 
+  generateGrid2(selectedIndexes: number[]){
+    const createdGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for(let i = 0; i < createdGrid.length; i++){
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
+      for(let j = 0; j < selectedIndexes.length; j++){
+        if (i === selectedIndexes[j]){
+          createdGrid[i] = 1;
+        }
+      }
+    }
+    return createdGrid;
+  }
+
   clickOnItem(num: number, index: number) {
     setTimeout(() => {
-      this.clickedItems.push(num);
-      const idx = this.clickedItems.length - 1;
-      if (this.clickedItems[idx] === this.selectedSorted[idx]) {
-        this.result++;
-        console.log(this.result);
-        if (this.clickedItems.length === this.selectedNumbers.length) {
-          console.log('ALL GOOD');
-          this.nextRound();
+      if(this.clickedItems.length < this.generatedSortedIndexes.length){
+        if(this.checkTile(index) === true){
+          this.clickedItems.push(index);
+          if(this.clickedItems.length === this.generatedSortedIndexes.length){
+            this.checkPoint(this.clickedItems);
+          }
+        } else {
+          this.result--;
+          this.nextTurn();
         }
       } else {
-        this.result = this.result - this.selectedNumbers.length;
-        console.log(this.result);
-        console.log('NO GOOD');
-        this.nextRound();
+        this.result--;
+        this.nextTurn();
       }
     }, 250);
   }
 
-  nextRound() {
-    this.round++;
-
-    if (this.round % 3 === 0 && this.selectedNumbers.length < 5) {
-      this.numOfGenNumbers++;
+  checkTile(num: number){
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for(let i = 0; i < this.generatedSortedIndexes.length; i++){
+      if(num === this.generatedSortedIndexes[i]){
+        this.isInTheArray = true;
+        console.log('good');
+        return this.isInTheArray;
+      } else {
+        console.log('jajaj');
+        this.isInTheArray = true;
+      }
     }
-
-    this.selectedNumbers = this.generateNumbers(this.numOfGenNumbers);
-    this.selectedSorted = this.sort(this.copy(this.selectedNumbers));
-    this.clickedItems = [];
   }
 
+  checkPoint(clickedItems: number[]){
+    const clickedSortedItems = this.sort(this.copy(clickedItems));
+    const idx = clickedSortedItems.length - 1;
+    console.log(clickedSortedItems);
+    console.log(this.generatedSortedIndexes);
+    if(clickedSortedItems[idx] === this.generatedSortedIndexes[idx]){
+      this.result++;
+      this.nextTurn();
+    } else {
+      this.result--;
+      this.nextTurn();
+    }
+  }
+
+  nextTurn(){
+    this.clickedItems = [];
+    this.generatedIndexes = this.generateGrid();
+    this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
+    this.generatedGrid = this.generateGrid2(this.generatedSortedIndexes);
+    console.log(this.generatedGrid);
+  }
   async getDataOfGames(){
-    await this.dataOfGame.getDataOfGames('thirdgame').then(() => {
+    await this.dataOfGame.getDataOfGames('tenthgame').then(() => {
       this.playedGames = Number(localStorage.getItem('playedGames'))+1;
       this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
       this.averageScore = this.sumScore / this.playedGames;
@@ -148,7 +206,7 @@ export class Game3Page implements OnInit {
   }
 
   async getDataOfAverageUser(){
-    await this.dataAverageUser.getDataOfAverageUser('thirdgame').then(() => {
+    await this.dataAverageUser.getDataOfAverageUser('tenthgame').then(() => {
       this.playedGamesAverage = Number(localStorage.getItem('playedGamesAverage'))+1;
       this.sumScoreAverage = Number(localStorage.getItem('sumScoreAverage'))+this.result;
       this.averageScoreAverage = this.sumScoreAverage / this.playedGamesAverage;
@@ -212,7 +270,7 @@ export class Game3Page implements OnInit {
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     await this.getDataOfGames();
-    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('thirdgame').update({
+    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('tenthgame').update({
       playedGames: this.playedGames,
       sumScore: this.sumScore,
       bestScore: this.bestScore,
@@ -221,7 +279,7 @@ export class Game3Page implements OnInit {
 
     await this.getDataOfUser();
     await this.getDataOfAverageUser();
-    this.angularFireStore.collection('Statistics').doc(this.average).collection('game').doc('thirdgame').update({
+    this.angularFireStore.collection('Statistics').doc(this.average).collection('game').doc('tenthgame').update({
       playedGames: this.playedGamesAverage,
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 
 @Component({
   selector: 'app-statistics',
@@ -6,16 +7,20 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./statistics.page.scss'],
 })
 export class StatisticsPage implements OnInit {
-  @ViewChild('chartComp') chartComp: ElementRef;
+  sumData: any;
 
-  constructor() { }
+  constructor(private dataOfUser: DataOfUserService) { }
 
   ngOnInit() {
-    console.log('stats');
+    this.dataOfUser.getAllSumStats().then(res => {
+      this.sumData = res;
+    });
+  }
 
-    setTimeout(() => {
-      console.log(this.chartComp.nativeElement)
-    }, 1000);
+  ionViewWillEnter() {
+    this.dataOfUser.getAllSumStats().then(res => {
+      this.sumData = res;
+    });
   }
 
 }
