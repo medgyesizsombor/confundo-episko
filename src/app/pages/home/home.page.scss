@@ -1,6 +1,8 @@
-ion-header{
-    height: auto;
-    background-color: #F19066;
+ion-header {
+    background-image: none;
+}
+ion-toolbar {
+  --ion-background-color: #F19066 !important;
 }
 
 ion-img{
@@ -16,16 +18,10 @@ ion-title{
     width: auto;
     margin: auto;
     text-align: center;
-    padding-top: 20px;
-}
-
-ion-content{
-    --ion-background-color: #F3A683;
 }
 
 ion-card{
-    border: 3px solid black;
-    border-radius: 10px;
+    --ion-background-color: #F3A683;
 }
 
 ion-item{
@@ -35,10 +31,6 @@ ion-item{
 ion-icon{
     color: white;
     text-align: center;
-}
-
-ion-footer{
-    height: 50px;
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {

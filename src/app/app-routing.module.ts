@@ -100,9 +100,14 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: () => import('./pages/game10/game10.module').then( m => m.Game10PageModule),
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule),
     pathMatch: 'full'
+  },
+  {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   }
+
 
 
 

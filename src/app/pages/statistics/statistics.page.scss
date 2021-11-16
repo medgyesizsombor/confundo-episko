@@ -1,6 +1,22 @@
-ion-header::after {
+#pageTitle{
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+
+ion-toolbar {
+  --ion-background-color: #F19066 !important;
+}
+
+ion-header {
     background-image: none;
     box-shadow: var(--my-shadow);
+}
+
+ion-card {
+    --ion-background-color: #F3A683;
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {

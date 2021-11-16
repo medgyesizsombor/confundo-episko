@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { ErrorPageModule } from './pages/error/error.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { AuthGuard } from './guards/auth/auth.guard';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    ErrorPageModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthService, AuthGuard],
   bootstrap: [AppComponent],

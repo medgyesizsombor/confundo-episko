@@ -22,7 +22,7 @@ export class Game9Page implements OnInit {
   playing = false;
   interval: any;
   timeText = '0 sec';
-  seconds = 5;
+  seconds = 120;
   finalResult = '';
 
   globalid = 0;

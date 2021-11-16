@@ -1,78 +1,85 @@
 <ion-header>
-    <ion-title text class="ion-text-center">Games</ion-title>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHomePage()">
+        <ion-icon class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title id="pageTitle"text class="ion-text-center" style="margin-left: -48px">
+      Games
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div id="asd">
-    <ion-title class="games-category">Attention</ion-title>
+<ion-content class="ion-padding">
+  <div id="asd">
+    <ion-title class="games-category ion-padding">Attention</ion-title>
     <ion-list class="game-cards">
-        <ion-card (click)="goToGame('colourgame')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>1st game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('colourgame')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">1st game</ion-card-content>
+      </ion-card>
 
-        <ion-card (click)="goToGame('go-nogogame')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>2nd game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('go-nogogame')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">2nd game</ion-card-content>
+      </ion-card>
 
-        <ion-card (click)="goToGame('game3')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>3rd game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game3')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">3rd game</ion-card-content>
+      </ion-card>
 
-        <ion-card (click)="goToGame('game4')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>4th game</ion-card-content>
-        </ion-card>  
-    </ion-list>    
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game4')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">4th game</ion-card-content>
+      </ion-card>
+    </ion-list>
 
-
-
-    <ion-title class="games-category">Problem solving</ion-title>
+    <ion-title class="games-category ion-padding">Problem solving</ion-title>
     <ion-list class="game-cards">
-        <ion-card (click)="goToGame('game5')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>1st game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game5')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">1st game</ion-card-content>
+      </ion-card>
 
-        <ion-card (click)="goToGame('game6')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>2nd game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game6')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">2nd game</ion-card-content>
+      </ion-card>
 
-        <ion-card (click)="goToGame('game7')">
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>3rd game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game7')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">3rd game</ion-card-content>
+      </ion-card>
 
-        <ion-card>
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>4th game</ion-card-content>
-        </ion-card>  
-    </ion-list>    
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game8')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">4th game</ion-card-content>
+      </ion-card>
+    </ion-list>
 
-    <ion-title class="games-category">Memory</ion-title>
-    <ion-list class="game-cards">
-        <ion-card>
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>1st game</ion-card-content>
-        </ion-card>
+    <ion-title class="games-category ion-padding">Memory</ion-title>
+    <ion-list class="game-cards ion-padding">
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game9')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">1st game</ion-card-content>
+      </ion-card>
 
-        <ion-card>
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>2nd game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game10')">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">2nd game</ion-card-content>
+      </ion-card>
 
-        <ion-card>
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>3rd game</ion-card-content>
-        </ion-card>
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">3rd game</ion-card-content>
+      </ion-card>
 
-        <ion-card>
-            <ion-img src="assets/img/unnamed.png"></ion-img>
-            <ion-card-content>4th game</ion-card-content>
-        </ion-card>  
-    </ion-list> 
-</div>   
+      <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}">
+        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-card-content class="ion-padding ion-margin">4th game</ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
 </ion-content>

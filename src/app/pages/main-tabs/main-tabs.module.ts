@@ -8,6 +8,10 @@ import { MainTabsPageRoutingModule } from './main-tabs-routing.module';
 
 import { MainTabsPage } from './main-tabs.page';
 import { StatisticsPageModule } from '../statistics/statistics.module';
+import { GamesPageModule } from '../games/games.module';
+import { HomePageModule } from '../home/home.module';
+import { ProfilePageModule } from '../profile/profile.module';
+import { SettingsPageModule } from '../settings/settings.module';
 
 @NgModule({
   imports: [
@@ -15,7 +19,11 @@ import { StatisticsPageModule } from '../statistics/statistics.module';
     FormsModule,
     IonicModule,
     MainTabsPageRoutingModule,
-    StatisticsPageModule
+    StatisticsPageModule,
+    GamesPageModule,
+    HomePageModule,
+    ProfilePageModule,
+    SettingsPageModule
   ],
   declarations: [MainTabsPage]
 })

@@ -5,26 +5,36 @@
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title text class="ion-text-center" style="margin-left: -48px;">Colour Game</ion-title>
+    <ion-title text class="ion-text-center" style="margin-left: -48px">
+      Game3
+    </ion-title>
   </ion-toolbar>
+  <ion-item *ngIf="playing">
+    <ion-text>Time remeaning</ion-text>
+    <ion-text slot="end">{{timeText}}</ion-text>
+  </ion-item>
+  <ion-item *ngIf="playing">
+    <ion-text>Points</ion-text>
+    <ion-text slot="end">{{result}}</ion-text>
+  </ion-item>
 </ion-header>
 
 <ion-content class="ion-padding">
-
   <div *ngIf="!playing && !ended">
-    <ion-button (click)="start()">
-      Let's start!
-    </ion-button>
+    <ion-button (click)="start()"> Let's start! </ion-button>
   </div>
 
   <div *ngIf="playing" class="ion-padding">
     <div>
-      <ion-label>
-        {{timeText}}
-      </ion-label>
+      <ion-label> {{timeText}} </ion-label>
     </div>
 
-    <ion-card *ngFor="let num of selectedNumbers; let i = index" (click)="clickOnItem(num, i)" class="ion-activatable ripple-parent" [class.hidden]="clickedItems.includes(num)">
+    <ion-card
+      *ngFor="let num of selectedNumbers; let i = index"
+      (click)="clickOnItem(num, i)"
+      class="ion-activatable ripple-parent"
+      [class.hidden]="clickedItems.includes(num)"
+    >
       <div class="container">
         <h3>{{ num }}</h3>
       </div>

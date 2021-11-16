@@ -13,11 +13,10 @@ import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.se
   styleUrls: ['./game10.page.scss'],
 })
 export class Game10Page implements OnInit {
-
-  generatedGrid = [];
+  generatedGrids = [];
   timeText = '';
   timeText2 = '';
-  secondsOnGame = 5;
+  secondsOnGame = 120;
   playing = false;
   generatedIndexes = [];
   generatedSortedIndexes = [];
@@ -28,7 +27,7 @@ export class Game10Page implements OnInit {
   result = 0;
   isInTheArray: boolean;
 
-  finalResult= '';
+  finalResult = '';
   playedGames: number;
   sumScore: number;
   averageScore: number;
@@ -45,22 +44,28 @@ export class Game10Page implements OnInit {
   sumScoreAverage = 0;
   averageScoreAverage = 0;
   drawChart = false;
+  waiting: boolean;
 
-  constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
-    private authService: AuthService, private dataOfGame: DataOfGameService,
-    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService) { }
+  constructor(
+    private angularFireStore: AngularFirestore,
+    private angularFireAuth: AngularFireAuth,
+    private authService: AuthService,
+    private dataOfGame: DataOfGameService,
+    private dataOfUser: DataOfUserService,
+    private dataAverageUser: DataAverageUserService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  start(){
-    this.generatedIndexes = this.generateGrid();
+  start() {
+    this.generatedIndexes = this.generateIndexes();
     this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
-    this.generatedGrid = this.generateGrid2(this.generatedSortedIndexes);
-    console.log(this.generatedGrid);
+    this.generatedGrids = this.generateGrid(this.generatedIndexes);
+    console.log(this.generatedGrids);
     this.startCountDownGame();
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
+    this.showAndHideSelecteds(2000);
   }
 
   startCountDownGame() {
@@ -78,13 +83,13 @@ export class Game10Page implements OnInit {
     }
   }
 
-  startCountDownTurn(){
+  startCountDownTurn() {
     this.intervalTurn = setInterval(() => {
       this.timeText2 = this.secondsOnGame + ' sec';
     }, 1000);
   }
 
-  generateGrid(){
+  generateIndexes() {
     const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     const selectedIndexes = [];
     for (let i = 0; i < 5; i++) {
@@ -111,36 +116,51 @@ export class Game10Page implements OnInit {
     });
   }
 
-  generateNumbers(num: number) {
-    const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const selectedNumbers = [];
-    for (let i = 0; i < num; i++) {
-      const index = Math.floor(Math.random() * nums.length);
-      selectedNumbers.push(nums[index]);
-      nums.splice(index, 1);
-    }
-    return selectedNumbers;
-  }
-
-  generateGrid2(selectedIndexes: number[]){
-    const createdGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for(let i = 0; i < createdGrid.length; i++){
+  generateGrid(selectedIndexes: number[]) {
+    const gridItems = [];
+    for (let i = 0; i < 12; i++) {
+      const item = {
+        num: i,
+        show: false,
+        selected: false,
+        colour: '',
+      };
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
-      for(let j = 0; j < selectedIndexes.length; j++){
-        if (i === selectedIndexes[j]){
-          createdGrid[i] = 1;
-        }
+      if (selectedIndexes.includes(i)) {
+        item.selected = true;
       }
+      gridItems.push(item);
     }
-    return createdGrid;
+    console.log(gridItems);
+    return gridItems;
   }
 
-  clickOnItem(num: number, index: number) {
+  clickOnItem(item: any, index: number) {
+    if (this.waiting) {
+      return;
+    }
+
+    /*const selectedNumbers = this.getSelectedNumbers();
+    if (selectedNumbers.includes(item.num)) {
+      item.show = true;
+      this.clickedItems.push(item);
+
+      if (this.clickedItems.length === selectedNumbers.length) {
+        this.result += 1;
+        this.nextRound();
+        console.log('WIN');
+      }
+    } else {
+      this.nextRound();
+    }*/
+
     setTimeout(() => {
-      if(this.clickedItems.length < this.generatedSortedIndexes.length){
-        if(this.checkTile(index) === true){
+      if (this.clickedItems.length < this.generatedSortedIndexes.length) {
+        if (this.checkTile(index) === true) {
+          item.colour = 'white';
+          item.show = true;
           this.clickedItems.push(index);
-          if(this.clickedItems.length === this.generatedSortedIndexes.length){
+          if (this.clickedItems.length === this.generatedSortedIndexes.length) {
             this.checkPoint(this.clickedItems);
           }
         } else {
@@ -154,10 +174,24 @@ export class Game10Page implements OnInit {
     }, 250);
   }
 
-  checkTile(num: number){
+  getSelectedGrids() {
+    return this.generatedGrids.filter(item => item.selected === true);
+  }
+
+  getSelectedNumbers() {
+    const numbers = [];
+    const selecteds = this.getSelectedGrids();
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
-    for(let i = 0; i < this.generatedSortedIndexes.length; i++){
-      if(num === this.generatedSortedIndexes[i]){
+    for (let i = 0; i < selecteds.length; i++) {
+      numbers.push(selecteds[i].num);
+    }
+    return numbers;
+  }
+
+  checkTile(num: number) {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < this.generatedSortedIndexes.length; i++) {
+      if (num === this.generatedSortedIndexes[i]) {
         this.isInTheArray = true;
         console.log('good');
         return this.isInTheArray;
@@ -168,12 +202,12 @@ export class Game10Page implements OnInit {
     }
   }
 
-  checkPoint(clickedItems: number[]){
+  checkPoint(clickedItems: number[]) {
     const clickedSortedItems = this.sort(this.copy(clickedItems));
     const idx = clickedSortedItems.length - 1;
     console.log(clickedSortedItems);
     console.log(this.generatedSortedIndexes);
-    if(clickedSortedItems[idx] === this.generatedSortedIndexes[idx]){
+    if (clickedSortedItems[idx] === this.generatedSortedIndexes[idx]) {
       this.result++;
       this.nextTurn();
     } else {
@@ -182,20 +216,72 @@ export class Game10Page implements OnInit {
     }
   }
 
-  nextTurn(){
-    this.clickedItems = [];
-    this.generatedIndexes = this.generateGrid();
-    this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
-    this.generatedGrid = this.generateGrid2(this.generatedSortedIndexes);
-    console.log(this.generatedGrid);
+  showAndHideSelecteds(timeout: number, memoryTimeout?: number) {
+    this.waiting = true;
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < this.generatedGrids.length; i++) {
+      if (this.generatedGrids[i].selected) {
+        this.generatedGrids[i].show = true;
+      }
+    }
+
+    console.log('WAITING');
+    this.inactivateAll();
+    setTimeout(() => {
+      this.hideAll();
+      if (memoryTimeout) {
+        console.log('MEMORIYWAITNG');
+        setTimeout(() => {
+          console.log('LESSGO');
+          this.activateAll();
+          this.waiting = false;
+        }, memoryTimeout);
+      } else {
+        this.activateAll();
+        this.waiting = false;
+      }
+    }, timeout);
   }
-  async getDataOfGames(){
+
+  hideAll() {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < this.generatedGrids.length; i++) {
+      this.generatedGrids[i].show = false;
+    }
+  }
+
+  nextRound() {
+    this.start();
+  }
+
+  inactivateAll() {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < this.generatedGrids.length; i++) {
+      this.generatedGrids[i].colour = 'medium';
+    }
+  }
+
+  activateAll() {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < this.generatedGrids.length; i++) {
+      this.generatedGrids[i].colour = '';
+    }
+  }
+
+  nextTurn() {
+    this.clickedItems = [];
+    this.generatedIndexes = this.generateIndexes();
+    this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
+    this.generatedGrids = this.generateGrid(this.generatedSortedIndexes);
+    console.log(this.generatedGrids);
+  }
+  async getDataOfGames() {
     await this.dataOfGame.getDataOfGames('tenthgame').then(() => {
-      this.playedGames = Number(localStorage.getItem('playedGames'))+1;
-      this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
+      this.playedGames = Number(localStorage.getItem('playedGames')) + 1;
+      this.sumScore = Number(localStorage.getItem('sumScore')) + this.result;
       this.averageScore = this.sumScore / this.playedGames;
       this.bestScore = Number(localStorage.getItem('bestScore'));
-      if(this.bestScore < this.result || this.bestScore === 0){
+      if (this.bestScore < this.result || this.bestScore === 0) {
         this.bestScore = this.result;
       }
       console.log(this.playedGames + 'playedGames');
@@ -205,10 +291,12 @@ export class Game10Page implements OnInit {
     });
   }
 
-  async getDataOfAverageUser(){
+  async getDataOfAverageUser() {
     await this.dataAverageUser.getDataOfAverageUser('tenthgame').then(() => {
-      this.playedGamesAverage = Number(localStorage.getItem('playedGamesAverage'))+1;
-      this.sumScoreAverage = Number(localStorage.getItem('sumScoreAverage'))+this.result;
+      this.playedGamesAverage =
+        Number(localStorage.getItem('playedGamesAverage')) + 1;
+      this.sumScoreAverage =
+        Number(localStorage.getItem('sumScoreAverage')) + this.result;
       this.averageScoreAverage = this.sumScoreAverage / this.playedGamesAverage;
     });
   }
@@ -238,7 +326,7 @@ export class Game10Page implements OnInit {
       [80, 84],
       [85, 89],
       [90, 94],
-      [95, 99]
+      [95, 99],
     ];
 
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
@@ -255,7 +343,7 @@ export class Game10Page implements OnInit {
     }
   }
 
-  async getDataOfUser(){
+  async getDataOfUser() {
     await this.dataOfUser.getDataOfUser().then(() => {
       this.userBirthdate = localStorage.getItem('birthdate');
     });
@@ -265,25 +353,35 @@ export class Game10Page implements OnInit {
     this.getAverageInterval(this.userAge);
   }
 
-  async end(){
+  async end() {
     this.ended = true;
     this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     await this.getDataOfGames();
-    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('tenthgame').update({
-      playedGames: this.playedGames,
-      sumScore: this.sumScore,
-      bestScore: this.bestScore,
-      averageScore: this.averageScore
-    });
+    this.angularFireStore
+      .collection('Users')
+      .doc(this.uid)
+      .collection('game')
+      .doc('tenthgame')
+      .update({
+        playedGames: this.playedGames,
+        sumScore: this.sumScore,
+        bestScore: this.bestScore,
+        averageScore: this.averageScore,
+      });
 
     await this.getDataOfUser();
     await this.getDataOfAverageUser();
-    this.angularFireStore.collection('Statistics').doc(this.average).collection('game').doc('tenthgame').update({
-      playedGames: this.playedGamesAverage,
-      sumScore: this.sumScoreAverage,
-      averageScore: this.averageScoreAverage,
-    });
+    this.angularFireStore
+      .collection('Statistics')
+      .doc(this.average)
+      .collection('game')
+      .doc('tenthgame')
+      .update({
+        playedGames: this.playedGamesAverage,
+        sumScore: this.sumScoreAverage,
+        averageScore: this.averageScoreAverage,
+      });
 
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
