@@ -1,5 +1,22 @@
 <ion-header>
-  <ion-title text class="ion-text-center">Go/No-go game</ion-title>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title text class="ion-text-center" style="margin-left: -48px;">
+      Go/No-Go Game
+    </ion-title>
+  </ion-toolbar>
+  <ion-item *ngIf="playing">
+    <ion-text>Time remeaning</ion-text>
+    <ion-text slot="end">{{timeText}}</ion-text>
+  </ion-item>
+  <ion-item *ngIf="playing">
+    <ion-text>Points</ion-text>
+    <ion-text slot="end">{{result}}</ion-text>
+  </ion-item>
 </ion-header>
 
 <ion-content class="ion-padding">

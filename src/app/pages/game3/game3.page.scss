@@ -1,13 +1,14 @@
-/*.itemBox{
-    border: black solid;
-    border-width: 1px;
-    border-radius: 25px;
-    width: 80%;
-    margin: 15px auto 0 auto;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: bold;
-}*/
+ion-title{
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+}
+
+ion-toolbar {
+--ion-background-color: #F19066 !important;
+}
 
 .hidden {
   visibility: hidden;

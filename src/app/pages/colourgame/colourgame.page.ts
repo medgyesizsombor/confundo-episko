@@ -22,7 +22,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 2;
+  seconds = 120;
   timeText: string;
   playedGames = 0;
   averageScore = 0;
@@ -187,17 +187,6 @@ export class ColourgamePage implements OnInit {
   }
 
   async end() {
-    /*valami.then(res => {
-
-    }).catch(err => {
-
-    })
-
-    try {
-      let res = await valami();
-    } catch (err) {
-
-    }*/
     this.lbl1text = null;
     this.lbl2text = null;
     this.finalResult = 'You have got ' + this.result + ' points!';

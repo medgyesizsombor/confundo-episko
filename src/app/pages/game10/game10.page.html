@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
     <ion-title text class="ion-text-center" style="margin-left: -48px">
-      Game3
+      Grid game
     </ion-title>
   </ion-toolbar>
   <ion-item *ngIf="playing">
@@ -19,30 +19,28 @@
   </ion-item>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div *ngIf="!playing && !ended">
-    <ion-button (click)="start()"> Let's start! </ion-button>
-  </div>
-
-  <div *ngIf="playing" class="ion-padding">
-    <div>
-      <ion-label> {{timeText}} </ion-label>
-    </div>
-
-    <ion-card
-      *ngFor="let num of selectedNumbers; let i = index"
-      (click)="clickOnItem(num, i)"
-      class="ion-activatable ripple-parent"
-      [class.hidden]="clickedItems.includes(num)"
-    >
-      <div class="container">
-        <h3>{{ num }}</h3>
-      </div>
-      <ion-ripple-effect></ion-ripple-effect>
-    </ion-card>
-  </div>
+<ion-content>
+  <ion-grid *ngIf="playing">
+    <ion-row>
+      <ion-col size="4" *ngFor="let item of generatedGrids; let i = index">
+        <ion-card
+          (click)="clickOnItem(item, i)"
+          class="ion-activatable ripple-parent">
+          <div class="container" *ngIf="item.show">
+            <h3>{{ item.num }}</h3>
+          </div>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <div *ngIf="drawChart" class="ion-padding">
     <app-user-vs-average-chart></app-user-vs-average-chart>
   </div>
 </ion-content>
+<ion-footer *ngIf="!playing">
+  <ion-toolbar>
+    <ion-button expand="block" class="ion-margin" (click)="start()">Start game</ion-button>
+  </ion-toolbar>
+</ion-footer>

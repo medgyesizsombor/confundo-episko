@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -9,9 +10,18 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class SettingsPage implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  isMobile: boolean;
+
+  constructor(private authService: AuthService, private router: Router,
+    private platform: Platform) { }
 
   ngOnInit() {
+    this.styleCard();
+  }
+
+  ionViewWillEnter(){
+    this.isMobile = this.platform.is('mobile');
+    console.log(this.isMobile + 'change');
   }
 
   logout(){
@@ -23,6 +33,16 @@ export class SettingsPage implements OnInit {
     if(url){
       this.router.navigate([url]);
     }
+  }
+
+  styleCard(){
+    if(!this.isMobile){
+      return {width: '60%', margin: '20px auto'};
+    }
+  }
+
+  goHomePage(){
+    this.router.navigate(['main-tabs/home']);
   }
 
 }

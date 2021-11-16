@@ -1,14 +1,13 @@
-ion-header{
-    height: 75px;
-    background-color: #F19066;
-}
-
 ion-title{
     font-size: 30px;
     color: white;
     text-align: center;
     margin: auto;
     padding: 20px;
+}
+
+ion-toolbar {
+  --ion-background-color: #F19066 !important;
 }
 
 

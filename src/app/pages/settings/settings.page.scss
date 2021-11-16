@@ -1,34 +1,22 @@
-ion-header{
-    background-color: #F19066;
-    min-height: 50px;
-    height: auto;
-}
-
-ion-title{
+#pageTitle{
     font-size: 30px;
     color: white;
-    width: auto;
+    text-align: center;
     margin: auto;
     padding: 20px;
 }
 
-ion-content{
+ion-toolbar {
+  --ion-background-color: #F19066 !important;
+}
+
+ion-header {
+    background-image: none;
+    box-shadow: var(--my-shadow);
+}
+
+ion-card {
     --ion-background-color: #F3A683;
-}
-
-ion-icon{
-    color: white;
-    text-align: center;
-}
-
-ion-card{
-    border: 2px solid black;
-    border-radius: 25px;
-    min-height: 50px;
-}
-
-ion-label{
-    font-size: 25px;
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {

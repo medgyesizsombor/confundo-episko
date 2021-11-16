@@ -1,29 +1,21 @@
-ion-header{
-    height: auto;
-    background-color: #F19066;
-}
-
-ion-title{
+#pageTitle{
     font-size: 30px;
     color: white;
-    width: auto;
+    text-align: center;
     margin: auto;
     padding: 20px;
 }
 
-ion-content{
-    --ion-background-color: #F3A683;
-    
-}
-
-ion-content-title{
-    padding-top: 15px!important;
+ion-toolbar {
+  --ion-background-color: #F19066 !important;
 }
 
 ion-card {
-    width: auto !important;
-    min-width: 25% !important;
-    max-width: 35% !important;
+    --ion-background-color: #F3A683;
+}
+
+ion-card-content{
+    --ion-background-color: #FFFFFF;
 }
 
 .game-cards {
@@ -33,9 +25,7 @@ ion-card {
 }
 
 .games-category{
-    color: white;
-    padding: 20px 20px 0px 10px;
-    font-size: 20px;
+    color: #F19066!important;
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {

@@ -121,7 +121,6 @@ export class Game3Page implements OnInit {
 
   nextRound() {
     this.round++;
-    console.log(this.round, this.numOfGenNumbers);
 
     if (this.round % 3 === 0 && this.selectedNumbers.length < 5) {
       this.numOfGenNumbers++;
