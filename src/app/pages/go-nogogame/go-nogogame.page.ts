@@ -15,10 +15,10 @@ import { DataAverageUserService } from 'src/app/services/data-average-user/data-
 })
 export class GoNogogamePage implements OnInit {
 
-  text: number;
+  numberCard: number;
   task = '';
   counter = 0;
-  pushCounter = 0;
+  generatedNumberCardCounter = 0;
   result = 0;
   finalResult = '';
   timeText = '';
@@ -31,6 +31,7 @@ export class GoNogogamePage implements OnInit {
   averageScore = 0;
   sumScore = 0;
   bestScore = 0;
+  generatedTaskNumber = 0;
 
 
   playing = false;
@@ -48,68 +49,42 @@ export class GoNogogamePage implements OnInit {
   sumScoreAverage = 0;
   averageScoreAverage = 0;
 
+  drawChart: boolean;
+
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService) { }
 
   ngOnInit() {
-    this.task = 'Press button when it is even number';
   }
 
   start(){
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
     this.timeText2 = this.secondsOnTurn + ' sec';
+    this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
     this.startCountDownGame();
-    this.changeNumber();
+    this.generateNumberCard();
     this.startCountDownTurn();
   }
 
-  changeNumber(){
-    this.text = Math.floor(Math.random() * 20 - 0) + 0;
+  generateTask(){
+    this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
   }
 
-  pushed($event: PointerEvent){
+  generateNumberCard(){
+    this.numberCard = Math.floor(Math.random() * 4 - 0) + 0;
+  }
+
+  pushed(){
     this.secondsOnTurn = 2;
     this.timeText2 = this.secondsOnTurn + ' sec';
-    this.pushCounter++;
-    this.checkTask();
-    console.log(this.pushCounter);
+    this.generatedNumberCardCounter++;
+    this.checkPoint();
+    console.log(this.generatedNumberCardCounter);
+    this.generateNumberCard();
   }
 
-  firstTask(){
-    if(this.text % 2 === 0) {
-      this.result = this.result + 1;
-
-      console.log('Yeah');
-      this.result = this.result + 1;
-      console.log(this.result);
-      this.changeNumber();
-
-    } else {
-      console.log('upsi');
-      this.result = this.result - 2;
-      console.log(this.result);
-      this.changeNumber();
-    }
-  }
-
-  secondTask(){
-    if(this.text >= 10){
-      this.result = this.result + 1;
-
-      console.log('Yeah');
-      this.result = this.result + 1;
-      console.log(this.result);
-      this.changeNumber();
-
-    } else {
-      console.log('upsi');
-      this.result = this.result - 2;
-      console.log(this.result);
-      this.changeNumber();
-    }
-  }
 
   startCountDownGame() {
     this.intervalGame = setInterval(() => {
@@ -132,46 +107,44 @@ export class GoNogogamePage implements OnInit {
       } else {
         this.notPushed();
         this.secondsOnTurn = 2;
-        this.changeNumber();
+        this.generateNumberCard();
       }
     } else {
       this.end();
     }
   }
 
-  checkTask(){
-    if(this.pushCounter < 10){
-      this.firstTask();
-    } else if(this.pushCounter === 10) {
-      this.task = 'Push button when it is equal or more than 9';
-      this.firstTask();
+  checkPoint(){
+    if (this.numberCard === this.generatedTaskNumber){
+      console.log('minusz pont a pushednál');
+      this.result--;
     } else {
-      this.secondTask();
+      console.log('plusz pont a pushednál');
+      this.result++;
+    }
+
+    if(this.generatedNumberCardCounter % 10 === 0){
+      this.generateTask();
     }
   }
 
   notPushed(){
-    if(this.firstTask){
-        if(this.text % 2 === 1){
-          this.result = this.result + 1;
-          console.log(this.result);
-        } else {
-          this.result = this.result - 2;
-          console.log(this.result);
-        }
+    if(this.numberCard === this.generatedTaskNumber){
+      this.result++;
+      console.log('plusz pont a notpushednál');
     } else {
-      if(this.text < 10){
-        this.result = this.result + 1;
-        console.log(this.result);
-      } else {
-        this.result = this.result - 2;
-        console.log(this.result);
-      }
+      this.result--;
+      console.log('minusz pont a pushednál');
     }
+
+    if(this.generatedNumberCardCounter % 10 === 0){
+      this.generateTask();
+    }
+
   }
 
   async getDataOfGames(){
-    await this.dataOfGame.getDataOfGames('go-nogogame').then(() => {
+    await this.dataOfGame.getDataOfGames('goNogoGame').then(() => {
       this.playedGames = Number(localStorage.getItem('playedGames'))+1;
       this.sumScore = Number(localStorage.getItem('sumScore'))+this.result;
       this.averageScore = this.sumScore / this.playedGames;
@@ -187,7 +160,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   async getDataOfAverageUser(){
-    await this.dataAverageUser.getDataOfAverageUser('go-nogogame').then(() => {
+    await this.dataAverageUser.getDataOfAverageUser('goNogoGame').then(() => {
       this.playedGamesAverage = Number(localStorage.getItem('playedGamesAverage'))+1;
       this.sumScoreAverage = Number(localStorage.getItem('sumScoreAverage'))+this.result;
       this.averageScoreAverage = this.sumScoreAverage / this.playedGamesAverage;
@@ -272,7 +245,7 @@ export class GoNogogamePage implements OnInit {
     this.playing = false;
     this.ended = true;
     await this.getDataOfGames();
-    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('go-nogogame').update({
+    this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc('goNogoGame').update({
       playedGames: this.playedGames,
       sumScore: this.sumScore,
       bestScore: this.bestScore,
@@ -281,7 +254,7 @@ export class GoNogogamePage implements OnInit {
 
     await this.getDataOfUser();
     await this.getDataOfAverageUser();
-    this.angularFireStore.collection('Statistics').doc(this.average).collection('game').doc('go-nogogame').update({
+    this.angularFireStore.collection('Statistics').doc(this.average).collection('game').doc('goNogoGame').update({
       playedGames: this.playedGamesAverage,
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
@@ -289,10 +262,9 @@ export class GoNogogamePage implements OnInit {
 
     clearInterval(this.intervalTurn);
     clearInterval(this.intervalGame);
-    localStorage.removeItem('playedGames');
-    localStorage.removeItem('sumScore');
-    localStorage.removeItem('bestScore');
-    localStorage.removeItem('averageScore');
+    localStorage.setItem('result', String(this.result));
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    this.drawChart = true;
   }
 
 }

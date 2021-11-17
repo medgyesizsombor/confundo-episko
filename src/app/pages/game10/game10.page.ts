@@ -157,7 +157,7 @@ export class Game10Page implements OnInit {
     setTimeout(() => {
       if (this.clickedItems.length < this.generatedSortedIndexes.length) {
         if (this.checkTile(index) === true) {
-          item.colour = 'white';
+          item.colour = 'succes';
           item.show = true;
           this.clickedItems.push(index);
           if (this.clickedItems.length === this.generatedSortedIndexes.length) {
@@ -273,6 +273,7 @@ export class Game10Page implements OnInit {
     this.generatedIndexes = this.generateIndexes();
     this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
     this.generatedGrids = this.generateGrid(this.generatedSortedIndexes);
+    this.showAndHideSelecteds(2000);
     console.log(this.generatedGrids);
   }
   async getDataOfGames() {
