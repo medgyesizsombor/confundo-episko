@@ -22,8 +22,7 @@
 <ion-content class="ion-padding ion-text-center">
   <div id="asd">
     <ion-slides *ngIf="!playing && !ended">
-      
-        <ion-slide>
+        <ion-slide class="ion-padding">
           <div class="slide">
             <img style="height: 300px; width: 300px;" src=""/>
             <h2>Colour Game</h2>
@@ -32,7 +31,7 @@
           </div>
         </ion-slide>
 
-        <ion-slide>
+        <ion-slide class="ion-padding">
           <img style="height: 300px; width: 300px;" src=""/>
           <h2>How to play?</h2>
           <p>You have only 120 seconds to play.</p>
@@ -40,35 +39,47 @@
           <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
         </ion-slide>
 
-        <ion-slide>
+        <ion-slide class="ion-padding">
           <img style="height: 300px; width: 300px;" src=""/>
           <h2>Ready to Play?</h2>
           <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
         </ion-slide>
-
     </ion-slides>
 
   
     <div id="mid" *ngIf="playing">
-      <div>
-        <ion-label>
-          {{timeText}}
-        </ion-label>
-      </div>
+      <ion-grid class="ion-padding">
+        <ion-row class="ion-padding">
+          <ion-col></ion-col>
+          <ion-col>
+            <ion-label class="text" [style.color]="lbl1color">
+              {{lbl1text}}
+            </ion-label>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row class="ion-padding">
+          <ion-col></ion-col>
+          <ion-col>
+            <ion-label class="text" [style.color]="lbl2color">
+            {{lbl2text}}
+          </ion-label>
+        </ion-col>
+          <ion-col>
+          </ion-col>
+        </ion-row>
+        <ion-row  class="ion-padding">
+          <ion-col></ion-col>
+          <ion-col>
+              <ion-button class="ion-padding" (click)="leftButton($event)">false</ion-button>
+          </ion-col>
+          <ion-col>
+              <ion-button class="ion-padding" (click)="rightButton($event)">true</ion-button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
 
-      <ion-label class="text" [style.color]="lbl1color">
-        {{lbl1text}}
-      </ion-label>
-      <br>
-      <ion-label class="text" [style.color]="lbl2color">
-        {{lbl2text}}
-      </ion-label>
-
-      <div>
-        <ion-label>
-          {{result}}
-        </ion-label>
-      </div>
     </div>
 
     <div *ngIf="ended">
@@ -78,12 +89,7 @@
     </div>
 
     <div class="ion-padding">
-      <div id="left" class="ion-float-left" *ngIf="playing" (click)="leftButton($event)">
-        <ion-button>false</ion-button>
-      </div>
-      <div id="right" class="ion-float-end" *ngIf="playing" (click)="rightButton($event)">
-        <ion-button>true</ion-button>
-      </div>
+      
     </div>
   </div>
 

@@ -20,11 +20,30 @@
 </ion-header>
 
 <ion-content>
-    <div *ngIf="!playing && !ended">
-      <ion-button (click)="onStart()">
-        Let's start!
-      </ion-button>
-    </div>
+  <ion-slides *ngIf="!playing && !ended">
+    <ion-slide class="ion-padding">
+      <div class="slide">
+        <img style="height: 300px; width: 300px;" src=""/>
+        <h2>Colour Game</h2>
+        <p>The <b>colour game</b> is a game to develop your focus.</p>
+        <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="ion-padding">
+      <img style="height: 300px; width: 300px;" src=""/>
+      <h2>How to play?</h2>
+      <p>You have only 120 seconds to play.</p>
+      <p>As you can see there are two labels. You have to <b>press</b> or the true button if the text of the first label and the colour of the bottom label is the same, either you have to <b>press</b> the false button if it is not true.</p>
+      <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+    </ion-slide>
+
+    <ion-slide class="ion-padding">
+      <img style="height: 300px; width: 300px;" src=""/>
+      <h2>Ready to Play?</h2>
+      <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </ion-slide>
+</ion-slides>
     <div id="mid" *ngIf="playing">
       <div>
         <ion-label>
