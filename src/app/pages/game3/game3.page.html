@@ -45,12 +45,9 @@
     </ion-slide>
 </ion-slides>
 
-  <div *ngIf="playing" class="ion-padding">
-    <div>
-      <ion-label> {{timeText}} </ion-label>
-    </div>
+  <ion-card *ngIf="playing" class="ion-padding">
 
-    <ion-card
+    <ion-card id="numbers"
       *ngFor="let num of selectedNumbers; let i = index"
       (click)="clickOnItem(num, i)"
       class="ion-activatable ripple-parent"
@@ -61,7 +58,7 @@
       </div>
       <ion-ripple-effect></ion-ripple-effect>
     </ion-card>
-  </div>
+  </ion-card>
 
   <div *ngIf="drawChart" class="ion-padding">
     <app-user-vs-average-chart></app-user-vs-average-chart>

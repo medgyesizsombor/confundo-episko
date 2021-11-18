@@ -23,7 +23,7 @@
 
   <div id="asd">
 
-    <!--<ion-slides *ngIf="!playing && !ended">
+    <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
           <img style="height: 300px; width: 300px;" src=""/>
@@ -46,19 +46,18 @@
         <h2>Ready to Play?</h2>
         <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-  </ion-slides>-->
+  </ion-slides>
 
-  <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-
-    <div *ngIf="playing">
-      <ion-card>
-        <ion-card-content>{{generatedTaskNumber}}</ion-card-content>
-      </ion-card>
-      <ion-card>
+    <ion-card *ngIf="playing" class="ion-padding">
+      <ion-card class="ion-padding">
         <ion-label>
-          {{timeText}}, {{timeText2}}
+          {{timeText2}}
         </ion-label>
       </ion-card>
+      <ion-card>
+        <ion-card-content>{{generatedTaskNumberText}}</ion-card-content>
+      </ion-card>
+      
 
       <ion-item class="asd123" lines="none"> 
         <ion-label class="ion-text-center">
@@ -67,7 +66,7 @@
       </ion-item>
 
       <ion-button (click)="pushed()">True!</ion-button>
-    </div>
+    </ion-card>
 
     <div *ngIf="!playing && ended">
       <ion-label>

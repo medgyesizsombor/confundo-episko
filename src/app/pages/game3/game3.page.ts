@@ -20,7 +20,7 @@ export class Game3Page implements OnInit {
   clickedItems = [];
   result = 0;
   timeText = '';
-  seconds = 5;
+  seconds = 120;
   interval: any;
   playing = false;
   ended = false;

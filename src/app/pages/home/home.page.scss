@@ -1,8 +1,10 @@
-ion-header {
-    background-image: none;
-}
-ion-toolbar {
-  --ion-background-color: #F19066 !important;
+.header {
+    background-color: #F3A683;
+    border-bottom-left-radius: 200px 50px;
+    border-bottom-right-radius: 200px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 ion-img{

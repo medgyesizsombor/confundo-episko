@@ -53,8 +53,8 @@ ion-toolbar {
   --ion-background-color: #f19066 !important;
 }
 
-ion-card {
-  background-color: #f19066;
+#numbers {
+  background-color: #ffffff;
   border: none;
   border-radius: 10px;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
@@ -69,6 +69,6 @@ ion-card {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: #000000;
   }
 }

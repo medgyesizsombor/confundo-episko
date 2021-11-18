@@ -65,7 +65,7 @@ export class Game10Page implements OnInit {
     this.startCountDownGame();
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
-    this.showAndHideSelecteds(2000);
+    this.showAndHideSelecteds(2000, 1000);
   }
 
   startCountDownGame() {
@@ -123,7 +123,8 @@ export class Game10Page implements OnInit {
         num: i,
         show: false,
         selected: false,
-        colour: '',
+        colour: 'primary',
+        clicked: false
       };
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
       if (selectedIndexes.includes(i)) {
@@ -154,24 +155,30 @@ export class Game10Page implements OnInit {
       this.nextRound();
     }*/
 
-    setTimeout(() => {
-      if (this.clickedItems.length < this.generatedSortedIndexes.length) {
-        if (this.checkTile(index) === true) {
-          item.colour = 'succes';
-          item.show = true;
-          this.clickedItems.push(index);
-          if (this.clickedItems.length === this.generatedSortedIndexes.length) {
-            this.checkPoint(this.clickedItems);
-          }
-        } else {
-          this.result--;
-          this.nextTurn();
+    if (this.clickedItems.length < this.generatedSortedIndexes.length) {
+      if (this.checkTile(index) === true) {
+        item.colour = 'success';
+        item.show = true;
+        this.clickedItems.push(index);
+        if (this.clickedItems.length === this.generatedSortedIndexes.length) {
+          this.checkPoint(this.clickedItems);
         }
       } else {
         this.result--;
-        this.nextTurn();
+        this.errorAll();
+        setTimeout(() => {
+          this.nextTurn(1000);
+        }, 1000);
       }
-    }, 250);
+    } else {
+      this.result--;
+        this.errorAll();
+        setTimeout(() => {
+          this.nextTurn(1000);
+        }, 1000);
+    }
+
+    console.log(this.generatedGrids);
   }
 
   getSelectedGrids() {
@@ -209,10 +216,10 @@ export class Game10Page implements OnInit {
     console.log(this.generatedSortedIndexes);
     if (clickedSortedItems[idx] === this.generatedSortedIndexes[idx]) {
       this.result++;
-      this.nextTurn();
+      this.nextTurn(1000);
     } else {
       this.result--;
-      this.nextTurn();
+      this.nextTurn(1000);
     }
   }
 
@@ -261,20 +268,29 @@ export class Game10Page implements OnInit {
     }
   }
 
-  activateAll() {
+  errorAll() {
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < this.generatedGrids.length; i++) {
-      this.generatedGrids[i].colour = '';
+      this.generatedGrids[i].colour = 'danger';
     }
   }
 
-  nextTurn() {
-    this.clickedItems = [];
-    this.generatedIndexes = this.generateIndexes();
-    this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
-    this.generatedGrids = this.generateGrid(this.generatedSortedIndexes);
-    this.showAndHideSelecteds(2000);
-    console.log(this.generatedGrids);
+  activateAll() {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < this.generatedGrids.length; i++) {
+      this.generatedGrids[i].colour = 'primary';
+    }
+  }
+
+  nextTurn(millis: number = 1000) {
+    setTimeout(() => {
+      this.clickedItems = [];
+      this.generatedIndexes = this.generateIndexes();
+      this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
+      this.generatedGrids = this.generateGrid(this.generatedSortedIndexes);
+      this.showAndHideSelecteds(2000);
+      console.log(this.generatedGrids);
+    }, millis);
   }
   async getDataOfGames() {
     await this.dataOfGame.getDataOfGames('tenthgame').then(() => {

@@ -32,7 +32,7 @@ export class Game5Page implements OnInit {
   randomLetter: string;
   vowel= ['A', 'E', 'I', 'O', 'U'];
 
-  seconds = 5;
+  seconds = 120;
   playing = false;
   ended = false;
   interval: any;
