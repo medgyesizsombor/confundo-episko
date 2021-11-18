@@ -10,14 +10,6 @@ ion-toolbar {
   --ion-background-color: #f19066 !important;
 }
 
-ion-card {
-  border: 3px solid black;
-}
-
-ion-content {
-  --ion-background-color: #f3a683;
-}
-
 ion-button {
   position: relative !important;
 }
@@ -28,11 +20,6 @@ ion-footer {
 
 .text {
   font-size: 40px;
-}
-
-#right,
-#left {
-  display: inline-block;
 }
 
 ion-slides {

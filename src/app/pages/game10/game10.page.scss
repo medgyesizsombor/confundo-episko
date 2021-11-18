@@ -15,7 +15,7 @@ ion-toolbar {
 }
 
 ion-card {
-  background-color: #f19066;
+  //background-color: #f19066;
   border: none;
   border-radius: 10px;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.05);
@@ -62,4 +62,23 @@ p {
 
 p b {
   color: var(--ion-text-color, #000000);
+}
+
+
+.grow {
+  animation: grow-anim 500ms;
+}
+
+@keyframes grow-anim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

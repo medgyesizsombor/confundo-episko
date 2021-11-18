@@ -39,7 +39,20 @@ export class StatisticsPage implements OnInit {
 
   styleCard(){
     if(!this.isMobile){
-      return {width: '60%', margin: '30px auto'};
+      return {
+        margin: '10px',
+        height: '80vh',
+        width: '100%'
+      };
+    }
+  }
+
+  styleContainer() {
+    if (!this.isMobile) {
+      return {
+        display: 'flex',
+        'flex-direction': 'row'
+      };
     }
   }
 

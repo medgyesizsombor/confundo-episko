@@ -23,7 +23,7 @@ export class GoNogogamePage implements OnInit {
   finalResult = '';
   timeText = '';
   timeText2 = '';
-  secondsOnGame = 5;
+  secondsOnGame = 120;
   secondsOnTurn = 2;
   intervalGame;
   intervalTurn;
@@ -32,6 +32,7 @@ export class GoNogogamePage implements OnInit {
   sumScore = 0;
   bestScore = 0;
   generatedTaskNumber = 0;
+  generatedTaskNumberText = '';
 
 
   playing = false;
@@ -61,8 +62,9 @@ export class GoNogogamePage implements OnInit {
   start(){
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
-    this.timeText2 = this.secondsOnTurn + ' sec';
+    this.timeText2 =  'You have ' + this.secondsOnTurn + ' sec to push it!';
     this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
+    this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
     this.startCountDownGame();
     this.generateNumberCard();
     this.startCountDownTurn();
@@ -78,10 +80,9 @@ export class GoNogogamePage implements OnInit {
 
   pushed(){
     this.secondsOnTurn = 2;
-    this.timeText2 = this.secondsOnTurn + ' sec';
+    this.timeText2 = 'You have ' + this.secondsOnTurn + ' sec to push it!';
     this.generatedNumberCardCounter++;
     this.checkPoint();
-    console.log(this.generatedNumberCardCounter);
     this.generateNumberCard();
   }
 
@@ -95,7 +96,7 @@ export class GoNogogamePage implements OnInit {
 
   startCountDownTurn(){
     this.intervalTurn = setInterval(() => {
-      this.timeText2 = this.secondsOnTurn + ' sec';
+      this.timeText2 = 'You have ' + this.secondsOnTurn + ' sec to push it!';
     }, 1000);
   }
 
@@ -129,6 +130,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   notPushed(){
+    this.generatedNumberCardCounter++;
     if(this.numberCard === this.generatedTaskNumber){
       this.result++;
       console.log('plusz pont a notpushednál');

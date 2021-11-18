@@ -35,7 +35,7 @@ export class Game4Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
-  seconds = 10;
+  seconds = 100;
   playing = false;
   ended = false;
   interval: any;

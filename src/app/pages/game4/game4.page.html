@@ -42,44 +42,44 @@
       <ion-slide class="ion-padding">
         <img style="height: 300px; width: 300px;" src=""/>
         <h2>Ready to Play?</h2>
-        <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
   </ion-slides>
+
     <div id="mid" *ngIf="playing">
-      <div>
-        <ion-label> {{timeText}} </ion-label>
-      </div>
-      <ion-item class="itemBox ion-margin ion-text-center" lines="none">
-        <ion-label> {{equation1}} </ion-label>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item class="ion-text-center" lines="none">
+              <h3> {{equation1}} </h3>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item class="ion-text-center" lines="none">
+              <h3> {{equation2}} </h3>
+            </ion-item>
+          </ion-col>
+        </ion-row>
 
-      <ion-item class="itemBox ion-margin ion-text-center" lines="none">
-        <ion-label> {{equation2}} </ion-label>
-      </ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-button class="ion-text-center" (click)="onClicked('first')" style="width: 15vw; height: 5vh;"> First! </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button class="ion-text-center" (click)="onClicked('draw')" style="width: 15vw; height: 5vh;"> Draw! </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button class="ion-text-center" (click)="onClicked('second')"style="width: 15vw; height: 5vh;"> Second! </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
 
-      <ion-item
-        class="itemBox ion-margin ion-text-center"
-        lines="none"
-        (click)="onClicked('first')"
-      >
-        <ion-button> First! </ion-button>
-      </ion-item>
+      
 
-      <ion-item
-        class="itemBox ion-margin ion-text-center"
-        lines="none"
-        (click)="onClicked('second')"
-      >
-        <ion-button> Second! </ion-button>
-      </ion-item>
-
-      <ion-item
-        class="itemBox ion-margin ion-text-center"
-        lines="none"
-        (click)="onClicked('draw')"
-      >
-        <ion-button> Draw! </ion-button>
-      </ion-item>
+      
     </div>
 
     <div *ngIf="ended">

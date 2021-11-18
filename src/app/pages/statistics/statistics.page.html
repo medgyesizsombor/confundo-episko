@@ -12,13 +12,15 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card [ngStyle]="styleCard()" class="ion-padding">
-    <ion-card-title class="ion-padding">Total points per games</ion-card-title>
-    <app-total-score-chart [sumData]="sumData"></app-total-score-chart>
-  </ion-card>
-
-  <ion-card [ngStyle]="styleCard()" class="ion-padding">
-    <ion-card-title class="ion-padding">Games played by category</ion-card-title>
-    <app-played-games-chart class="ion-padding"></app-played-games-chart>
-  </ion-card>
+  <div class="container" [ngStyle]="styleContainer()">
+    <ion-card [ngStyle]="styleCard()" class="ion-padding">
+      <ion-card-title class="ion-padding">Total points per games</ion-card-title>
+      <app-total-score-chart [sumData]="sumData"></app-total-score-chart>
+    </ion-card>
+  
+    <ion-card [ngStyle]="styleCard()" class="ion-padding">
+      <ion-card-title class="ion-padding">Games played by category</ion-card-title>
+      <app-played-games-chart class="ion-padding"></app-played-games-chart>
+    </ion-card>
+  </div>
 </ion-content>
