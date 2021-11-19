@@ -10,12 +10,12 @@ ion-toolbar {
 --ion-background-color: #F19066 !important;
 }
 
-.asdasdasd1{
-    text-align: center;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+ion-button {
+  width: 75%;
+}
+
+.equationCard{
+  --ion-background-color: #FFFFFF;
 }
 
 ion-slides {

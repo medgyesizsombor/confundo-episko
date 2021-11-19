@@ -93,7 +93,7 @@ export class Game6Page implements OnInit {
   }
 
   letterAndNumberPosition(){
-    this.textLocation = 4;//Math.floor(Math.random() * (7 - 0) + 0);
+    this.textLocation = Math.floor(Math.random() * (7 - 0) + 0);
     switch(this.textLocation){
       case 0:   //Ha nullát kap, az első labelben a szám előremegy, mellé a betű
         this.label1 = this.randomNumber.toString() + this.randomLetter;

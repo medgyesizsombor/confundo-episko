@@ -32,7 +32,7 @@ export class Game8Page implements OnInit {
   randomLetter: string;
   directions= ['Up', 'Down', 'Right', 'Left'];
 
-  seconds = 5;
+  seconds = 120;
   playing = false;
   ended = false;
   interval: any;
