@@ -1,29 +1,18 @@
-ion-header{
-    height: 75px;
-    background-color: #F19066;
-}
-
-ion-title{
+ion-title {
     font-size: 30px;
     color: white;
     text-align: center;
     margin: auto;
     padding: 20px;
-}
-
-ion-toolbar{
-    color: primary;
-}
-ion-card {
-    border: 3px solid black;
-}
+  }
+  
+  ion-toolbar {
+    --ion-background-color: #f19066 !important;
+  }
+  
 
 ion-content{
-    --ion-background-color: #F3A683;
-}
-
-ion-footer{
-    height: 50px;
+    --ion-background-color: #EEEEEE;
 }
 
 #login{

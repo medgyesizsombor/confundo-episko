@@ -5,7 +5,7 @@
         <ion-icon class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-padding" id="pageTitle" text class="ion-text-center" style="margin-left: -48px">
+    <ion-title class="ion-padding" text class="ion-text-center" style="margin-left: -48px">
       Statistics
     </ion-title>
   </ion-toolbar>
@@ -15,12 +15,12 @@
   <div class="container" [ngStyle]="styleContainer()">
     <ion-card [ngStyle]="styleCard()" class="ion-padding">
       <ion-card-title class="ion-padding">Total points per games</ion-card-title>
-      <app-total-score-chart [sumData]="sumData"></app-total-score-chart>
+      <app-total-score-chart class="ion-padding" [sumData]="sumData"></app-total-score-chart>
     </ion-card>
   
     <ion-card [ngStyle]="styleCard()" class="ion-padding">
       <ion-card-title class="ion-padding">Games played by category</ion-card-title>
-      <app-played-games-chart class="ion-padding"></app-played-games-chart>
+      <app-played-games-chart class="ion-padding" style="height: 50vh"></app-played-games-chart>
     </ion-card>
   </div>
 </ion-content>

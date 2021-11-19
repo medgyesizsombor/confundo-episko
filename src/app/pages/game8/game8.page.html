@@ -44,15 +44,17 @@
         <h2>Ready to Play?</h2>
         <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-  </ion-slides>
-    <div id="mid" *ngIf="playing">
-      <div>
-        <ion-label> {{timeText}} </ion-label>
-      </div>
-      {{title}}
-    </div>
-
+    </ion-slides>
+  </div>
+  <ion-card *ngIf="playing">
     <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card class="titleCard">
+            <h3>{{title}}</h3>
+          </ion-card>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col></ion-col>
         <ion-col>
@@ -97,7 +99,7 @@
     <div *ngIf="ended">
       <ion-label> {{finalResult}} </ion-label>
     </div>
-  </div>
+  </ion-card>
 
   <div *ngIf="drawChart">
     <app-user-vs-average-chart></app-user-vs-average-chart>
