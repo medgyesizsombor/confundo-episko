@@ -51,7 +51,8 @@ export class StatisticsPage implements OnInit {
     if (!this.isMobile) {
       return {
         display: 'flex',
-        'flex-direction': 'row'
+        'flex-direction': 'row',
+        overflow: 'visible'
       };
     }
   }

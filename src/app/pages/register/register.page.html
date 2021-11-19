@@ -1,10 +1,13 @@
 <ion-header>
-  <ion-title text class="ion-text-center">Register</ion-title>
+  <ion-toolbar>
+    <ion-title class="ion-padding" text class="ion-text-center">
+      Register
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div id="asd">
-    <ion-card>
+<ion-content class="ion-padding">
+    <ion-card id="asd">
       <ion-item lines="none">
         <ion-label color="secondary" position="floating">Email</ion-label>
         <ion-input color="secondary" type="text" [(ngModel)]="user.email"></ion-input>
@@ -31,6 +34,6 @@
       </ion-item>
 
       <ion-button fill="solid" expand="block" color="primary" (click)="register()">Register</ion-button>
+      <ion-button id="gotoLogin" fill="none" (click)="goToLogin()">If you have account, sign in!</ion-button>
     </ion-card>
-  </div>
 </ion-content>
