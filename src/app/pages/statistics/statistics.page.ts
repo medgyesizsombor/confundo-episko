@@ -40,8 +40,6 @@ export class StatisticsPage implements OnInit {
   styleCard(){
     if(!this.isMobile){
       return {
-        margin: '10px',
-        height: '70vh',
         width: '100%'
       };
     }
@@ -50,9 +48,10 @@ export class StatisticsPage implements OnInit {
   styleContainer() {
     if (!this.isMobile) {
       return {
+        width: '75%',
         display: 'flex',
         'flex-direction': 'row',
-        overflow: 'visible'
+        margin: 'auto'
       };
     }
   }

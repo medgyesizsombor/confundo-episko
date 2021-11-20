@@ -1,8 +1,7 @@
-import { toTypeScript } from '@angular/compiler';
+
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Chart, registerables } from 'chart.js';
-import { GoNogogamePage } from 'src/app/pages/go-nogogame/go-nogogame.page';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 Chart.register(...registerables);
 

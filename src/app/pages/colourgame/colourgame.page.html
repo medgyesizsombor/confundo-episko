@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-back" (click)="goBack()"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title text class="ion-text-center" style="margin-left: -48px;">
@@ -53,7 +53,7 @@
           <ion-col></ion-col>
           <ion-col>
             <ion-card class="labelCard">
-            <ion-label class="text" [style.color]="lbl1color">
+            <ion-label class="text ion-padding" [style.color]="lbl1color">
               {{lbl1text}}
             </ion-label>
           </ion-card>
@@ -64,7 +64,7 @@
           <ion-col></ion-col>
           <ion-col>
             <ion-card class="labelCard">
-            <ion-label class="text" [style.color]="lbl2color">
+            <ion-label class="text ion-padding" [style.color]="lbl2color">
             {{lbl2text}}
           </ion-label>
         </ion-card>
