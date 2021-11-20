@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, Platform, ToastController } from '@ionic/angular';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -17,13 +17,26 @@ export class LoginPage implements OnInit {
     password: ''
   };
 
+  isMobile: boolean;
+
   constructor(private toast: ToastController, private angularFirestore: AngularFirestore,
     private angularFireAuth: AngularFireAuth, private router: Router,
     private loadingController: LoadingController, private authService: AuthService,
-    private alertController: AlertController) { }
+    private alertController: AlertController, private platform: Platform) { }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
+    console.log(this.isMobile + 'willEnter');
+    }
 
+  ionViewWillEnter() {
+    this.isMobile = this.platform.is('mobile');
+    console.log(this.isMobile + 'willEnter');
+  }
+
+  ionViewDidEnter(){
+    this.isMobile = this.platform.is('mobile');
+    console.log(this.isMobile + 'willEnter');
   }
 
   async login(){

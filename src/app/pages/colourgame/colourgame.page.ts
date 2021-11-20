@@ -211,4 +211,8 @@ export class ColourgamePage implements OnInit {
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
   }
+
+  goBack(){
+    this.router.navigate(['main-tabs/games']);
+  }
 }

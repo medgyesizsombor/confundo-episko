@@ -46,7 +46,8 @@ export class RegisterPage implements OnInit {
       username: this.user.username,
       password: this.user.password,
       birthdate: this.user.birthdate,
-      name: this.user.name
+      name: this.user.name,
+      lastPlayed: ''
     }).then(() => {
       loading.dismiss();
       this.successfulAlert();
