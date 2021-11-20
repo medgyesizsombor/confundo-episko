@@ -23,7 +23,7 @@ export class GoNogogamePage implements OnInit {
   finalResult = '';
   timeText = '';
   timeText2 = '';
-  secondsOnGame = 120;
+  secondsOnGame = 5;
   secondsOnTurn = 2;
   intervalGame;
   intervalTurn;
@@ -63,7 +63,7 @@ export class GoNogogamePage implements OnInit {
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
     this.timeText2 =  'You have ' + this.secondsOnTurn + ' sec to push it!';
-    this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
+    this.generateTask();
     this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
     this.startCountDownGame();
     this.generateNumberCard();

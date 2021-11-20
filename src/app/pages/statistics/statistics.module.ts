@@ -11,6 +11,7 @@ import { StatisticsPage } from './statistics.page';
 import { MyChartComponent } from 'src/app/components/my-chart/my-chart.component';
 import { PlayedGamesChartComponent } from 'src/app/components/played-games-chart/played-games-chart.component';
 import { TotalScoreChartComponent } from 'src/app/components/total-score-chart/total-score-chart/total-score-chart.component';
+import { BestScoreComponent } from 'src/app/components/best-score/best-score.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { TotalScoreChartComponent } from 'src/app/components/total-score-chart/t
     IonicModule,
     StatisticsPageRoutingModule
   ],
-  declarations: [StatisticsPage, MyChartComponent, PlayedGamesChartComponent, TotalScoreChartComponent],
+  declarations: [StatisticsPage, MyChartComponent, PlayedGamesChartComponent, TotalScoreChartComponent,
+  BestScoreComponent],
 })
 export class StatisticsPageModule {}

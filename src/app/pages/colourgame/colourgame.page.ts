@@ -62,7 +62,7 @@ export class ColourgamePage implements OnInit {
   }
 
   giveValueOfLabels() {
-    const colours = ['red', 'yellow', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
+    const colours = ['red', 'orange', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
     const randomNumber1 = Math.floor(Math.random() * (7 - 0) + 0);
     const randomNumber2 = Math.floor(Math.random() * (7 - 0) + 0);
     const randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
@@ -81,20 +81,22 @@ export class ColourgamePage implements OnInit {
     }
   }
 
-  rightButton($event: PointerEvent) {
+  trueButtonClick() {
     if (this.lbl1text === this.lbl2color) {
       this.result = this.result + 1;
       this.giveValueOfLabels();
     } else {
+      this.result = this.result - 1;
       this.giveValueOfLabels();
     }
   }
 
-  leftButton($event: PointerEvent) {
+  falseButtonClick() {
     if (this.lbl1text !== this.lbl2color) {
       this.result = this.result + 1;
       this.giveValueOfLabels();
     } else {
+      this.result = this.result - 1;
       this.giveValueOfLabels();
     }
   }
