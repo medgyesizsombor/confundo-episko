@@ -26,16 +26,37 @@ export class BestScoreComponent implements OnInit, OnChanges {
   bestScoreGame7 = 0;
   bestScoreGame8 = 0;
 
-  labels = ['1', '2', '3', '4', '5', '6', '7'];
+  labels = [
+    'Colour game',
+    'Go-NogoGame',
+    'Game3',
+    'Game4',
+    'Game5',
+    'Game6',
+    'Game7',
+    'Game8',
+    'Game9',
+    'Game10'
+  ];
 
   data = {
     labels: this.labels,
     datasets: [{
       label: 'My First Dataset',
-      data: [65, 59, 80, 81, 56, 55, 40],
-      fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
+      data: [1, 1, 1],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'rgb(255, 99, 132)',
+      ],
+      hoverOffset: 4
     }]
   };
 
@@ -43,7 +64,7 @@ export class BestScoreComponent implements OnInit, OnChanges {
 
   async ngOnInit() {
     this.loading = true;
-    this.getDatas();
+    await this.getDatas();
     this.createChart();
   }
 
@@ -59,8 +80,8 @@ export class BestScoreComponent implements OnInit, OnChanges {
   createChart(){
     setTimeout(() => {
       this.bestScoreChart = new Chart('bestScoreChart', {
-          type: 'line',
-          data: this.data,
+        type: 'doughnut',
+        data: this.data,
       });
 
       this.loading = false;
@@ -69,15 +90,17 @@ export class BestScoreComponent implements OnInit, OnChanges {
 
   updateChart(data: any){
     this.data.datasets[0].data[0] = this.sumData.colourgame.bestScore;
-    this.data.datasets[0].data[1] = data.goNogoGame.bestScore;
-    this.data.datasets[0].data[2] = data.thirdgame.bestScore;
-    this.data.datasets[0].data[3] = data.fourthgame.bestScore;
-    this.data.datasets[0].data[4] = data.fifthgame.bestScore;
-    this.data.datasets[0].data[5] = data.sixthgame.bestScore;
-    this.data.datasets[0].data[6] = data.seventhgame.bestScore;
-    this.data.datasets[0].data[7] = data.eightgame.bestScore;
-    this.bestScoreChart.data = this.data;
-    this.bestScoreChart.update();
+    this.data.datasets[0].data[1] = this.sumData.goNogoGame.bestScore;
+    this.data.datasets[0].data[2] = this.sumData.thirdgame.bestScore;
+    this.data.datasets[0].data[3] = this.sumData.fourthgame.bestScore;
+    this.data.datasets[0].data[4] = this.sumData.fifthgame.bestScore;
+    this.data.datasets[0].data[5] = this.sumData.sixthgame.bestScore;
+    this.data.datasets[0].data[6] = this.sumData.seventhgame.bestScore;
+    this.data.datasets[0].data[7] = this.sumData.eightgame.bestScore;
+    this.data.datasets[0].data[8] = this.sumData.ninthgame.bestScore;
+    this.data.datasets[0].data[9] = this.sumData.tenthgame.bestScore;
+    //this.bestScoreChart.data = this.data;
+    //this.bestScoreChart.update();
   }
 
   async getDatas(){

@@ -35,8 +35,13 @@ export class PlayedGamesChartComponent implements OnInit {
       label: 'My First Dataset',
       data: [1, 1, 1],
       backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+      ],
+      borderColor: [
         'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
+        'rgb(255, 159, 64)',
         'rgb(255, 205, 86)'
       ],
       hoverOffset: 4
@@ -55,8 +60,15 @@ export class PlayedGamesChartComponent implements OnInit {
   async drawChart(){
     setTimeout(() => {
       this.playedGameChart = new Chart('playedGameChart', {
-        type: 'doughnut',
+        type: 'bar',
         data: this.data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        },
       });
       this.loading = false;
     }, 250);
