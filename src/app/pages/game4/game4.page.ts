@@ -91,8 +91,8 @@ export class Game4Page implements OnInit {
     this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1); //nehogy nullával kelljen osztani
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation1 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
-                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
+    this.equation1 = '(1+1)-1'; /*'(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;*/
     console.log(this.equation1);
     this.split1 = this.equation1.split('',7);
     console.log(this.split1);
@@ -104,8 +104,8 @@ export class Game4Page implements OnInit {
     this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1); //nehogy nullával kelljen osztani
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation2 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
-                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
+    this.equation2 = '(1+1)-1';/*'(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;*/
     console.log(this.equation2);
     this.split2 = this.equation2.split('',7);
     console.log(this.split2);
@@ -203,12 +203,12 @@ export class Game4Page implements OnInit {
     } else {
       this.checkValueOfFirstSplit();
       this.checkValueOfSecondSplit();
-      this.checkPoint(this.number2);
+      this.checkPoint(this.number1, this.number2);
     }
   }
 
-  checkPoint(paramNumber: number){
-    if(paramNumber === this.number1){
+  checkPoint(paramNumber1: number, paramNumber2?: number){
+    if(paramNumber1 === this.number1 && !paramNumber2){
       if (this.number1 > this.number2){
         console.log('ögyi');
         this.result += 1;
@@ -218,7 +218,7 @@ export class Game4Page implements OnInit {
         this.result -= 1;
         console.log(this.result);
       }
-    } else if (paramNumber === this.number2){
+    } else if (paramNumber1 === this.number2 && !paramNumber2){
       if (this.number1 < this.number2){
         console.log('ögyi');
         this.result += 1;
@@ -229,11 +229,17 @@ export class Game4Page implements OnInit {
         console.log(this.result);
       }
     } else {
-      if (this.number1 === this.number2){
+      if (paramNumber1 === paramNumber2){
+        console.log('------');
+        console.log(paramNumber2);
+        console.log(paramNumber1);
         console.log('ögyi');
         this.result += 1;
         console.log(this.result);
       } else {
+        console.log('------');
+        console.log(paramNumber2);
+        console.log(paramNumber1);
         console.log('jó béna');
         this.result -= 1;
         console.log(this.result);

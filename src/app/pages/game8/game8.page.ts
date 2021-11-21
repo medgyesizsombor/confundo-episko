@@ -56,7 +56,6 @@ export class Game8Page implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.uid);
   }
 
   onStart(){

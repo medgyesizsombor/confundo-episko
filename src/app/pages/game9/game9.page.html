@@ -47,7 +47,7 @@
   <ion-grid style="height: 100%; display: flex; flex-flow: column;" *ngIf="playing">
     <ion-row style="flex-grow: 1;">
       <ion-col *ngFor="let mem of memory; let i = index" size="6" style="height: 25%;">
-        <ion-card class="ion-padding ion-activatable ripple-parent" style="height: 100%;" (click)="flipCard(mem, i)" *ngIf="!mem.matched" [color]="mem.color" [class.rotate-anim]="mem.show">
+        <ion-card class="ion-padding ion-activatable ripple-parent" style="height: 100%;" (click)="clicked(mem, i)" *ngIf="!mem.matched" [color]="mem.color" [class.rotate-anim]="mem.show">
           <div style="display: flex; justify-content: center; align-items: center; height: 100%;" *ngIf="mem.show">
             <ion-icon [name]="mem.item" style="font-size: 50px;"></ion-icon>
           </div>

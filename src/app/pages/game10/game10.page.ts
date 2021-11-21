@@ -141,20 +141,6 @@ export class Game10Page implements OnInit {
       return;
     }
 
-    /*const selectedNumbers = this.getSelectedNumbers();
-    if (selectedNumbers.includes(item.num)) {
-      item.show = true;
-      this.clickedItems.push(item);
-
-      if (this.clickedItems.length === selectedNumbers.length) {
-        this.result += 1;
-        this.nextRound();
-        console.log('WIN');
-      }
-    } else {
-      this.nextRound();
-    }*/
-
     if (this.clickedItems.length < this.generatedSortedIndexes.length) {
       if (this.checkTile(index) === true) {
         item.colour = 'success';
@@ -204,7 +190,7 @@ export class Game10Page implements OnInit {
         return this.isInTheArray;
       } else {
         console.log('jajaj');
-        this.isInTheArray = true;
+        this.isInTheArray = false;
       }
     }
   }

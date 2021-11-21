@@ -25,7 +25,7 @@ export class Game9Page implements OnInit {
   seconds = 120;
   finalResult = '';
 
-  globalid = 0;
+  globalId = 0;
   ended = false;
 
   uid = localStorage.getItem('uid');
@@ -55,7 +55,7 @@ export class Game9Page implements OnInit {
   startGame() {
     this.timeText = this.seconds + ' sec';
     this.playing = true;
-    this.generateMemoryGrid();
+    this.generateMemoryCard();
     this.startCountDownGame();
   }
 
@@ -74,8 +74,8 @@ export class Game9Page implements OnInit {
     }
   }
 
-  generateMemoryGrid() {
-    this.globalid = 0;
+  generateMemoryCard() {
+    this.globalId = 0;
     const items = [...this.generateItems(), ...this.generateItems()]; //lemásolni az értékeket
     this.memory = items;
   }
@@ -89,19 +89,19 @@ export class Game9Page implements OnInit {
       const itemId = this.memoryItems.indexOf(copyItems[copyItemsIndex]);
       items.push({
         id: itemId,
-        gId: this.globalid,
+        gId: this.globalId,
         show: false,
         matched: false,
         item: copyItems[copyItemsIndex],
         color: '',
       });
       copyItems.splice(copyItemsIndex, 1);
-      this.globalid += 1;
+      this.globalId += 1;
     }
     return items;
   }
 
-  flipCard(item: any, index: number) {
+  clicked(item: any, index: number) {
     if (this.waiting) {
       // forog a kartya
       return;
@@ -109,10 +109,11 @@ export class Game9Page implements OnInit {
 
     item.show = true;
     if (this.firstFlipped) {
-      // már van egy felfordított, ilyenkor van 2 felordított
+      // már van egy felfordított, ilyenkor jön a 2. felfordított
       if (this.firstFlipped.id === item.id) {
-        // ugyanaz a kartya
+        // ugyanaz az id-jük a kártyáknak
         if (this.firstFlipped.gId !== item.gId) {
+          //nem egyezik meg a globalIdjük
           this.result++;
           this.waiting = true;
           item.color = 'success';
@@ -124,12 +125,13 @@ export class Game9Page implements OnInit {
             this.waiting = false;
 
             if (this.allMatched()) {
-              this.generateMemoryGrid();
+              this.globalId = 0;
+              this.generateMemoryCard();
             }
           }, 750);
         }
       } else {
-        // mas kartya van felorditva
+        // mas kartya van felforditva
         this.waiting = true;
         item.color = 'danger';
         this.firstFlipped.color = 'danger';
@@ -146,20 +148,6 @@ export class Game9Page implements OnInit {
       // ha nics felfordított, akkor ITEM az első feldordított
       this.firstFlipped = item;
     }
-  }
-
-  async countdownEnded() {
-    this.playing = false;
-    this.result = 0;
-    const alert = await this.alertController.create({
-      header: 'Time is up!',
-      message: `You earned ${this.result} points.`,
-      buttons: ['OK'],
-    });
-
-    await alert.present();
-    await alert.onDidDismiss();
-    console.log('TODO BACK TO MAIN PAGE');
   }
 
   allMatched() {

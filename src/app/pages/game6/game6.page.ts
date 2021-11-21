@@ -61,12 +61,12 @@ export class Game6Page implements OnInit {
   }
 
   ngOnInit() {
-    this.generateLabel();
   }
 
   onStart(){
     this.playing = true;
     this.timeText = this.seconds + ' sec';
+    this.generateLabel();
     this.startCountDown();
   }
 
