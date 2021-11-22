@@ -36,7 +36,11 @@
         "title": "Beállítások",
         "profile": "Profil",
         "language": "Nyelv",
-        "logout": "Kijelentkezés"
+        "logout": "Kijelentkezés",
+        "hungarian": "magyar",
+        "english": "angol",
+        "ok": "OK",
+        "cancel": "Mégse"
     },
     "MAINTABS":{
         "home": "Főoldal",
@@ -59,5 +63,18 @@
         "dateOfBirth": "Születési dátum",
         "button": "Regisztráció",
         "haveAccount": "Ha van már fiókod, csak lépj be!"
+    },
+    "SORTINGGAME":{
+        "title": "Rendező játék",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe": "Lapozz további információért!",
+        "firstText": "A <b>Rendező játék</b> a matematikai képességet fejleszti.",
+        "howToPlay": "Hogyan kell játszani?",
+        "tutorialText": "A számokat <b>növekvő sorrendben</b> kell nyomkodni.",
+        "howMuchTime": "Mennyi ideig tart?",
+        "timeText": "120 másodperced van összesen.",
+        "ready": "Készen állsz?"
+
     }
 }

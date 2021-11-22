@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -11,12 +12,15 @@ import { AuthService } from '../../services/auth/auth.service';
 export class SettingsPage implements OnInit {
 
   isMobile: boolean;
+  language = localStorage.getItem('language');
 
   constructor(private authService: AuthService, private router: Router,
-    private platform: Platform) { }
+    private platform: Platform, private languageService: LanguageService) { }
 
   ngOnInit() {
     this.styleCard();
+    this.languageService.setLanguage(this.language);
+    console.log(this.language);
   }
 
   ionViewWillEnter(){
@@ -44,6 +48,12 @@ export class SettingsPage implements OnInit {
 
   goHomePage(){
     this.router.navigate(['main-tabs/home']);
+  }
+
+  setLanguage(str: string){
+    console.log(str);
+    this.languageService.setLanguage(str);
+    localStorage.setItem('language', str);
   }
 
 }

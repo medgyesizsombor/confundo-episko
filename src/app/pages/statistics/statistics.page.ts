@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-statistics',
@@ -13,12 +14,15 @@ export class StatisticsPage implements OnInit {
   sumData2: any;
   isMobile: boolean;
 
+  language = localStorage.getItem('language');
 
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  constructor(private dataOfUser: DataOfUserService, private platform: Platform, private router: Router) { }
+  constructor(private dataOfUser: DataOfUserService, private platform: Platform, private router: Router,
+    private languageService: LanguageService) { }
 
   ngOnInit() {
+    this.languageService.setLanguage(this.language);
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });

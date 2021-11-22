@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
 
 
@@ -15,6 +16,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HomePage implements OnInit {
 
   uid = localStorage.getItem('uid');
+  language = localStorage.getItem('language');
 
   playedMath = 0;
   playedMath2 = 0;
@@ -53,10 +55,11 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private loadingController: LoadingController,
     private authService: AuthService, private angularFirestore: AngularFirestore,
-    private dataOfUser: DataOfUserService) { }
+    private dataOfUser: DataOfUserService, private languageService: LanguageService) { }
 
 
   async ngOnInit() {
+    this.languageService.setLanguage(this.language);
   }
 
   goToGames() {

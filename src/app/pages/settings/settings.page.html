@@ -22,7 +22,10 @@
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
       <ion-item lines="none">
         <ion-label color="secondary">{{"SETTINGS.language" | translate }}</ion-label>
-        <ion-icon color="secondary" name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
+        <ion-select style="color: #FFFFFF;" [(ngModel)]="language" value={{language}} okText="{{'SETTINGS.ok' | translate}}" cancelText="{{'SETTINGS.cancel' | translate}}" (ionChange)="setLanguage(language)">
+          <ion-select-option id="hu" value="hu">{{"SETTINGS.hungarian" | translate}}</ion-select-option>
+          <ion-select-option id="hu" value="en">{{"SETTINGS.english" | translate}}</ion-select-option>
+        </ion-select>
       </ion-item>
     </ion-card>
 

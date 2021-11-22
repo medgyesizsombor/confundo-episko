@@ -36,7 +36,11 @@
         "title": "Settings",
         "profile": "Profile",
         "language": "Language",
-        "logout": "Sign Out"
+        "logout": "Sign Out",
+        "hungarian": "hungarian",
+        "english": "english",
+        "ok": "OK",
+        "cancel": "Dismiss"
     },
     "MAINTABS":{
         "home": "Home",
