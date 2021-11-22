@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goHomePage()">
-        <ion-icon class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon color="secondary" class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title class="ion-padding" id="pageTitle" text class="ion-text-center" style="margin-left: -48px">
@@ -15,21 +15,21 @@
     <ion-card class="ion-padding" [ngStyle]="styleCard()" (click)="goToSettings('main-tabs/profile')">
       <ion-item lines="none" >
         <ion-label color="secondary">Profile</ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
+        <ion-icon color="secondary" name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
       </ion-item>
     </ion-card>
 
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
       <ion-item lines="none">
         <ion-label color="secondary">Language</ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
+        <ion-icon color="secondary" name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
       </ion-item>
     </ion-card>
 
     <ion-card class="ion-padding" [ngStyle]="styleCard()" (click)="logout()">
       <ion-item lines="none">
         <ion-label color="secondary">Sign out</ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
+        <ion-icon color="secondary" name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
       </ion-item>
     </ion-card>
 

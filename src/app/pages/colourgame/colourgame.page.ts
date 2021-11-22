@@ -215,6 +215,7 @@ export class ColourgamePage implements OnInit {
   }
 
   goBack(){
+    clearInterval(this.interval);
     this.router.navigate(['main-tabs/games']);
   }
 }

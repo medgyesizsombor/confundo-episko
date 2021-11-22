@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goHomePage()">
-        <ion-icon class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon color="secondary" class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title class="ion-padding" text class="ion-text-center" style="margin-left: -48px">
@@ -14,23 +14,23 @@
 <ion-content class="ion-padding">
   <div class="ion-padding" [ngStyle]="styleContainer()">
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
-      <ion-card-title class="ion-padding">Total points per games</ion-card-title>
+      <ion-card-title color="secondary" class="ion-padding">Total points per game</ion-card-title>
       <app-total-score-chart [sumData]="sumData"></app-total-score-chart>
     </ion-card>
   
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
-      <ion-card-title class="ion-padding">Games played by category</ion-card-title>
+      <ion-card-title color="secondary" class="ion-padding">Best scores per game</ion-card-title>
       <app-best-score [sumData]="sumData"></app-best-score>
     </ion-card>
   </div>
   <div class="ion-padding" [ngStyle]="styleContainer()">
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
-      <ion-card-title class="ion-padding">Best score per games</ion-card-title>
+      <ion-card-title color="secondary" class="ion-padding">Games played by category</ion-card-title>
       <app-played-games-chart></app-played-games-chart>
     </ion-card>
   
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
-      <ion-card-title class="ion-padding">Games played by category</ion-card-title>
+      <ion-card-title color="secondary" class="ion-padding">Average score by category</ion-card-title>
       <app-average-score [sumData]="sumData"></app-average-score>
     </ion-card>
   </div>

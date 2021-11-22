@@ -275,4 +275,9 @@ export class Game5Page implements OnInit {
     this.drawChart = true;
   }
 
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
+  }
+
 }

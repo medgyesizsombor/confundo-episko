@@ -346,4 +346,9 @@ export class Game4Page implements OnInit {
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
   }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
+  }
 }
