@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { GamesPage } from '../games/games.page';
 import { HomePage } from '../home/home.page';
 import { ProfilePage } from '../profile/profile.page';
@@ -43,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forChild(routes), TranslateModule],
+  exports: [RouterModule, TranslateModule],
 })
 export class MainTabsPageRoutingModule {}

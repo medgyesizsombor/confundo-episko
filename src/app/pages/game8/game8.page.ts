@@ -56,7 +56,6 @@ export class Game8Page implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.uid);
   }
 
   onStart(){
@@ -245,6 +244,11 @@ export class Game8Page implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
   }
 
 }

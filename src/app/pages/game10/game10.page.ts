@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
@@ -52,7 +53,8 @@ export class Game10Page implements OnInit {
     private authService: AuthService,
     private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService
+    private dataAverageUser: DataAverageUserService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -141,20 +143,6 @@ export class Game10Page implements OnInit {
       return;
     }
 
-    /*const selectedNumbers = this.getSelectedNumbers();
-    if (selectedNumbers.includes(item.num)) {
-      item.show = true;
-      this.clickedItems.push(item);
-
-      if (this.clickedItems.length === selectedNumbers.length) {
-        this.result += 1;
-        this.nextRound();
-        console.log('WIN');
-      }
-    } else {
-      this.nextRound();
-    }*/
-
     if (this.clickedItems.length < this.generatedSortedIndexes.length) {
       if (this.checkTile(index) === true) {
         item.colour = 'success';
@@ -204,7 +192,7 @@ export class Game10Page implements OnInit {
         return this.isInTheArray;
       } else {
         console.log('jajaj');
-        this.isInTheArray = true;
+        this.isInTheArray = false;
       }
     }
   }
@@ -404,5 +392,10 @@ export class Game10Page implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
   }
 }

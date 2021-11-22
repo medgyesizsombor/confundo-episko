@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
@@ -44,7 +45,8 @@ export class Game3Page implements OnInit {
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
-    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService){ }
+    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
+    private router: Router){ }
 
   ngOnInit(){
   }
@@ -231,5 +233,10 @@ export class Game3Page implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
   }
 }

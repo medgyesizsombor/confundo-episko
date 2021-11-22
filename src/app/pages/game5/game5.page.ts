@@ -58,12 +58,12 @@ export class Game5Page implements OnInit {
   }
 
   ngOnInit() {
-    this.generateLabel();
   }
 
   onStart(){
     this.playing = true;
     this.timeText = this.seconds + ' sec';
+    this.generateLabel();
     this.startCountDown();
   }
 
@@ -90,7 +90,7 @@ export class Game5Page implements OnInit {
   }
 
   letterAndNumberPosition(){
-    this.textLocation = Math.floor(Math.random() * (4 - 0) + 0);
+    this.textLocation = Math.floor(Math.random() * (3 - 0) + 0);
     switch(this.textLocation){
       case 0:   //Ha nullát kap, az első labelben a szám előremegy, mellé a betű
         this.label1 = this.randomNumber.toString() + this.randomLetter;
@@ -273,6 +273,11 @@ export class Game5Page implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
   }
 
 }

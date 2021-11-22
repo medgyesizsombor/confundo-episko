@@ -65,7 +65,7 @@ export class Game7Page implements OnInit {
   onStart(){
     this.playing = true;
     this.timeText = this.seconds + ' sec';
-    this.generateFirstEquation();
+    this.generateEquation();
     this.startCountDown();
   }
 
@@ -84,7 +84,7 @@ export class Game7Page implements OnInit {
     }
   }
 
-  generateFirstEquation(){
+  generateEquation(){
     this.randomNumber1 = Math.floor(Math.random() * (9 - 0) + 0);
     this.randomNumber2 = Math.floor(Math.random() * (20 - -20) + -20);
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (1 - 0) + 0);
@@ -100,10 +100,10 @@ export class Game7Page implements OnInit {
       this.randomNumber2 = Number(this.split1[4] + this.split1[5] + this.split1[6]);
     }
     console.log(this.split1);
-    this.checkValueOfFirstSplit();
+    this.checkValueOfSplit();
   }
 
-  checkValueOfFirstSplit(){
+  checkValueOfSplit(){
     switch(this.split1[1]){
       case '+':
         this.number3 = this.randomNumber2 - this.randomNumber1;
@@ -117,13 +117,13 @@ export class Game7Page implements OnInit {
   }
 
   clickedOk(num: number){
-    if(Number(num) === this.number3){
+    if(num === this.number3){
       this.result++;
     } else {
       this.result--;
     }
     this.currentNumber = null;
-    this.generateFirstEquation();
+    this.generateEquation();
   }
 
   addNumber(num: string){
@@ -234,5 +234,10 @@ export class Game7Page implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
   }
 }

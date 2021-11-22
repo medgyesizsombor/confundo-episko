@@ -28,6 +28,11 @@ export class HomePage implements OnInit {
   playedAttention2 = 0;
   playedAttentionFinal = 0;
 
+  params = {
+    gameName: 'ASD'
+  };
+
+
   data = {
     labels: [
       'Math',
@@ -56,6 +61,10 @@ export class HomePage implements OnInit {
 
   goToGames() {
     this.router.navigate(['main-tabs/games']);
+  }
+
+  playWithLastGame(){
+
   }
 
 }

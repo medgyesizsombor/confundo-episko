@@ -79,6 +79,27 @@ export class DataOfUserService {
     });
   }
 
+  getAllDatas(){
+    return new Promise(async (resolve, reject) => {
+      const documents = ['colourgame', 'goNogoGame', 'thirdgame', 'fourthgame', 'fifthgame',
+      'sixthgame', 'seventhgame', 'eightgame', 'ninthgame', 'tenthgame'];
+      const datas = {};
+
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
+      for (let i = 0; i < documents.length; i++) {
+        try {
+          // eslint-disable-next-line max-len
+          const res = await this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(documents[i]).get().toPromise();
+          datas[documents[i]] = res.data();
+        } catch (err) {
+          reject(err);
+        }
+      }
+
+      resolve(datas);
+    });
+  }
+
   test1(str: string) {
     return this.angularFireStore.collection('Users').doc(this.uid).collection('game').doc(str).valueChanges();
   }

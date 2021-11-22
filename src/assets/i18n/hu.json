@@ -1,0 +1,63 @@
+{
+    "HOME":{
+        "title": "Főoldal",
+        "greeting": "He {{name}}! Üdv az Ionic Academyn!",
+        "withcode": "<br><br>Te <b> jó</b>!",
+        "btn": "show alert",
+        "clickHereToCheckTheGames": "Kattints ide a játékok megtekintéséért!",
+        "clickHereToPlayLastGame": "Legutóbb megnyitott játék a {{gameName}} volt. Ha szeretnél vele játszani, kattints ide!"
+    },
+    "GAMES":{
+        "title": "Játékok",
+        "memory": "Memória",
+        "memoryCard": "Memóriakártya",
+        "comingSoon": "Hamarosan megjelenik!",
+        "memoryGrid": "Rács memória ",
+        "attention": "Figyelem",
+        "colourGame":"Szín Játék",
+        "goNogoGame":"Go/No-go teszt",
+        "directions": "Irány",
+        "mathematical": "Matematikai",
+        "sortingGame": "Rendező játék",
+        "equations": "Egyenletek",
+        "computing": "Számoló"
+    },
+    "PROFILE":{
+        "title": "Profil"
+    },
+    "STATISTICS":{
+        "title": "Statisztikák",
+        "totalPointsPerGame": "Össz pontszám játékonként",
+        "bestScoresPerGame": "Rekordok játékonként",
+        "gamePlayedByCategory": "Lejátszott játékok kategóriánként",
+        "averageScoreByCategory": "Átlagos pontszámok kategóriánként"
+    },
+    "SETTINGS":{
+        "title": "Beállítások",
+        "profile": "Profil",
+        "language": "Nyelv",
+        "logout": "Kijelentkezés"
+    },
+    "MAINTABS":{
+        "home": "Főoldal",
+        "games": "Játékok",
+        "statistics": "Statisztikák",
+        "settings": "Beállítások"
+    },
+    "LOGIN":{
+        "title": "Bejelentkezés",
+        "email": "E-mail cím",
+        "password": "Jelszó",
+        "button": "Bejelentkezés",
+        "noAccount": "Ha nincs még felhasználó fiókod, regisztrálj!"
+    },
+    "REGISTER":{
+        "title": "Regisztráció",
+        "email": "E-mail cím",
+        "name": "Név",
+        "password": "Jelszó",
+        "dateOfBirth": "Születési dátum",
+        "button": "Regisztráció",
+        "haveAccount": "Ha van már fiókod, csak lépj be!"
+    }
+}

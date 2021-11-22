@@ -7,6 +7,7 @@ import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.se
 import * as moment from 'moment';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-go-nogogame',
@@ -23,7 +24,7 @@ export class GoNogogamePage implements OnInit {
   finalResult = '';
   timeText = '';
   timeText2 = '';
-  secondsOnGame = 120;
+  secondsOnGame = 5;
   secondsOnTurn = 2;
   intervalGame;
   intervalTurn;
@@ -54,7 +55,8 @@ export class GoNogogamePage implements OnInit {
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
-    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService) { }
+    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -63,7 +65,7 @@ export class GoNogogamePage implements OnInit {
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
     this.timeText2 =  'You have ' + this.secondsOnTurn + ' sec to push it!';
-    this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
+    this.generateTask();
     this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
     this.startCountDownGame();
     this.generateNumberCard();
@@ -267,6 +269,12 @@ export class GoNogogamePage implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.intervalGame);
+    clearInterval(this.intervalTurn);
+    this.router.navigate(['main-tabs/games']);
   }
 
 }

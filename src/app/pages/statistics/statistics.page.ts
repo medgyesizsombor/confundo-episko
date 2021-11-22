@@ -10,6 +10,7 @@ import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.se
 })
 export class StatisticsPage implements OnInit {
   sumData: any;
+  sumData2: any;
   isMobile: boolean;
 
 
@@ -21,12 +22,20 @@ export class StatisticsPage implements OnInit {
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });
+    this.datas();
 
   }
+
+  async datas(){
+  await this.dataOfUser.getAllDatas().then(res => {
+    this.sumData = res;
+  });
+}
 
   ionViewDidEnter(){
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'change');
+    this.datas();
   }
 
   ionViewWillEnter() {

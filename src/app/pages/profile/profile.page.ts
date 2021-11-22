@@ -22,18 +22,6 @@ export class ProfilePage implements OnInit {
   }
   ngOnInit() {
 
-    /*this.angularFirestore.collection('Users').doc(this.uid).collection('game').doc('firstgame').valueChanges().subscribe(res =>{
-      this.asd = res.a;
-    }, err => {
-      console.log(err);
-    });*/
-
-    /*this.angularFirestore.collection('Users').doc(this.uid).valueChanges().subscribe(res =>{
-      this.name = res.password;
-    }, err => {
-      console.log(err);
-    });*/
-
     this.angularFirestore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
       this.name = res.name;
       this.email = res.email;
@@ -42,6 +30,10 @@ export class ProfilePage implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+  goBack(){
+    this.router.navigate(['main-tabs/settings']);
   }
 
 }

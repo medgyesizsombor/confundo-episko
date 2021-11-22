@@ -61,12 +61,12 @@ export class Game6Page implements OnInit {
   }
 
   ngOnInit() {
-    this.generateLabel();
   }
 
   onStart(){
     this.playing = true;
     this.timeText = this.seconds + ' sec';
+    this.generateLabel();
     this.startCountDown();
   }
 
@@ -320,6 +320,11 @@ export class Game6Page implements OnInit {
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
+  }
+
+  goBack(){
+    clearInterval(this.interval);
+    this.router.navigate(['main-tabs/games']);
   }
 
 }
