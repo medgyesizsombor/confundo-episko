@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title class="ion-padding" text class="ion-text-center">
-      Register
+      {{"REGISTER.title" | translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,12 @@
 <ion-content class="ion-padding">
     <ion-card id="asd">
       <ion-item lines="none">
-        <ion-label color="secondary" position="floating">Email</ion-label>
+        <ion-label color="secondary" position="floating">{{"REGISTER.email" | translate}}</ion-label>
         <ion-input color="secondary" type="text" [(ngModel)]="user.email"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label color="secondary" position="floating">Name</ion-label>
+        <ion-label color="secondary" position="floating">{{"REGISTER.name" | translate}}</ion-label>
         <ion-input color="secondary" type="text" [(ngModel)]="user.name"></ion-input>
       </ion-item>
 
@@ -24,16 +24,16 @@
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label color="secondary" position="floating">Password</ion-label>
+        <ion-label color="secondary" position="floating">{{"REGISTER.password" | translate}}</ion-label>
         <ion-input color="secondary" type="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label color="secondary" position="stacked">Date of birth</ion-label>
+        <ion-label color="secondary" position="stacked">{{"REGISTER.dateOfBirth" | translate}}</ion-label>
         <ion-input color="secondary" type="date" [(ngModel)]="user.birthdate"></ion-input>
       </ion-item>
 
-      <ion-button fill="solid" expand="block" color="primary" (click)="register()">Register</ion-button>
-      <ion-button id="gotoLogin" fill="none" (click)="goToLogin()">If you have account, sign in!</ion-button>
+      <ion-button fill="solid" expand="block" color="primary" (click)="register()">{{"REGISTER.button" | translate}}</ion-button>
+      <ion-button id="gotoLogin" fill="none" (click)="goToLogin()">{{"REGISTER.haveAccount" | translate}}</ion-button>
     </ion-card>
 </ion-content>

@@ -1,0 +1,63 @@
+{
+    "HOME":{
+        "title": "Home",
+        "greeting": "Hey {{name}}! Welcome to the Ionic Academy!",
+        "withcode": "<br><br>You are <b> epic</b>!",
+        "btn": "show alert",
+        "clickHereToCheckTheGames": "Click here to check the games!",
+        "clickHereToPlayLastGame": "The last game opened was {{gameName}}. If you want to play it, click here!"
+    },
+    "GAMES":{
+        "title": "Games",
+        "memory": "Memory",
+        "memoryCard": "Memory Card",
+        "comingSoon": "Coming soon!",
+        "memoryGrid": "Memory Grid",
+        "attention": "Attention",
+        "colourGame":"Colour Game",
+        "goNogoGame":"Go/No-go test",
+        "directions": "Directions",
+        "mathematical": "Matematical",
+        "sortingGame": "Sorting Game",
+        "equations": "Equations",
+        "computing": "Computing"
+    },
+    "PROFILE":{
+        "title": "Profile"
+    },
+    "STATISTICS":{
+        "title": "Statistics",
+        "totalPointsPerGame": "Total points per game",
+        "bestScoresPerGame": "Best scores per game",
+        "gamePlayedByCategory": "Game played by category",
+        "averageScoreByCategory": "Average score by category"
+    },
+    "SETTINGS":{
+        "title": "Settings",
+        "profile": "Profile",
+        "language": "Language",
+        "logout": "Sign Out"
+    },
+    "MAINTABS":{
+        "home": "Home",
+        "games": "Games",
+        "statistics": "Statistics",
+        "settings": "Settings"
+    },
+    "LOGIN":{
+        "title": "Sign in",
+        "email": "Email address",
+        "password": "Password",
+        "button": "Sign in",
+        "noAccount": "If you don't have account, sign up!"
+    },
+    "REGISTER":{
+        "title": "Register",
+        "email": "Email address",
+        "name": "Name",
+        "password": "Password",
+        "dateOfBirth": "Date of birth",
+        "button": "Register",
+        "haveAccount": "If you have account, sign in!"
+    }
+}

@@ -6,7 +6,9 @@
 
 <ion-content class="ion-padding">
   <div id="asd">
+    
   <ion-card class="ion-padding">
+    {{'HOME.greeting' |translate}}
     <ion-item lines="none">
       <ion-label class="ion-text-wrap" color="secondary">Welcome to the application which has the best cognitive games</ion-label>
     </ion-item>
@@ -14,7 +16,14 @@
 
   <ion-card class="ion-padding">
     <ion-item (click)="goToGames()" lines="none">
-      <ion-label color="secondary">Click here to play the games!</ion-label>
+      <ion-label color="secondary">{{'HOME.clickHereToCheckTheGames' | translate}}</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="ion-padding">
+    <ion-item (click)="playWithLastGame()" lines="none">
+      <ion-label color="secondary">{{'HOME.clickHereToPlayLastGame' | translate:params}}</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
     </ion-item>
   </ion-card>
