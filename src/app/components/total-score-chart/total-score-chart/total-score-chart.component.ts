@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Chart, registerables } from 'chart.js';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 Chart.register(...registerables);
@@ -43,35 +44,48 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
     'Game10'
   ];
 
-  data = {
-    labels: this.labels,
-    datasets: [
-      {
-        label: 'My First Dataset',
-        data: [1, 1, 1],
-        backgroundColor: [
-          'rgb(250, 123, 179)',
-          'rgb(164, 210, 140)',
-          'rgb(216, 83, 44)',
-          'rgb(67, 182, 173)',
-          'rgb(92, 167, 29)',
-          'rgb(159, 14, 212)',
-          'rgb(85, 67, 204)',
-          'rgb(41, 181, 27)',
-          'rgb(86, 48, 0)',
-          'rgb(2, 76, 3)',
-        ],
-        hoverOffset: 4,
-      },
-    ],
-  };
+  data: any;
 
   constructor(
     private dataOfUser: DataOfUserService,
-    private platform: Platform
+    private platform: Platform,
+    private translatePipe: TranslatePipe
   ) {}
 
   async ngOnInit() {
+    this.data = {
+      labels: [
+        this.translatePipe.transform('GRAPH.colourgame'),
+        this.translatePipe.transform('GRAPH.goNogoGame'),
+        this.translatePipe.transform('GRAPH.sortingGame'),
+        this.translatePipe.transform('GRAPH.equations'),
+        this.translatePipe.transform('GRAPH.numsAndLetters'),
+        this.translatePipe.transform('GRAPH.numsAndLetters2'),
+        this.translatePipe.transform('GRAPH.computing'),
+        this.translatePipe.transform('GRAPH.directions'),
+        this.translatePipe.transform('GRAPH.memoryCard'),
+        this.translatePipe.transform('GRAPH.memoryGrid')
+      ],
+      datasets: [
+        {
+          label: 'My First Dataset',
+          data: [1, 1, 1],
+          backgroundColor: [
+            'rgb(250, 123, 179)',
+            'rgb(164, 210, 140)',
+            'rgb(216, 83, 44)',
+            'rgb(67, 182, 173)',
+            'rgb(92, 167, 29)',
+            'rgb(159, 14, 212)',
+            'rgb(85, 67, 204)',
+            'rgb(41, 181, 27)',
+            'rgb(86, 48, 0)',
+            'rgb(2, 76, 3)',
+          ],
+          hoverOffset: 4,
+        },
+      ],
+    };
     this.loading = true;
     await this.getTotalScorePerGame();
     this.createChart();

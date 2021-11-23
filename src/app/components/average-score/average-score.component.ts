@@ -31,7 +31,7 @@ export class AverageScoreComponent implements OnInit, OnChanges {
   bestScoreGame7 = 0;
   bestScoreGame8 = 0;
 
-  data1;
+  data1: any;
 
 
   constructor(private dataOfUser: DataOfUserService, private platform: Platform,
@@ -87,16 +87,6 @@ export class AverageScoreComponent implements OnInit, OnChanges {
     const averageMemory = this.aData.ninthgame.averageScore + this.aData.tenthgame.averageScore;
     const averageMatematical = this.aData.thirdgame.averageScore + this.aData.fourthgame.averageScore +
     this.aData.seventhgame.averageScore;
-
-    /*if(this.language === 'hu'){
-      this.data1.labels[0] = 'Figyelem';
-      this.data1.labels[1] = 'Memória';
-      this.data1.labels[2] = 'Matematikai';
-    } else {
-      this.data1.labels[0] = 'Focus';
-      this.data1.labels[1] = 'Memory';
-      this.data1.labels[2] = 'Matematical';
-    }*/
 
     this.data1.datasets[0].data[0] = averageAttention;
     this.data1.datasets[0].data[1] = averageMemory;

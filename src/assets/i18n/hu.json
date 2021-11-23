@@ -205,6 +205,17 @@
     "GRAPH":{
         "attention": "Figyelem",
         "mathematical": "Matematikai",
-        "memory":"Memória"
+        "memory":"Memória",
+        "colourgame": "Szín játék",
+        "goNogoGame": "Go/No-go teszt",
+        "sortingGame": "Rendező játék",
+        "equations": "Egyenletek",
+        "numsAndLetters": "Betűk és számok",
+        "numsAndLetters2": "Betűk és számok 2",
+        "computing": "Számoló",
+        "directions": "Irányok",
+        "memoryCard": "Memóriakártya",
+        "memoryGrid": "Rács memória",
+        "points": "Pontok"
     }
 }
