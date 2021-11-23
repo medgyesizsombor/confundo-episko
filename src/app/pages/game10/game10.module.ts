@@ -8,14 +8,17 @@ import { Game10PageRoutingModule } from './game10-routing.module';
 
 import { Game10Page } from './game10.page';
 import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Game10PageRoutingModule
+    Game10PageRoutingModule,
+    TranslateModule
   ],
-  declarations: [Game10Page, UserVsAverageChartComponent]
+  declarations: [Game10Page, UserVsAverageChartComponent],
+  exports: [TranslateModule]
 })
 export class Game10PageModule {}

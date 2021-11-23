@@ -6,15 +6,15 @@
       </ion-button>
     </ion-buttons>
     <ion-title text class="ion-text-center" style="margin-left: -48px">
-      Game4
+      {{"EQUATIONS.title" | translate}}
     </ion-title>
   </ion-toolbar>
   <ion-item *ngIf="playing">
-    <ion-text>Time remeaning</ion-text>
+    <ion-text>{{"EQUATIONS.time" | translate}}</ion-text>
     <ion-text slot="end">{{timeText}}</ion-text>
   </ion-item>
   <ion-item *ngIf="playing">
-    <ion-text>Points</ion-text>
+    <ion-text>{{"EQUATIONS.points" | translate}}</ion-text>
     <ion-text slot="end">{{result}}</ion-text>
   </ion-item>
 </ion-header>
@@ -25,24 +25,30 @@
       <ion-slide class="ion-padding">
         <div class="slide">
           <img style="height: 300px; width: 300px;" src=""/>
-          <h2>Colour Game</h2>
-          <p>The <b>colour game</b> is a game to develop your focus.</p>
-          <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+          <h2>{{"EQUATIONS.title" | translate}}</h2>
+          <p [innerHTML]="'EQUATIONS.firstText' | translate"></p>
+          <p>{{"EQUATIONS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
         </div>
       </ion-slide>
 
       <ion-slide class="ion-padding">
         <img style="height: 300px; width: 300px;" src=""/>
-        <h2>How to play?</h2>
-        <p>You have only 120 seconds to play.</p>
-        <p>As you can see there are two labels. You have to <b>press</b> or the true button if the text of the first label and the colour of the bottom label is the same, either you have to <b>press</b> the false button if it is not true.</p>
-        <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+        <h2>{{"EQUATIONS.howToPlay" | translate}}</h2>
+        <p>{{"EQUATIONS.tutorialText" | translate}}</p>
+        <p>{{"EQUATIONS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
         <img style="height: 300px; width: 300px;" src=""/>
-        <h2>Ready to Play?</h2>
-        <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        <h2>{{"EQUATIONS.howMuchTime" | translate}}</h2>
+        <p>{{"EQUATIONS.timeText" | translate}}</p>
+        <p>{{"EQUATIONS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+      </ion-slide>
+
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px;" src=""/>
+        <h2>{{"EQUATIONS.ready" | translate}}</h2>
+        <ion-button fill="clear" (click)="onStart()">Start<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
   </ion-slides>
 
@@ -65,13 +71,13 @@
 
         <ion-row>
           <ion-col>
-            <ion-button class="ion-text-center" (click)="onClicked('first')" style="width: 15vw; height: 5vh;"> First! </ion-button>
+            <ion-button class="ion-text-center" (click)="onClicked('first')" style="width: 15vw; height: 5vh;">{{"EQUATIONS.first" | translate}}</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button class="ion-text-center" (click)="onClicked('draw')" style="width: 15vw; height: 5vh;"> Draw! </ion-button>
+            <ion-button class="ion-text-center" (click)="onClicked('draw')" style="width: 15vw; height: 5vh;">{{"EQUATIONS.draw" | translate}}</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button class="ion-text-center" (click)="onClicked('second')"style="width: 15vw; height: 5vh;"> Second! </ion-button>
+            <ion-button class="ion-text-center" (click)="onClicked('second')"style="width: 15vw; height: 5vh;">{{"EQUATIONS.second" | translate}}</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
