@@ -16,6 +16,7 @@ export class Game8Page implements OnInit {
 
   timeText: string;
   title= '';
+  titleHUN= '';
   label1: 'Up';
   label2: 'Down';
   label3: 'Right';
@@ -31,6 +32,7 @@ export class Game8Page implements OnInit {
   randomNumber: number;
   randomLetter: string;
   directions= ['Up', 'Down', 'Right', 'Left'];
+  directionsHUN = ['Fel', 'Le', 'Jobbra', 'Balra'];
 
   seconds = 120;
   playing = false;
@@ -48,6 +50,8 @@ export class Game8Page implements OnInit {
   sumScoreAverage = 0;
   averageScoreAverage = 0;
   drawChart = false;
+
+  language = localStorage.getItem('language');
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
@@ -82,20 +86,32 @@ export class Game8Page implements OnInit {
 
   generateDirection(){
     this.randomNumber = Math.floor(Math.random() * (3 - 0) + 0);
-    switch (this.randomNumber) {
-      case 0:
-        this.title = this.directions[0];
-        break;
-      case 1:
-        this.title = this.directions[1];
-        break;
-      case 2:
-        this.title = this.directions[2];
-        break;
-      case 3:
-        this.title = this.directions[3];
-        break;
-    }
+      switch (this.randomNumber) {
+        case 0:
+          if(localStorage.getItem('language') === 'hu'){
+            this.titleHUN = this.directionsHUN[0];
+          }
+          this.title = this.directions[0];
+          break;
+        case 1:
+          if(localStorage.getItem('language') === 'hu'){
+            this.titleHUN = this.directionsHUN[1];
+          }
+          this.title = this.directions[1];
+          break;
+        case 2:
+          if(localStorage.getItem('language') === 'hu'){
+            this.titleHUN = this.directionsHUN[2];
+          }
+          this.title = this.directions[2];
+          break;
+        case 3:
+          if(localStorage.getItem('language') === 'hu'){
+            this.titleHUN = this.directionsHUN[3];
+          }
+          this.title = this.directions[3];
+          break;
+      }
   }
 
   clicked(str: string){
@@ -109,6 +125,8 @@ export class Game8Page implements OnInit {
       this.checkPoint('Right');
     }
     console.log(this.result);
+    this.titleHUN = '';
+    this.title = '';
     this.generateDirection();
   }
 

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { AverageScoreComponent } from 'src/app/components/average-score/average-score.component';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 import { LanguageService } from 'src/app/services/language/language.service';
 
@@ -40,6 +41,7 @@ export class StatisticsPage implements OnInit {
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'change');
     this.datas();
+
   }
 
   ionViewWillEnter() {

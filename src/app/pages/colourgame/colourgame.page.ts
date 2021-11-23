@@ -7,6 +7,7 @@ import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.se
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import * as moment from 'moment';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class ColourgamePage implements OnInit {
 
   lbl1text: string;
   lbl2text: string;
+  lbl1textHUN: string;
+  lbl2textHUN: string;
   lbl1color: string;
   lbl2color: string;
   result = 0;
@@ -43,12 +46,16 @@ export class ColourgamePage implements OnInit {
   sumScoreAverage = 0;
   averageScoreAverage = 0;
 
+  colours = ['red', 'orange', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
+  coloursInHungarian = ['piros', 'narancs', 'kék', 'barna', 'zöld', 'lila', 'fekete', 'rózsaszín'];
+
   drawChart = false;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
-    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService) {
+    private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
+    private languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -61,23 +68,31 @@ export class ColourgamePage implements OnInit {
     this.giveValueOfLabels();
   }
 
-  giveValueOfLabels() {
-    const colours = ['red', 'orange', 'blue', 'brown', 'green', 'violet', 'black', 'pink'];
+  async giveValueOfLabels() {
     const randomNumber1 = Math.floor(Math.random() * (7 - 0) + 0);
     const randomNumber2 = Math.floor(Math.random() * (7 - 0) + 0);
     const randomNumber3 = Math.floor(Math.random() * (7 - 0) + 0);
     const randomNumber4 = Math.floor(Math.random() * (7 - 0) + 0);
 
     if (Math.random() <= 0.5) {
-      this.lbl1text = colours[randomNumber1];
-      this.lbl2text = colours[randomNumber3];
-      this.lbl1color = colours[randomNumber2];
-      this.lbl2color = colours[randomNumber1];
+      this.lbl1text = this.colours[randomNumber1];
+      this.lbl2text = this.colours[randomNumber3];
+      this.lbl1color = this.colours[randomNumber2];
+      this.lbl2color = this.colours[randomNumber1];
     } else {
-      this.lbl1text = colours[randomNumber1];
-      this.lbl2text = colours[randomNumber2];
-      this.lbl1color = colours[randomNumber3];
-      this.lbl2color = colours[randomNumber4];
+      this.lbl1text = this.colours[randomNumber1];
+      this.lbl2text = this.colours[randomNumber2];
+      this.lbl1color = this.colours[randomNumber3];
+      this.lbl2color = this.colours[randomNumber4];
+    }
+
+    await this.lbl1textTranslate(randomNumber1, randomNumber3);
+  }
+
+  async lbl1textTranslate(num1: number, num2: number){
+    if(localStorage.getItem('language') === 'hu'){
+      this.lbl1textHUN = this.coloursInHungarian[num1];
+      this.lbl2textHUN = this.coloursInHungarian[num2];
     }
   }
 

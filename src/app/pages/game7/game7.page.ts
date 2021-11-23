@@ -36,7 +36,7 @@ export class Game7Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
-  seconds = 20;
+  seconds = 120;
   playing = false;
   ended = false;
   interval: any;

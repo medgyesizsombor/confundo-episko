@@ -12,7 +12,7 @@ import { GamesPageModule } from '../games/games.module';
 import { HomePageModule } from '../home/home.module';
 import { ProfilePageModule } from '../profile/profile.module';
 import { SettingsPageModule } from '../settings/settings.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -28,6 +28,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   declarations: [MainTabsPage],
-  exports: [TranslateModule]
+  exports: [TranslateModule],
+  providers: [TranslatePipe]
 })
 export class MainTabsPageModule {}

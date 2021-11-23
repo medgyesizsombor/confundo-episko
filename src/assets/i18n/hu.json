@@ -1,11 +1,9 @@
 {
     "HOME":{
         "title": "Főoldal",
-        "greeting": "He {{name}}! Üdv az Ionic Academyn!",
-        "withcode": "<br><br>Te <b> jó</b>!",
-        "btn": "show alert",
+        "greeting": "Üdvözöllek {{name}} a Confundo Episkon!",
         "clickHereToCheckTheGames": "Kattints ide a játékok megtekintéséért!",
-        "clickHereToPlayLastGame": "Legutóbb megnyitott játék a {{gameName}} volt. Ha szeretnél vele játszani, kattints ide!"
+        "clickHereToPlayLastGame": "Legutóbb megnyitott játék a(z) {{gameName}} volt. Ha szeretnél vele játszani, kattints ide!"
     },
     "GAMES":{
         "title": "Játékok",
@@ -16,7 +14,9 @@
         "attention": "Figyelem",
         "colourGame":"Szín Játék",
         "goNogoGame":"Go/No-go teszt",
-        "directions": "Irány",
+        "directions": "Irányok",
+        "numsAndLetters": "Betűk és számok",
+        "numsAndLetters2": "Betűk és számok 2",
         "mathematical": "Matematikai",
         "sortingGame": "Rendező játék",
         "equations": "Egyenletek",
@@ -63,6 +63,34 @@
         "dateOfBirth": "Születési dátum",
         "button": "Regisztráció",
         "haveAccount": "Ha van már fiókod, csak lépj be!"
+    },
+    "COLOURGAME":{
+        "title": "Szín játék",
+        "time":"Maradék idő",
+        "points": "Pontok",
+        "swipe": "Lapozz további információért!",
+        "firstText": "A <b>Színjáték</b> a figyelem képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "Ha a fenti szöveg megegyezik az alsó szöveg színével, akkor az <b>IGAZ</b> gombra kell kattintani. Ha nem egyezik meg, akkor meg a <b>HAMIS</b>-ra.",
+        "howMuchTime": "Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready": "Készen állsz?",
+        "false": "HAMIS",
+        "true": "IGAZ"
+    },
+    "GONOGOGAME":{
+        "title": "Go/No-go teszt",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "Az <b>Go/No-go teszt</b> a figyelem képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "Minél gyorsabban kell kattintani az IGAZ gombra, ha a szám nem egyezik meg a tiltott számmal.",
+        "howMuchTime": "Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?",
+        "generatedTaskNumberText": "A tiltott szám: ",
+        "timeText2": "Ennyi időd van megnyomni: "
     },
     "SORTINGGAME":{
         "title": "Rendező játék",
@@ -138,5 +166,45 @@
         "howMuchTime": "Mennyi ideig tart?",
         "timeText":"120 másodperced van összesen.",
         "ready":"Készen állsz?"
+    },
+    "NUMSANDLETTERS":{
+        "title": "Betűk és számok",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "A <b>Betűk és számok</b> a figyelem képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "Ha felül van a generált szöveg, akkor a kérdés az, hogy páros-e a benne szereplő szám. Ha alul van, akkor a kérdés, hogy magánhangzó-e a betű.",
+        "howMuchTime":"Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?",
+        "title1": "Páros a szám?",
+        "title2": "Magánhangzó a betű?",
+        "false": "HAMIS",
+        "true": "IGAZ"
+    },
+    "NUMSANDLETTERS2":{
+        "title": "Betűk és számok 2",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "A <b>Betűk és számok 2</b> a figyelem képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "Ha bal oldalon felül van a generált szöveg, akkor a kérdés az, hogy páros-e a benne szereplő szám. Ha bal oldalon alul van, akkor a kérdés, hogy páratlan-e a szám.",
+        "tutorialText2": "Ha jobb oldalon felül van a generált szöveg, akkor a kérdés az, hogy magánhangzó-e a benne szereplő betű. Ha jobb oldalon alul, akkor a kérdés. hogy mássalhangzó-e a betű",
+        "howMuchTime":"Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?",
+        "title1": "Páros a szám?",
+        "title3": "Magánhangzó a betű?",
+        "title2": "Páratlan a szám?",
+        "title4": "Mássalhangzó a betű?",
+        "false": "HAMIS",
+        "true": "IGAZ"
+    },
+    "GRAPH":{
+        "attention": "Figyelem",
+        "mathematical": "Matematikai",
+        "memory":"Memória"
     }
 }
