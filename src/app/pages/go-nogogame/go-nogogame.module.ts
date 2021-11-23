@@ -8,14 +8,17 @@ import { GoNogogamePageRoutingModule } from './go-nogogame-routing.module';
 
 import { GoNogogamePage } from './go-nogogame.page';
 import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GoNogogamePageRoutingModule
+    GoNogogamePageRoutingModule,
+    TranslateModule
   ],
-  declarations: [GoNogogamePage, UserVsAverageChartComponent]
+  declarations: [GoNogogamePage, UserVsAverageChartComponent],
+  exports: [TranslateModule]
 })
 export class GoNogogamePageModule {}

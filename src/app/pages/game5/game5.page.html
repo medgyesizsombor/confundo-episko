@@ -6,41 +6,47 @@
       </ion-button>
     </ion-buttons>
     <ion-title text class="ion-text-center" style="margin-left: -48px;">
-      Game5
+      {{"NUMSANDLETTERS.title" | translate}}
     </ion-title>
   </ion-toolbar>
   <ion-item *ngIf="playing">
-    <ion-text>Time remeaning</ion-text>
+    <ion-text>{{"NUMSANDLETTERS.time" | translate}}</ion-text>
     <ion-text slot="end">{{timeText}}</ion-text>
   </ion-item>
   <ion-item *ngIf="playing">
-    <ion-text>Points</ion-text>
+    <ion-text>{{"NUMSANDLETTERS.points" | translate}}</ion-text>
     <ion-text slot="end">{{result}}</ion-text>
   </ion-item>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding ion-text-center">
   <ion-slides *ngIf="!playing && !ended">
     <ion-slide class="ion-padding">
       <div class="slide">
         <img style="height: 300px; width: 300px;" src=""/>
-        <h2>Colour Game</h2>
-        <p>The <b>colour game</b> is a game to develop your focus.</p>
-        <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+        <h2>{{"NUMSANDLETTERS.title" | translate}}</h2>
+        <p [innerHTML]="'NUMSANDLETTERS.firstText' | translate"></p>
+        <p>{{"NUMSANDLETTERS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </div>
     </ion-slide>
 
     <ion-slide class="ion-padding">
       <img style="height: 300px; width: 300px;" src=""/>
-      <h2>How to play?</h2>
-      <p>You have only 120 seconds to play.</p>
-      <p>As you can see there are two labels. You have to <b>press</b> or the true button if the text of the first label and the colour of the bottom label is the same, either you have to <b>press</b> the false button if it is not true.</p>
-      <p>Swipe for more information <ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+      <h2>{{"NUMSANDLETTERS.howToPlay" | translate}}</h2>
+      <p>{{"NUMSANDLETTERS.tutorialText" | translate}}</p>
+      <p>{{"NUMSANDLETTERS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
     </ion-slide>
 
     <ion-slide class="ion-padding">
       <img style="height: 300px; width: 300px;" src=""/>
-      <h2>Ready to Play?</h2>
+      <h2>{{"NUMSANDLETTERS.howMuchTime" | translate}}</h2>
+      <p>{{"NUMSANDLETTERS.timeText" | translate}}</p>
+      <p>{{"NUMSANDLETTERS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+    </ion-slide>
+
+    <ion-slide class="ion-padding">
+      <img style="height: 300px; width: 300px;" src=""/>
+      <h2>{{"NUMSANDLETTERS.ready" | translate}}</h2>
       <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
     </ion-slide>
 </ion-slides>
@@ -48,7 +54,7 @@
       <ion-grid >
         <ion-row>
           <ion-col>
-            <h3>{{title1}}</h3>
+            <h3>{{"NUMSANDLETTERS.title1" | translate}}</h3>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -62,19 +68,15 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <h3>{{title2}}</h3>
+            <h3>{{"NUMSANDLETTERS.title2" | translate}}</h3>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row class="ion-padding">
           <ion-col>
-            <div id="falseButton" class="ion-float-end" *ngIf="playing" (click)="clicked('false')">
-              <ion-button>False</ion-button>
-            </div>
+              <ion-button style="width: 100%;" *ngIf="playing" (click)="clicked('false')">{{"NUMSANDLETTERS.false" | translate}}</ion-button>
           </ion-col>
           <ion-col>
-            <div id="trueButton" class="ion-float-end" *ngIf="playing" (click)="clicked('true')">
-              <ion-button>True</ion-button>
-            </div>
+              <ion-button style="width: 100%;" *ngIf="playing" (click)="clicked('true')">{{"NUMSANDLETTERS.true" | translate}}</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

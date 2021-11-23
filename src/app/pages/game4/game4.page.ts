@@ -95,8 +95,8 @@ export class Game4Page implements OnInit {
     this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1); //nehogy nullával kelljen osztani
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation1 = '(1+1)-1'; /*'(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
-                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;*/
+    this.equation1 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
     console.log(this.equation1);
     this.split1 = this.equation1.split('',7);
     console.log(this.split1);
@@ -108,8 +108,8 @@ export class Game4Page implements OnInit {
     this.randomNumber3 = Math.floor(Math.random() * (9 - 1) + 1); //nehogy nullával kelljen osztani
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (3 - 0) + 0);
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
-    this.equation2 = '(1+1)-1';/*'(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
-                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;*/
+    this.equation2 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
+                            this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
     console.log(this.equation2);
     this.split2 = this.equation2.split('',7);
     console.log(this.split2);

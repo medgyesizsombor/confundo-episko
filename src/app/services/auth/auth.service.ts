@@ -22,6 +22,9 @@ export class AuthService {
     password: ''
   };
 
+  lastPlayed = '';
+  name = '';
+
   dataToEncrypt = this.angularFireAuth.user;
   encryptedData='';
   secretKey='yoursecretkey';
@@ -35,6 +38,11 @@ export class AuthService {
         resolve(true);
       }).catch(err => {
         reject(err);
+      });
+      this.angularFireStore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
+        localStorage.setItem('name', res.name);
+      }, err => {
+        console.log(err);
       });
     });
   }

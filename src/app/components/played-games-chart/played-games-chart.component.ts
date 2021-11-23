@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Chart, registerables } from 'chart.js';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 Chart.register(...registerables);
@@ -25,32 +26,30 @@ export class PlayedGamesChartComponent implements OnInit {
   playedAttentionFinal = 0;
   loading: boolean;
 
-  data = {
-    labels: [
-      'Math',
-      'Focus',
-      'Speed'
-    ],
-    datasets: [{
-      label: 'My First Dataset',
-      data: [1, 1, 1],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)'
-      ],
-      hoverOffset: 4
-    }]
-  };
+  data: any;
 
-  constructor(private dataOfUser: DataOfUserService) { }
+  constructor(private dataOfUser: DataOfUserService, private translatePipe: TranslatePipe) { }
 
   async ngOnInit() {
+    this.data = {
+      labels: [this.translatePipe.transform('GRAPH.attention'), this.translatePipe.transform('GRAPH.memory'),
+      this.translatePipe.transform('GRAPH.mathematical')],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [1, 1, 1],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)',
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+      }]
+    };
     this.loading = true;
     await this.getPlayedGameCategory();
     await this.drawChart();

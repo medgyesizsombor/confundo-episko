@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -13,34 +14,35 @@ export class UserVsAverageChartComponent implements OnInit {
   result: number;
   averagePoint: number;
 
-  data = {
-    labels: ['Points'],
-    datasets: [{
-      label: 'User',
-      data: [65],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)'
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)'
-      ],
-      borderWidth: 1
-    }, {
-      label: 'Average',
-      data: [80],
-      backgroundColor: [
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgb(255, 159, 64)'
-      ],
-      borderWidth: 1
-    }]
-  };
+  data: any;
 
-  constructor() { }
+  constructor(private translatePipe: TranslatePipe) { }
 
   ngOnInit() {
+    this.data = {
+      labels: [this.translatePipe.transform('GRAPH.points')],
+      datasets: [{
+        label: 'User',
+        data: [65],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)'
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)'
+        ],
+        borderWidth: 1
+      }, {
+        label: 'Average',
+        data: [80],
+        backgroundColor: [
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgb(255, 159, 64)'
+        ],
+        borderWidth: 1
+      }]
+    };
     this.userAndAverageResult();
     this.createChart();
     this.updateChartData();

@@ -56,4 +56,6 @@ export class SettingsPage implements OnInit {
     localStorage.setItem('language', str);
   }
 
+
+
 }

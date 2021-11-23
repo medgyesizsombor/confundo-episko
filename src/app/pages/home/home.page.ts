@@ -17,6 +17,8 @@ export class HomePage implements OnInit {
 
   uid = localStorage.getItem('uid');
   language = localStorage.getItem('language');
+  lastPlayed = '';
+  name = '';
 
   playedMath = 0;
   playedMath2 = 0;
@@ -31,26 +33,11 @@ export class HomePage implements OnInit {
   playedAttentionFinal = 0;
 
   params = {
-    gameName: 'ASD'
+    gameName: this.lastPlayed
   };
 
-
-  data = {
-    labels: [
-      'Math',
-      'Focus',
-      'Speed'
-    ],
-    datasets: [{
-      label: 'My First Dataset',
-      data: [this.playedMathFinal, 300, 300],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      hoverOffset: 4
-    }]
+  fullName = {
+    name: localStorage.getItem('name')
   };
 
   constructor(private router: Router, private loadingController: LoadingController,
@@ -59,7 +46,28 @@ export class HomePage implements OnInit {
 
 
   async ngOnInit() {
-    this.languageService.setLanguage(this.language);
+    this.fullName = {
+      name: localStorage.getItem('name')
+    };
+    await this.getDatas();
+    await this.languageService.setLanguage(this.language);
+  }
+
+  async ionViewWillEnter(){
+    await this.getDatas();
+    await this.languageService.setLanguage(this.language);
+  }
+
+  async getDatas(){
+    this.angularFirestore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
+      this.lastPlayed = res.lastPlayed;
+      this.name = res.name;
+      this.params = {
+        gameName: this.lastPlayed
+      };
+    }, err => {
+      console.log(err);
+    });
   }
 
   goToGames() {
@@ -67,7 +75,7 @@ export class HomePage implements OnInit {
   }
 
   playWithLastGame(){
-
+    this.router.navigate([this.lastPlayed]);
   }
 
 }
