@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-game4',
@@ -13,6 +14,8 @@ import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.se
   styleUrls: ['./game4.page.scss'],
 })
 export class Game4Page implements OnInit {
+
+  language = localStorage.getItem('language');
 
   timeText: string;
   equation1 = '';
@@ -56,10 +59,11 @@ export class Game4Page implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService) {
+    private dataAverageUser: DataAverageUserService, private languageService: LanguageService) {
   }
 
   ngOnInit() {
+    this.languageService.setLanguage(this.language);
   }
 
   onStart(){

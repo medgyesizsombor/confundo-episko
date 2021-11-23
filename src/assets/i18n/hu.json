@@ -75,6 +75,68 @@
         "howMuchTime": "Mennyi ideig tart?",
         "timeText": "120 másodperced van összesen.",
         "ready": "Készen állsz?"
-
+    },
+    "EQUATIONS":{
+        "title": "Egyenletek",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "Az <b>Egyenletek</b> a matematikai képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "A Két egyenletről meg kell mondani, hogy melyiknek a nagyobb, vagy egyenlő-e az értéke.",
+        "howMuchTime":"Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?",
+        "first": "Első!",
+        "draw": "Egyenlő!",
+        "second": "Második!"
+    },
+    "COMPUTING":{
+        "title": "Számoló",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "A <b>Számoló</b> a matematikai képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "A fenti egyenletből kell kiszámolni X értékét, azt megadni a gombok segítségével és utána az OK gombot megnyomni.",
+        "howMuchTime":"Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?"
+    },
+    "DIRECTIONS":{
+        "title": "Irányok",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "Az <b>Irányok</b> a figyelem képességet fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "A fent megjelenő szövegnek az ellentétes irányába mutató nyilat kell megnyomni.",
+        "howMuchTime":"Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?"
+    },
+    "MEMORYCARD":{
+        "title": "Memóriakártya",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "A <b>Memóriakártya</b> a memóriát fejleszti.",
+        "howToPlay": "Hogyan kell játszani?",
+        "tutorialText": "A négy darab kártyapárt kell megtalálni úgy, hogy egyszerre maximum csak két kártya lehet felfordított állapotban.",
+        "howMuchTime": "Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?"
+    },
+    "MEMORYGRID":{
+        "title": "Rács memória",
+        "time": "Maradék idő",
+        "points": "Pontok",
+        "swipe":"Lapozz további információért!",
+        "firstText": "A <b>Rácsmemória</b> a memóriát fejleszti.",
+        "howToPlay":"Hogyan kell játszani?",
+        "tutorialText": "Minden kör előtt felvillan a 12 darab négyzetből öt egy másodpercre és ezeket kell megjelölni helyesen.",
+        "howMuchTime": "Mennyi ideig tart?",
+        "timeText":"120 másodperced van összesen.",
+        "ready":"Készen állsz?"
     }
 }
