@@ -1,46 +1,76 @@
 ion-title {
-    font-size: 36px;
-    color: white;
-    text-align: center;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  ion-toolbar {
-    --ion-background-color: #f19066 !important;
-  }
-  
-
-ion-content{
-    --ion-background-color: #EEEEEE;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  margin: auto;
+  padding: 20px;
 }
 
-#login{
-    width: 30%;
-    margin: 10px auto 3px auto ;
-    margin-bottom: 10px;
+ion-toolbar {
+  --ion-background-color: #f19066 !important;
 }
 
-#gotoregister{
-    color: white!important;
-    margin: auto auto 3px auto ;
-    text-align: center;
-    width: 100%;
-    font-size: 12px;
+ion-content {
+  --ion-background-color: #eeeeee;
+}
+
+#login {
+  width: 300px;
+  margin: 10px auto 3px auto;
+  margin-bottom: 10px;
+}
+
+#gotoregister {
+  color: white !important;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  height: 50px;
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
-    #mid {
-        margin: auto;
-        width: 70%;
-        padding: 10px;
-    }
+  #mid {
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+  }
+
+  ion-title {
+    font-size: 36px;
+  }
+
+  #login {
+    font-size: 18px;
+  }
+
+  #gotoregister {
+    font-size: 14px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (min-width: 1501px) {
-    #mid {
-        margin: auto;
-        width: 60%;
-        padding: 10px;
-    }
+  #mid {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+  }
+
+  ion-title {
+    font-size: 36px;
+  }
+  #login {
+    font-size: 18px;
+  }
+
+  #gotoregister {
+    font-size: 14px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
 }

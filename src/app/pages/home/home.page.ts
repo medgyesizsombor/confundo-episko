@@ -32,13 +32,8 @@ export class HomePage implements OnInit {
   playedAttention2 = 0;
   playedAttentionFinal = 0;
 
-  params = {
-    gameName: this.lastPlayed
-  };
-
-  fullName = {
-    name: localStorage.getItem('name')
-  };
+  fullName: any;
+  params: any;
 
   constructor(private router: Router, private loadingController: LoadingController,
     private authService: AuthService, private angularFirestore: AngularFirestore,
@@ -54,20 +49,18 @@ export class HomePage implements OnInit {
   }
 
   async ionViewWillEnter(){
+    this.fullName = {
+      name: localStorage.getItem('name')
+    };
     await this.getDatas();
     await this.languageService.setLanguage(this.language);
   }
 
   async getDatas(){
-    this.angularFirestore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
-      this.lastPlayed = res.lastPlayed;
-      this.name = res.name;
-      this.params = {
-        gameName: this.lastPlayed
-      };
-    }, err => {
-      console.log(err);
-    });
+    this.dataOfUser.getDataOfUser();
+    this.params = {
+      gameName: localStorage.getItem('lastPlayed')
+    };
   }
 
   goToGames() {

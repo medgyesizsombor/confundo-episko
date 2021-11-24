@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   declarations: [RegisterPage],
-  exports: [TranslateModule]
+  exports: [TranslateModule],
+  providers: [TranslatePipe]
 })
 export class RegisterPageModule {}

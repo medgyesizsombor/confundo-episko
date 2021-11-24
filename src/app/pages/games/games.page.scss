@@ -1,5 +1,5 @@
 #pageTitle{
-    font-size: 36px;
+    font-size: 30px;
     color: white;
     text-align: center;
     margin: auto;
@@ -16,7 +16,7 @@ ion-card {
 
 ion-card-content{
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 h3{
@@ -53,6 +53,13 @@ h3{
 
     .games-category{
         font-size: 30px;
+    }
+    ion-card-content{
+        font-size: 18px;
+    }
+
+    #pageTitle{
+        font-size: 36px;
     }
 
     /* width */

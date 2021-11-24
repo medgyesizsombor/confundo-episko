@@ -23,6 +23,7 @@ export class GamesPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.languageService.setLanguage(localStorage.getItem('language'));
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
     this.styleCard();

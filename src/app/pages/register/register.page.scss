@@ -16,9 +16,14 @@ ion-content{
 
 #gotoLogin{
   color: white!important;
-  margin: auto auto 3px auto ;
   text-align: center;
   width: 100%;
+}
+
+#register{
+  width: 300px;
+  margin: 10px auto 3px auto ;
+  margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
@@ -27,6 +32,18 @@ ion-content{
       width: 70%;
       padding: 10px;
   }
+
+  .text{
+    font-size: 16px;
+  }
+
+  #goToLogin{
+    font-size: 14px;
+  }
+
+  #register{
+    font-size: 18px;
+  }
 }
 
 @media only screen and (min-width: 1501px) {
@@ -34,5 +51,17 @@ ion-content{
       margin: auto;
       width: 60%;
       padding: 10px;
+  }
+
+  .text{
+    font-size: 16px;
+  }
+
+  #goToLogin{
+    font-size: 14px;
+  }
+
+  #register{
+    font-size: 18px;
   }
 }

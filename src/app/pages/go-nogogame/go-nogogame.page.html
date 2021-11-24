@@ -28,7 +28,7 @@
         <div class="slide">
           <img style="height: 300px; width: 300px;" src=""/>
           <h2>{{"GONOGOGAME.title" | translate}}</h2>
-          <p>The <b>colour game</b> is a game to develop your focus.</p>
+          <p [innerHTML]="'GONOGOGAME.firstText' | translate"></p>
           <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
         </div>
       </ion-slide>
@@ -37,6 +37,13 @@
         <img style="height: 300px; width: 300px;" src=""/>
         <h2>{{"GONOGOGAME.howToPlay" | translate}}</h2>
         <p>{{"GONOGOGAME.tutorialText" | translate}}</p>
+        <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+      </ion-slide>
+
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px;" src=""/>
+        <h2>{{"GONOGOGAME.howToPlay" | translate}}</h2>
+        <p>{{"GONOGOGAME.tutorialText2" | translate}}</p>
         <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
