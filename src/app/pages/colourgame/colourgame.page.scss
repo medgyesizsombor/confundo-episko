@@ -18,6 +18,10 @@ ion-footer {
   height: 50px;
 }
 
+ion-label{
+  font-size: 18px;
+}
+
 .labelCard{
   --ion-background-color: #ffffff;
 }
@@ -56,10 +60,18 @@ p b {
   color: var(--ion-text-color, #000000);
 }
 
-@media only screen and (min-width: 1200px) {
-  #asd {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #mid {
+      margin: auto;
+      width: 70%;
+      padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1501px) {
+  #mid {
+      margin: auto;
+      width: 60%;
+      padding: 10px;
   }
 }

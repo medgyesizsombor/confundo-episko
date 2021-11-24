@@ -29,24 +29,16 @@ ion-content{
     font-size: 12px;
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1000px) {
-    #asd {
-        margin: auto;
-        width: 80%;
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1001px) and (max-width: 1200px) {
-    #asd {
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+    #mid {
         margin: auto;
         width: 70%;
         padding: 10px;
     }
 }
 
-@media only screen and (min-width: 1500px) {
-    #asd {
+@media only screen and (min-width: 1501px) {
+    #mid {
         margin: auto;
         width: 60%;
         padding: 10px;

@@ -20,7 +20,7 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <div id="asd">
+  <div id="mid">
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
@@ -57,9 +57,9 @@
         <h2>{{"NUMSANDLETTERS2.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-  </ion-slides>
+    </ion-slides>
 
-    <ion-card id="mid" *ngIf="playing">
+    <ion-card *ngIf="playing">
       <ion-grid>
         <ion-row>
           <ion-col>

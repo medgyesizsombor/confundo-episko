@@ -21,7 +21,7 @@
 
 <ion-content class="ion-padding ion-text-center">
 
-  <div id="asd">
+  <div id="mid">
 
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
@@ -52,7 +52,7 @@
         <h2>{{"GONOGOGAME.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-  </ion-slides>
+    </ion-slides>
 
     <ion-card *ngIf="playing" class="ion-padding">
       <ion-card class="forbidden">

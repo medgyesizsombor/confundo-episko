@@ -2,7 +2,11 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
-        <ion-icon color="secondary" slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon
+          color="secondary"
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title text class="ion-text-center" style="margin-left: -48px">
@@ -20,39 +24,55 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <div id="asd">
+  <div id="mid">
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px;" src=""/>
+          <img style="height: 300px; width: 300px" src="" />
           <h2>{{"COMPUTING.title" | translate}}</h2>
           <p [innerHTML]="'COMPUTING.firstText' | translate"></p>
-          <p>{{"COMPUTING.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+          <p>
+            {{"COMPUTING.swipe" | translate}}<ion-icon
+              slot="end"
+              name="arrow-forward"
+            ></ion-icon>
+          </p>
         </div>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px" src="" />
         <h2>{{"COMPUTING.howToPlay" | translate}}</h2>
         <p>{{"COMPUTING.tutorialText" | translate}}</p>
-        <p>{{"COMPUTING.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+        <p>
+          {{"COMPUTING.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px" src="" />
         <h2>{{"COMPUTING.howMuchTime" | translate}}</h2>
         <p>{{"COMPUTING.timeText" | translate}}</p>
-        <p>{{"COMPUTING.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
+        <p>
+          {{"COMPUTING.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px" src="" />
         <h2>{{"COMPUTING.ready" | translate}}</h2>
-        <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        <ion-button fill="clear" (click)="onStart()"
+          >Start <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
       </ion-slide>
-  </ion-slides>
-    <ion-card id="mid" *ngIf="playing">
-
+    </ion-slides>
+    <ion-card *ngIf="playing">
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -63,10 +83,12 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <h3 class="ion-float-end equation">X = </h3>
+            <h3 class="ion-float-end equation">X =</h3>
           </ion-col>
           <ion-col>
-              <h3 *ngIf="currentNumber" class="ion-float-start">{{currentNumber}}</h3>
+            <h3 *ngIf="currentNumber" class="ion-float-start">
+              {{currentNumber}}
+            </h3>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -110,15 +132,15 @@
             <ion-button (click)="addNumber('0')"><h3>0</h3></ion-button>
           </ion-col>
           <ion-col>
-            <ion-button (click)="clickedOk(currentNumber)"><h3>OK</h3></ion-button>
+            <ion-button (click)="clickedOk(currentNumber)"
+              ><h3>OK</h3></ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-item class="itemBox ion-margin ion-text-center" lines="none">
-        <ion-label class="text" [style.color]="lbl1color">
-          
-        </ion-label>
+        <ion-label class="text" [style.color]="lbl1color"> </ion-label>
       </ion-item>
 
       <ion-item class="itemBox ion-margin ion-text-center" lines="none">
@@ -127,21 +149,18 @@
       </ion-item>
 
       <div id="asdasdasd1">
-        <div id="0" class="asdasdasd" *ngIf="playing">
-        </div>
+        <div id="0" class="asdasdasd" *ngIf="playing"></div>
       </div>
     </ion-card>
 
-    <div *ngIf="playing">
-      
-    </div>
+    <div *ngIf="playing"></div>
 
     <div *ngIf="ended">
       <ion-label> {{finalResult}} </ion-label>
     </div>
-  </div>
 
-  <div *ngIf="drawChart">
-    <app-user-vs-average-chart></app-user-vs-average-chart>
+    <div *ngIf="drawChart">
+      <app-user-vs-average-chart></app-user-vs-average-chart>
+    </div>
   </div>
 </ion-content>

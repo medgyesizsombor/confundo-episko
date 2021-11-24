@@ -20,7 +20,7 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <div id="asd">
+  <div id="mid">
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
@@ -51,64 +51,65 @@
         <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
     </ion-slides>
-  </div>
-  <ion-card *ngIf="playing">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-card class="titleCard">
-            <h3 *ngIf="!titleHUN">{{title}}</h3>
-            <h3 *ngIf="titleHUN">{{titleHUN}}</h3>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col></ion-col>
-        <ion-col>
-          <div id="upButton" *ngIf="playing" (click)="clicked('Up')">
-            <ion-button size="large">
-              <ion-icon name="arrow-up-circle-sharp"></ion-icon>
-            </ion-button>
-          </div>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div id="upButton" *ngIf="playing" (click)="clicked('Left')">
-            <ion-button size="large">
-              <ion-icon name="arrow-back-circle-sharp"></ion-icon>
-            </ion-button>
-          </div>
-        </ion-col>
-        <ion-col></ion-col>
-        <ion-col>
-          <div id="upButton" *ngIf="playing" (click)="clicked('Up')">
-            <ion-button size="large">
-              <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
-            </ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col></ion-col>
-        <ion-col>
-          <div id="upButton" *ngIf="playing" (click)="clicked('Down')">
-            <ion-button size="large">
-              <ion-icon name="arrow-down-circle-sharp"></ion-icon>
-            </ion-button>
-          </div>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-    </ion-grid>
+  
+    <ion-card *ngIf="playing">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card class="titleCard">
+              <h3 *ngIf="!titleHUN">{{title}}</h3>
+              <h3 *ngIf="titleHUN">{{titleHUN}}</h3>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <div id="upButton" *ngIf="playing" (click)="clicked('Up')">
+              <ion-button size="large">
+                <ion-icon name="arrow-up-circle-sharp"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div id="upButton" *ngIf="playing" (click)="clicked('Left')">
+              <ion-button size="large">
+                <ion-icon name="arrow-back-circle-sharp"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col>
+            <div id="upButton" *ngIf="playing" (click)="clicked('Up')">
+              <ion-button size="large">
+                <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <div id="upButton" *ngIf="playing" (click)="clicked('Down')">
+              <ion-button size="large">
+                <ion-icon name="arrow-down-circle-sharp"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
 
-    <div *ngIf="ended">
-      <ion-label> {{finalResult}} </ion-label>
+      <div *ngIf="ended">
+        <ion-label> {{finalResult}} </ion-label>
+      </div>
+    </ion-card>
+
+    <div *ngIf="drawChart">
+      <app-user-vs-average-chart></app-user-vs-average-chart>
     </div>
-  </ion-card>
-
-  <div *ngIf="drawChart">
-    <app-user-vs-average-chart></app-user-vs-average-chart>
   </div>
 </ion-content>

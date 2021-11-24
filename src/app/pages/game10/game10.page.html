@@ -2,7 +2,11 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
-        <ion-icon color="secondary" slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon
+          color="secondary"
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title text class="ion-text-center" style="margin-left: -48px">
@@ -20,55 +24,73 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-slides *ngIf="!playing && !ended">
-    <ion-slide class="ion-padding">
-      <div class="slide">
-        <img style="height: 300px; width: 300px;" src=""/>
-        <h2>{{"MEMORYGRID.title" | translate}}</h2>
-        <p [innerHTML]="'MEMORYGRID.firstText' | translate"></p>
-        <p>{{"MEMORYGRID.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-      </div>
-    </ion-slide>
+  <div id="mid">
+    <ion-slides *ngIf="!playing && !ended">
+      <ion-slide class="ion-padding">
+        <div class="slide">
+          <img style="height: 300px; width: 300px" src="" />
+          <h2>{{"MEMORYGRID.title" | translate}}</h2>
+          <p [innerHTML]="'MEMORYGRID.firstText' | translate"></p>
+          <p>
+            {{"MEMORYGRID.swipe" | translate}}<ion-icon
+              slot="end"
+              name="arrow-forward"
+            ></ion-icon>
+          </p>
+        </div>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"MEMORYGRID.howToPlay" | translate}}</h2>
-      <p>{{"MEMORYGRID.tutorialText" | translate}}</p>
-      <p>{{"MEMORYGRID.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-    </ion-slide>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"MEMORYGRID.howToPlay" | translate}}</h2>
+        <p>{{"MEMORYGRID.tutorialText" | translate}}</p>
+        <p>
+          {{"MEMORYGRID.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"MEMORYGRID.howMuchTime" | translate}}</h2>
-      <p>{{"MEMORYGRID.timeText" | translate}}</p>
-      <p>{{"MEMORYGRID.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-    </ion-slide>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"MEMORYGRID.howMuchTime" | translate}}</h2>
+        <p>{{"MEMORYGRID.timeText" | translate}}</p>
+        <p>
+          {{"MEMORYGRID.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"MEMORYGRID.ready" | translate}}</h2>
-      <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-    </ion-slide>
-  </ion-slides>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"MEMORYGRID.ready" | translate}}</h2>
+        <ion-button fill="clear" (click)="start()"
+          >Start <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+    </ion-slides>
 
-  <ion-grid *ngIf="playing">
-    <ion-row>
-      <ion-col size="4" *ngFor="let item of generatedGrids; let i = index">
-        <ion-card
-          [class.grow]="item.show"
-          [color]="item.colour"
-          (click)="clickOnItem(item, i)"
-          class="ion-activatable ripple-parent">
-          <div class="container" *ngIf="item.show">
-            
-          </div>
-          <ion-ripple-effect></ion-ripple-effect>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid *ngIf="playing">
+      <ion-row>
+        <ion-col size="4" *ngFor="let item of generatedGrids; let i = index">
+          <ion-card
+            [class.grow]="item.show"
+            [color]="item.colour"
+            (click)="clickOnItem(item, i)"
+            class="ion-activatable ripple-parent"
+          >
+            <div class="container" *ngIf="item.show"></div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <div *ngIf="drawChart" class="ion-padding">
-    <app-user-vs-average-chart></app-user-vs-average-chart>
+    <div *ngIf="drawChart" class="ion-padding">
+      <app-user-vs-average-chart></app-user-vs-average-chart>
+    </div>
   </div>
 </ion-content>

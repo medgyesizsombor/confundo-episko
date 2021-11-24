@@ -20,7 +20,7 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <div id="asd">
+  <div id="mid">
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
@@ -50,9 +50,9 @@
         <h2>{{"EQUATIONS.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="onStart()">Start<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-  </ion-slides>
+    
 
-    <div id="mid" *ngIf="playing">
+    <div *ngIf="playing">
       <ion-grid>
         <ion-card class="ion-padding">
         <ion-row>
@@ -93,9 +93,10 @@
     <div *ngIf="ended">
       <ion-label> {{finalResult}} </ion-label>
     </div>
-  </div>
+  
 
-  <div *ngIf="drawChart">
-    <app-user-vs-average-chart></app-user-vs-average-chart>
+    <div *ngIf="drawChart">
+      <app-user-vs-average-chart></app-user-vs-average-chart>
+    </div>
   </div>
 </ion-content>

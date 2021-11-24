@@ -43,3 +43,19 @@ p b {
 h3{
   color: #FFFFFF;
 }
+
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #mid {
+      margin: auto;
+      width: 70%;
+      padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1501px) {
+  #mid {
+      margin: auto;
+      width: 60%;
+      padding: 10px;
+  }
+}
