@@ -1,5 +1,5 @@
 #pageTitle{
-    font-size: 30px;
+    font-size: 36px;
     color: white;
     text-align: center;
     margin: auto;
@@ -17,6 +17,10 @@ ion-header {
 
 ion-card {
     --ion-background-color: #F3A683;
+}
+
+ion-item{
+    font-size: 18px;
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1000px) {

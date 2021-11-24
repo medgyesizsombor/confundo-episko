@@ -275,6 +275,10 @@ export class GoNogogamePage implements OnInit {
   goBack(){
     clearInterval(this.intervalGame);
     clearInterval(this.intervalTurn);
+    this.secondsOnGame = 120;
+    this.secondsOnTurn = 2;
+    this.result = 0;
+    this.playing = false;
     this.router.navigate(['main-tabs/games']);
   }
 

@@ -1,5 +1,5 @@
 ion-title {
-  font-size: 30px;
+  font-size: 36px;
   color: white;
   text-align: center;
   margin: auto;
@@ -8,4 +8,8 @@ ion-title {
 
 ion-toolbar {
   --ion-background-color: #f19066 !important;
+}
+
+ion-label{
+  font-size: 18px;
 }

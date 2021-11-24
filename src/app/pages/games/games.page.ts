@@ -13,15 +13,13 @@ import { LanguageService } from 'src/app/services/language/language.service';
 export class GamesPage implements OnInit {
   uid = localStorage.getItem('uid');
   isMobile: boolean;
-  language = localStorage.getItem('language');
 
   constructor(private router: Router, private angularFireAuth: AngularFireAuth,
     private platform: Platform, private languageService: LanguageService,
     private angularFireStore: AngularFirestore) { }
 
   ngOnInit() {
-    console.log(this.language);
-    this.languageService.setLanguage(this.language);
+    this.languageService.setLanguage(localStorage.getItem('language'));
   }
 
   ionViewWillEnter() {

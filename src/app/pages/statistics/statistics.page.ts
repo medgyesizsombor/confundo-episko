@@ -15,15 +15,13 @@ export class StatisticsPage implements OnInit {
   sumData2: any;
   isMobile: boolean;
 
-  language = localStorage.getItem('language');
-
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private dataOfUser: DataOfUserService, private platform: Platform, private router: Router,
     private languageService: LanguageService) { }
 
   ngOnInit() {
-    this.languageService.setLanguage(this.language);
+    this.languageService.setLanguage(localStorage.getItem('language'));
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });
