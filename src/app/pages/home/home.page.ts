@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
       name: localStorage.getItem('name')
     };
     await this.getDatas();
-    await this.languageService.setLanguage(this.language);
+    await this.languageService.setLanguage(localStorage.getItem('language'));
   }
 
   async ionViewWillEnter(){

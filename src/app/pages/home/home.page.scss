@@ -18,7 +18,7 @@ ion-img{
 }
 
 ion-title{
-    font-size: 30px;
+    font-size: 36px;
     color: white;
     word-break: break-all;
     width: auto;
@@ -31,7 +31,7 @@ ion-card{
 }
 
 ion-item{
-    margin: auto;
+    font-size: 18px;
 }
 
 ion-icon{
@@ -39,24 +39,16 @@ ion-icon{
     text-align: center;
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1000px) {
-    #asd {
-        margin: auto;
-        width: 80%;
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1001px) and (max-width: 1200px) {
-    #asd {
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+    #mid {
         margin: auto;
         width: 70%;
         padding: 10px;
     }
 }
 
-@media only screen and (min-width: 1500px) {
-    #asd {
+@media only screen and (min-width: 1501px) {
+    #mid {
         margin: auto;
         width: 60%;
         padding: 10px;

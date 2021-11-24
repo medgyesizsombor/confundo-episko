@@ -37,8 +37,8 @@
         "profile": "Profil",
         "language": "Nyelv",
         "logout": "Kijelentkezés",
-        "hungarian": "magyar",
-        "english": "angol",
+        "hungarian": "MAGYAR",
+        "english": "ANGOL",
         "ok": "OK",
         "cancel": "Mégse"
     },
@@ -90,7 +90,8 @@
         "timeText":"120 másodperced van összesen.",
         "ready":"Készen állsz?",
         "generatedTaskNumberText": "A tiltott szám: ",
-        "timeText2": "Ennyi időd van megnyomni: "
+        "timeText2": "Ennyi időd van megnyomni: ",
+        "true": "IGAZ"
     },
     "SORTINGGAME":{
         "title": "Rendező játék",
@@ -217,5 +218,10 @@
         "memoryCard": "Memóriakártya",
         "memoryGrid": "Rács memória",
         "points": "Pontok"
+    },
+    "ERROR":{
+        "title": "404 Error",
+        "sorry": "Sajnálom, de egy olyan oldalt találtál, ami nem létezik.",
+        "dontWorry": "Ne aggódj, ha már idekeveredtél, kipróbálhatod a játékokat!"
     }
 }

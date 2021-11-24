@@ -12,9 +12,9 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div id="asd">
+  <div id="mid">
     <h3><ion-title class="games-category ion-padding">{{"GAMES.memory" | translate}}</ion-title></h3>
-    <ion-list class="game-cards">
+    <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game9')">
         <ion-img src="assets/img/unnamed.png"></ion-img>
         <ion-card-content class="ion-padding ion-margin">{{"GAMES.memoryCard" | translate}}</ion-card-content>
@@ -36,8 +36,8 @@
       </ion-card>
     </ion-list>
 
-    <ion-title class="games-category ion-padding">{{"GAMES.attention" | translate}}</ion-title>
-    <ion-list class="game-cards">
+    <h3><ion-title class="games-category ion-padding">{{"GAMES.attention" | translate}}</ion-title></h3>
+    <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('colourgame')">
         <ion-img src="assets/img/unnamed.png"></ion-img>
         <ion-card-content class="ion-padding ion-margin">{{"GAMES.colourGame" | translate}}</ion-card-content>
@@ -64,8 +64,8 @@
       </ion-card>
     </ion-list>
 
-    <ion-title class="games-category ion-padding">{{"GAMES.mathematical" | translate}}</ion-title>
-    <ion-list class="game-cards">
+    <h3><ion-title class="games-category ion-padding">{{"GAMES.mathematical" | translate}}</ion-title></h3>
+    <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game3')">
         <ion-img src="assets/img/unnamed.png"></ion-img>
         <ion-card-content class="ion-padding ion-margin">{{"GAMES.sortingGame" | translate}}</ion-card-content>

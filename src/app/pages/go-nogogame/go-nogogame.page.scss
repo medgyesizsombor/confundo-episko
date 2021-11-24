@@ -1,5 +1,5 @@
 ion-title {
-  font-size: 30px;
+  font-size: 36px;
   color: white;
   text-align: center;
   margin: auto;
@@ -48,7 +48,48 @@ p b {
   font-size: 40px;
 }
 
-#right,
-#left {
-  display: inline-block;
+.forbidden{
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  --ion-background-color: #FF0000;
+  vertical-align: middle;
+  text-align-last: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h3{
+    font-size: 70px;
+    color: #FFFFFF;
+  }
+}
+
+#seconds{
+  font-size: 30px;
+}
+
+#numberCard{
+  font-size: 50px;
+}
+
+.cards{
+  width: 200px;
+  margin:10px auto 10px auto;
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #mid {
+      margin: auto;
+      width: 70%;
+      padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1501px) {
+  #mid {
+      margin: auto;
+      width: 60%;
+      padding: 10px;
+  }
 }

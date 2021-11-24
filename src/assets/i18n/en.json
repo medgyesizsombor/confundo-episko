@@ -63,5 +63,10 @@
         "dateOfBirth": "Date of birth",
         "button": "Register",
         "haveAccount": "If you have account, sign in!"
+    },
+    "ERROR":{
+        "title": "404 Error",
+        "sorry": "I'm sorry, but you found a page that doesn't exist.",
+        "dontWorry": " Don't worry, if you click here you can try my games!"
     }
 }

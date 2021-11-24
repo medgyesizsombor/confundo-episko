@@ -19,9 +19,9 @@
   </ion-item>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding ion-text-center">
 
-  <div id="asd">
+  <div id="mid">
 
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
@@ -52,26 +52,28 @@
         <h2>{{"GONOGOGAME.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-  </ion-slides>
+    </ion-slides>
 
     <ion-card *ngIf="playing" class="ion-padding">
-      <ion-card class="ion-padding">
-        <ion-label>
-          {{"GONOGOGAME.timeText2" | translate}}{{secondsOnTurn}}
-        </ion-label>
-      </ion-card>
-      <ion-card class="forbidden">
+      <ion-card [ngStyle]="{'visibility': !taskVisibility ? 'hidden' : ''}" class="forbidden">
         <h3>{{generatedTaskNumber}}</h3>
       </ion-card>
+
+      <ion-card class="ion-padding cards"  [ngStyle]="styleCard()" >
+        <ion-label>
+          <ion-icon style="font-size: 60px;" name="stopwatch-outline"></ion-icon><h3 id="seconds">{{secondsOnTurn}}</h3>
+        </ion-label>
+      </ion-card>
+      
       
 
-      <ion-item lines="none"> 
+      <ion-card class="ion-padding cards"  [ngStyle]="styleCard()" > 
         <ion-label class="ion-text-center">
-          {{numberCard}}
+          <h3 id="numberCard">{{numberCard}}</h3>
         </ion-label>
-      </ion-item>
+      </ion-card>
 
-      <ion-button (click)="pushed()">True!</ion-button>
+      <ion-button [ngStyle]="styleCard()"  class="ion-padding" style="width: 100%; height: 100px;" (click)="pushed()"><h3>{{"GONOGOGAME.true" | translate}}</h3></ion-button>
     </ion-card>
 
     <div *ngIf="!playing && ended">

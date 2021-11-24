@@ -19,7 +19,7 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
     this.styleCard();
-    this.languageService.setLanguage(this.language);
+    this.languageService.setLanguage(localStorage.getItem('language'));
     console.log(this.language);
   }
 
@@ -42,7 +42,7 @@ export class SettingsPage implements OnInit {
 
   styleCard(){
     if(!this.isMobile){
-      return {width: '60%', margin: '20px auto'};
+      return {width: '60%', margin: '10px auto 10px auto'};
     }
   }
 

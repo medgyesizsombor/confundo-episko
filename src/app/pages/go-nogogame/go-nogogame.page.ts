@@ -32,7 +32,7 @@ export class GoNogogamePage implements OnInit {
   averageScore = 0;
   sumScore = 0;
   bestScore = 0;
-  generatedTaskNumber = 0;
+  generatedTaskNumber: number;
   generatedTaskNumberText = '';
 
 
@@ -51,6 +51,9 @@ export class GoNogogamePage implements OnInit {
   sumScoreAverage = 0;
   averageScoreAverage = 0;
 
+  taskVisibility: boolean;
+  firstGenerated = true;
+
   drawChart: boolean;
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
@@ -66,15 +69,33 @@ export class GoNogogamePage implements OnInit {
     this.timeText = this.secondsOnGame + ' sec';
     this.timeText2 =  'You have ' + this.secondsOnTurn + ' sec to push it!';
     this.generateTask();
-    this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
     this.startCountDownGame();
     this.generateNumberCard();
     this.startCountDownTurn();
   }
 
   generateTask(){
-    this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
-    this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
+    if(this.firstGenerated){
+      this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
+      this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
+      this.taskVisibility = true;
+      console.log(this.firstGenerated);
+      setTimeout(() => {
+        this.taskVisibility = false;
+        this.firstGenerated = false;
+      }, 2000);
+    } else {
+      this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
+      this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
+      this.taskVisibility = false;
+      setTimeout(() => {
+        this.taskVisibility = true;
+        setTimeout(() => {
+          this.taskVisibility = false;
+          this.firstGenerated = false;
+        }, 2000);
+      }, 1000);
+    }
   }
 
   generateNumberCard(){
@@ -106,12 +127,14 @@ export class GoNogogamePage implements OnInit {
   updateTime() {
     if (this.secondsOnGame > 0) {
       this.secondsOnGame--;
-      if(this.secondsOnTurn > 0){
-        this.secondsOnTurn--;
-      } else {
-        this.notPushed();
-        this.secondsOnTurn = 2;
-        this.generateNumberCard();
+      if(!this.taskVisibility){
+        if(this.secondsOnTurn > 0){
+          this.secondsOnTurn--;
+        } else {
+          this.notPushed();
+          this.secondsOnTurn = 2;
+          this.generateNumberCard();
+        }
       }
     } else {
       this.end();
@@ -146,6 +169,14 @@ export class GoNogogamePage implements OnInit {
       this.generateTask();
     }
 
+  }
+
+  styleCard(){
+    if(this.taskVisibility || this.firstGenerated){
+      return {
+        visibility: 'hidden'
+      };
+    }
   }
 
   async getDataOfGames(){
@@ -275,6 +306,10 @@ export class GoNogogamePage implements OnInit {
   goBack(){
     clearInterval(this.intervalGame);
     clearInterval(this.intervalTurn);
+    this.secondsOnGame = 120;
+    this.secondsOnTurn = 2;
+    this.result = 0;
+    this.playing = false;
     this.router.navigate(['main-tabs/games']);
   }
 

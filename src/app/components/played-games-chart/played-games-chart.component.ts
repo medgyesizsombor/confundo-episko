@@ -35,7 +35,7 @@ export class PlayedGamesChartComponent implements OnInit {
       labels: [this.translatePipe.transform('GRAPH.attention'), this.translatePipe.transform('GRAPH.memory'),
       this.translatePipe.transform('GRAPH.mathematical')],
       datasets: [{
-        label: 'My First Dataset',
+        label: this.translatePipe.transform('GRAPH.attention'),
         data: [1, 1, 1],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

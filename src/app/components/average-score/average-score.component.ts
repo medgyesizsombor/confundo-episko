@@ -42,7 +42,7 @@ export class AverageScoreComponent implements OnInit, OnChanges {
       labels: [this.translatePipe.transform('GRAPH.attention'), this.translatePipe.transform('GRAPH.memory'),
       this.translatePipe.transform('GRAPH.mathematical')],
       datasets: [{
-        label: 'My First Dataset',
+        label: this.translatePipe.transform('GRAPH.points'),
         data: [0, 0, 0],
         fill: false,
         borderColor: 'rgb(75, 192, 192)',

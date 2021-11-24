@@ -22,7 +22,7 @@ export class ErrorPage implements OnInit {
 
   styleCard(){
     if(!this.isMobile){
-      return {width: '60%', margin: 'auto'};
+      return {width: '60%', margin: '10px auto 10px auto'};
     }
   }
 

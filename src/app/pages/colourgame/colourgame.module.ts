@@ -8,7 +8,7 @@ import { ColourgamePageRoutingModule } from './colourgame-routing.module';
 
 import { ColourgamePage } from './colourgame.page';
 import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   declarations: [ColourgamePage, UserVsAverageChartComponent],
-  exports: [TranslateModule]
+  exports: [TranslateModule],
+  providers: [TranslatePipe]
 })
 export class ColourgamePageModule {}

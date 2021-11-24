@@ -2,10 +2,14 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
-        <ion-icon color="secondary" slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon
+          color="secondary"
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title text class="ion-text-center" style="margin-left: -48px;">
+    <ion-title text class="ion-text-center" style="margin-left: -48px">
       {{"NUMSANDLETTERS.title" | translate}}
     </ion-title>
   </ion-toolbar>
@@ -20,46 +24,63 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <ion-slides *ngIf="!playing && !ended">
-    <ion-slide class="ion-padding">
-      <div class="slide">
-        <img style="height: 300px; width: 300px;" src=""/>
-        <h2>{{"NUMSANDLETTERS.title" | translate}}</h2>
-        <p [innerHTML]="'NUMSANDLETTERS.firstText' | translate"></p>
-        <p>{{"NUMSANDLETTERS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-      </div>
-    </ion-slide>
+  <div id="mid">
+    <ion-slides *ngIf="!playing && !ended">
+      <ion-slide class="ion-padding">
+        <div class="slide">
+          <img style="height: 300px; width: 300px" src="" />
+          <h2>{{"NUMSANDLETTERS.title" | translate}}</h2>
+          <p [innerHTML]="'NUMSANDLETTERS.firstText' | translate"></p>
+          <p>
+            {{"NUMSANDLETTERS.swipe" | translate}}<ion-icon
+              slot="end"
+              name="arrow-forward"
+            ></ion-icon>
+          </p>
+        </div>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"NUMSANDLETTERS.howToPlay" | translate}}</h2>
-      <p>{{"NUMSANDLETTERS.tutorialText" | translate}}</p>
-      <p>{{"NUMSANDLETTERS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-    </ion-slide>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"NUMSANDLETTERS.howToPlay" | translate}}</h2>
+        <p>{{"NUMSANDLETTERS.tutorialText" | translate}}</p>
+        <p>
+          {{"NUMSANDLETTERS.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"NUMSANDLETTERS.howMuchTime" | translate}}</h2>
-      <p>{{"NUMSANDLETTERS.timeText" | translate}}</p>
-      <p>{{"NUMSANDLETTERS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-    </ion-slide>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"NUMSANDLETTERS.howMuchTime" | translate}}</h2>
+        <p>{{"NUMSANDLETTERS.timeText" | translate}}</p>
+        <p>
+          {{"NUMSANDLETTERS.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"NUMSANDLETTERS.ready" | translate}}</h2>
-      <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-    </ion-slide>
-</ion-slides>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"NUMSANDLETTERS.ready" | translate}}</h2>
+        <ion-button fill="clear" (click)="onStart()"
+          >Start <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+    </ion-slides>
     <ion-card class="ion-padding" *ngIf="playing">
-      <ion-grid >
+      <ion-grid>
         <ion-row>
           <ion-col>
             <h3>{{"NUMSANDLETTERS.title1" | translate}}</h3>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col>
-            <h3 class="ion-padding">{{label1}}</h3></ion-col>
+          <ion-col> <h3 class="ion-padding">{{label1}}</h3></ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -73,23 +94,31 @@
         </ion-row>
         <ion-row class="ion-padding">
           <ion-col>
-              <ion-button style="width: 100%;" *ngIf="playing" (click)="clicked('false')">{{"NUMSANDLETTERS.false" | translate}}</ion-button>
+            <ion-button
+              style="width: 100%"
+              *ngIf="playing"
+              (click)="clicked('false')"
+              >{{"NUMSANDLETTERS.false" | translate}}</ion-button
+            >
           </ion-col>
           <ion-col>
-              <ion-button style="width: 100%;" *ngIf="playing" (click)="clicked('true')">{{"NUMSANDLETTERS.true" | translate}}</ion-button>
+            <ion-button
+              style="width: 100%"
+              *ngIf="playing"
+              (click)="clicked('true')"
+              >{{"NUMSANDLETTERS.true" | translate}}</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
 
     <div *ngIf="ended">
-      <ion-label>
-        {{finalResult}}
-      </ion-label>
+      <ion-label> {{finalResult}} </ion-label>
     </div>
 
-  <div *ngIf="drawChart">
-    <app-user-vs-average-chart></app-user-vs-average-chart>
+    <div *ngIf="drawChart">
+      <app-user-vs-average-chart></app-user-vs-average-chart>
+    </div>
   </div>
-
 </ion-content>

@@ -1,22 +1,23 @@
 <ion-header >
   <ion-toolbar class="ion-padding">
-    
     <ion-img src="assets/img/logo.png"></ion-img>
-    <ion-title text class="ion-text-center">404 Error</ion-title>
+    <ion-title text class="ion-text-center">{{"ERROR.title" | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div id="mid">
   <ion-card [ngStyle]="styleCard()" class="ion-padding">
     <ion-item lines="none">
-      <ion-label class="ion-text-wrap" color="secondary">I'm sorry, but you found a page that doesn't exist.</ion-label>
+      <ion-label class="ion-text-wrap" color="secondary">{{"ERROR.sorry" | translate}}</ion-label>
     </ion-item>
   </ion-card>
 
-  <ion-card [ngStyle]="styleCard()" class="ion-padding">
-    <ion-item lines="none" (click)="goHome()">
-      <ion-label color="secondary">Don't worry, if you click here you can try my games!</ion-label>
-      <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
+  <ion-card [ngStyle]="styleCard()" class="ion-padding" (click)="goHome()">
+    <ion-item lines="none">
+      <ion-label color="secondary">{{"ERROR.dontWorry"| translate}}</ion-label>
+      <ion-icon color="secondary" name="chevron-forward-outline" slot="end" ></ion-icon>
     </ion-item>
   </ion-card>
+  </div>
 </ion-content>

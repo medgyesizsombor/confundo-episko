@@ -8,7 +8,7 @@ import { Game3PageRoutingModule } from './game3-routing.module';
 
 import { Game3Page } from './game3.page';
 import { UserVsAverageChartComponent } from 'src/app/components/user-vs-average-chart/user-vs-average-chart.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ],
   declarations: [Game3Page, UserVsAverageChartComponent],
-  exports: [TranslateModule]
+  exports: [TranslateModule],
+  providers: [TranslatePipe]
 })
 export class Game3PageModule {}

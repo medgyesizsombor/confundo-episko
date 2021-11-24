@@ -1,5 +1,5 @@
 #pageTitle{
-    font-size: 30px;
+    font-size: 36px;
     color: white;
     text-align: center;
     margin: auto;
@@ -19,26 +19,6 @@ ion-card {
     --ion-background-color: #F3A683;
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1000px) {
-    #asd {
-        margin: auto;
-        width: 80%;
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1001px) and (max-width: 1200px) {
-    #asd {
-        margin: auto;
-        width: 70%;
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1500px) {
-    #asd {
-        margin: auto;
-        width: 60%;
-        padding: 10px;
-    }
+ion-item{
+    font-size: 18px;
 }

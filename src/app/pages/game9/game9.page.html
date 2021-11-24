@@ -2,10 +2,14 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
-        <ion-icon color="secondary" slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-icon
+          color="secondary"
+          slot="icon-only"
+          name="arrow-back"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title text class="ion-text-center" style="margin-left: -48px;">
+    <ion-title text class="ion-text-center" style="margin-left: -48px">
       {{"MEMORYCARD.title" | translate}}
     </ion-title>
   </ion-toolbar>
@@ -20,51 +24,91 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-slides *ngIf="!playing && !ended">
-    <ion-slide class="ion-padding">
-      <div class="slide">
-        <img style="height: 300px; width: 300px;" src=""/>
-        <h2>{{"MEMORYCARD.title" | translate}}</h2>
-        <p [innerHTML]="'MEMORYCARD.firstText' | translate"></p>
-        <p>{{"MEMORYCARD.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-      </div>
-    </ion-slide>
+  <div id="mid">
+    <ion-slides *ngIf="!playing && !ended">
+      <ion-slide class="ion-padding">
+        <div class="slide">
+          <img style="height: 300px; width: 300px" src="" />
+          <h2>{{"MEMORYCARD.title" | translate}}</h2>
+          <p [innerHTML]="'MEMORYCARD.firstText' | translate"></p>
+          <p>
+            {{"MEMORYCARD.swipe" | translate}}<ion-icon
+              slot="end"
+              name="arrow-forward"
+            ></ion-icon>
+          </p>
+        </div>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"MEMORYCARD.howToPlay" | translate}}</h2>
-      <p>{{"MEMORYCARD.tutorialText" | translate}}</p>
-      <p>{{"MEMORYCARD.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-    </ion-slide>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"MEMORYCARD.howToPlay" | translate}}</h2>
+        <p>{{"MEMORYCARD.tutorialText" | translate}}</p>
+        <p>
+          {{"MEMORYCARD.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"MEMORYCARD.howMuchTime" | translate}}</h2>
-      <p>{{"MEMORYCARD.timeText" | translate}}</p>
-      <p>{{"MEMORYCARD.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
-    </ion-slide>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"MEMORYCARD.howMuchTime" | translate}}</h2>
+        <p>{{"MEMORYCARD.timeText" | translate}}</p>
+        <p>
+          {{"MEMORYCARD.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
 
-    <ion-slide class="ion-padding">
-      <img style="height: 300px; width: 300px;" src=""/>
-      <h2>{{"MEMORYCARD.ready" | translate}}</h2>
-      <ion-button fill="clear" (click)="startGame()">Start<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
-    </ion-slide>
-</ion-slides>
-  <ion-grid style="height: 100%; display: flex; flex-flow: column;" *ngIf="playing">
-    <ion-row style="flex-grow: 1;">
-      <ion-col *ngFor="let mem of memory; let i = index" size="6" style="height: 25%;">
-        <ion-card class="ion-padding ion-activatable ripple-parent" style="height: 100%;" (click)="clicked(mem, i)" *ngIf="!mem.matched" [color]="mem.color" [class.rotate-anim]="mem.show">
-          <div style="display: flex; justify-content: center; align-items: center; height: 100%;" *ngIf="mem.show">
-            <ion-icon [name]="mem.item" style="font-size: 50px;"></ion-icon>
-          </div>
-          <ion-ripple-effect></ion-ripple-effect>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="" />
+        <h2>{{"MEMORYCARD.ready" | translate}}</h2>
+        <ion-button fill="clear" (click)="startGame()"
+          >Start<ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+    </ion-slides>
+    <ion-grid
+      style="height: 100%; display: flex; flex-flow: column"
+      *ngIf="playing"
+    >
+      <ion-row style="flex-grow: 1">
+        <ion-col
+          *ngFor="let mem of memory; let i = index"
+          size="6"
+          style="height: 25%"
+        >
+          <ion-card
+            class="ion-padding ion-activatable ripple-parent"
+            style="height: 100%"
+            (click)="clicked(mem, i)"
+            *ngIf="!mem.matched"
+            [color]="mem.color"
+            [class.rotate-anim]="mem.show"
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+              "
+              *ngIf="mem.show"
+            >
+              <ion-icon [name]="mem.item" style="font-size: 50px"></ion-icon>
+            </div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-
-<div *ngIf="drawChart">
-  <app-user-vs-average-chart></app-user-vs-average-chart>
-</div>
+    <div *ngIf="drawChart">
+      <app-user-vs-average-chart></app-user-vs-average-chart>
+    </div>
+  </div>
 </ion-content>
