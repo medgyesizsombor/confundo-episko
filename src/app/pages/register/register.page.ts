@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, Platform, ToastController } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -24,15 +25,17 @@ export class RegisterPage implements OnInit {
     asd2: 0
   };
 
-
+  isMobile: boolean;
   uid = localStorage.getItem('uid');
 
   constructor(private toast: ToastController, private angularFirestore: AngularFirestore,
     private angularFireAuth: AngularFireAuth, private router: Router,
     private loadingController: LoadingController, private authService: AuthService,
-    private alertController: AlertController) { }
+    private alertController: AlertController, private platform: Platform,
+    private translatePipe: TranslatePipe) { }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   async register(){
@@ -43,7 +46,6 @@ export class RegisterPage implements OnInit {
 
     this.authService.register({
       email: this.user.email,
-      username: this.user.username,
       password: this.user.password,
       birthdate: this.user.birthdate,
       name: this.user.name,
@@ -65,7 +67,6 @@ export class RegisterPage implements OnInit {
 
   async successfulAlert(){
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
       header: 'Alert',
       subHeader: 'Subtitle',
       message: 'Registration is successfull.',

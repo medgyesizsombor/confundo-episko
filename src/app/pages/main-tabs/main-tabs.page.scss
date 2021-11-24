@@ -1,3 +1,9 @@
 ion-tab-button{
-    font-size: 14px;
+    font-size: 12px;
+}
+
+@media only screen and (min-width: 1001px){
+    ion-tab-button{
+        font-size: 14px;
+    }
 }

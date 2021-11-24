@@ -1,7 +1,7 @@
 {
     "HOME":{
         "title": "Főoldal",
-        "greeting": "Üdvözöllek {{name}} a Confundo Episkon!",
+        "greeting": "Üdvözöllek a Confundo Episkon!",
         "clickHereToCheckTheGames": "Kattints ide a játékok megtekintéséért!",
         "clickHereToPlayLastGame": "Legutóbb megnyitott játék a(z) {{gameName}} volt. Ha szeretnél vele játszani, kattints ide!"
     },
@@ -53,7 +53,7 @@
         "email": "E-mail cím",
         "password": "Jelszó",
         "button": "Bejelentkezés",
-        "noAccount": "Ha nincs még felhasználó fiókod, regisztrálj!"
+        "noAccount": "Ha nincs még felhasználó fiókod, kattints erre a szövegre és regisztrálj!"
     },
     "REGISTER":{
         "title": "Regisztráció",
@@ -69,7 +69,7 @@
         "time":"Maradék idő",
         "points": "Pontok",
         "swipe": "Lapozz további információért!",
-        "firstText": "A <b>Színjáték</b> a figyelem képességet fejleszti.",
+        "firstText": "A <b>Szín játék</b> a figyelem képességet fejleszti.",
         "howToPlay":"Hogyan kell játszani?",
         "tutorialText": "Ha a fenti szöveg megegyezik az alsó szöveg színével, akkor az <b>IGAZ</b> gombra kell kattintani. Ha nem egyezik meg, akkor meg a <b>HAMIS</b>-ra.",
         "howMuchTime": "Mennyi ideig tart?",
@@ -85,6 +85,7 @@
         "swipe":"Lapozz további információért!",
         "firstText": "Az <b>Go/No-go teszt</b> a figyelem képességet fejleszti.",
         "howToPlay":"Hogyan kell játszani?",
+        "tutorialText2": "A piros körben megjelenő szám a tiltott szám. Ezt meg kell jegyezni, mert el fog tűnni.",
         "tutorialText": "Minél gyorsabban kell kattintani az IGAZ gombra, ha a szám nem egyezik meg a tiltott számmal.",
         "howMuchTime": "Mennyi ideig tart?",
         "timeText":"120 másodperced van összesen.",
