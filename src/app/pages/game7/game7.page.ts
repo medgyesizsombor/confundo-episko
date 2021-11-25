@@ -120,7 +120,9 @@ export class Game7Page implements OnInit {
   }
 
   clickedOk(num: number){
-    if(num === this.number3){
+    console.log(num + ' A MEGOLDÁS');
+    console.log(this.number3);
+    if(Number(num) === this.number3){
       this.result++;
     } else {
       this.result--;
