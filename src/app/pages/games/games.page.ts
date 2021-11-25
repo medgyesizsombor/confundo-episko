@@ -19,12 +19,10 @@ export class GamesPage implements OnInit {
     private angularFireStore: AngularFirestore) { }
 
   ngOnInit() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
     this.isMobile = this.platform.is('mobile');
   }
 
   ionViewWillEnter() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
     this.styleCard();

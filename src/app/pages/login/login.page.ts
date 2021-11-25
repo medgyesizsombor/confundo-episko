@@ -32,23 +32,8 @@ export class LoginPage implements OnInit {
     this.languageService.setLanguage(this.translateService.defaultLang);
 
     this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
-    this.languageService.setLanguage(localStorage.getItem('language'));
-    console.log('asdasd');
-    }
+    this.languageService.setLanguage('hu');
 
-  ionViewWillEnter() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
-    this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
-    console.log('asdasd2');
-  }
-
-  ionViewDidEnter(){
-    this.languageService.setLanguage(localStorage.getItem('language'));
-    this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
-    console.log('asdasd3');
   }
 
   async login(){
@@ -61,7 +46,7 @@ export class LoginPage implements OnInit {
       this.user
       ).then(() => {
       loading.dismiss();
-      this.languageService.setLanguage(this.translateService.defaultLang);
+      this.languageService.setLanguage(this.languageService.getLanguage());
       this.router.navigate(['main-tabs/home']);
     }).catch(async err => {
       const toast = await this.toast.create({

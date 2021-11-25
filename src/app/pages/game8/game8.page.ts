@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-game8',
@@ -52,13 +53,14 @@ export class Game8Page implements OnInit {
   averageScoreAverage = 0;
   drawChart = false;
 
-  language = localStorage.getItem('language');
+  language = '';
   isMobile: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService, private platform: Platform) {
+    private dataAverageUser: DataAverageUserService, private platform: Platform,
+    private languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -91,25 +93,25 @@ export class Game8Page implements OnInit {
     this.randomNumber = Math.floor(Math.random() * (3 - 0) + 0);
       switch (this.randomNumber) {
         case 0:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[0];
           }
           this.title = this.directions[0];
           break;
         case 1:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[1];
           }
           this.title = this.directions[1];
           break;
         case 2:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[2];
           }
           this.title = this.directions[2];
           break;
         case 3:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[3];
           }
           this.title = this.directions[3];

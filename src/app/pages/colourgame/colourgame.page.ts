@@ -93,7 +93,7 @@ export class ColourgamePage implements OnInit {
   }
 
   async lbl1textTranslate(num1: number, num2: number){
-    if(localStorage.getItem('language') === 'hu'){
+    if(this.languageService.getLanguage() === 'hu'){
       this.lbl1textHUN = this.coloursInHungarian[num1];
       this.lbl2textHUN = this.coloursInHungarian[num2];
     }

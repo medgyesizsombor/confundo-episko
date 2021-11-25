@@ -16,8 +16,6 @@ import { LanguageService } from 'src/app/services/language/language.service';
 })
 export class Game4Page implements OnInit {
 
-  language = localStorage.getItem('language');
-
   timeText: string;
   equation1 = '';
   equation2 = '';
@@ -61,12 +59,11 @@ export class Game4Page implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService, private languageService: LanguageService,
+    private dataAverageUser: DataAverageUserService,
     private platform: Platform) {
   }
 
   ngOnInit() {
-    this.languageService.setLanguage(this.language);
     this.isMobile = this.platform.is('mobile');
   }
 

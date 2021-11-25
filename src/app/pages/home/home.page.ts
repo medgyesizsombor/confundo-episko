@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { LoadingController, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
-import { LanguageService } from 'src/app/services/language/language.service';
-import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -15,7 +12,6 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HomePage implements OnInit {
 
   uid = localStorage.getItem('uid');
-  language = localStorage.getItem('language');
   lastPlayed = '';
   name = '';
 
@@ -35,10 +31,8 @@ export class HomePage implements OnInit {
   params: any;
   isMobile: boolean;
 
-  constructor(private router: Router, private loadingController: LoadingController,
-    private authService: AuthService, private angularFirestore: AngularFirestore,
-    private dataOfUser: DataOfUserService, private languageService: LanguageService,
-    private platform: Platform) { }
+  constructor(private router: Router,
+    private dataOfUser: DataOfUserService, private platform: Platform) { }
 
 
   async ngOnInit() {
@@ -46,8 +40,6 @@ export class HomePage implements OnInit {
     this.fullName = {
       name: localStorage.getItem('name')
     };
-    await this.getDatas();
-    await this.languageService.setLanguage(localStorage.getItem('language'));
   }
 
   async ionViewWillEnter(){
@@ -55,7 +47,6 @@ export class HomePage implements OnInit {
       name: localStorage.getItem('name')
     };
     await this.getDatas();
-    await this.languageService.setLanguage(this.language);
   }
 
   async getDatas(){

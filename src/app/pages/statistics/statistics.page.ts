@@ -21,7 +21,6 @@ export class StatisticsPage implements OnInit {
     private languageService: LanguageService) { }
 
   ngOnInit() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });

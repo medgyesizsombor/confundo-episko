@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class SettingsPage implements OnInit {
 
   isMobile: boolean;
-  language = localStorage.getItem('language');
+  language: any;
 
   constructor(private authService: AuthService, private router: Router,
     private platform: Platform, private languageService: LanguageService,
@@ -21,19 +21,17 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
     this.styleCard();
-    this.languageService.setLanguage(localStorage.getItem('language'));
-    console.log(this.language);
+    this.language = this.languageService.getLanguage();
   }
 
   ionViewWillEnter(){
     this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'change');
   }
 
   logout(){
+    console.log('DEF', this.translateService.defaultLang);
+    this.languageService.setLanguage('hu');
     this.authService.logout();
-    localStorage.clear();
-    this.languageService.setLanguage(this.translateService.defaultLang);
     this.router.navigate(['login']);
   }
 

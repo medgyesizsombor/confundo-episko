@@ -38,6 +38,7 @@ export class AverageScoreComponent implements OnInit, OnChanges {
     private translatePipe: TranslatePipe) { }
 
   async ngOnInit() {
+    console.log('AVERAGE INIT');
     this.data1 = {
       labels: [this.translatePipe.transform('GRAPH.attention'), this.translatePipe.transform('GRAPH.memory'),
       this.translatePipe.transform('GRAPH.mathematical')],
@@ -51,58 +52,57 @@ export class AverageScoreComponent implements OnInit, OnChanges {
     };
 
     this.loading = true;
-    await this.getDatas();
+
     this.createChart();
   }
 
-  ionViewWillEnter(){
-
-    this.averageScoreChart.update();
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
+    console.log('AVERAGE CHANGES')
     if (changes && changes.sumData && changes.sumData.currentValue) {
       setTimeout(() => {
         this.updateChart(changes.sumData.currentValue);
       }, 400);
     }
-
   }
 
   createChart(){
     setTimeout(() => {
+     if (this.averageScoreChart === null || this.averageScoreChart === undefined) {
       this.averageScoreChart = new Chart('averageScoreChart', {
-          type: 'line',
-          data: this.data1,
+        type: 'line',
+        data: this.data1,
       });
 
       this.loading = false;
+     }
     }, 250);
   }
 
 
-  updateChart(data: any){
-    const averageAttention = this.aData.colourgame.averageScore + this.aData.goNogoGame.averageScore +
-    this.aData.fifthgame.averageScore + this.aData.sixthgame.averageScore;
-    const averageMemory = this.aData.ninthgame.averageScore + this.aData.tenthgame.averageScore;
-    const averageMatematical = this.aData.thirdgame.averageScore + this.aData.fourthgame.averageScore +
-    this.aData.seventhgame.averageScore;
+  updateChart(data: any) {
+    if (this.averageScoreChart === null || this.averageScoreChart === undefined) { return; };
+
+    const averageAttention = data.colourgame.averageScore + data.goNogoGame.averageScore +
+    data.fifthgame.averageScore + data.sixthgame.averageScore;
+    const averageMemory = data.ninthgame.averageScore + data.tenthgame.averageScore;
+    const averageMatematical = data.thirdgame.averageScore + data.fourthgame.averageScore +
+    data.seventhgame.averageScore;
 
     this.data1.datasets[0].data[0] = averageAttention;
     this.data1.datasets[0].data[1] = averageMemory;
     this.data1.datasets[0].data[2] = averageMatematical;
 
-    //this.bestScoreChart.data = this.data;
-    //this.bestScoreChart.update();
+    this.averageScoreChart.data = this.data1;
+    this.averageScoreChart.update();
   }
 
-  async getDatas(){
-    await this.dataOfUser.getAllDatas().then(res => {
-      this.aData = res;
+  /*async getDatas(){
+    await this.dataOfUser.getAllSumStats().then(res => {
+      data = res;
     });
 
     console.log('ASDASD');
 
     }
-
+*/
 }
