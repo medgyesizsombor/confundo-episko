@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
@@ -58,7 +59,8 @@ export class Game10Page implements OnInit {
     private dataOfUser: DataOfUserService,
     private dataAverageUser: DataAverageUserService,
     private router: Router,
-    private platform: Platform
+    private platform: Platform,
+    private translatePipe: TranslatePipe
   ) {}
 
   ngOnInit() {

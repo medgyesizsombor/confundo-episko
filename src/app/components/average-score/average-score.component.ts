@@ -57,7 +57,6 @@ export class AverageScoreComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('AVERAGE CHANGES')
     if (changes && changes.sumData && changes.sumData.currentValue) {
       setTimeout(() => {
         this.updateChart(changes.sumData.currentValue);
@@ -95,14 +94,4 @@ export class AverageScoreComponent implements OnInit, OnChanges {
     this.averageScoreChart.data = this.data1;
     this.averageScoreChart.update();
   }
-
-  /*async getDatas(){
-    await this.dataOfUser.getAllSumStats().then(res => {
-      data = res;
-    });
-
-    console.log('ASDASD');
-
-    }
-*/
 }

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
@@ -50,7 +51,8 @@ export class Game9Page implements OnInit {
   constructor(public alertController: AlertController, private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService, private platform: Platform) {}
+    private dataAverageUser: DataAverageUserService, private platform: Platform,
+    private translatePipe: TranslatePipe) {}
 
   ngOnInit() {
     this.isMobile = this.platform.is('mobile');

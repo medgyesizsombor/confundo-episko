@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
@@ -49,7 +50,7 @@ export class Game3Page implements OnInit {
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private router: Router, private platform: Platform){ }
+    private router: Router, private platform: Platform, private translatePipe: TranslatePipe){ }
 
   ngOnInit(){
     this.isMobile = this.platform.is('mobile');

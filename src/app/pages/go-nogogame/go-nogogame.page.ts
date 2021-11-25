@@ -9,6 +9,7 @@ import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.se
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-go-nogogame',
@@ -61,7 +62,7 @@ export class GoNogogamePage implements OnInit {
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private router: Router, private platform: Platform) { }
+    private router: Router, private platform: Platform, private translatePipe: TranslatePipe) { }
 
   ngOnInit() {
     this.isMobile = this.platform.is('mobile');

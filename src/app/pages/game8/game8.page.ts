@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
@@ -60,7 +61,7 @@ export class Game8Page implements OnInit {
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
     private dataAverageUser: DataAverageUserService, private platform: Platform,
-    private languageService: LanguageService) {
+    private languageService: LanguageService, private translatePipe: TranslatePipe) {
   }
 
   ngOnInit() {

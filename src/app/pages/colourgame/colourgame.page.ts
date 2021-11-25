@@ -9,6 +9,7 @@ import { DataAverageUserService } from 'src/app/services/data-average-user/data-
 import * as moment from 'moment';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 120;
+  seconds = 5;
   timeText: string;
   playedGames = 0;
   averageScore = 0;
@@ -57,7 +58,8 @@ export class ColourgamePage implements OnInit {
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private languageService: LanguageService, private platform: Platform) {
+    private languageService: LanguageService, private platform: Platform,
+    private translatePipe: TranslatePipe) {
   }
 
   ngOnInit() {
