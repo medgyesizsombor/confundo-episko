@@ -39,11 +39,6 @@ export class AuthService {
       }).catch(err => {
         reject(err);
       });
-      this.angularFireStore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
-        localStorage.setItem('name', res.name);
-      }, err => {
-        console.log(err);
-      });
     });
   }
 

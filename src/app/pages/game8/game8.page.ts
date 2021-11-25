@@ -34,7 +34,7 @@ export class Game8Page implements OnInit {
   directions= ['Up', 'Down', 'Right', 'Left'];
   directionsHUN = ['Fel', 'Le', 'Jobbra', 'Balra'];
 
-  seconds = 120;
+  seconds = 10;
   playing = false;
   ended = false;
   interval: any;

@@ -67,9 +67,7 @@ export class RegisterPage implements OnInit {
 
   async successfulAlert(){
     const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'Registration is successfull.',
+      message: this.translatePipe.transform('REGISTER.message'),
       buttons: ['OK']
     });
 
