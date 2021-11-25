@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
@@ -52,14 +53,16 @@ export class Game8Page implements OnInit {
   drawChart = false;
 
   language = localStorage.getItem('language');
+  isMobile: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService) {
+    private dataAverageUser: DataAverageUserService, private platform: Platform) {
   }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   onStart(){
@@ -267,6 +270,18 @@ export class Game8Page implements OnInit {
   goBack(){
     clearInterval(this.interval);
     this.router.navigate(['main-tabs/games']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

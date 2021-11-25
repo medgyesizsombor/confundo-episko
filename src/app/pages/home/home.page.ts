@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
@@ -33,13 +33,16 @@ export class HomePage implements OnInit {
 
   fullName: any;
   params: any;
+  isMobile: boolean;
 
   constructor(private router: Router, private loadingController: LoadingController,
     private authService: AuthService, private angularFirestore: AngularFirestore,
-    private dataOfUser: DataOfUserService, private languageService: LanguageService) { }
+    private dataOfUser: DataOfUserService, private languageService: LanguageService,
+    private platform: Platform) { }
 
 
   async ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
     this.fullName = {
       name: localStorage.getItem('name')
     };
@@ -68,6 +71,14 @@ export class HomePage implements OnInit {
 
   playWithLastGame(){
     this.router.navigate([this.lastPlayed]);
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '18px'
+      };
+    }
   }
 
 }

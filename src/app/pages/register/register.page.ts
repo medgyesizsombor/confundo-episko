@@ -82,4 +82,40 @@ export class RegisterPage implements OnInit {
     this.router.navigate(['login']);
   }
 
+  textStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '16px'
+      };
+    }
+  }
+
+  registerButtonStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '18px'
+      };
+    }
+  }
+
+  goToLoginButtonStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '14px'
+      };
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
+  }
+
 }

@@ -20,6 +20,7 @@ export class GamesPage implements OnInit {
 
   ngOnInit() {
     this.languageService.setLanguage(localStorage.getItem('language'));
+    this.isMobile = this.platform.is('mobile');
   }
 
   ionViewWillEnter() {
@@ -50,6 +51,26 @@ export class GamesPage implements OnInit {
 
   goHomePage(){
     this.router.navigate(['main-tabs/home']);
+  }
+
+  styleIonCardContent(){
+    if(this.isMobile){
+      return {
+        'font-size': '12px',
+      };
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

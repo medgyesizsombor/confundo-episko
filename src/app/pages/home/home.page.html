@@ -8,20 +8,20 @@
   <div id="mid">
     
   <ion-card class="ion-padding">
-    <ion-item lines="none">
+    <ion-item [ngStyle]="textStyle()" lines="none">
       <ion-label class="ion-text-wrap" color="secondary">{{"HOME.greeting" | translate}}</ion-label>
     </ion-item>
   </ion-card>
 
   <ion-card class="ion-padding">
-    <ion-item (click)="goToGames()" lines="none">
+    <ion-item [ngStyle]="textStyle()" (click)="goToGames()" lines="none">
       <ion-label class="ion-text-wrap" color="secondary">{{"HOME.clickHereToCheckTheGames" | translate}}</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
     </ion-item>
   </ion-card>
 
   <ion-card class="ion-padding">
-    <ion-item (click)="playWithLastGame()" lines="none">
+    <ion-item [ngStyle]="textStyle()" (click)="playWithLastGame()" lines="none">
       <ion-label class="ion-text-wrap" color="secondary">{{"HOME.clickHereToPlayLastGame" | translate:params}}</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
     </ion-item>

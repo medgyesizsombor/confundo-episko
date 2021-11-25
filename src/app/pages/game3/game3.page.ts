@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
@@ -43,12 +44,15 @@ export class Game3Page implements OnInit {
   averageScoreAverage = 0;
   drawChart = false;
 
+  isMobile: boolean;
+
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private router: Router){ }
+    private router: Router, private platform: Platform){ }
 
   ngOnInit(){
+    this.isMobile = this.platform.is('mobile');
   }
 
   start(){
@@ -238,5 +242,17 @@ export class Game3Page implements OnInit {
   goBack(){
     clearInterval(this.interval);
     this.router.navigate(['main-tabs/games']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 }

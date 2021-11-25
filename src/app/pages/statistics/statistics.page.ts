@@ -73,4 +73,16 @@ export class StatisticsPage implements OnInit {
     this.router.navigate(['main-tabs/home']);
   }
 
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
+  }
+
 }

@@ -1,67 +1,43 @@
-ion-title{
-    font-size: 36px;
-    color: white;
-    text-align: center;
-    margin: auto;
-    padding: 20px;
+ion-title {
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  margin: auto;
+  padding: 20px;
 }
 
 ion-toolbar {
-  --ion-background-color: #F19066 !important;
+  --ion-background-color: #f19066 !important;
 }
 
-ion-content{
-    --ion-background-color: #EEEEEE;
+ion-content {
+  --ion-background-color: #eeeeee;
 }
 
-#gotoLogin{
-  color: white!important;
+#gotoLogin {
+  color: white !important;
   text-align: center;
   width: 100%;
 }
 
-#register{
+#register {
   width: 300px;
-  margin: 10px auto 3px auto ;
+  margin: 10px auto 3px auto;
   margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
   #mid {
-      margin: auto;
-      width: 70%;
-      padding: 10px;
-  }
-
-  .text{
-    font-size: 16px;
-  }
-
-  #goToLogin{
-    font-size: 14px;
-  }
-
-  #register{
-    font-size: 18px;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
   }
 }
 
 @media only screen and (min-width: 1501px) {
   #mid {
-      margin: auto;
-      width: 60%;
-      padding: 10px;
-  }
-
-  .text{
-    font-size: 16px;
-  }
-
-  #goToLogin{
-    font-size: 14px;
-  }
-
-  #register{
-    font-size: 18px;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
   }
 }

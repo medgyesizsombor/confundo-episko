@@ -1,9 +1,5 @@
 ion-title{
-  font-size: 36px;
-    color: white;
-    text-align: center;
-    margin: auto;
-    padding: 20px;
+  padding: 20px;
 }
 
 ion-toolbar {
@@ -12,6 +8,11 @@ ion-toolbar {
 
 ion-slides {
   height: 100%;
+}
+
+ion-header {
+  background-image: none;
+  box-shadow: var(--my-shadow);
 }
 
 .swiper-slide {

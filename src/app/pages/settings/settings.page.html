@@ -5,7 +5,7 @@
         <ion-icon color="secondary" class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-padding" id="pageTitle" text class="ion-text-center" style="margin-left: -48px">
+    <ion-title [ngStyle]="titleStyle()" id="pageTitle" color="secondary" class="ion-text-center ion-padding" style="margin-left: -48px">
       {{"SETTINGS.title" | translate }}
     </ion-title>
   </ion-toolbar>
@@ -13,14 +13,14 @@
 
 <ion-content class="ion-padding">
     <ion-card class="ion-padding" [ngStyle]="styleCard()" (click)="goToSettings('main-tabs/profile')">
-      <ion-item lines="none" >
+      <ion-item [ngStyle]="textStyle()" lines="none" >
         <ion-label color="secondary">{{"SETTINGS.profile" | translate }}</ion-label>
         <ion-icon color="secondary" name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
       </ion-item>
     </ion-card>
 
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
-      <ion-item lines="none">
+      <ion-item [ngStyle]="textStyle()" lines="none">
         <ion-label color="secondary">{{"SETTINGS.language" | translate }}</ion-label>
         <ion-select style="color: #FFFFFF;" [(ngModel)]="language" value={{language}} okText="{{'SETTINGS.ok' | translate}}" cancelText="{{'SETTINGS.cancel' | translate}}" (ionChange)="setLanguage(language)">
           <ion-select-option id="hu" value="hu">{{"SETTINGS.hungarian" | translate}}</ion-select-option>
@@ -30,7 +30,7 @@
     </ion-card>
 
     <ion-card class="ion-padding" [ngStyle]="styleCard()" (click)="logout()">
-      <ion-item lines="none">
+      <ion-item [ngStyle]="textStyle()" lines="none">
         <ion-label color="secondary">{{"SETTINGS.logout" | translate }}</ion-label>
         <ion-icon color="secondary" name="chevron-forward-outline" slot="end" class="ion-padding-end"></ion-icon>
       </ion-item>

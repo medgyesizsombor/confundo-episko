@@ -1,8 +1,4 @@
 ion-title {
-  font-size: 36px;
-  color: white;
-  text-align: center;
-  margin: auto;
   padding: 20px;
 }
 
@@ -14,6 +10,10 @@ ion-slides {
   height: 100%;
 }
 
+ion-header {
+  background-image: none;
+  box-shadow: var(--my-shadow);
+}
 .swiper-slide {
   display: block;
 }
@@ -75,16 +75,16 @@ ion-toolbar {
 
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
   #mid {
-      margin: auto;
-      width: 70%;
-      padding: 10px;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
   }
 }
 
 @media only screen and (min-width: 1501px) {
   #mid {
-      margin: auto;
-      width: 60%;
-      padding: 10px;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
   }
 }

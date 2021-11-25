@@ -28,19 +28,27 @@ export class LoginPage implements OnInit {
     private languageService: LanguageService, private translateService: TranslateService) { }
 
   async ngOnInit() {
+    this.translateService.use(this.translateService.defaultLang);
+    this.languageService.setLanguage(this.translateService.defaultLang);
+
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
     this.languageService.setLanguage(localStorage.getItem('language'));
+    console.log('asdasd');
     }
 
   ionViewWillEnter() {
+    this.languageService.setLanguage(localStorage.getItem('language'));
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
+    console.log('asdasd2');
   }
 
   ionViewDidEnter(){
+    this.languageService.setLanguage(localStorage.getItem('language'));
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
+    console.log('asdasd3');
   }
 
   async login(){
@@ -68,6 +76,42 @@ export class LoginPage implements OnInit {
 
   goToRegister(){
     this.router.navigate(['register']);
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '16px'
+      };
+    }
+  }
+
+  goToRegisterButtonStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '14px'
+      };
+    }
+  }
+
+  loginButtonStyle(){
+    if(!this.isMobile){
+      return{
+        'font-size': '18px'
+      };
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

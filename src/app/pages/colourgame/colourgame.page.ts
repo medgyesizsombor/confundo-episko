@@ -8,6 +8,7 @@ import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.se
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import * as moment from 'moment';
 import { LanguageService } from 'src/app/services/language/language.service';
+import { Platform } from '@ionic/angular';
 
 
 @Component({
@@ -50,15 +51,17 @@ export class ColourgamePage implements OnInit {
   coloursInHungarian = ['piros', 'narancs', 'kék', 'barna', 'zöld', 'lila', 'fekete', 'rózsaszín'];
 
   drawChart = false;
+  isMobile: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private languageService: LanguageService) {
+    private languageService: LanguageService, private platform: Platform) {
   }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   start() {
@@ -232,5 +235,17 @@ export class ColourgamePage implements OnInit {
   goBack(){
     clearInterval(this.interval);
     this.router.navigate(['main-tabs/games']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 }

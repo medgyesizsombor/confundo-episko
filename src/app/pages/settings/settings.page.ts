@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -15,7 +16,8 @@ export class SettingsPage implements OnInit {
   language = localStorage.getItem('language');
 
   constructor(private authService: AuthService, private router: Router,
-    private platform: Platform, private languageService: LanguageService) { }
+    private platform: Platform, private languageService: LanguageService,
+    private translateService: TranslateService) { }
 
   ngOnInit() {
     this.styleCard();
@@ -31,6 +33,7 @@ export class SettingsPage implements OnInit {
   logout(){
     this.authService.logout();
     localStorage.clear();
+    this.languageService.setLanguage(this.translateService.defaultLang);
     this.router.navigate(['login']);
   }
 
@@ -54,6 +57,30 @@ export class SettingsPage implements OnInit {
     console.log(str);
     this.languageService.setLanguage(str);
     localStorage.setItem('language', str);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return{
+        'font-size': '18px'
+      };
+    } else {
+      return{
+        'font-size':'16px'
+      };
+    }
   }
 
 
