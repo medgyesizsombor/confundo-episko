@@ -62,7 +62,8 @@ export class DataOfUserService {
 
   getAllSumStats() {
     return new Promise(async (resolve, reject) => {
-      const documents = ['colourgame', 'goNogoGame', 'thirdgame', 'fourthgame', 'fifthgame', 'sixthgame', 'seventhgame', 'eightgame'];
+      const documents = ['colourgame', 'goNogoGame', 'thirdgame', 'fourthgame', 'fifthgame', 'sixthgame',
+      'seventhgame', 'eightgame', 'ninthgame', 'tenthgame'];
       const datas = {};
 
       // eslint-disable-next-line @typescript-eslint/prefer-for-of

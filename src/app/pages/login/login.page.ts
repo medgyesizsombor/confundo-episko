@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, Platform, ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -22,21 +24,16 @@ export class LoginPage implements OnInit {
   constructor(private toast: ToastController, private angularFirestore: AngularFirestore,
     private angularFireAuth: AngularFireAuth, private router: Router,
     private loadingController: LoadingController, private authService: AuthService,
-    private alertController: AlertController, private platform: Platform) { }
+    private alertController: AlertController, private platform: Platform,
+    private languageService: LanguageService, private translateService: TranslateService) { }
 
-  ngOnInit() {
-    this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
-    }
+  async ngOnInit() {
+    this.translateService.use(this.translateService.defaultLang);
+    this.languageService.setLanguage(this.translateService.defaultLang);
 
-  ionViewWillEnter() {
     this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
-  }
+    this.languageService.setLanguage('hu');
 
-  ionViewDidEnter(){
-    this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
   }
 
   async login(){
@@ -49,6 +46,7 @@ export class LoginPage implements OnInit {
       this.user
       ).then(() => {
       loading.dismiss();
+      this.languageService.setLanguage(this.languageService.getLanguage());
       this.router.navigate(['main-tabs/home']);
     }).catch(async err => {
       const toast = await this.toast.create({
@@ -63,6 +61,42 @@ export class LoginPage implements OnInit {
 
   goToRegister(){
     this.router.navigate(['register']);
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '16px'
+      };
+    }
+  }
+
+  goToRegisterButtonStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '14px'
+      };
+    }
+  }
+
+  loginButtonStyle(){
+    if(!this.isMobile){
+      return{
+        'font-size': '18px'
+      };
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

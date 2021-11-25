@@ -21,7 +21,6 @@ export class StatisticsPage implements OnInit {
     private languageService: LanguageService) { }
 
   ngOnInit() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });
@@ -71,6 +70,18 @@ export class StatisticsPage implements OnInit {
 
   goHomePage(){
     this.router.navigate(['main-tabs/home']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

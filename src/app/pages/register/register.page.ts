@@ -67,9 +67,7 @@ export class RegisterPage implements OnInit {
 
   async successfulAlert(){
     const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'Registration is successfull.',
+      message: this.translatePipe.transform('REGISTER.message'),
       buttons: ['OK']
     });
 
@@ -82,6 +80,42 @@ export class RegisterPage implements OnInit {
 
   goToLogin(){
     this.router.navigate(['login']);
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '16px'
+      };
+    }
+  }
+
+  registerButtonStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '18px'
+      };
+    }
+  }
+
+  goToLoginButtonStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '14px'
+      };
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

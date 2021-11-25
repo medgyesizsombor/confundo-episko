@@ -5,7 +5,7 @@
         <ion-icon color="secondary" class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-padding" text class="ion-text-center" style="margin-left: -48px">
+    <ion-title [ngStyle]="titleStyle()" color="secondary" class="ion-text-center ion-padding" style="margin-left: -48px">
       {{"STATISTICS.title" | translate}}
     </ion-title>
   </ion-toolbar>

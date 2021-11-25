@@ -62,7 +62,8 @@
         "password": "Jelszó",
         "dateOfBirth": "Születési dátum",
         "button": "Regisztráció",
-        "haveAccount": "Ha van már fiókod, csak lépj be!"
+        "haveAccount": "Ha van már fiókod, csak lépj be!",
+        "message": "Sikeres regisztráció"
     },
     "COLOURGAME":{
         "title": "Szín játék",

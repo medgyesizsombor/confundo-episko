@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TranslateService } from '@ngx-translate/core';
 import * as CryptoJS from 'crypto-js';
+import { LanguageService } from '../language/language.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,20 +31,17 @@ export class AuthService {
   encryptedData='';
   secretKey='yoursecretkey';
 
-  constructor(private angularFireAuth: AngularFireAuth, private angularFireStore: AngularFirestore) { }
+  constructor(private angularFireAuth: AngularFireAuth, private angularFireStore: AngularFirestore,
+    private translateService: TranslateService, private languageService: LanguageService) { }
 
   async login(user: any) {
     return new Promise((resolve, reject) => {
       this.angularFireAuth.signInWithEmailAndPassword(user.email, user.password).then((res) => {
         localStorage.setItem('uid', res.user.uid);
+        localStorage.setItem('language', this.languageService.getLanguage());
         resolve(true);
       }).catch(err => {
         reject(err);
-      });
-      this.angularFireStore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
-        localStorage.setItem('name', res.name);
-      }, err => {
-        console.log(err);
       });
     });
   }
@@ -317,7 +316,7 @@ export class AuthService {
   }
 
   logout(){
-    localStorage.removeItem('uid');
+    localStorage.clear();
     this.angularFireAuth.signOut();
   }
 

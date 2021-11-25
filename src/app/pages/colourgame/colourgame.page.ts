@@ -8,6 +8,8 @@ import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.se
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import * as moment from 'moment';
 import { LanguageService } from 'src/app/services/language/language.service';
+import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 120;
+  seconds = 5;
   timeText: string;
   playedGames = 0;
   averageScore = 0;
@@ -50,15 +52,18 @@ export class ColourgamePage implements OnInit {
   coloursInHungarian = ['piros', 'narancs', 'kék', 'barna', 'zöld', 'lila', 'fekete', 'rózsaszín'];
 
   drawChart = false;
+  isMobile: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private languageService: LanguageService) {
+    private languageService: LanguageService, private platform: Platform,
+    private translatePipe: TranslatePipe) {
   }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   start() {
@@ -90,7 +95,7 @@ export class ColourgamePage implements OnInit {
   }
 
   async lbl1textTranslate(num1: number, num2: number){
-    if(localStorage.getItem('language') === 'hu'){
+    if(this.languageService.getLanguage() === 'hu'){
       this.lbl1textHUN = this.coloursInHungarian[num1];
       this.lbl2textHUN = this.coloursInHungarian[num2];
     }
@@ -232,5 +237,17 @@ export class ColourgamePage implements OnInit {
   goBack(){
     clearInterval(this.interval);
     this.router.navigate(['main-tabs/games']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 }

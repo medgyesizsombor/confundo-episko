@@ -1,8 +1,4 @@
 ion-title {
-  font-size: 36px;
-  color: white;
-  text-align: center;
-  margin: auto;
   padding: 20px;
 }
 
@@ -16,6 +12,11 @@ ion-button {
 
 ion-footer {
   height: 50px;
+}
+
+ion-header {
+  background-image: none;
+  box-shadow: var(--my-shadow);
 }
 
 ion-label{

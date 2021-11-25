@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
-import { LanguageService } from 'src/app/services/language/language.service';
-import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -16,7 +12,6 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HomePage implements OnInit {
 
   uid = localStorage.getItem('uid');
-  language = localStorage.getItem('language');
   lastPlayed = '';
   name = '';
 
@@ -34,18 +29,17 @@ export class HomePage implements OnInit {
 
   fullName: any;
   params: any;
+  isMobile: boolean;
 
-  constructor(private router: Router, private loadingController: LoadingController,
-    private authService: AuthService, private angularFirestore: AngularFirestore,
-    private dataOfUser: DataOfUserService, private languageService: LanguageService) { }
+  constructor(private router: Router,
+    private dataOfUser: DataOfUserService, private platform: Platform) { }
 
 
   async ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
     this.fullName = {
       name: localStorage.getItem('name')
     };
-    await this.getDatas();
-    await this.languageService.setLanguage(localStorage.getItem('language'));
   }
 
   async ionViewWillEnter(){
@@ -53,7 +47,6 @@ export class HomePage implements OnInit {
       name: localStorage.getItem('name')
     };
     await this.getDatas();
-    await this.languageService.setLanguage(this.language);
   }
 
   async getDatas(){
@@ -69,6 +62,14 @@ export class HomePage implements OnInit {
 
   playWithLastGame(){
     this.router.navigate([this.lastPlayed]);
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '18px'
+      };
+    }
   }
 
 }

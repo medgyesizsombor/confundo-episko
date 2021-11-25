@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -12,25 +13,25 @@ import { AuthService } from '../../services/auth/auth.service';
 export class SettingsPage implements OnInit {
 
   isMobile: boolean;
-  language = localStorage.getItem('language');
+  language: any;
 
   constructor(private authService: AuthService, private router: Router,
-    private platform: Platform, private languageService: LanguageService) { }
+    private platform: Platform, private languageService: LanguageService,
+    private translateService: TranslateService) { }
 
   ngOnInit() {
     this.styleCard();
-    this.languageService.setLanguage(localStorage.getItem('language'));
-    console.log(this.language);
+    this.language = this.languageService.getLanguage();
   }
 
   ionViewWillEnter(){
     this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'change');
   }
 
   logout(){
+    console.log('DEF', this.translateService.defaultLang);
+    this.languageService.setLanguage('hu');
     this.authService.logout();
-    localStorage.clear();
     this.router.navigate(['login']);
   }
 
@@ -54,6 +55,30 @@ export class SettingsPage implements OnInit {
     console.log(str);
     this.languageService.setLanguage(str);
     localStorage.setItem('language', str);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
+  }
+
+  textStyle(){
+    if(!this.isMobile){
+      return{
+        'font-size': '18px'
+      };
+    } else {
+      return{
+        'font-size':'16px'
+      };
+    }
   }
 
 

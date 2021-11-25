@@ -5,7 +5,7 @@
         <ion-icon color="secondary" slot="icon-only" name="arrow-back" ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title text class="ion-text-center" style="margin-left: -48px;">
+    <ion-title [ngStyle]="titleStyle()" class="ion-text-center ion-padding" style="margin-left: -48px;">
       {{"PROFILE.title" | translate}}
     </ion-title>
   </ion-toolbar>
@@ -15,15 +15,15 @@
   <ion-card id="mid" class="ion-padding">
     <ion-grid>
       <ion-row class="ion-padding">
-        <ion-col class="ion-align-self-center" size="2">
+        <ion-col class="ion-align-self-center" [size]="isMobile?'2.5':'1'">
           <ion-icon color="secondary" size="large" name="person-sharp"></ion-icon>
         </ion-col>
         <ion-col class="ion-align-self-center">
-          <ion-label color="secondary">{{name}}</ion-label>
+          <ion-label class="ion-text-wrap" color="secondary">{{name}}</ion-label>
         </ion-col>
       </ion-row>
       <ion-row class="ion-padding">
-        <ion-col size="2">
+        <ion-col [size]="isMobile?'2.5':'1'">
           <ion-icon color="secondary" size="large" name="mail-sharp"></ion-icon>
         </ion-col>
         <ion-col class="ion-align-self-center">
@@ -31,7 +31,7 @@
         </ion-col>
       </ion-row>
       <ion-row class="ion-padding">
-        <ion-col size="2">
+        <ion-col [size]="isMobile?'2.5':'1'">
           <ion-icon color="secondary" size="large" name="calendar"></ion-icon>
         </ion-col>
         <ion-col class="ion-align-self-center">

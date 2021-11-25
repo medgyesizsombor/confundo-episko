@@ -19,11 +19,10 @@ export class GamesPage implements OnInit {
     private angularFireStore: AngularFirestore) { }
 
   ngOnInit() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
+    this.isMobile = this.platform.is('mobile');
   }
 
   ionViewWillEnter() {
-    this.languageService.setLanguage(localStorage.getItem('language'));
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
     this.styleCard();
@@ -50,6 +49,26 @@ export class GamesPage implements OnInit {
 
   goHomePage(){
     this.router.navigate(['main-tabs/home']);
+  }
+
+  styleIonCardContent(){
+    if(this.isMobile){
+      return {
+        'font-size': '12px',
+      };
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

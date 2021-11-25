@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-main-tabs',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainTabsPage implements OnInit {
 
-  constructor() { }
+  isMobile: boolean;
+
+  constructor(private platform: Platform) { }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
+  }
+
+  buttonStyle(){
+    if(!this.isMobile){
+      return{
+        'font-size': '14px'
+      };
+    } else {
+      return{
+        'font-size': '12px'
+      };
+    }
   }
 
 }

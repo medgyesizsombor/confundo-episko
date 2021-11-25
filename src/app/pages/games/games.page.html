@@ -5,7 +5,7 @@
         <ion-icon color="secondary" class="ion-padding" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title id="pageTitle"text class="ion-text-center" style="margin-left: -48px">
+    <ion-title color="secondary" [ngStyle]="titleStyle()" class="ion-text-center ion-padding" style="margin-left: -48px">
       {{"GAMES.title" | translate}}
     </ion-title>
   </ion-toolbar>
@@ -16,69 +16,75 @@
     <h3><ion-title class="games-category ion-padding">{{"GAMES.memory" | translate}}</ion-title></h3>
     <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game9')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.memoryCard" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/memorycard/memory-card-logo.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.memoryCard" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game10')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.memoryGrid" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/memorygrid/memory-grid-logo.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.memoryGrid" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}">
         <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.comingSoon" | translate}}</ion-card-content>
+        <p [ngStyle]="styleIonCardContent()" class="ion-padding">
+          <ion-text color="secondary">
+            {{"GAMES.comingSoon" | translate}}
+          </ion-text>
+        </p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}">
         <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.comingSoon" | translate}}</ion-card-content>
+        <p [ngStyle]="styleIonCardContent()" class="ion-padding"><ion-text color="secondary">
+          {{"GAMES.comingSoon" | translate}}
+        </ion-text></p>
       </ion-card>
     </ion-list>
 
     <h3><ion-title class="games-category ion-padding">{{"GAMES.attention" | translate}}</ion-title></h3>
     <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('colourgame')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.colourGame" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/colourgame/colourgame-logoHUN.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.colourGame" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('go-nogogame')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.goNogoGame" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/go-nogo-test/go-nogo-test-logo.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.goNogoGame" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game5')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.numsAndLetters" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/nums-and-letters/nums-and-letters-logoHUN.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.numsAndLetters" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game6')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.numsAndLetters2" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoHUN.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.numsAndLetters2" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game8')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.directions" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/directions/directions-logoHUN.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.directions" | translate}}</ion-text></p>
       </ion-card>
     </ion-list>
 
     <h3><ion-title class="games-category ion-padding">{{"GAMES.mathematical" | translate}}</ion-title></h3>
     <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game3')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.sortingGame" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/sorting-game/sorting-game-logo.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.sortingGame" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game4')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.equations" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/equations/equations-logo.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.equations" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game7')">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
-        <ion-card-content class="ion-padding ion-margin">{{"GAMES.computing" | translate}}</ion-card-content>
+        <ion-img src="../../../assets/img/computing/computing-logo.PNG"></ion-img>
+        <p class="ion-padding"><ion-text color="secondary">{{"GAMES.computing" | translate}}</ion-text></p>
       </ion-card>
     </ion-list>
   </div>

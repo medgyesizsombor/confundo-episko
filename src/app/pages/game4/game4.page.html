@@ -5,7 +5,7 @@
         <ion-icon color="secondary" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title text class="ion-text-center" style="margin-left: -48px">
+    <ion-title color="secondary" [ngStyle]="titleStyle()" class="ion-text-center ion-padding" style="margin-left: -48px">
       {{"EQUATIONS.title" | translate}}
     </ion-title>
   </ion-toolbar>
@@ -50,7 +50,7 @@
         <h2>{{"EQUATIONS.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="onStart()">Start<ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
-    
+    </ion-slides>
 
     <div *ngIf="playing">
       <ion-grid>
@@ -83,12 +83,9 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      
-
-      
-
-      
     </div>
+
+      
 
     <div *ngIf="ended">
       <ion-label> {{finalResult}} </ion-label>

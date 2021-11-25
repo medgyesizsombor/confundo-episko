@@ -5,7 +5,7 @@
         <ion-icon color="secondary" slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title text class="ion-text-center" style="margin-left: -48px">
+    <ion-title color="secondary" [ngStyle]="titleStyle()" class="ion-text-center ion-padding" style="margin-left: -48px">
       {{"NUMSANDLETTERS2.title" | translate}}
     </ion-title>
   </ion-toolbar>
@@ -63,34 +63,34 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h3>{{"NUMSANDLETTERS2.title1" | translate}}</h3>
+            <h3><ion-text color="secondary">{{"NUMSANDLETTERS2.title1" | translate}}</ion-text></h3>
           </ion-col>
           <ion-col>
-            <h3>{{"NUMSANDLETTERS2.title3" | translate}}</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <h3 class="ion-padding">{{label1}}</h3>
-          </ion-col>
-          <ion-col>
-            <h3 class="ion-padding">{{label3}}</h3>
+            <h3><ion-text color="secondary">{{"NUMSANDLETTERS2.title3" | translate}}</ion-text></h3>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <h3 class="ion-padding">{{label2}}</h3>
+            <h3 class="ion-padding"><ion-text color="secondary">{{label1}}</ion-text></h3>
           </ion-col>
           <ion-col>
-            <h3 class="ion-padding">{{label4}}</h3>
+            <h3 class="ion-padding"><ion-text color="secondary">{{label3}}</ion-text></h3>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <h3>{{"NUMSANDLETTERS2.title2" | translate}}</h3>
+            <h3 class="ion-padding"><ion-text color="secondary">{{label2}}</ion-text></h3>
           </ion-col>
           <ion-col>
-            <h3>{{"NUMSANDLETTERS2.title4" | translate}}</h3>
+            <h3 class="ion-padding"><ion-text color="secondary">{{label4}}</ion-text></h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h3><ion-text color="secondary">{{"NUMSANDLETTERS2.title2" | translate}}</ion-text></h3>
+          </ion-col>
+          <ion-col>
+            <h3><ion-text color="secondary">{{"NUMSANDLETTERS2.title4" | translate}}</ion-text></h3>
           </ion-col>
         </ion-row>
         <ion-row>

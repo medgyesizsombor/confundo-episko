@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-game8',
@@ -34,7 +37,7 @@ export class Game8Page implements OnInit {
   directions= ['Up', 'Down', 'Right', 'Left'];
   directionsHUN = ['Fel', 'Le', 'Jobbra', 'Balra'];
 
-  seconds = 120;
+  seconds = 10;
   playing = false;
   ended = false;
   interval: any;
@@ -51,15 +54,18 @@ export class Game8Page implements OnInit {
   averageScoreAverage = 0;
   drawChart = false;
 
-  language = localStorage.getItem('language');
+  language = '';
+  isMobile: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
-    private dataAverageUser: DataAverageUserService) {
+    private dataAverageUser: DataAverageUserService, private platform: Platform,
+    private languageService: LanguageService, private translatePipe: TranslatePipe) {
   }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   onStart(){
@@ -88,25 +94,25 @@ export class Game8Page implements OnInit {
     this.randomNumber = Math.floor(Math.random() * (3 - 0) + 0);
       switch (this.randomNumber) {
         case 0:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[0];
           }
           this.title = this.directions[0];
           break;
         case 1:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[1];
           }
           this.title = this.directions[1];
           break;
         case 2:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[2];
           }
           this.title = this.directions[2];
           break;
         case 3:
-          if(localStorage.getItem('language') === 'hu'){
+          if(this.languageService.getLanguage() === 'hu'){
             this.titleHUN = this.directionsHUN[3];
           }
           this.title = this.directions[3];
@@ -267,6 +273,18 @@ export class Game8Page implements OnInit {
   goBack(){
     clearInterval(this.interval);
     this.router.navigate(['main-tabs/games']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

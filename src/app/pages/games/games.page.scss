@@ -1,8 +1,4 @@
-#pageTitle{
-    font-size: 30px;
-    color: white;
-    text-align: center;
-    margin: auto;
+ion-title{
     padding: 20px;
 }
 
@@ -14,9 +10,13 @@ ion-card {
     --ion-background-color: #F3A683;
 }
 
-ion-card-content{
-    color: #FFFFFF;
-    font-size: 14px;
+ion-header {
+    background-image: none;
+    box-shadow: var(--my-shadow);
+}
+
+ion-img{
+    border: solid 1px white;
 }
 
 h3{
@@ -53,13 +53,6 @@ h3{
 
     .games-category{
         font-size: 30px;
-    }
-    ion-card-content{
-        font-size: 18px;
-    }
-
-    #pageTitle{
-        font-size: 36px;
     }
 
     /* width */

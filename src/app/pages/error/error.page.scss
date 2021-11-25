@@ -1,37 +1,22 @@
-ion-title{
-    font-size: 36px;
-    color: white;
-    text-align: center;
-    margin: auto;
-    padding: 20px;
+ion-title {
+  padding: 20px;
 }
 
 ion-toolbar {
-  --ion-background-color: #F19066 !important;
+  --ion-background-color: #f19066 !important;
 }
 
-ion-img{
-    height:200px;
-    width: 200px;
-    margin: auto;
+ion-img {
+  height: 200px;
+  width: 200px;
+  margin: auto;
 }
 
-ion-item{
-    font-size: 18px;
+ion-item {
+  font-size: 18px;
 }
 
-@media only screen and (min-width: 1001px) and (max-width: 1500px) {
-    #mid {
-        margin: auto;
-        width: 70%;
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1501px) {
-    #mid {
-        margin: auto;
-        width: 60%;
-        padding: 10px;
-    }
+ion-header {
+  background-image: none;
+  box-shadow: var(--my-shadow);
 }

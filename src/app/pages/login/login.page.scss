@@ -1,8 +1,4 @@
 ion-title {
-  font-size: 36px;
-  color: white;
-  text-align: center;
-  margin: auto;
   padding: 20px;
 }
 
@@ -12,6 +8,11 @@ ion-toolbar {
 
 ion-content {
   --ion-background-color: #eeeeee;
+}
+
+ion-header {
+  background-image: none;
+  box-shadow: var(--my-shadow);
 }
 
 #login {
@@ -38,18 +39,6 @@ ion-content {
   ion-title {
     font-size: 36px;
   }
-
-  #login {
-    font-size: 18px;
-  }
-
-  #gotoregister {
-    font-size: 14px;
-  }
-
-  .text {
-    font-size: 16px;
-  }
 }
 
 @media only screen and (min-width: 1501px) {
@@ -61,16 +50,5 @@ ion-content {
 
   ion-title {
     font-size: 36px;
-  }
-  #login {
-    font-size: 18px;
-  }
-
-  #gotoregister {
-    font-size: 14px;
-  }
-
-  .text {
-    font-size: 16px;
   }
 }

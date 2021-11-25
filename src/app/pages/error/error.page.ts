@@ -14,6 +14,7 @@ export class ErrorPage implements OnInit {
   constructor(private router: Router, private platform: Platform) { }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   goHome(){
@@ -23,6 +24,18 @@ export class ErrorPage implements OnInit {
   styleCard(){
     if(!this.isMobile){
       return {width: '60%', margin: '10px auto 10px auto'};
+    }
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
     }
   }
 

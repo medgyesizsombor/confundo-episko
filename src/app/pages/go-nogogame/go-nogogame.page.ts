@@ -8,6 +8,8 @@ import * as moment from 'moment';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-go-nogogame',
@@ -55,13 +57,15 @@ export class GoNogogamePage implements OnInit {
   firstGenerated = true;
 
   drawChart: boolean;
+  isMobile: boolean;
 
   constructor(private angularFireStore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private authService: AuthService, private dataOfGame: DataOfGameService,
     private dataOfUser: DataOfUserService, private dataAverageUser: DataAverageUserService,
-    private router: Router) { }
+    private router: Router, private platform: Platform, private translatePipe: TranslatePipe) { }
 
   ngOnInit() {
+    this.isMobile = this.platform.is('mobile');
   }
 
   start(){
@@ -311,6 +315,18 @@ export class GoNogogamePage implements OnInit {
     this.result = 0;
     this.playing = false;
     this.router.navigate(['main-tabs/games']);
+  }
+
+  titleStyle(){
+    if(!this.isMobile){
+      return {
+        'font-size': '36px'
+      };
+    } else {
+      return {
+        'font-size': '30px'
+      };
+    }
   }
 
 }

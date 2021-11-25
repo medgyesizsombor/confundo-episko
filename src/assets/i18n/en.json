@@ -60,7 +60,8 @@
         "password": "Password",
         "dateOfBirth": "Date of birth",
         "button": "Register",
-        "haveAccount": "If you have account, sign in!"
+        "haveAccount": "If you have account, sign in!",
+        "message": "Successful registration!"
     },
     "COLOURGAME":{
         "title": "Colour game",
