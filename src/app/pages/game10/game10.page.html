@@ -28,7 +28,7 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px" src="" />
+          <img style="height: 300px; width: 300px" src="../../../assets/img/memorygrid/memory-grid-logo.PNG" />
           <h2>{{"MEMORYGRID.title" | translate}}</h2>
           <p [innerHTML]="'MEMORYGRID.firstText' | translate"></p>
           <p>
@@ -41,9 +41,21 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img style="height: 300px; width: 300px" src="../../../assets/img/memorygrid/memory-grid-tutorial-correct.PNG" />
         <h2>{{"MEMORYGRID.howToPlay" | translate}}</h2>
         <p>{{"MEMORYGRID.tutorialText" | translate}}</p>
+        <p>
+          {{"MEMORYGRID.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
+
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px" src="../../../assets/img/memorygrid/memory-grid-tutorial-wrong.PNG" />
+        <h2>{{"MEMORYGRID.howToPlay" | translate}}</h2>
+        <p>{{"MEMORYGRID.tutorialText2" | translate}}</p>
         <p>
           {{"MEMORYGRID.swipe" | translate}}<ion-icon
             slot="end"

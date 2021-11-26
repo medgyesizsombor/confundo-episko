@@ -22,15 +22,6 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
   loading = false;
   totalScoreChart: Chart;
 
-  scoreColourgame = 0;
-  scoreGoNogogame = 0;
-  scoreGame3 = 0;
-  scoreGame4 = 0;
-  scoreGame5 = 0;
-  scoreGame6 = 0;
-  scoreGame7 = 0;
-  scoreGame8 = 0;
-
   labels = [
     'Colour game',
     'Go-NogoGame',
@@ -69,7 +60,7 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
       datasets: [
         {
           label: 'My First Dataset',
-          data: [1, 1, 1],
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           backgroundColor: [
             'rgb(250, 123, 179)',
             'rgb(164, 210, 140)',
@@ -87,14 +78,14 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
       ],
     };
     this.loading = true;
-    await this.getTotalScorePerGame();
+
     this.createChart();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.sumData && changes.sumData.currentValue) {
       setTimeout(() => {
-        this.updateNew(changes.sumData.currentValue);
+        this.updateChart(changes.sumData.currentValue);
       }, 400);
     }
   }
@@ -110,20 +101,9 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
     }, 250);
   }
 
-  updateChart() {
-    this.data.datasets[0].data[0] = this.scoreColourgame;
-    this.data.datasets[0].data[1] = this.scoreGoNogogame;
-    this.data.datasets[0].data[2] = this.scoreGame3;
-    this.data.datasets[0].data[3] = this.scoreGame4;
-    this.data.datasets[0].data[4] = this.scoreGame5;
-    this.data.datasets[0].data[5] = this.scoreGame6;
-    this.data.datasets[0].data[6] = this.scoreGame7;
-    this.data.datasets[0].data[7] = this.scoreGame8;
-    this.totalScoreChart.data = this.data;
-    this.totalScoreChart.update();
-  }
+  updateChart(data: any) {
+    if (this.totalScoreChart === null || this.totalScoreChart === undefined) { return; };
 
-  updateNew(data: any) {
     this.data.datasets[0].data[0] = data.colourgame.sumScore;
     this.data.datasets[0].data[1] = data.goNogoGame.sumScore;
     this.data.datasets[0].data[2] = data.thirdgame.sumScore;
@@ -132,69 +112,11 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
     this.data.datasets[0].data[5] = data.sixthgame.sumScore;
     this.data.datasets[0].data[6] = data.seventhgame.sumScore;
     this.data.datasets[0].data[7] = data.eightgame.sumScore;
+    this.data.datasets[0].data[8] = data.ninthgame.sumScore;
+    this.data.datasets[0].data[9] = data.tenthgame.sumScore;
 
     this.totalScoreChart.data = this.data;
     this.totalScoreChart.update();
   }
 
-  async getTotalScorePerGame() {
-    await this.getDataOfGameColour();
-    await this.getDataOfGameGoNogo();
-    await this.getDataOfGameGame3();
-    await this.getDataOfGameGame4();
-    await this.getDataOfGameGame5();
-    await this.getDataOfGameGame6();
-    await this.getDataOfGameGame7();
-    await this.getDataOfGameGame8();
-  }
-
-  async getDataOfGameColour() {
-    await this.dataOfUser.getDataOfGameColour('colourgame').then(() => {
-      this.scoreColourgame = Number(
-        localStorage.getItem('totalScoreColourgame')
-      );
-    });
-  }
-
-  async getDataOfGameGoNogo() {
-    await this.dataOfUser.getDataOfGameGoNogo('goNogoGame').then(() => {
-      this.scoreGoNogogame = Number(localStorage.getItem('totalScoreGoNogo'));
-    });
-  }
-
-  async getDataOfGameGame3() {
-    await this.dataOfUser.getDataOfGameGame3('thirdgame').then(() => {
-      this.scoreGame3 = Number(localStorage.getItem('totalScoreGame3'));
-    });
-  }
-
-  async getDataOfGameGame4() {
-    await this.dataOfUser.getDataOfGameGame4('fourthgame').then(() => {
-      this.scoreGame4 = Number(localStorage.getItem('totalScoreGame4'));
-    });
-  }
-
-  async getDataOfGameGame5() {
-    await this.dataOfUser.getDataOfGameGame5('fifthgame').then(() => {
-      this.scoreGame5 = Number(localStorage.getItem('totalScoreGame5'));
-    });
-  }
-
-  async getDataOfGameGame6() {
-    await this.dataOfUser.getDataOfGameGame6('sixthgame').then(() => {
-      this.scoreGame6 = Number(localStorage.getItem('totalScoreGame6'));
-    });
-  }
-
-  async getDataOfGameGame7() {
-    await this.dataOfUser.getDataOfGameGame7('seventhgame').then(() => {
-      this.scoreGame7 = Number(localStorage.getItem('totalScoreGame7'));
-    });
-  }
-
-  async getDataOfGameGame8() {
-    await this.dataOfUser.getDataOfGameGame8('eightgame').then(() => {
-      this.scoreGame8 = Number(localStorage.getItem('totalScoreGame8'));
-    });
-  }
 }

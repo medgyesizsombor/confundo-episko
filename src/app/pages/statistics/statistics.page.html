@@ -26,7 +26,7 @@
   <div class="ion-padding" [ngStyle]="styleContainer()">
     <ion-card class="ion-padding" [ngStyle]="styleCard()">
       <ion-card-title color="secondary" class="ion-padding">{{"STATISTICS.gamePlayedByCategory" | translate}}</ion-card-title>
-      <app-played-games-chart></app-played-games-chart>
+      <app-played-games-chart [sumData]="sumData"></app-played-games-chart>
     </ion-card>
   
     <ion-card class="ion-padding" [ngStyle]="styleCard()">

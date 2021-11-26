@@ -27,19 +27,6 @@ export class BestScoreComponent implements OnInit, OnChanges {
   bestScoreGame7 = 0;
   bestScoreGame8 = 0;
 
-  labels = [
-    'Colour game',
-    'Go-NogoGame',
-    'Game3',
-    'Game4',
-    'Game5',
-    'Game6',
-    'Game7',
-    'Game8',
-    'Game9',
-    'Game10'
-  ];
-
   data: any;
 
   constructor(private dataOfUser: DataOfUserService, private platform: Platform,
@@ -61,7 +48,7 @@ export class BestScoreComponent implements OnInit, OnChanges {
       ],
       datasets: [{
         label: 'My First Dataset',
-        data: [1, 1, 1],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         backgroundColor: [
           'rgb(250, 123, 179)',
           'rgb(164, 210, 140)',
@@ -78,7 +65,6 @@ export class BestScoreComponent implements OnInit, OnChanges {
       }]
     };
     this.loading = true;
-    await this.getDatas();
     this.createChart();
   }
 
@@ -103,27 +89,19 @@ export class BestScoreComponent implements OnInit, OnChanges {
   }
 
   updateChart(data: any){
-    this.data.datasets[0].data[0] = this.sumData.colourgame.bestScore;
-    this.data.datasets[0].data[1] = this.sumData.goNogoGame.bestScore;
-    this.data.datasets[0].data[2] = this.sumData.thirdgame.bestScore;
-    this.data.datasets[0].data[3] = this.sumData.fourthgame.bestScore;
-    this.data.datasets[0].data[4] = this.sumData.fifthgame.bestScore;
-    this.data.datasets[0].data[5] = this.sumData.sixthgame.bestScore;
-    this.data.datasets[0].data[6] = this.sumData.seventhgame.bestScore;
-    this.data.datasets[0].data[7] = this.sumData.eightgame.bestScore;
-    this.data.datasets[0].data[8] = this.sumData.ninthgame.bestScore;
-    this.data.datasets[0].data[9] = this.sumData.tenthgame.bestScore;
-    //this.bestScoreChart.data = this.data;
-    //this.bestScoreChart.update();
+    this.data.datasets[0].data[0] = data.colourgame.bestScore;
+    this.data.datasets[0].data[1] = data.goNogoGame.bestScore;
+    this.data.datasets[0].data[2] = data.thirdgame.bestScore;
+    this.data.datasets[0].data[3] = data.fourthgame.bestScore;
+    this.data.datasets[0].data[4] = data.fifthgame.bestScore;
+    this.data.datasets[0].data[5] = data.sixthgame.bestScore;
+    this.data.datasets[0].data[6] = data.seventhgame.bestScore;
+    this.data.datasets[0].data[7] = data.eightgame.bestScore;
+    this.data.datasets[0].data[8] = data.ninthgame.bestScore;
+    this.data.datasets[0].data[9] = data.tenthgame.bestScore;
+
+    this.bestScoreChart.data = this.data;
+    this.bestScoreChart.update();
   }
-
-  async getDatas(){
-    await this.dataOfUser.getAllDatas().then(res => {
-      this.sumData = res;
-    });
-
-    console.log('ASDASD');
-
-    }
 
 }
