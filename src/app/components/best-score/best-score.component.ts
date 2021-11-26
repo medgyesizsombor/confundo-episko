@@ -82,6 +82,13 @@ export class BestScoreComponent implements OnInit, OnChanges {
       this.bestScoreChart = new Chart('bestScoreChart', {
         type: 'doughnut',
         data: this.data,
+        options:{
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
       });
 
       this.loading = false;

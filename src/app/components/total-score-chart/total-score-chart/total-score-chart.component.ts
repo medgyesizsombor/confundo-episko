@@ -95,6 +95,13 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
       this.totalScoreChart = new Chart('totalScoreChart', {
         type: 'pie',
         data: this.data,
+        options:{
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
       });
 
       this.loading = false;
