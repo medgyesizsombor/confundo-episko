@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-game10',
@@ -50,6 +51,7 @@ export class Game10Page implements OnInit {
   waiting: boolean;
 
   isMobile: boolean;
+  language: string;
 
   constructor(
     private angularFireStore: AngularFirestore,
@@ -60,10 +62,16 @@ export class Game10Page implements OnInit {
     private dataAverageUser: DataAverageUserService,
     private router: Router,
     private platform: Platform,
-    private translatePipe: TranslatePipe
+    private translatePipe: TranslatePipe,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit() {
+    if(this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
     this.isMobile = this.platform.is('mobile');
   }
 

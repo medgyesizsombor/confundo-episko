@@ -41,14 +41,15 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/120.PNG"/>
         <h2>{{"DIRECTIONS.howMuchTime" | translate}}</h2>
         <p>{{"DIRECTIONS.timeText" | translate}}</p>
         <p>{{"DIRECTIONS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/readyHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/readyENG.PNG"/>
         <h2>{{"DIRECTIONS.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>

@@ -52,7 +52,7 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/120.PNG"/>
         <h2>{{"MEMORYCARD.howMuchTime" | translate}}</h2>
         <p>{{"MEMORYCARD.timeText" | translate}}</p>
         <p>
@@ -64,7 +64,8 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/readyHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/readyENG.PNG"/>
         <h2>{{"MEMORYCARD.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="startGame()"
           >Start<ion-icon slot="end" name="arrow-forward"></ion-icon

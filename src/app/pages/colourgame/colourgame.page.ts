@@ -27,7 +27,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 120;
+  seconds = 5;
   timeText: string;
   playedGames = 0;
   averageScore = 0;
@@ -166,7 +166,7 @@ export class ColourgamePage implements OnInit {
     return interval[0] + '-' + interval[1];
   }
 
-  getAverageInterval(age: number) {
+  async getAverageInterval(age: number) {
     const intervals = [
       [0, 4],
       [5, 9],
@@ -211,7 +211,7 @@ export class ColourgamePage implements OnInit {
 
     const diff = moment.duration(this.today.diff(this.userBirthdate));
     this.userAge = Number(diff.years());
-    this.getAverageInterval(this.userAge);
+    await this.getAverageInterval(this.userAge);
   }
 
   async end() {
