@@ -15,6 +15,11 @@ ion-header {
   box-shadow: var(--my-shadow);
 }
 
+ion-input{
+  --placeholder-color: rgb(250, 200, 180);
+  --placeholder-opacity: 1;
+}
+
 #login {
   width: 300px;
   margin: 10px auto 3px auto;
