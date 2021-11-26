@@ -227,13 +227,20 @@ export class ColourgamePage implements OnInit {
       bestScore: this.bestScore,
       averageScore: this.averageScore
     });
+    console.log('asd');
     await this.getDataOfUser();
+    console.log('asd');
     await this.getDataOfAverageUser();
     this.angularFirestore.collection('Statistics').doc(this.average).collection('game').doc('colourgame').update({
       playedGames: this.playedGamesAverage,
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
+    console.log('asd');
+    localStorage.setItem('result', String(this.result));
+    console.log('asd');
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    console.log('asd');
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));

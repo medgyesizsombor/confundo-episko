@@ -22,7 +22,7 @@ export class UserVsAverageChartComponent implements OnInit {
     this.data = {
       labels: [this.translatePipe.transform('GRAPH.points')],
       datasets: [{
-        label: 'User',
+        label: this.translatePipe.transform('GRAPH.user'),
         data: [65],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)'
@@ -32,7 +32,7 @@ export class UserVsAverageChartComponent implements OnInit {
         ],
         borderWidth: 1
       }, {
-        label: 'Average',
+        label: this.translatePipe.transform('GRAPH.average'),
         data: [80],
         backgroundColor: [
           'rgba(255, 159, 64, 0.2)'

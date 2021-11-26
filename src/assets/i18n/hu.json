@@ -220,7 +220,9 @@
         "directions": "Irányok",
         "memoryCard": "Memóriakártya",
         "memoryGrid": "Memória csempe",
-        "points": "Pontok"
+        "points": "Pontok",
+        "user": "Felhasználó",
+        "average": "Átlag"
     },
     "ERROR":{
         "title": "404 Error",
