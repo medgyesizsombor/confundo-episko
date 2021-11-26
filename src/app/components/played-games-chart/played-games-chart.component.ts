@@ -39,9 +39,9 @@ export class PlayedGamesChartComponent implements OnInit, OnChanges {
         label: this.translatePipe.transform('GRAPH.attention'),
         data: [0, 0, 0],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
+          'rgba(255, 99, 132)',
+          'rgba(255, 159, 64)',
+          'rgba(255, 205, 86)',
         ],
         borderColor: [
           'rgb(255, 99, 132)',
@@ -73,6 +73,11 @@ export class PlayedGamesChartComponent implements OnInit, OnChanges {
           scales: {
             y: {
               beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
             }
           }
         },

@@ -46,7 +46,7 @@ export class AverageScoreComponent implements OnInit, OnChanges {
         label: this.translatePipe.transform('GRAPH.points'),
         data: [0, 0, 0],
         fill: false,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: 'rgb(216, 83, 44)',
         tension: 0.1
       }]
     };
@@ -70,6 +70,13 @@ export class AverageScoreComponent implements OnInit, OnChanges {
       this.averageScoreChart = new Chart('averageScoreChart', {
         type: 'line',
         data: this.data1,
+        options:{
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
       });
 
       this.loading = false;

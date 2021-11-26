@@ -25,10 +25,10 @@ export class UserVsAverageChartComponent implements OnInit {
         label: this.translatePipe.transform('GRAPH.user'),
         data: [65],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)'
+          'rgba(216, 83, 44, 0.5)'
         ],
         borderColor: [
-          'rgb(255, 99, 132)'
+          'rgb(216, 83, 44)'
         ],
         borderWidth: 1
       }, {

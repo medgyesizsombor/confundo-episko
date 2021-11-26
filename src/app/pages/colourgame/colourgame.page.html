@@ -20,6 +20,7 @@
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
+  <div id="mid">
     <ion-slides *ngIf="!playing && !ended">
         <ion-slide class="ion-padding">
           <div class="slide">
@@ -109,4 +110,5 @@
   <div *ngIf="drawChart">
     <app-user-vs-average-chart></app-user-vs-average-chart>
   </div>
+</div>
 </ion-content>
