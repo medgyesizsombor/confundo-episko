@@ -24,8 +24,8 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img *ngIf="language === 'hu" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoHUN.PNG"/>
-          <img *ngIf="language === 'en" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoENG.PNG"/>
+          <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoHUN.PNG"/>
+          <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoENG.PNG"/>
           <h2>{{"NUMSANDLETTERS2.title" | translate}}</h2>
           <p [innerHTML]="'NUMSANDLETTERS2.firstText' | translate"></p>
           <p>{{"NUMSANDLETTERS2.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
@@ -33,8 +33,8 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img *ngIf="language === 'hu" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorialHUN.PNG"/>
-        <img *ngIf="language === 'en" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorialENG.PNG"/>
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorialHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorialENG.PNG"/>
         <h2>{{"NUMSANDLETTERS2.howToPlay" | translate}}</h2>
         <p>{{"NUMSANDLETTERS2.tutorialText" | translate}}</p>
         <p>{{"NUMSANDLETTERS2.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
@@ -113,11 +113,13 @@
     </ion-card>
 
     <div *ngIf="ended">
-      <ion-label> {{finalResult}} </ion-label>
+      <ion-label>
+        {{"GAMES.finalResult" | translate}}{{result}}
+      </ion-label>
     </div>
-  </div>
 
-  <div *ngIf="drawChart">
+  <div *ngIf="drawChart && ended">
     <app-user-vs-average-chart></app-user-vs-average-chart>
   </div>
+</div>
 </ion-content>

@@ -20,7 +20,8 @@
         "mathematical": "Matematikai",
         "sortingGame": "Rendező játék",
         "equations": "Egyenletek",
-        "computing": "Számoló"
+        "computing": "Számoló",
+        "finalResult": "Az eredményed: "
     },
     "PROFILE":{
         "title": "Profil"
@@ -63,7 +64,8 @@
         "dateOfBirth": "Születési dátum",
         "button": "Regisztráció",
         "haveAccount": "Ha van már fiókod, csak lépj be!",
-        "message": "Sikeres regisztráció"
+        "message": "Sikeres regisztráció",
+        "date": "Születési dátum"
     },
     "COLOURGAME":{
         "title": "Szín játék",

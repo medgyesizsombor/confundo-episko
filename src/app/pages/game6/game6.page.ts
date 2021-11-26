@@ -77,6 +77,7 @@ export class Game6Page implements OnInit {
   }
 
   onStart(){
+    this.ended = false;
     this.playing = true;
     this.timeText = this.seconds + ' sec';
     this.generateLabel();
@@ -337,6 +338,7 @@ export class Game6Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
+    this.seconds = 120;
     this.router.navigate(['main-tabs/games']);
   }
 

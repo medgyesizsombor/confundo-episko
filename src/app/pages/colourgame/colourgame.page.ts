@@ -73,6 +73,7 @@ export class ColourgamePage implements OnInit {
   }
 
   start() {
+    this.ended = false;
     this.playing = true;
     this.timeText = this.seconds + ' sec';
     this.startCountDown();
@@ -217,7 +218,7 @@ export class ColourgamePage implements OnInit {
   async end() {
     this.lbl1text = null;
     this.lbl2text = null;
-    this.finalResult = 'You have got ' + this.result + ' points!';
+    //this.finalResult = 'You have got ' + this.result + ' points!';
     this.playing = false;
     this.ended = true;
     await this.getDataOfGames();
@@ -249,6 +250,7 @@ export class ColourgamePage implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
+    this.seconds = 120;
     this.router.navigate(['main-tabs/games']);
   }
 

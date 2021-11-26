@@ -69,6 +69,7 @@ export class GoNogogamePage implements OnInit {
   }
 
   start(){
+    this.ended = false;
     this.playing = true;
     this.timeText = this.secondsOnGame + ' sec';
     this.timeText2 =  'You have ' + this.secondsOnTurn + ' sec to push it!';

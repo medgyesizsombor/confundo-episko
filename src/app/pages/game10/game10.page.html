@@ -102,7 +102,13 @@
       </ion-row>
     </ion-grid>
 
-    <div *ngIf="drawChart" class="ion-padding">
+    <div *ngIf="ended">
+      <ion-label>
+        {{"GAMES.finalResult" | translate}}{{result}}
+      </ion-label>
+    </div>
+
+    <div *ngIf="drawChart && ended">
       <app-user-vs-average-chart></app-user-vs-average-chart>
     </div>
   </div>
