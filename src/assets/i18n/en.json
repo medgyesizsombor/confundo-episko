@@ -18,7 +18,9 @@
         "mathematical": "Matematical",
         "sortingGame": "Sorting Game",
         "equations": "Equations",
-        "computing": "Computing"
+        "computing": "Computing",
+        "numsAndLetters": "Numbers and letters",
+        "numsAndLetters2":"Numbers and letters 2"
     },
     "PROFILE":{
         "title": "Profile"

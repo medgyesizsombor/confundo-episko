@@ -28,7 +28,7 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px" src="" />
+          <img style="height: 300px; width: 300px" src="../../../assets/img/memorygrid/memory-grid-logo.PNG" />
           <h2>{{"MEMORYGRID.title" | translate}}</h2>
           <p [innerHTML]="'MEMORYGRID.firstText' | translate"></p>
           <p>
@@ -41,7 +41,7 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img style="height: 300px; width: 300px" src="../../../assets/img/memorygrid/memory-grid-tutorial-correct.PNG" />
         <h2>{{"MEMORYGRID.howToPlay" | translate}}</h2>
         <p>{{"MEMORYGRID.tutorialText" | translate}}</p>
         <p>
@@ -53,7 +53,19 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img style="height: 300px; width: 300px" src="../../../assets/img/memorygrid/memory-grid-tutorial-wrong.PNG" />
+        <h2>{{"MEMORYGRID.howToPlay" | translate}}</h2>
+        <p>{{"MEMORYGRID.tutorialText2" | translate}}</p>
+        <p>
+          {{"MEMORYGRID.swipe" | translate}}<ion-icon
+            slot="end"
+            name="arrow-forward"
+          ></ion-icon>
+        </p>
+      </ion-slide>
+
+      <ion-slide class="ion-padding">
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/120.PNG"/>
         <h2>{{"MEMORYGRID.howMuchTime" | translate}}</h2>
         <p>{{"MEMORYGRID.timeText" | translate}}</p>
         <p>
@@ -65,7 +77,8 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/readyHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/readyENG.PNG"/>
         <h2>{{"MEMORYGRID.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="start()"
           >Start <ion-icon slot="end" name="arrow-forward"></ion-icon

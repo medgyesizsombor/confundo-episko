@@ -10,7 +10,7 @@
         "memory": "Memória",
         "memoryCard": "Memóriakártya",
         "comingSoon": "Hamarosan megjelenik!",
-        "memoryGrid": "Rács memória ",
+        "memoryGrid": "Memória csempe",
         "attention": "Figyelem",
         "colourGame":"Szín Játék",
         "goNogoGame":"Go/No-go teszt",
@@ -86,8 +86,8 @@
         "swipe":"Lapozz további információért!",
         "firstText": "Az <b>Go/No-go teszt</b> a figyelem képességet fejleszti.",
         "howToPlay":"Hogyan kell játszani?",
-        "tutorialText2": "A piros körben megjelenő szám a tiltott szám. Ezt meg kell jegyezni, mert el fog tűnni.",
-        "tutorialText": "Minél gyorsabban kell kattintani az IGAZ gombra, ha a szám nem egyezik meg a tiltott számmal.",
+        "tutorialText": "A piros körben megjelenik egy szám és ez lesz a tiltott szám. Ezt meg kell jegyezni, mert el fog tűnni és emlékezni kell rá.",
+        "tutorialText2": "Az IGAZ gombra kell kattintani, ha a szám nem egyezik meg a tiltott számmal. Felül az időt lehet látni, hogy mennyi időnk van dönteni.",
         "howMuchTime": "Mennyi ideig tart?",
         "timeText":"120 másodperced van összesen.",
         "ready":"Készen állsz?",
@@ -159,13 +159,14 @@
         "ready":"Készen állsz?"
     },
     "MEMORYGRID":{
-        "title": "Rács memória",
+        "title": "Memória csempe",
         "time": "Maradék idő",
         "points": "Pontok",
         "swipe":"Lapozz további információért!",
-        "firstText": "A <b>Rácsmemória</b> a memóriát fejleszti.",
+        "firstText": "A <b>Memória csempe</b> a memóriát fejleszti.",
         "howToPlay":"Hogyan kell játszani?",
-        "tutorialText": "Minden kör előtt felvillan a 12 darab négyzetből öt egy másodpercre és ezeket kell megjelölni helyesen.",
+        "tutorialText": "Minden kör előtt felvillan a 12 darab négyzetből öt egy másodpercre, addig szürke lesz. Amint visszavált az eredeti színre, akkor ezeket kell megjelölni helyesen. Ha helyesen jelölsz meg egyet, akkor zöld színű lesz.",
+        "tutorialText2": "Ha elrontasz egyet, akkor piros színű lesz az összes és utána újra generálja a táblázatot.",
         "howMuchTime": "Mennyi ideig tart?",
         "timeText":"120 másodperced van összesen.",
         "ready":"Készen állsz?"
@@ -218,8 +219,10 @@
         "computing": "Számoló",
         "directions": "Irányok",
         "memoryCard": "Memóriakártya",
-        "memoryGrid": "Rács memória",
-        "points": "Pontok"
+        "memoryGrid": "Memória csempe",
+        "points": "Pontok",
+        "user": "Felhasználó",
+        "average": "Átlag"
     },
     "ERROR":{
         "title": "404 Error",

@@ -53,6 +53,7 @@ export class ColourgamePage implements OnInit {
 
   drawChart = false;
   isMobile: boolean;
+  language: string;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
@@ -64,6 +65,11 @@ export class ColourgamePage implements OnInit {
 
   ngOnInit() {
     this.isMobile = this.platform.is('mobile');
+    if(this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
   }
 
   start() {
@@ -160,7 +166,7 @@ export class ColourgamePage implements OnInit {
     return interval[0] + '-' + interval[1];
   }
 
-  getAverageInterval(age: number) {
+  async getAverageInterval(age: number) {
     const intervals = [
       [0, 4],
       [5, 9],
@@ -205,7 +211,7 @@ export class ColourgamePage implements OnInit {
 
     const diff = moment.duration(this.today.diff(this.userBirthdate));
     this.userAge = Number(diff.years());
-    this.getAverageInterval(this.userAge);
+    await this.getAverageInterval(this.userAge);
   }
 
   async end() {
@@ -221,13 +227,20 @@ export class ColourgamePage implements OnInit {
       bestScore: this.bestScore,
       averageScore: this.averageScore
     });
+    console.log('asd');
     await this.getDataOfUser();
+    console.log('asd');
     await this.getDataOfAverageUser();
     this.angularFirestore.collection('Statistics').doc(this.average).collection('game').doc('colourgame').update({
       playedGames: this.playedGamesAverage,
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
+    console.log('asd');
+    localStorage.setItem('result', String(this.result));
+    console.log('asd');
+    localStorage.setItem('averageScore', String(this.averageScoreAverage));
+    console.log('asd');
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));

@@ -82,7 +82,7 @@ export class AverageScoreComponent implements OnInit, OnChanges {
     if (this.averageScoreChart === null || this.averageScoreChart === undefined) { return; };
 
     const averageAttention = data.colourgame.averageScore + data.goNogoGame.averageScore +
-    data.fifthgame.averageScore + data.sixthgame.averageScore;
+    data.fifthgame.averageScore + data.sixthgame.averageScore + data.eightgame.averageScore;
     const averageMemory = data.ninthgame.averageScore + data.tenthgame.averageScore;
     const averageMatematical = data.thirdgame.averageScore + data.fourthgame.averageScore +
     data.seventhgame.averageScore;

@@ -26,7 +26,8 @@
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-img *ngIf="language === 'hu'" src="../../../assets/img/hamarosan.PNG"></ion-img>
+        <ion-img *ngIf="language === 'en'" src="../../../assets/img/soon.PNG"></ion-img>
         <p [ngStyle]="styleIonCardContent()" class="ion-padding">
           <ion-text color="secondary">
             {{"GAMES.comingSoon" | translate}}
@@ -35,7 +36,8 @@
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}">
-        <ion-img src="assets/img/unnamed.png"></ion-img>
+        <ion-img *ngIf="language === 'hu'" src="../../../assets/img/hamarosan.PNG"></ion-img>
+        <ion-img *ngIf="language === 'en'" src="../../../assets/img/soon.PNG"></ion-img>
         <p [ngStyle]="styleIonCardContent()" class="ion-padding"><ion-text color="secondary">
           {{"GAMES.comingSoon" | translate}}
         </ion-text></p>
@@ -45,7 +47,8 @@
     <h3><ion-title class="games-category ion-padding">{{"GAMES.attention" | translate}}</ion-title></h3>
     <ion-list class="game-cards ion-text-center">
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('colourgame')">
-        <ion-img src="../../../assets/img/colourgame/colourgame-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'hu'" src="../../../assets/img/colourgame/colourgame-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'en'" src="../../../assets/img/colourgame/colourgame-logoENG.PNG"></ion-img>
         <p class="ion-padding"><ion-text color="secondary">{{"GAMES.colourGame" | translate}}</ion-text></p>
       </ion-card>
 
@@ -55,17 +58,20 @@
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game5')">
-        <ion-img src="../../../assets/img/nums-and-letters/nums-and-letters-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'hu'" src="../../../assets/img/nums-and-letters/nums-and-letters-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'en'" src="../../../assets/img/nums-and-letters/nums-and-letters-logoENG.PNG"></ion-img>
         <p class="ion-padding"><ion-text color="secondary">{{"GAMES.numsAndLetters" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game6')">
-        <ion-img src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'hu'" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'en'" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoENG.PNG"></ion-img>
         <p class="ion-padding"><ion-text color="secondary">{{"GAMES.numsAndLetters2" | translate}}</ion-text></p>
       </ion-card>
 
       <ion-card [ngStyle]="{'min-width':isMobile ? '45%' : '35%'}" (click)="goToGame('game8')">
-        <ion-img src="../../../assets/img/directions/directions-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'hu'" src="../../../assets/img/directions/directions-logoHUN.PNG"></ion-img>
+        <ion-img *ngIf="language === 'en'" src="../../../assets/img/directions/directions-tutorialENG.PNG"></ion-img>
         <p class="ion-padding"><ion-text color="secondary">{{"GAMES.directions" | translate}}</ion-text></p>
       </ion-card>
     </ion-list>

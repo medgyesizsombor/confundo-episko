@@ -28,7 +28,7 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px" src="" />
+          <img style="height: 300px; width: 300px" src="../../../assets/img/sorting-game/sorting-game-logo.PNG" />
           <h2>{{"SORTINGGAME.title" | translate}}</h2>
           <p [innerHTML]="'SORTINGGAME.firstText' | translate"></p>
           <p>
@@ -39,7 +39,7 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img style="height: 300px; width: 300px" src="../../../assets/img/sorting-game/sorting-game-tutorial.PNG" />
         <h2>{{"SORTINGGAME.howToPlay" | translate}}</h2>
         <p [innerHTML]="'SORTINGGAME.tutorialText' | translate"></p>
         <p>
@@ -49,7 +49,7 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/120.PNG"/>
         <h2>{{"SORTINGGAME.howMuchTime" | translate}}</h2>
         <p>{{"SORTINGGAME.timeText" | translate}}</p>
         <p>
@@ -59,7 +59,8 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="" />
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/readyHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/readyENG.PNG"/>
         <h2>{{"SORTINGGAME.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="start()"
           >Start<ion-icon slot="end" name="arrow-forward"></ion-icon

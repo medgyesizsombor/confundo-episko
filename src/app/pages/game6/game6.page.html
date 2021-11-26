@@ -24,36 +24,40 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px;" src=""/>
+          <img *ngIf="language === 'hu" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoHUN.PNG"/>
+          <img *ngIf="language === 'en" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-logoENG.PNG"/>
           <h2>{{"NUMSANDLETTERS2.title" | translate}}</h2>
-          <p>The <b>colour game</b> is a game to develop your focus.</p>
+          <p [innerHTML]="'NUMSANDLETTERS2.firstText' | translate"></p>
           <p>{{"NUMSANDLETTERS2.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
         </div>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img *ngIf="language === 'hu" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorialHUN.PNG"/>
+        <img *ngIf="language === 'en" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorialENG.PNG"/>
         <h2>{{"NUMSANDLETTERS2.howToPlay" | translate}}</h2>
         <p>{{"NUMSANDLETTERS2.tutorialText" | translate}}</p>
         <p>{{"NUMSANDLETTERS2.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img *ngIf="language === 'hu" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorial2HUN.PNG"/>
+        <img *ngIf="language === 'en" style="height: 300px; width: 300px;" src="../../../assets/img/nums-and-letters2/nums-and-letters2-tutorial2ENG.PNG"/>
         <h2>{{"NUMSANDLETTERS2.howToPlay" | translate}}</h2>
         <p>{{"NUMSANDLETTERS2.tutorialText2" | translate}}</p>
         <p>{{"NUMSANDLETTERS2.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/120.PNG"/>
         <h2>{{"NUMSANDLETTERS2.howMuchTime" | translate}}</h2>
         <p>{{"NUMSANDLETTERS2.timeText" | translate}}</p>
         <p>{{"NUMSANDLETTERS2.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/readyHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/readyENG.PNG"/>
         <h2>{{"NUMSANDLETTERS2.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="onStart()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>

@@ -57,14 +57,22 @@ export class Game4Page implements OnInit {
   drawChart = false;
   isMobile: boolean;
 
+  language: string;
+
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
     private dataAverageUser: DataAverageUserService,
-    private platform: Platform, private translatePipe: TranslatePipe) {
+    private platform: Platform, private translatePipe: TranslatePipe,
+    private languageService: LanguageService) {
   }
 
   ngOnInit() {
+    if(this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
     this.isMobile = this.platform.is('mobile');
   }
 
