@@ -23,6 +23,14 @@ export class DataOfUserService {
     });
   }
 
+  async getDataOfUserLastPlayed(){
+    this.angularFireStore.collection('Users').doc(this.uid).valueChanges().subscribe((res: any) => {
+      localStorage.setItem('lastPlayed', res.lastPlayed);
+    }, err => {
+      console.log(err);
+    });
+  }
+
 
   async getDataOfGameColour(str: string){
     return new Promise((resolve, reject) => {

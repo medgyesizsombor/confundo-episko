@@ -48,6 +48,7 @@ export class GamesPage implements OnInit {
       .update({
         lastPlayed: url
       });
+      localStorage.setItem('lastPlayed', url);
       this.router.navigate([url]);
     }
   }

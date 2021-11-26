@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 
 
@@ -31,24 +33,67 @@ export class HomePage implements OnInit {
   params: any;
   isMobile: boolean;
 
-  constructor(private router: Router,
-    private dataOfUser: DataOfUserService, private platform: Platform) { }
+  constructor(private router: Router, private angularFirestore: AngularFirestore,
+    private dataOfUser: DataOfUserService, private platform: Platform,
+    private translatePipe: TranslatePipe) { }
 
 
   async ngOnInit() {
     this.isMobile = this.platform.is('mobile');
-    this.fullName = {
-      name: localStorage.getItem('name')
-    };
+    await this.dataOfUser.getDataOfUserLastPlayed();
   }
 
   async ionViewWillEnter(){
-    this.fullName = {
-      name: localStorage.getItem('name')
-    };
-    this.params = {
-      gameName: localStorage.getItem('lastPlayed')
-    };
+    await this.dataOfUser.getDataOfUserLastPlayed();
+    const lastPlayedGameName = localStorage.getItem('lastPlayed');
+    switch (lastPlayedGameName){
+      case 'colourgame':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.colourGame')
+        };
+        break;
+      case 'go-nogogame':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.goNogoGame')
+        };
+        break;
+      case 'game3':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.sortingGame')
+        };
+        break;
+      case 'game4':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.equations')
+        };
+        break;
+      case 'game5':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.numsAndLetters')
+        };
+        break;
+      case 'game7':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.numsAndLetters2')
+        };
+        break;
+      case 'game8':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.directions')
+        };
+        break;
+      case 'game9':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.memoryCard')
+        };
+        break;
+      case 'game10':
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.memoryGrid')
+        };
+        break;
+    }
+
   }
 
   goToGames() {
@@ -56,7 +101,7 @@ export class HomePage implements OnInit {
   }
 
   playWithLastGame(){
-    this.router.navigate([this.lastPlayed]);
+    this.router.navigate([localStorage.getItem('lastPlayed')]);
   }
 
   textStyle(){
