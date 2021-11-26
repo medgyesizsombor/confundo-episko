@@ -20,7 +20,8 @@
         "mathematical": "Matematikai",
         "sortingGame": "Rendező játék",
         "equations": "Egyenletek",
-        "computing": "Számoló"
+        "computing": "Számoló",
+        "finalResult": "Az eredményed: "
     },
     "PROFILE":{
         "title": "Profil"

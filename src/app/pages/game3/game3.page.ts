@@ -65,6 +65,7 @@ export class Game3Page implements OnInit {
   }
 
   start(){
+    this.ended = false;
     this.playing = true;
     this.timeText = this.seconds + ' sec';
     this.selectedNumbers = this.generateNumbers(this.numOfGenNumbers);
@@ -250,6 +251,7 @@ export class Game3Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
+    this.seconds = 120;
     this.router.navigate(['main-tabs/games']);
   }
 

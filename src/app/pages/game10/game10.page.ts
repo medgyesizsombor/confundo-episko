@@ -20,7 +20,7 @@ export class Game10Page implements OnInit {
   generatedGrids = [];
   timeText = '';
   timeText2 = '';
-  secondsOnGame = 120;
+  seconds = 120;
   playing = false;
   generatedIndexes = [];
   generatedSortedIndexes = [];
@@ -76,26 +76,27 @@ export class Game10Page implements OnInit {
   }
 
   start() {
+    this.ended = false;
     this.generatedIndexes = this.generateIndexes();
     this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
     this.generatedGrids = this.generateGrid(this.generatedIndexes);
     console.log(this.generatedGrids);
     this.startCountDownGame();
     this.playing = true;
-    this.timeText = this.secondsOnGame + ' sec';
+    this.timeText = this.seconds + ' sec';
     this.showAndHideSelecteds(2000, 1000);
   }
 
   startCountDownGame() {
     this.interval = setInterval(() => {
       this.updateTime();
-      this.timeText = this.secondsOnGame + ' sec';
+      this.timeText = this.seconds + ' sec';
     }, 1000);
   }
 
   updateTime() {
-    if (this.secondsOnGame > 0) {
-      this.secondsOnGame--;
+    if (this.seconds > 0) {
+      this.seconds--;
     } else {
       this.end();
     }
@@ -103,7 +104,7 @@ export class Game10Page implements OnInit {
 
   startCountDownTurn() {
     this.intervalTurn = setInterval(() => {
-      this.timeText2 = this.secondsOnGame + ' sec';
+      this.timeText2 = this.seconds + ' sec';
     }, 1000);
   }
 
@@ -405,6 +406,7 @@ export class Game10Page implements OnInit {
       });
 
     clearInterval(this.interval);
+    clearInterval(this.intervalTurn);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;
@@ -412,6 +414,7 @@ export class Game10Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
+    this.seconds = 120;
     this.router.navigate(['main-tabs/games']);
   }
 

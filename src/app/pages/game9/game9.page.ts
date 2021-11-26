@@ -66,6 +66,7 @@ export class Game9Page implements OnInit {
   }
 
   startGame() {
+    this.ended = false;
     this.timeText = this.seconds + ' sec';
     this.playing = true;
     this.generateMemoryCard();
@@ -277,6 +278,7 @@ export class Game9Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
+    this.seconds = 120;
     this.router.navigate(['main-tabs/games']);
   }
 

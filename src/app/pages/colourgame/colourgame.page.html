@@ -102,12 +102,12 @@
 
     <div id="mid" *ngIf="ended">
       <ion-label>
-        {{finalResult}}
+        {{"GAMES.finalResult" | translate}}{{result}}
       </ion-label>
     </div>
   
 
-  <div *ngIf="drawChart">
+  <div *ngIf="drawChart && ended">
     <app-user-vs-average-chart></app-user-vs-average-chart>
   </div>
 </div>
