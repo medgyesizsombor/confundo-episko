@@ -85,7 +85,8 @@ export class RegisterPage implements OnInit {
   textStyle(){
     if(!this.isMobile){
       return {
-        'font-size': '16px'
+        'font-size': '16px',
+        '--placeholder-color': '#ebebeb'
       };
     }
   }

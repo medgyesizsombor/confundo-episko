@@ -38,7 +38,7 @@
             <ion-label [ngStyle]="textStyle()" color="secondary" position="stacked">{{"REGISTER.dateOfBirth" | translate}}</ion-label>
           </ion-col>
           <ion-col>
-            <ion-input [ngStyle]="textStyle()" color="secondary" type="date" [(ngModel)]="user.birthdate"></ion-input>
+            <ion-datetime displayFormat="YYYY. MM. DD." placeholder="{{'REGISTER.date' | translate}}" [ngStyle]="textStyle()" [(ngModel)]="user.birthdate"></ion-datetime>
           </ion-col>
         </ion-row>
         <ion-row>

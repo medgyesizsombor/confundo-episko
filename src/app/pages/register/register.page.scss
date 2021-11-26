@@ -13,6 +13,35 @@ ion-toolbar {
 ion-content {
   --ion-background-color: #eeeeee;
 }
+/*.picker-opt.picker-opt-selected {
+  color: var(--ion-color-primary) !important;
+}
+
+.picker-opt {
+  color: #7994A2 !important;
+}
+
+ion-datetime {
+  --placeholder-color: lightgrey;
+}
+
+ion-datetime::placeholder{
+  color: lightgrey
+}*/
+
+ion-input{
+  --placeholder-color: rgb(250, 200, 180);
+  --placeholder-opacity: 1;
+}
+
+.datetime-placeholder {
+  color: rgb(250, 200, 180);
+}
+
+ion-datetime{
+  color: white;
+  padding-left: 8px ;
+}
 
 #gotoLogin {
   color: white !important;
