@@ -10,7 +10,7 @@
         "memory": "Memória",
         "memoryCard": "Memóriakártya",
         "comingSoon": "Hamarosan megjelenik!",
-        "memoryGrid": "Rács memória ",
+        "memoryGrid": "Memória csempe",
         "attention": "Figyelem",
         "colourGame":"Szín Játék",
         "goNogoGame":"Go/No-go teszt",
@@ -159,13 +159,13 @@
         "ready":"Készen állsz?"
     },
     "MEMORYGRID":{
-        "title": "Rács memória",
+        "title": "Memória csempe",
         "time": "Maradék idő",
         "points": "Pontok",
         "swipe":"Lapozz további információért!",
-        "firstText": "A <b>Rácsmemória</b> a memóriát fejleszti.",
+        "firstText": "A <b>Memória csempe</b> a memóriát fejleszti.",
         "howToPlay":"Hogyan kell játszani?",
-        "tutorialText": "Minden kör előtt felvillan a 12 darab négyzetből öt egy másodpercre és ezeket kell megjelölni helyesen. Ha helyesen jelölsz meg egyet, akkor zöld színű lesz.",
+        "tutorialText": "Minden kör előtt felvillan a 12 darab négyzetből öt egy másodpercre, addig szürke lesz. Amint visszavált az eredeti színre, akkor ezeket kell megjelölni helyesen. Ha helyesen jelölsz meg egyet, akkor zöld színű lesz.",
         "tutorialText2": "Ha elrontasz egyet, akkor piros színű lesz az összes és utána újra generálja a táblázatot.",
         "howMuchTime": "Mennyi ideig tart?",
         "timeText":"120 másodperced van összesen.",
@@ -219,7 +219,7 @@
         "computing": "Számoló",
         "directions": "Irányok",
         "memoryCard": "Memóriakártya",
-        "memoryGrid": "Rács memória",
+        "memoryGrid": "Memória csempe",
         "points": "Pontok"
     },
     "ERROR":{

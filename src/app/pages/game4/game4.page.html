@@ -32,7 +32,8 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src="../../../assets/img/equations/equations-tutorialHUN.PNG"/>
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/equations/equations-tutorialHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/equations/equations-tutorialENG.PNG"/>
         <h2>{{"EQUATIONS.howToPlay" | translate}}</h2>
         <p>{{"EQUATIONS.tutorialText" | translate}}</p>
         <p>{{"EQUATIONS.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>

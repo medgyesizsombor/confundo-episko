@@ -28,7 +28,8 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px" src="../../../assets/img/nums-and-letters/nums-and-letters-logoHUN.PNG" />
+          <img *ngIf="language === 'hu" style="height: 300px; width: 300px" src="../../../assets/img/nums-and-letters/nums-and-letters-logoHUN.PNG" />
+          <img *ngIf="language === 'en" style="height: 300px; width: 300px" src="../../../assets/img/nums-and-letters/nums-and-letters-logoENG.PNG" />
           <h2>{{"NUMSANDLETTERS.title" | translate}}</h2>
           <p [innerHTML]="'NUMSANDLETTERS.firstText' | translate"></p>
           <p>
@@ -41,7 +42,8 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px" src="../../../assets/img/nums-and-letters/nums-and-letters-tutorialHUN.PNG" />
+        <img *ngIf="language === 'hu" style="height: 300px; width: 300px" src="../../../assets/img/nums-and-letters/nums-and-letters-tutorialHUN.PNG" />
+        <img *ngIf="language === 'en" style="height: 300px; width: 300px" src="../../../assets/img/nums-and-letters/nums-and-letters-tutorialENG.PNG" />
         <h2>{{"NUMSANDLETTERS.howToPlay" | translate}}</h2>
         <p>{{"NUMSANDLETTERS.tutorialText" | translate}}</p>
         <p>

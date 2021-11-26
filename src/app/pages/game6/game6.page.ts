@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { DataAverageUserService } from 'src/app/services/data-average-user/data-average-user.service';
 import { DataOfGameService } from 'src/app/services/data-of-game/data-of-game.service';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 
 @Component({
   selector: 'app-game6',
@@ -57,14 +58,21 @@ export class Game6Page implements OnInit {
   drawChart = false;
   isMobile: boolean;
 
+  language: string;
+
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
     private dataOfGame: DataOfGameService, private dataOfUser: DataOfUserService,
     private dataAverageUser: DataAverageUserService, private platform: Platform,
-    private translatePipe: TranslatePipe) {
+    private translatePipe: TranslatePipe, private languageService: LanguageService) {
   }
 
   ngOnInit() {
+    if(this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
     this.isMobile = this.platform.is('mobile');
   }
 

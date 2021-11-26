@@ -65,6 +65,11 @@ export class Game8Page implements OnInit {
   }
 
   ngOnInit() {
+    if(this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
     this.isMobile = this.platform.is('mobile');
   }
 

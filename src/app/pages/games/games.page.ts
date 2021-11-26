@@ -13,16 +13,27 @@ import { LanguageService } from 'src/app/services/language/language.service';
 export class GamesPage implements OnInit {
   uid = localStorage.getItem('uid');
   isMobile: boolean;
+  language = '';
 
   constructor(private router: Router, private angularFireAuth: AngularFireAuth,
     private platform: Platform, private languageService: LanguageService,
     private angularFireStore: AngularFirestore) { }
 
   ngOnInit() {
+    if (this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
     this.isMobile = this.platform.is('mobile');
   }
 
   ionViewWillEnter() {
+    if (this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
     this.isMobile = this.platform.is('mobile');
     console.log(this.isMobile + 'willEnter');
     this.styleCard();

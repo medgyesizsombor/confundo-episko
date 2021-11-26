@@ -46,11 +46,6 @@ export class HomePage implements OnInit {
     this.fullName = {
       name: localStorage.getItem('name')
     };
-    await this.getDatas();
-  }
-
-  async getDatas(){
-    this.dataOfUser.getDataOfUser();
     this.params = {
       gameName: localStorage.getItem('lastPlayed')
     };

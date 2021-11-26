@@ -53,6 +53,7 @@ export class ColourgamePage implements OnInit {
 
   drawChart = false;
   isMobile: boolean;
+  language: string;
 
   constructor(private router: Router, private route: ActivatedRoute,
     private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth,
@@ -64,6 +65,11 @@ export class ColourgamePage implements OnInit {
 
   ngOnInit() {
     this.isMobile = this.platform.is('mobile');
+    if(this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
   }
 
   start() {

@@ -23,7 +23,8 @@
     <ion-slides *ngIf="!playing && !ended">
         <ion-slide class="ion-padding">
           <div class="slide">
-            <img style="height: 300px; width: 300px;" src="../../../assets/img/colourgame/colourgame-logoHUN.PNG"/>
+            <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/colourgame/colourgame-logoHUN.PNG"/>
+            <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/colourgame/colourgame-logoENG.PNG"/>
             <h2>{{"COLOURGAME.title" | translate}}</h2>
             <p [innerHTML]="'COLOURGAME.firstText' | translate"></p>
             <p>{{"COLOURGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
@@ -31,7 +32,8 @@
         </ion-slide>
 
         <ion-slide class="ion-padding">
-          <img style="height: 300px; width: 300px;" src="../../../assets/img/colourgame/colourgame-tutorialHUN.PNG"/>
+          <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/colourgame/colourgame-tutorialHUN.PNG"/>
+          <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/colourgame/colourgame-tutorialENG.PNG"/>
           <h2>{{"COLOURGAME.howToPlay" | translate}}</h2>
           <p [innerHTML]="'COLOURGAME.tutorialText' | translate"></p>
           <p>{{"COLOURGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
