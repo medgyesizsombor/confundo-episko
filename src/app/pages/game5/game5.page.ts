@@ -71,6 +71,11 @@ export class Game5Page implements OnInit {
     this.isMobile = this.platform.is('mobile');
   }
 
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
+  }
+
   onStart(){
     this.ended = false;
     this.playing = true;

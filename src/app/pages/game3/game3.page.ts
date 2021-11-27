@@ -24,7 +24,7 @@ export class Game3Page implements OnInit {
   clickedItems = [];
   result = 0;
   timeText = '';
-  seconds = 120;
+  seconds = 5;
   interval: any;
   playing = false;
   ended = false;
@@ -62,6 +62,11 @@ export class Game3Page implements OnInit {
       this.language = 'en';
     }
     this.isMobile = this.platform.is('mobile');
+  }
+
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
   }
 
   start(){

@@ -282,6 +282,11 @@ export class Game8Page implements OnInit {
     this.router.navigate(['main-tabs/games']);
   }
 
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
+  }
+
   titleStyle(){
     if(!this.isMobile){
       return {

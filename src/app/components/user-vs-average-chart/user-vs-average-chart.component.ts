@@ -67,6 +67,10 @@ export class UserVsAverageChartComponent implements OnInit {
     });
   }
 
+  ionViewDidLeave() {
+    this.userVsAverage = null;
+  }
+
   updateChartData(){
     this.data.datasets[0].data[0] = this.result;
     this.data.datasets[1].data[0] = this.averagePoint;

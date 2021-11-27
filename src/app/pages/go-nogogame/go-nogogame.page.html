@@ -26,7 +26,7 @@
     <ion-slides *ngIf="!playing && !ended">
       <ion-slide class="ion-padding">
         <div class="slide">
-          <img style="height: 300px; width: 300px;" src=""/>
+          <img style="height: 300px; width: 300px;" src="../../../assets/img/go-nogo-test/go-nogo-test-logo.PNG"/>
           <h2>{{"GONOGOGAME.title" | translate}}</h2>
           <p [innerHTML]="'GONOGOGAME.firstText' | translate"></p>
           <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
@@ -34,28 +34,29 @@
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/go-nogo-test/go-nogo-test-forbidden-number.PNG"/>
         <h2>{{"GONOGOGAME.howToPlay" | translate}}</h2>
         <p>{{"GONOGOGAME.tutorialText" | translate}}</p>
         <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/go-nogo-test/go-nogo-test-number-and-time.PNG"/>
         <h2>{{"GONOGOGAME.howToPlay" | translate}}</h2>
         <p>{{"GONOGOGAME.tutorialText2" | translate}}</p>
         <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img style="height: 300px; width: 300px;" src="../../../assets/img/110.PNG"/>
         <h2>{{"GONOGOGAME.howMuchTime" | translate}}</h2>
         <p>{{"GONOGOGAME.timeText" | translate}}</p>
         <p>{{"GONOGOGAME.swipe" | translate}}<ion-icon slot="end" name="arrow-forward"></ion-icon></p>
       </ion-slide>
 
       <ion-slide class="ion-padding">
-        <img style="height: 300px; width: 300px;" src=""/>
+        <img *ngIf="language === 'hu'" style="height: 300px; width: 300px;" src="../../../assets/img/readyHUN.PNG"/>
+        <img *ngIf="language === 'en'" style="height: 300px; width: 300px;" src="../../../assets/img/readyENG.PNG"/>
         <h2>{{"GONOGOGAME.ready" | translate}}</h2>
         <ion-button fill="clear" (click)="start()">Start <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>
