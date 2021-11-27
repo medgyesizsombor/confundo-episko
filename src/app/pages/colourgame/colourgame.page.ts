@@ -27,7 +27,7 @@ export class ColourgamePage implements OnInit {
   lbl2color: string;
   result = 0;
   finalResult: string;
-  seconds = 5;
+  seconds = 100;
   timeText: string;
   playedGames = 0;
   averageScore = 0;
@@ -256,7 +256,7 @@ export class ColourgamePage implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 100;
     this.router.navigate(['main-tabs/games']);
   }
 

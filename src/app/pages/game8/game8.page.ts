@@ -37,7 +37,7 @@ export class Game8Page implements OnInit {
   directions= ['Up', 'Down', 'Right', 'Left'];
   directionsHUN = ['Fel', 'Le', 'Jobbra', 'Balra'];
 
-  seconds = 10;
+  seconds = 110;
   playing = false;
   ended = false;
   interval: any;
@@ -278,7 +278,7 @@ export class Game8Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 110;
     this.router.navigate(['main-tabs/games']);
   }
 

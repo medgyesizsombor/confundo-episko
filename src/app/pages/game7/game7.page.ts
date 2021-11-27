@@ -39,7 +39,7 @@ export class Game7Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
-  seconds = 120;
+  seconds = 100;
   playing = false;
   ended = false;
   interval: any;
@@ -258,7 +258,7 @@ export class Game7Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 100;
     this.router.navigate(['main-tabs/games']);
   }
 
