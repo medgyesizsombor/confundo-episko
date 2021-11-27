@@ -44,10 +44,6 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.isMobile = this.platform.is('mobile');
     await this.dataOfUser.getDataOfUserLastPlayed();
-    this.date = '1998-04-20T17:24:27.729+02:00';
-    const date2 = moment(this.date).format('YYYY-MM-DD');
-    console.log(date2);
-
   }
 
   async ionViewWillEnter(){
