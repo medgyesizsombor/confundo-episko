@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import * as moment from 'moment';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class HomePage implements OnInit {
   params: any;
   isMobile: boolean;
 
+  date: string;
+
   constructor(private router: Router, private angularFirestore: AngularFirestore,
     private dataOfUser: DataOfUserService, private platform: Platform,
     private translatePipe: TranslatePipe) { }
@@ -41,12 +44,22 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.isMobile = this.platform.is('mobile');
     await this.dataOfUser.getDataOfUserLastPlayed();
+    this.date = '1998-04-20T17:24:27.729+02:00';
+    const date2 = moment(this.date).format('YYYY-MM-DD');
+    console.log(date2);
+
   }
 
   async ionViewWillEnter(){
     await this.dataOfUser.getDataOfUserLastPlayed();
     const lastPlayedGameName = localStorage.getItem('lastPlayed');
     switch (lastPlayedGameName){
+      case '':{
+        this.params = {
+          gameName : this.translatePipe.transform('GAMES.colourGame')
+        };
+        break;
+      }
       case 'colourgame':
         this.params = {
           gameName : this.translatePipe.transform('GAMES.colourGame')

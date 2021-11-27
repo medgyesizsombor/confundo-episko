@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController, Platform, ToastController } from '@ionic/angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-register',
@@ -47,7 +48,7 @@ export class RegisterPage implements OnInit {
     this.authService.register({
       email: this.user.email,
       password: this.user.password,
-      birthdate: this.user.birthdate,
+      birthdate: moment(this.user.birthdate).format('YYYY-MM-DD'),
       name: this.user.name,
       lastPlayed: ''
     }).then(() => {
