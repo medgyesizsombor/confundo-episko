@@ -72,22 +72,22 @@ export class HomePage implements OnInit {
           gameName : this.translatePipe.transform('GAMES.numsAndLetters')
         };
         break;
-      case 'game7':
+      case 'game6':
         this.params = {
           gameName : this.translatePipe.transform('GAMES.numsAndLetters2')
         };
         break;
-      case 'game8':
+      case 'game7':
         this.params = {
           gameName : this.translatePipe.transform('GAMES.directions')
         };
         break;
-      case 'game9':
+      case 'game8':
         this.params = {
           gameName : this.translatePipe.transform('GAMES.memoryCard')
         };
         break;
-      case 'game10':
+      case 'game9':
         this.params = {
           gameName : this.translatePipe.transform('GAMES.memoryGrid')
         };
