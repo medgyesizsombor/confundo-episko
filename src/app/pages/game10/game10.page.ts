@@ -75,6 +75,11 @@ export class Game10Page implements OnInit {
     this.isMobile = this.platform.is('mobile');
   }
 
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
+  }
+
   start() {
     this.ended = false;
     this.generatedIndexes = this.generateIndexes();

@@ -64,12 +64,18 @@ export class ColourgamePage implements OnInit {
   }
 
   ngOnInit() {
+    this.ended = false;
     this.isMobile = this.platform.is('mobile');
     if(this.languageService.getLanguage() === 'hu'){
       this.language = 'hu';
     } else {
       this.language = 'en';
     }
+  }
+
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
   }
 
   start() {

@@ -65,6 +65,11 @@ export class Game9Page implements OnInit {
     this.isMobile = this.platform.is('mobile');
   }
 
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
+  }
+
   startGame() {
     this.ended = false;
     this.timeText = this.seconds + ' sec';

@@ -38,7 +38,7 @@ export class Game4Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
-  seconds = 100;
+  seconds = 5;
   playing = false;
   ended = false;
   interval: any;
@@ -284,6 +284,11 @@ export class Game4Page implements OnInit {
     });
   }
 
+  ionViewDidLeave(){
+    this.ended = false;
+    this.drawChart = false;
+  }
+
   createIntervalText(interval: number[]) {
     return interval[0] + '-' + interval[1];
   }
@@ -324,6 +329,8 @@ export class Game4Page implements OnInit {
         localStorage.setItem('averageId', this.average);
       }
     }
+
+    console.log('HALOHOOOOO', localStorage.getItem('averageId'));
   }
 
   async getDataOfUser(){
@@ -364,7 +371,7 @@ export class Game4Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 5;
     this.router.navigate(['main-tabs/games']);
   }
 
