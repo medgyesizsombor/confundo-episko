@@ -24,7 +24,7 @@ export class Game9Page implements OnInit {
   playing = false;
   interval: any;
   timeText = '0 sec';
-  seconds = 120;
+  seconds = 100;
   finalResult = '';
 
   globalId = 0;
@@ -283,7 +283,7 @@ export class Game9Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 100;
     this.router.navigate(['main-tabs/games']);
   }
 

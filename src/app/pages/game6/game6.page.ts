@@ -39,7 +39,7 @@ export class Game6Page implements OnInit {
   randomLetter: string;
   vowel= ['A', 'E', 'I', 'O', 'U'];
 
-  seconds = 20;
+  seconds = 120;
   playing = false;
   ended = false;
   interval: any;

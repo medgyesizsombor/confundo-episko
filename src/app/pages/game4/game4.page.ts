@@ -38,7 +38,7 @@ export class Game4Page implements OnInit {
   randomOperatorFromArray1: number;
   randomOperatorFromArray2: number;
 
-  seconds = 5;
+  seconds = 120;
   playing = false;
   ended = false;
   interval: any;
@@ -371,7 +371,7 @@ export class Game4Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 5;
+    this.seconds = 120;
     this.router.navigate(['main-tabs/games']);
   }
 

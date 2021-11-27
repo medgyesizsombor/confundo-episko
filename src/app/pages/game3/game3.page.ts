@@ -24,7 +24,7 @@ export class Game3Page implements OnInit {
   clickedItems = [];
   result = 0;
   timeText = '';
-  seconds = 5;
+  seconds = 100;
   interval: any;
   playing = false;
   ended = false;
@@ -256,7 +256,7 @@ export class Game3Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 100;
     this.router.navigate(['main-tabs/games']);
   }
 

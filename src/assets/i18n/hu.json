@@ -76,7 +76,7 @@
         "howToPlay":"Hogyan kell játszani?",
         "tutorialText": "Ha a fenti szöveg megegyezik az alsó szöveg színével, akkor az <b>IGAZ</b> gombra kell kattintani. Ha nem egyezik meg, akkor meg a <b>HAMIS</b>-ra.",
         "howMuchTime": "Mennyi ideig tart?",
-        "timeText":"120 másodperced van összesen.",
+        "timeText":"100 másodperced van összesen.",
         "ready": "Készen állsz?",
         "false": "HAMIS",
         "true": "IGAZ"
@@ -91,7 +91,7 @@
         "tutorialText": "A piros körben megjelenik egy szám és ez lesz a tiltott szám. Ezt meg kell jegyezni, mert el fog tűnni és emlékezni kell rá.",
         "tutorialText2": "Az IGAZ gombra kell kattintani, ha a szám nem egyezik meg a tiltott számmal. Felül az időt lehet látni, hogy mennyi időnk van dönteni.",
         "howMuchTime": "Mennyi ideig tart?",
-        "timeText":"120 másodperced van összesen.",
+        "timeText":"110 másodperced van összesen.",
         "ready":"Készen állsz?",
         "generatedTaskNumberText": "A tiltott szám: ",
         "timeText2": "Ennyi időd van megnyomni: ",
@@ -106,7 +106,7 @@
         "howToPlay": "Hogyan kell játszani?",
         "tutorialText": "A számokat <b>növekvő sorrendben</b> kell nyomkodni.",
         "howMuchTime": "Mennyi ideig tart?",
-        "timeText": "120 másodperced van összesen.",
+        "timeText": "100 másodperced van összesen.",
         "ready": "Készen állsz?"
     },
     "EQUATIONS":{
@@ -133,7 +133,7 @@
         "howToPlay":"Hogyan kell játszani?",
         "tutorialText": "A fenti egyenletből kell kiszámolni X értékét, azt megadni a gombok segítségével és utána az OK gombot megnyomni.",
         "howMuchTime":"Mennyi ideig tart?",
-        "timeText":"120 másodperced van összesen.",
+        "timeText":"100 másodperced van összesen.",
         "ready":"Készen állsz?"
     },
     "DIRECTIONS":{
@@ -145,7 +145,7 @@
         "howToPlay":"Hogyan kell játszani?",
         "tutorialText": "A fent megjelenő szövegnek az ellentétes irányába mutató nyilat kell megnyomni.",
         "howMuchTime":"Mennyi ideig tart?",
-        "timeText":"120 másodperced van összesen.",
+        "timeText":"110 másodperced van összesen.",
         "ready":"Készen állsz?"
     },
     "MEMORYCARD":{
@@ -157,7 +157,7 @@
         "howToPlay": "Hogyan kell játszani?",
         "tutorialText": "A négy darab kártyapárt kell megtalálni úgy, hogy egyszerre maximum csak két kártya lehet felfordított állapotban.",
         "howMuchTime": "Mennyi ideig tart?",
-        "timeText":"120 másodperced van összesen.",
+        "timeText":"100 másodperced van összesen.",
         "ready":"Készen állsz?"
     },
     "MEMORYGRID":{
@@ -182,7 +182,7 @@
         "howToPlay":"Hogyan kell játszani?",
         "tutorialText": "Ha felül van a generált szöveg, akkor a kérdés az, hogy páros-e a benne szereplő szám. Ha alul van, akkor a kérdés, hogy magánhangzó-e a betű.",
         "howMuchTime":"Mennyi ideig tart?",
-        "timeText":"120 másodperced van összesen.",
+        "timeText":"110 másodperced van összesen.",
         "ready":"Készen állsz?",
         "title1": "Páros a szám?",
         "title2": "Magánhangzó a betű?",

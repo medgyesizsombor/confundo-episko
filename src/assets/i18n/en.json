@@ -74,7 +74,7 @@
         "howToPlay":"How to play?",
         "tutorialText": "If the text above matches the colour of the text below, click on <b>TRUE</b>. If it does not match, click on <b>FALSE</b>.",
         "howMuchTime": "How long does it take?",
-        "timeText":"You have 120 seconds.",
+        "timeText":"You have 100 seconds.",
         "ready": "Are you ready?",
         "false": "FALSE",
         "true": "TRUE"
@@ -89,7 +89,7 @@
         "tutorialText2": "The number in the red circle is the forbidden number. This must be noted because it will disappear.",
         "tutorialText": "Click on the TRUE button as quickly as possible if the number does not match the forbidden number.",
         "howMuchTime": "How long does it take?",
-        "timeText": "You have 120 seconds.",
+        "timeText": "You have 110 seconds.",
         "ready": "Are you ready?",
         "generatedTaskNumberText": "The forbidden number: ",
         "timeText2": "That's how much time you have to press: ",
@@ -104,7 +104,7 @@
         "howToPlay": "How to play?",
         "tutorialText": "The numbers are pressed in <b>in ascending order</b>.",
         "howMuchTime": "How long does it take?",
-        "timeText": "You have 120 seconds.",
+        "timeText": "You have 100 seconds.",
         "ready": "Are you ready?"
     },
     "EQUATIONS":{
@@ -131,7 +131,7 @@
         "howToPlay": "How to play?",
         "tutorialText": "Calculate the value of X from the equation above, enter it using the buttons and then press OK.",
         "howMuchTime": "How long does it take?",
-        "timeText": "You have 120 seconds.",
+        "timeText": "You have 100 seconds.",
         "ready": "Are you ready?"
     },
     "DIRECTIONS":{
@@ -143,7 +143,7 @@
         "howToPlay": "How to play?",
         "tutorialText": "Press the arrow pointing in the opposite direction to the text above.",
         "howMuchTime": "How long does it take?",
-        "timeText": "You have 120 seconds.",
+        "timeText": "You have 110 seconds.",
         "ready": "Are you ready?"
     },
     "MEMORYCARD":{
@@ -155,7 +155,7 @@
         "howToPlay": "How to play?",
         "tutorialText": "The four pairs of cards must be found with a maximum of two cards visible at a time.",
         "howMuchTime": "How long does it take?",
-        "timeText": "You have 120 seconds.",
+        "timeText": "You have 100 seconds.",
         "ready": "Are you ready?"
     },
     "MEMORYGRID":{
@@ -167,7 +167,7 @@
         "howToPlay": "How to play?",
         "tutorialText": "Before each round, five of the 12 squares flash for one second and must be marked correctly.",
         "howMuchTime": "How long does it take?",
-        "timeText": "120 másodperced van összesen.",
+        "timeText": "You have 120 seconds.",
         "ready": "Are you ready?"
     },
     "NUMSANDLETTERS":{
@@ -179,7 +179,7 @@
         "howToPlay": "How to play?",
         "tutorialText": "If the generated text is on top, the question is whether the number in it is an even number. If it is at the bottom, the question is whether the letter is a vowel.",
         "howMuchTime": "Mennyi ideig tart?",
-        "timeText": "120 másodperced van összesen.",
+        "timeText": "You have 110 seconds.",
         "ready": "Are you ready?",
         "title1": "The number is even?",
         "title2": "The letter is vowel?",
@@ -196,7 +196,7 @@
         "tutorialText": "If the generated text is at the top left, the question is whether the number is an even number. If it is at the bottom left, the question is whether the number is odd.",
         "tutorialText2": "If the generated text is at the top right, the question is whether the letter is a vowel. If it is at the bottom right, the question is whether the letter is a consonant",
         "howMuchTime": "How long does it take?",
-        "timeText": "120 másodperced van összesen.",
+        "timeText": "You have 120 seconds.",
         "ready": "Are you ready?",
         "title1": "Is the number even?",
         "title3": "Is the letter vowel?",
@@ -219,7 +219,9 @@
         "directions": "Directions",
         "memoryCard": "Memory card",
         "memoryGrid": "Memory grid",
-        "points": "Points"
+        "points": "Pontok",
+        "user": "User",
+        "average": "Average"
     },
     "ERROR":{
         "title": "404 Error",

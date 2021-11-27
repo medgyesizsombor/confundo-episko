@@ -35,7 +35,7 @@ export class Game5Page implements OnInit {
   randomLetter: string;
   vowel= ['A', 'E', 'I', 'O', 'U'];
 
-  seconds = 120;
+  seconds = 110;
   playing = false;
   ended = false;
   interval: any;
@@ -294,7 +294,7 @@ export class Game5Page implements OnInit {
 
   goBack(){
     clearInterval(this.interval);
-    this.seconds = 120;
+    this.seconds = 110;
     this.router.navigate(['main-tabs/games']);
   }
 
