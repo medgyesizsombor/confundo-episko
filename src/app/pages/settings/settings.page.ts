@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/services/language/language.service';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -29,7 +29,6 @@ export class SettingsPage implements OnInit {
   }
 
   logout(){
-    console.log('DEF', this.translateService.defaultLang);
     this.languageService.setLanguage('hu');
     this.authService.logout();
     this.router.navigate(['login']);
@@ -52,7 +51,6 @@ export class SettingsPage implements OnInit {
   }
 
   setLanguage(str: string){
-    console.log(str);
     this.languageService.setLanguage(str);
     localStorage.setItem('language', str);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AverageScoreComponent } from 'src/app/components/average-score/average-score.component';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
 import { LanguageService } from 'src/app/services/language/language.service';
@@ -14,36 +15,35 @@ export class StatisticsPage implements OnInit {
   sumData: any;
   sumData2: any;
   isMobile: boolean;
+  language: string;
 
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private dataOfUser: DataOfUserService, private platform: Platform, private router: Router,
-    private languageService: LanguageService) { }
+    private languageService: LanguageService, private translatePipe: TranslatePipe) { }
 
   ngOnInit() {
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });
-    this.datas();
-
+    if (this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
+    this.languageService.setLanguage(this.language);
   }
 
-  async datas(){
-  await this.dataOfUser.getAllDatas().then(res => {
-    this.sumData = res;
-  });
-}
 
-  ionViewDidEnter(){
-    this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'change');
-    this.datas();
-
-  }
 
   ionViewWillEnter() {
+    if (this.languageService.getLanguage() === 'hu'){
+      this.language = 'hu';
+    } else {
+      this.language = 'en';
+    }
+    this.languageService.setLanguage(this.language);
     this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
     this.dataOfUser.getAllSumStats().then(res => {
       this.sumData = res;
     });

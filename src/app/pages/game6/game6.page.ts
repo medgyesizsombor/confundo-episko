@@ -151,7 +151,6 @@ export class Game6Page implements OnInit {
     this.label2 = null;
     this.label3 = null;
     this.label4 = null;
-    console.log(this.result);
     this.generateLabel();
 
   }
@@ -161,18 +160,14 @@ export class Game6Page implements OnInit {
       case 'true':
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
-            console.log('jó béna');
             this.result--;
           } else {
-            console.log('jó vagy');
             this.result++;
           }
         } else if (this.textLocation === 2 || this.textLocation === 3){
           if(this.randomNumber % 2 !== 0){
-            console.log('jó vagy');
             this.result++;
           } else {
-            console.log('jó béna');
             this.result--;
           }
         } else if (this.textLocation === 4 || this.textLocation === 5){
@@ -194,18 +189,14 @@ export class Game6Page implements OnInit {
       case 'false':
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
-            console.log('jó vagy');
             this.result++;
           } else {
-            console.log('jó béna');
             this.result--;
           }
         } else if (this.textLocation === 2 || this.textLocation === 3){
           if(this.randomNumber % 2 === 0){
-            console.log('jó vagy');
             this.result++;
           } else {
-            console.log('jó béna');
             this.result--;
           }
         } else if (this.textLocation === 4 || this.textLocation === 5){
@@ -230,11 +221,9 @@ export class Game6Page implements OnInit {
   checkVowel(str: string){
     for (const i of this.vowel){
       if(str === i){
-        console.log('SIKERÜLT');
         this.isVowel = true;
         break;
       } else{
-        console.log('NEM SIKERÜLT He');
         this.isVowel = false;
       }
     }
@@ -331,10 +320,6 @@ export class Game6Page implements OnInit {
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
-    console.log(this.bestScore);
-    console.log(this.playedGames);
-    console.log(this.sumScore);
-    console.log(this.averageScore);
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));

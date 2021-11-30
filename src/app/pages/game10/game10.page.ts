@@ -85,7 +85,6 @@ export class Game10Page implements OnInit {
     this.generatedIndexes = this.generateIndexes();
     this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
     this.generatedGrids = this.generateGrid(this.generatedIndexes);
-    console.log(this.generatedGrids);
     this.startCountDownGame();
     this.playing = true;
     this.timeText = this.seconds + ' sec';
@@ -156,7 +155,6 @@ export class Game10Page implements OnInit {
       }
       gridItems.push(item);
     }
-    console.log(gridItems);
     return gridItems;
   }
 
@@ -187,8 +185,6 @@ export class Game10Page implements OnInit {
           this.nextTurn(1000);
         }, 1000);
     }
-
-    console.log(this.generatedGrids);
   }
 
   getSelectedGrids() {
@@ -210,10 +206,8 @@ export class Game10Page implements OnInit {
     for (let i = 0; i < this.generatedSortedIndexes.length; i++) {
       if (num === this.generatedSortedIndexes[i]) {
         this.isInTheArray = true;
-        console.log('good');
         return this.isInTheArray;
       } else {
-        console.log('jajaj');
         this.isInTheArray = false;
       }
     }
@@ -222,8 +216,6 @@ export class Game10Page implements OnInit {
   checkPoint(clickedItems: number[]) {
     const clickedSortedItems = this.sort(this.copy(clickedItems));
     const idx = clickedSortedItems.length - 1;
-    console.log(clickedSortedItems);
-    console.log(this.generatedSortedIndexes);
     if (clickedSortedItems[idx] === this.generatedSortedIndexes[idx]) {
       this.result++;
       this.nextTurn(1000);
@@ -242,14 +234,11 @@ export class Game10Page implements OnInit {
       }
     }
 
-    console.log('WAITING');
     this.inactivateAll();
     setTimeout(() => {
       this.hideAll();
       if (memoryTimeout) {
-        console.log('MEMORIYWAITNG');
         setTimeout(() => {
-          console.log('LESSGO');
           this.activateAll();
           this.waiting = false;
         }, memoryTimeout);
@@ -299,7 +288,6 @@ export class Game10Page implements OnInit {
       this.generatedSortedIndexes = this.sort(this.copy(this.generatedIndexes));
       this.generatedGrids = this.generateGrid(this.generatedSortedIndexes);
       this.showAndHideSelecteds(2000);
-      console.log(this.generatedGrids);
     }, millis);
   }
   async getDataOfGames() {
@@ -311,10 +299,6 @@ export class Game10Page implements OnInit {
       if (this.bestScore < this.result || this.bestScore === 0) {
         this.bestScore = this.result;
       }
-      console.log(this.playedGames + 'playedGames');
-      console.log(this.sumScore + 'sumScore');
-      console.log(this.averageScore + 'average');
-      console.log(this.bestScore);
     });
   }
 

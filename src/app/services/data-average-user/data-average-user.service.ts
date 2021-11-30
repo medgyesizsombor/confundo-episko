@@ -14,7 +14,6 @@ export class DataAverageUserService {
 
   getDataOfAverageUser(str: string){
     this.averageId = localStorage.getItem('averageId');
-    console.log('AVERAGE_ID', this.averageId);
     return new Promise((resolve, reject) => {
       this.angularFireStore.collection('Statistics').doc(this.averageId).collection('game').doc(str).valueChanges().subscribe(res => {
           localStorage.setItem('playedGamesAverage', res.playedGames);

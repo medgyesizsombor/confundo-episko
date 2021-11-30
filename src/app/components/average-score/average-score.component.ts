@@ -3,6 +3,7 @@ import { Platform } from '@ionic/angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Chart, registerables } from 'chart.js';
 import { DataOfUserService } from 'src/app/services/data-of-user/data-of-user.service';
+import { LanguageService } from 'src/app/services/language/language.service';
 Chart.register(...registerables);
 
 @Component({
@@ -20,7 +21,7 @@ export class AverageScoreComponent implements OnInit, OnChanges {
 
   asd: any;
 
-  language = localStorage.getItem('language');
+  language: string;
 
   bestScoreColourgame = 0;
   bestScoreGoNogogame = 0;
@@ -35,10 +36,9 @@ export class AverageScoreComponent implements OnInit, OnChanges {
 
 
   constructor(private dataOfUser: DataOfUserService, private platform: Platform,
-    private translatePipe: TranslatePipe) { }
+    private translatePipe: TranslatePipe, private languageService: LanguageService) { }
 
   async ngOnInit() {
-    console.log('AVERAGE INIT');
     this.data1 = {
       labels: [this.translatePipe.transform('GRAPH.attention'), this.translatePipe.transform('GRAPH.memory'),
       this.translatePipe.transform('GRAPH.mathematical')],
@@ -97,6 +97,11 @@ export class AverageScoreComponent implements OnInit, OnChanges {
     this.data1.datasets[0].data[0] = averageAttention;
     this.data1.datasets[0].data[1] = averageMemory;
     this.data1.datasets[0].data[2] = averageMatematical;
+
+    this.data1.labels[0] = this.translatePipe.transform('GRAPH.attention');
+    this.data1.labels[1] = this.translatePipe.transform('GRAPH.memory');
+    this.data1.labels[2] = this.translatePipe.transform('GRAPH.mathematical');
+    this.data1.datasets[0].label = this.translatePipe.transform('GRAPH.points');
 
     this.averageScoreChart.data = this.data1;
     this.averageScoreChart.update();

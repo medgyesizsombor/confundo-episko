@@ -99,6 +99,11 @@ export class PlayedGamesChartComponent implements OnInit, OnChanges {
     this.data.datasets[0].data[1] = playedMemory;
     this.data.datasets[0].data[2] = playedMath;
 
+    this.data.labels[0] = this.translatePipe.transform('GRAPH.attention');
+    this.data.labels[1] = this.translatePipe.transform('GRAPH.memory');
+    this.data.labels[2] = this.translatePipe.transform('GRAPH.mathematical');
+    this.data.datasets[0].label = this.translatePipe.transform('GRAPH.points');
+
     this.playedGameChart.data = this.data;
     this.playedGameChart.update();
   }

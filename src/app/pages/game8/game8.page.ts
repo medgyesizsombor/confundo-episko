@@ -136,7 +136,6 @@ export class Game8Page implements OnInit {
     } else {
       this.checkPoint('Right');
     }
-    console.log(this.result);
     this.titleHUN = '';
     this.title = '';
     this.generateDirection();
@@ -266,10 +265,6 @@ export class Game8Page implements OnInit {
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
-    console.log(this.bestScore);
-    console.log(this.playedGames);
-    console.log(this.sumScore);
-    console.log(this.averageScore);
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
