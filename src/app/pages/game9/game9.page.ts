@@ -271,11 +271,6 @@ export class Game9Page implements OnInit {
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
-    console.log(this.bestScore);
-    console.log(this.playedGames);
-    console.log(this.sumScore);
-    console.log(this.averageScore);
-    clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));
     this.drawChart = true;

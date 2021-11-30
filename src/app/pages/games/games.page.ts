@@ -35,7 +35,6 @@ export class GamesPage implements OnInit {
       this.language = 'en';
     }
     this.isMobile = this.platform.is('mobile');
-    console.log(this.isMobile + 'willEnter');
     this.styleCard();
 
   }

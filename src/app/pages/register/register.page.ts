@@ -75,7 +75,6 @@ export class RegisterPage implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
     this.router.navigate(['login']);
   }
 

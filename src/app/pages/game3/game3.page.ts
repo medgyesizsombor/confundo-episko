@@ -126,15 +126,11 @@ export class Game3Page implements OnInit {
       const idx = this.clickedItems.length - 1;
       if (this.clickedItems[idx] === this.selectedSorted[idx]) {
         this.result++;
-        console.log(this.result);
         if (this.clickedItems.length === this.selectedNumbers.length) {
-          console.log('ALL GOOD');
           this.nextRound();
         }
       } else {
         this.result = this.result - this.selectedNumbers.length;
-        console.log(this.result);
-        console.log('NO GOOD');
         this.nextRound();
       }
     }, 250);
@@ -161,10 +157,6 @@ export class Game3Page implements OnInit {
       if(this.bestScore < this.result || this.bestScore === 0){
         this.bestScore = this.result;
       }
-      console.log(this.playedGames + 'playedGames');
-      console.log(this.sumScore + 'sumScore');
-      console.log(this.averageScore + 'average');
-      console.log(this.bestScore);
     });
   }
 

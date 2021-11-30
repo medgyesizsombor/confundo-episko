@@ -107,7 +107,6 @@ export class Game7Page implements OnInit {
     this.randomNumber2 = Math.floor(Math.random() * (20 - -20) + -20);
     this.randomOperatorFromArray1 = Math.floor(Math.random() * (1 - 0) + 0);
     this.equation1 = this.randomNumber1 + this.operators[this.randomOperatorFromArray1] + 'X' + '=' + this.randomNumber2;
-    console.log(this.equation1);
     if(this.equation1.length === 5){
       this.split1 = this.equation1.split('',5);
     } else if (this.equation1.length === 6){
@@ -117,7 +116,6 @@ export class Game7Page implements OnInit {
       this.split1 = this.equation1.split('', 7);
       this.randomNumber2 = Number(this.split1[4] + this.split1[5] + this.split1[6]);
     }
-    console.log(this.split1);
     this.checkValueOfSplit();
   }
 
@@ -125,18 +123,14 @@ export class Game7Page implements OnInit {
     switch(this.split1[1]){
       case '+':
         this.number3 = this.randomNumber2 - this.randomNumber1;
-        console.log(this.number3 + 'EZ A SZÁM');
         break;
       case '-':
         this.number3 = (this.randomNumber2 * -1) + this.randomNumber1;
-        console.log(this.number3 + 'EZ A SZÁM');
         break;
     }
   }
 
   clickedOk(num: number){
-    console.log(num + ' A MEGOLDÁS');
-    console.log(this.number3);
     if(Number(num) === this.number3){
       this.result++;
     } else {
@@ -152,7 +146,6 @@ export class Game7Page implements OnInit {
     } else {
       this.currentNumber = this.currentNumber + num;
     }
-    console.log(this.currentNumber);
   }
 
   async getDataOfGames(){
@@ -246,10 +239,6 @@ export class Game7Page implements OnInit {
       sumScore: this.sumScoreAverage,
       averageScore: this.averageScoreAverage,
     });
-    console.log(this.bestScore);
-    console.log(this.playedGames);
-    console.log(this.sumScore);
-    console.log(this.averageScore);
     clearInterval(this.interval);
     localStorage.setItem('result', String(this.result));
     localStorage.setItem('averageScore', String(this.averageScoreAverage));

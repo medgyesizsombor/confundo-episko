@@ -92,7 +92,6 @@ export class GoNogogamePage implements OnInit {
       this.generatedTaskNumber = Math.floor(Math.random() * 4 - 0) + 0;
       this.generatedTaskNumberText = this.generatedTaskNumber + ' is the forbidden number!';
       this.taskVisibility = true;
-      console.log(this.firstGenerated);
       setTimeout(() => {
         this.taskVisibility = false;
         this.firstGenerated = false;
@@ -156,10 +155,8 @@ export class GoNogogamePage implements OnInit {
 
   checkPoint(){
     if (this.numberCard === this.generatedTaskNumber){
-      console.log('minusz pont a pushednál');
       this.result--;
     } else {
-      console.log('plusz pont a pushednál');
       this.result++;
     }
 
@@ -172,10 +169,8 @@ export class GoNogogamePage implements OnInit {
     this.generatedNumberCardCounter++;
     if(this.numberCard === this.generatedTaskNumber){
       this.result++;
-      console.log('plusz pont a notpushednál');
     } else {
       this.result--;
-      console.log('minusz pont a pushednál');
     }
 
     if(this.generatedNumberCardCounter % 10 === 0){
@@ -201,10 +196,6 @@ export class GoNogogamePage implements OnInit {
       if(this.bestScore < this.result || this.bestScore === 0){
         this.bestScore = this.result;
       }
-      console.log(this.playedGames + 'playedGames');
-      console.log(this.sumScore + 'sumScore');
-      console.log(this.averageScore + 'average');
-      console.log(this.bestScore);
     });
   }
 

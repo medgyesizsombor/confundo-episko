@@ -132,7 +132,6 @@ export class Game5Page implements OnInit {
     }
     this.label1 = null;
     this.label2 = null;
-    console.log(this.result);
     this.generateLabel();
 
   }
@@ -142,10 +141,8 @@ export class Game5Page implements OnInit {
       case 'true':
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
-            console.log('jó béna');
             this.result--;
           } else {
-            console.log('jó vagy');
             this.result++;
           }
         } else {
@@ -160,20 +157,16 @@ export class Game5Page implements OnInit {
       case 'false':
         if(this.textLocation === 0 || this.textLocation === 1){
           if(this.randomNumber % 2 !== 0){
-            console.log('jó vagy');
             this.result++;
           } else {
-            console.log('jó béna');
             this.result--;
           }
         } else {
           this.checkVowel(this.randomLetter);
           if(this.isVowel !== true){
             this.result++;
-            console.log('jó vagy');
           } else {
             this.result--;
-            console.log('jó béna');
           }
         }
         break;
@@ -184,11 +177,9 @@ export class Game5Page implements OnInit {
   checkVowel(str: string){
     for (const i of this.vowel){
       if(str === i){
-        console.log('SIKERÜLT');
         this.isVowel = true;
         break;
       } else{
-        console.log('NEM SIKERÜLT He');
         this.isVowel = false;
       }
     }

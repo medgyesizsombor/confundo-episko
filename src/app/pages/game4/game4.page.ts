@@ -108,9 +108,7 @@ export class Game4Page implements OnInit {
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
     this.equation1 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
                             this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
-    console.log(this.equation1);
     this.split1 = this.equation1.split('',7);
-    console.log(this.split1);
   }
 
   generateSecondEquation(){
@@ -121,9 +119,7 @@ export class Game4Page implements OnInit {
     this.randomOperatorFromArray2 = Math.floor(Math.random() * (3 - 0) + 0);
     this.equation2 = '(' + this.randomNumber1 + this.operators[this.randomOperatorFromArray1] +
                             this.randomNumber2 + ')' + this.operators[this.randomOperatorFromArray2] + this.randomNumber3;
-    console.log(this.equation2);
     this.split2 = this.equation2.split('',7);
-    console.log(this.split2);
 }
 
   checkValueOfFirstSplit(){
@@ -131,37 +127,29 @@ export class Game4Page implements OnInit {
     switch(this.split1[2]){
       case '+':
         equationFirstHalf = Number(this.split1[1]) + Number(this.split1[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '-':
         equationFirstHalf = Number(this.split1[1]) - Number(this.split1[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '*':
         equationFirstHalf = Number(this.split1[1]) * Number(this.split1[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '/':
         equationFirstHalf = Number(this.split1[1]) / Number(this.split1[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
     }
     switch(this.split1[5]){
       case '+':
         this.number1 = equationFirstHalf + Number(this.split1[6]);
-        console.log(this.number1 + 'EZ A VÉGE');
         break;
       case '-':
         this.number1 = equationFirstHalf - Number(this.split1[6]);
-        console.log(this.number1 + 'EZ A VÉGE');
         break;
       case '*':
         this.number1 = equationFirstHalf * Number(this.split1[6]);
-        console.log(this.number1 + 'EZ A VÉGE');
         break;
       case '/':
         this.number1 = equationFirstHalf / Number(this.split1[6]);
-        console.log(this.number1 + 'EZ A VÉGE');
         break;
     }
   }
@@ -171,37 +159,29 @@ export class Game4Page implements OnInit {
     switch(this.split2[2]){
       case '+':
         equationFirstHalf = Number(this.split2[1]) + Number(this.split2[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '-':
         equationFirstHalf = Number(this.split2[1]) - Number(this.split2[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '*':
         equationFirstHalf = Number(this.split2[1]) * Number(this.split2[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
       case '/':
         equationFirstHalf = Number(this.split2[1]) / Number(this.split2[3]);
-        console.log(equationFirstHalf + 'EZ A ASZÁM');
         break;
     }
     switch(this.split2[5]){
       case '+':
         this.number2 = equationFirstHalf + Number(this.split2[6]);
-        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
         break;
       case '-':
         this.number2 = equationFirstHalf - Number(this.split2[6]);
-        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
         break;
       case '*':
         this.number2 = equationFirstHalf * Number(this.split2[6]);
-        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
         break;
       case '/':
         this.number2 = equationFirstHalf / Number(this.split2[6]);
-        console.log(this.number2 + 'EZ A VÉGE A KETTESNEK');
         break;
     }
   }
@@ -225,39 +205,21 @@ export class Game4Page implements OnInit {
   checkPoint(paramNumber1: number, paramNumber2?: number){
     if(paramNumber1 === this.number1 && !paramNumber2){
       if (this.number1 > this.number2){
-        console.log('ögyi');
         this.result += 1;
-        console.log(this.result);
       } else {
-        console.log('jó béna');
         this.result -= 1;
-        console.log(this.result);
       }
     } else if (paramNumber1 === this.number2 && !paramNumber2){
       if (this.number1 < this.number2){
-        console.log('ögyi');
         this.result += 1;
-        console.log(this.result);
       } else {
-        console.log('jó béna');
         this.result -= 1;
-        console.log(this.result);
       }
     } else {
       if (paramNumber1 === paramNumber2){
-        console.log('------');
-        console.log(paramNumber2);
-        console.log(paramNumber1);
-        console.log('ögyi');
         this.result += 1;
-        console.log(this.result);
       } else {
-        console.log('------');
-        console.log(paramNumber2);
-        console.log(paramNumber1);
-        console.log('jó béna');
         this.result -= 1;
-        console.log(this.result);
       }
     }
     this.generateFirstEquation();
@@ -329,8 +291,6 @@ export class Game4Page implements OnInit {
         localStorage.setItem('averageId', this.average);
       }
     }
-
-    console.log('HALOHOOOOO', localStorage.getItem('averageId'));
   }
 
   async getDataOfUser(){

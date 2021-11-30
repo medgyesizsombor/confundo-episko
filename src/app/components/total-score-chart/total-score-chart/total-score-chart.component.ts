@@ -122,6 +122,17 @@ export class TotalScoreChartComponent implements OnInit, OnChanges {
     this.data.datasets[0].data[8] = data.ninthgame.sumScore;
     this.data.datasets[0].data[9] = data.tenthgame.sumScore;
 
+    this.data.labels[0] = this.translatePipe.transform('GRAPH.colourgame');
+    this.data.labels[1] = this.translatePipe.transform('GRAPH.goNogoGame');
+    this.data.labels[2] = this.translatePipe.transform('GRAPH.sortingGame');
+    this.data.labels[3] = this.translatePipe.transform('GRAPH.equations');
+    this.data.labels[4] = this.translatePipe.transform('GRAPH.numsAndLetters');
+    this.data.labels[5] = this.translatePipe.transform('GRAPH.numsAndLetters2');
+    this.data.labels[6] = this.translatePipe.transform('GRAPH.computing');
+    this.data.labels[7] = this.translatePipe.transform('GRAPH.directions');
+    this.data.labels[8] = this.translatePipe.transform('GRAPH.memoryCard');
+    this.data.labels[9] = this.translatePipe.transform('GRAPH.memoryGrid');
+
     this.totalScoreChart.data = this.data;
     this.totalScoreChart.update();
   }
